@@ -18,10 +18,10 @@
                     <a href="https://github.com/" :style="{display:'block',textDecoration:'none',textAlign:'center'}">GITHUB</a>
                 </el-menu-item-group>
                 <el-menu-item-group>
-                    <a href="http://119.23.28.199:3000/#/blog/0" :style="{display:'block',textDecoration:'none',textAlign:'center'}">express服务器</a>
+                    <a href="http://www.fyyd.vip/#/blog/0" :style="{display:'block',textDecoration:'none',textAlign:'center'}">express服务器</a>
                 </el-menu-item-group>
                 <el-menu-item-group>
-                    <a href="http://www.fyyd.vip/index.html" :style="{display:'block',textDecoration:'none',textAlign:'center'}">nginx服务器</a>
+                    <a href="http://www.fyyd.vip:3000" :style="{display:'block',textDecoration:'none',textAlign:'center'}">nginx服务器</a>
                 </el-menu-item-group>
                 <el-menu-item-group>
                     <a href="https://www.yanshisan.cn/Blog/Article" :style="{display:'block',textDecoration:'none',textAlign:'center'}">十三燕</a>
