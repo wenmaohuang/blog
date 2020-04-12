@@ -94,7 +94,7 @@
 <style lang="less" scoped>
     .aside {
         background-image: url("../../assets/img/1.jpg");
-        width: 200px;
+        /*width: 200px;*/
         height: 800px;
 
     }
