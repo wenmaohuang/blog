@@ -1,5 +1,5 @@
 git init
 git add .
-git commit -m "5 commit"
+git commit -m "6 commit"
 git remote add origin https://github.com/wenmaohuang/blog.git
 git push -u origin master
