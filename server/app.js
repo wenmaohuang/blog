@@ -8,8 +8,8 @@ app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 app.use(cookieParser())
 // console.log(path.join(path.join(__dirname, '../client/dist')));
-app.use(express.static(path.join(__dirname, '../client/dist')))
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, '../client/dist')))
+app.use(express.static(path.join(__dirname, 'dist')));
 app.use((req,res,next)=>{
     res.header({
         'Access-Control-Allow-Credentials':true,
