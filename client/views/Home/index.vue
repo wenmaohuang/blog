@@ -12,7 +12,10 @@
                        :style="{display:'block',textDecoration:'none',textAlign:'center'}">面试资料</a>
                 </el-menu-item-group>
                 <el-menu-item-group>
-                    <a href="http://localhost:8080/#/blog/0" :style="{display:'block',textDecoration:'none',textAlign:'center'}">本地服务器</a>
+                    <a href="http://localhost/#/blog/0" :style="{display:'block',textDecoration:'none',textAlign:'center'}">本地服务器80</a>
+                </el-menu-item-group>
+                <el-menu-item-group>
+                    <a href="http://localhost:8080/#/blog/0" :style="{display:'block',textDecoration:'none',textAlign:'center'}">本地服务器8080</a>
                 </el-menu-item-group>
                 <el-menu-item-group>
                     <a href="https://github.com/" :style="{display:'block',textDecoration:'none',textAlign:'center'}">GITHUB</a>

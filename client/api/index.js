@@ -1,6 +1,7 @@
 import axios from 'axios'
-// axios.defaults.baseURL = 'http://localhost:8080'
-axios.defaults.baseURL = 'http://www.fyyd.vip'
+// axios.defaults.baseURL = 'http://localhost'
+axios.defaults.baseURL = 'http://localhost:3000'
+// axios.defaults.baseURL = 'http://www.fyyd.vip'
 axios.defaults.withCredentials = true
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 
@@ -8,6 +9,7 @@ axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded
 
 export default {
     getArticleInfo(){
+        console.log(333);
         return axios.post('/article/getInfo')
     },
     getArticleHot(){

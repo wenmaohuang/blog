@@ -5,6 +5,7 @@ let router = express.Router()
 router.post('/getInfo', (req, res) => {
     articleInfo.findOne({}, {_id: 0, __v: 0})
         .then(data => {
+            console.log(data,444);
             res.send({
                 code: 0,
                 msg: '请求成功',
@@ -23,7 +24,7 @@ router.post('/getInfo', (req, res) => {
 router.post('/getHot', (req, res) => {
     article.find({}, {_id: 0, __v: 0}, {sort: {pv: -1}, skip: 0, limit: 8})
         .then(data => {
-            // console.log(data)
+            console.log(data)
             res.send({
                 code: 0,
                 msg: '请求成功',

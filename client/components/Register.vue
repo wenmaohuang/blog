@@ -43,5 +43,6 @@
 <style scoped>
 .el-form{
     padding-right: 30px;
+    background-color: #aaa;
 }
 </style>

@@ -3,7 +3,7 @@ var router = express.Router();
 
 
 /*文章相关的接口*/
-var connection = require('../db/connection/connection')
+// var connection = require('../db/connection/connection')
 
 
 router.use('/article',require('./article/index'))

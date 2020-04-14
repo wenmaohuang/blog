@@ -151,6 +151,11 @@
 
                 }
             }
+            @media only screen and (max-width:500px){
+                .n-nav{
+                    display: none;
+                }
+            }
 
         }
     }

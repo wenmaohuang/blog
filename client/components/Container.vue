@@ -55,7 +55,9 @@
     import request from '../api/index'
     import ArticleShow from './ArticleShow'
     let getArticleInfo = request.getArticleInfo
+    console.log(request.getArticleInfo());
     let getArticleHot = request.getArticleHot
+
     export default {
         name: "Container",
         components:{
@@ -68,18 +70,18 @@
                 articleHot:[],
                 coverIndex:this.$route.params.id*1,
                 visitor:[
-                    {user:'afei',photo:'http://localhost:3000/img/defaultPhoto.png'},
-                    {user:'afei',photo:'http://localhost:3000/img/defaultPhoto.png'},
-                    {user:'afei',photo:'http://localhost:3000/img/defaultPhoto.png'},
-                    {user:'afei',photo:'http://localhost:3000/img/defaultPhoto.png'},
-                    {user:'afei',photo:'http://localhost:3000/img/defaultPhoto.png'},
-                    {user:'afei',photo:'http://localhost:3000/img/defaultPhoto.png'},
-                    {user:'afei',photo:'http://localhost:3000/img/defaultPhoto.png'},
-                    {user:'afei',photo:'http://localhost:3000/img/defaultPhoto.png'},
-                    {user:'afei',photo:'http://localhost:3000/img/defaultPhoto.png'},
-                    {user:'afei',photo:'http://localhost:3000/img/defaultPhoto.png'},
-                    {user:'afei',photo:'http://localhost:3000/img/defaultPhoto.png'},
-                    {user:'afei',photo:'http://localhost:3000/img/defaultPhoto.png'},
+                    {user:'afei',photo:'/img/defaultPhoto.png'},
+                    {user:'afei',photo:'/img/defaultPhoto.png'},
+                    {user:'afei',photo:'/img/defaultPhoto.png'},
+                    {user:'afei',photo:'/img/defaultPhoto.png'},
+                    {user:'afei',photo:'/img/defaultPhoto.png'},
+                    {user:'afei',photo:'/img/defaultPhoto.png'},
+                    {user:'afei',photo:'/img/defaultPhoto.png'},
+                    {user:'afei',photo:'/img/defaultPhoto.png'},
+                    {user:'afei',photo:'/img/defaultPhoto.png'},
+                    {user:'afei',photo:'/img/defaultPhoto.png'},
+                    {user:'afei',photo:'/img/defaultPhoto.png'},
+                    {user:'afei',photo:'/img/defaultPhoto.png'},
                 ]
 
             }
@@ -108,8 +110,10 @@
         created(){
             getArticleInfo().then(res=>{
                 this.articleTages = res.data.data.tags
+                console.log(res.data.data.tags);
+                console.log(1111111);
             }).catch(err=>{
-                console.log(err);
+                console.log(err,'2222222');
             })
             getArticleHot().then(res=>{
                 this.articleHot = res.data.data
