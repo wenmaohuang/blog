@@ -7,7 +7,7 @@ app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 app.use(cookieParser())
-console.log(path.join(path.join(__dirname, '../client/dist')));
+// console.log(path.join(path.join(__dirname, '../client/dist')));
 app.use(express.static(path.join(__dirname, '../client/dist')))
 app.use(express.static(path.join(__dirname, 'public')));
 app.use((req,res,next)=>{
