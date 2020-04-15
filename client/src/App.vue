@@ -22,8 +22,6 @@
         color: #2c3e50;
 
     }
-    .el-menu-vertical{
-        display: flex;
-    }
+
 
 </style>
