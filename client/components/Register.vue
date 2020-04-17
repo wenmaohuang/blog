@@ -1,7 +1,7 @@
 <template>
     <div class="register">
         <h3>register</h3>
-        <el-form ref="form" :model="form" label-width="80px" :rules="rules">
+        <el-form ref="form" :model="form" label-width="80px" :rules="rules" class="form">
             <el-form-item label="用户名" prop="user">
                 <el-input v-model="form.user"></el-input>
             </el-form-item>
@@ -19,6 +19,7 @@
 </template>
 
 <script>
+
     export default {
         name: "Register",
         data(){
@@ -40,9 +41,12 @@
     }
 </script>
 
-<style scoped>
-.el-form{
-    padding-right: 30px;
-    background-color: #aaa;
-}
+<style lang="less" scoped>
+    .register{
+        /*background-color: #555;*/
+        el-form{
+            /*background-color: #aaa;*/
+        }
+    }
+
 </style>
