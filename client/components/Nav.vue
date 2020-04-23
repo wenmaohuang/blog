@@ -36,10 +36,9 @@
 <script>
     import Register from './Register'
 
-    // console.log(Vue);
     export default {
         name: "Nav",
-        data(){
+            data(){
             return {
                 routerList:['Home','Blog','Message','Daily','Links','About'],
                 alertKey: 0
@@ -54,20 +53,31 @@
         components:{
           Register
         },
+        mounted(){
+            console.log(this,'333')
+        },
         methods:{
             handlerRegister(){
+
                 const h = this.$createElement;
                 this.$msgbox({
                     title: '注册',
-                    message: h('Register', {key: this.alertKey++}),
+                    message: h('Register', {key: this.alertKey++,
+                    // style:{width:'500px'}
+                    }
+                    ),
                     showCancelButton: false,
                     showConfirmButton: false,
                     closeOnClickModal: false,
+
                 })
                     .then(()=>{
+                console.log(this)
+
                     })
                     .catch(()=>{
                     })
+                    
             }
         }
 

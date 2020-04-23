@@ -19,7 +19,7 @@
 </template>
 
 <script>
-
+    console.log(this,'233332111')
     export default {
         name: "Register",
         data(){
@@ -37,6 +37,9 @@
 
                }
            }
+        },
+        methods:{
+
         }
     }
 </script>
