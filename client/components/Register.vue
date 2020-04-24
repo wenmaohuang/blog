@@ -19,7 +19,6 @@
 </template>
 
 <script>
-    console.log(this,'233332111')
     export default {
         name: "Register",
         data(){
@@ -38,8 +37,11 @@
                }
            }
         },
+        mounted(){
+            // console.log(this,'555')
+        },
         methods:{
-
+            
         }
     }
 </script>

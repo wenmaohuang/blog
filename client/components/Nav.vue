@@ -54,11 +54,11 @@
           Register
         },
         mounted(){
-            console.log(this,'333')
+            // console.log(this,'333')
         },
         methods:{
             handlerRegister(){
-
+                console.log(this)
                 const h = this.$createElement;
                 this.$msgbox({
                     title: '注册',
@@ -72,7 +72,7 @@
 
                 })
                     .then(()=>{
-                console.log(this)
+                // console.log(this)
 
                     })
                     .catch(()=>{
@@ -170,4 +170,9 @@
         }
     }
 
+</style>
+<style lang="less">
+.el-message-box{
+    width:900px
+}
 </style>
