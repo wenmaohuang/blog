@@ -173,6 +173,13 @@
 </style>
 <style lang="less">
 .el-message-box{
-    width:900px
+    width:420px
 }
+
+ @media only screen and (max-width:500px){
+.el-message-box{
+    width:300px
+}
+  }
+
 </style>
