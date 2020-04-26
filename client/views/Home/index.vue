@@ -25,7 +25,7 @@
                 obj:{
                     msg:['面试资料','本地server','本地client','GITHUB',
                         'express服务器','nginx服务器','十三燕','QQ音乐','阿里云',
-                        '美女图片','潭州教育','百度翻译','mongoose数据库','百度搜素','elementUI组件','cctv'],
+                        '美女图片','潭州教育','百度翻译','mongoose数据库','百度搜素','elementUI组件','cctv','潭州教育remi'],
                     href:['https://github.com/afeifeifei/front-end-interview-handbook/blob/master/Translations/Chinese/README.md',
                     'http://localhost/#/blog/0',
                     'http://localhost:8080/#/blog/0',
@@ -41,7 +41,8 @@
                         'http://www.mongoosejs.net/docs/models.html',
                         'http://baidu.com',
                         'https://element.eleme.cn/#/zh-CN/component/installation',
-                        'http://tv.cctv.com/live/'
+                        'http://tv.cctv.com/live/',
+                        'https://www.shiguangkey.com/video/903?videoId=242629&classId=17830&playback=1'
                     ]
                 }
             };
