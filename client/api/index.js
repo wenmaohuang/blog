@@ -27,5 +27,8 @@ export default {
             skip += limit
             return axios.post('/article/getShow',data)
         }
-    })()
+    })(),
+    getRegisterVCode(){
+        return axios.post('/register/vcode')
+    }
 }

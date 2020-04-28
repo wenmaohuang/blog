@@ -3,9 +3,10 @@ var router = express.Router();
 
 
 /*文章相关的接口*/
-// var connection = require('../db/connection/connection')
-
-
 router.use('/article',require('./article/index'))
+
+// 注册相关接口
+router.use('/register',require('./register/index'))
+
 
 module.exports = router;

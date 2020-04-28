@@ -5,9 +5,7 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 Vue.use(ElementUI)
 Vue.config.productionTip = false
-var vue =new Vue({
+new Vue({
    router,
     render: h=> h(App)
 }).$mount('#app')
-vue
-console.log(vue,"aaaaaaaaaaaaaa");

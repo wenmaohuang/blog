@@ -54,16 +54,13 @@
           Register
         },
         mounted(){
-            // console.log(this,'333')
         },
         methods:{
             handlerRegister(){
-                console.log(this)
                 const h = this.$createElement;
                 this.$msgbox({
                     title: '注册',
                     message: h('Register', {key: this.alertKey++,
-                    // style:{width:'500px'}
                     }
                     ),
                     showCancelButton: false,
@@ -72,8 +69,6 @@
 
                 })
                     .then(()=>{
-                // console.log(this)
-
                     })
                     .catch(()=>{
                     })

@@ -55,7 +55,6 @@
     import request from '../api/index'
     import ArticleShow from './ArticleShow'
     let getArticleInfo = request.getArticleInfo
-    console.log(request.getArticleInfo());
     let getArticleHot = request.getArticleHot
 
     export default {
@@ -102,9 +101,7 @@
             getArticleRecommend(){
               return this.articleHot[0] || {}
             },
-            // coverIndex(){
-            //   return this.$route.params.id*1
-            // }
+           
 
         },
         created(){
