@@ -107,8 +107,8 @@
         created(){
             getArticleInfo().then(res=>{
                 this.articleTages = res.data.data.tags
-                console.log(res.data.data.tags);
-                console.log(1111111);
+                // console.log(res.data.data.tags);
+                // console.log(1111111);
             }).catch(err=>{
                 console.log(err,'2222222');
             })

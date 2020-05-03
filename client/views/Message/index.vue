@@ -1,7 +1,7 @@
 <template>
     <div class="blog">
-        <h1>this is message page</h1>
         <Nav></Nav>
+        <h1>this is message page</h1>
     </div>
 </template>
 

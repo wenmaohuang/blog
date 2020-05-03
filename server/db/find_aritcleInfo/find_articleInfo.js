@@ -1,4 +1,4 @@
-let article = require('../article')
+// let article = require('../article')
 let articleInfo = require('../articleInfo')
 let skip = 0
 let limit = 5

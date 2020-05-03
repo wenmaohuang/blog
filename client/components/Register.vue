@@ -10,21 +10,29 @@
       <el-form-item label="确认密码" prop="checkpwd">
         <el-input v-model="form.checkpwd" show-password></el-input>
       </el-form-item>
-      <el-form-item label="验证码" prop="vcode" class="vcode">
-        <el-input v-model="form.vcode"></el-input>
-        <div class="svg">svg</div>
-        <div class="refresh">刷新</div>
+      <el-form-item label="验证码" class="vcode" prop="svgcode">
+        <el-input v-model="form.svgcode"></el-input>
+        <div class="svg" v-html="register.svgText"></div>
+        <el-link
+          type="primary"
+          :disabled="register.disabled"
+          class="refresh"
+          @click="getVcode"
+        >{{register.refreshText}}</el-link>
+        <!-- <div class="refresh" @click="getVcode">刷新</div> -->
       </el-form-item>
       <el-form-item>
-        <el-button type="success">立即注册</el-button>
+        <el-button type="success" @click="submitForm('form')">立即注册</el-button>
       </el-form-item>
     </el-form>
   </div>
 </template>
 
 <script>
-import request from '../api/index'
-const getRegisterVCode = request.getRegisterVCode
+import request from "../api/index";
+const getRegisterVCode = request.getRegisterVCode;
+const getCheckVcode = request.getCheckVcode
+const postRegister = request.postRegister
 
 export default {
   name: "Register",
@@ -33,7 +41,8 @@ export default {
       form: {
         user: "",
         pwd: "",
-        checkpwd: ""
+        checkpwd: "",
+        svgcode: ""
       },
       rules: {
         user: [
@@ -79,18 +88,100 @@ export default {
             }
           },
           trigger: ["blur", "change"]
+        },
+        svgcode: {
+          required: true,
+          validator: (rule, value, cb) => {
+            if(!value){
+              cb(new Error("请输入验证码!"))
+            }else{
+              getCheckVcode(value).then((res)=>{
+                console.log(res.data.code)
+
+              if(res.data.code===0){
+                cb()
+              }else{
+                cb(new Error("验证码错误！"))
+              }
+            }).catch(()=>{
+              cb(new Error("未知错误"))
+              })
+            }
+            
+          },
+          trigger: "blur"
         }
+      },
+      register: {
+        svgText: "loading...",
+        refreshText: "刷新",
+        disabled: true,
+        timer: null
       }
     };
   },
-  mounted() {
-    getRegisterVCode().then(res=>{
-      console.log(res)
-    }).catch(e=>{
-      console.log(e)
-    })
+
+  methods: {
+    getVcode() {
+      getRegisterVCode()
+        .then(res => {
+          // console.log(res);
+
+          clearTimeout(this.register.timer);
+          let t = 0;
+          let fn = () => {
+            t += 1000;
+            if (t > res.data.time) {
+              clearTimeout(this.register.timer);
+              this.register.disabled = false;
+              this.register.refreshText = "刷新";
+            } else {
+              this.register.disabled = true;
+              this.register.refreshText =
+                (((res.data.time - t) / 1000) | 0) + "s后可以刷新";
+            }
+          };
+          this.register.timer = setInterval(fn, 1000);
+          fn();
+          this.register.svgText = res.data.data;
+
+          // console.log(res.data.data)
+          //更新图片
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    },
+    
+    submitForm(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            // alert('submit!');
+            postRegister(this.form)
+            .then(res=>{
+              console.log(res)
+            })
+            .catch(e=>{
+              console.log(e)
+
+            })
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
+      },
+      // resetForm(formName) {
+      //   this.$refs[formName].resetFields();
+      // }
+    
   },
-  methods: {}
+  mounted() {
+    this.getVcode();
+  },
+  destroyed() {
+    clearTimeout(this.register.timer);
+  }
 };
 </script>
 
@@ -98,26 +189,29 @@ export default {
 .register {
   .form {
     .vcode {
-      
       .el-input {
         float: left;
         width: 30%;
       }
       .svg {
         float: left;
-        margin-left: 20px;
+        margin-left: 10px;
+        width: 100px;
+        /deep/ svg {
+          width: 100%;
+          height: 100%;
+        }
       }
-      .refresh{
+      .refresh {
         user-select: none;
         float: left;
-        margin-left: 20px;
-        color:blue;
+        margin-left: 10px;
+        color: blue;
         cursor: pointer;
-        &:hover{
-        text-decoration: underline;
+        &:hover {
+          text-decoration: underline;
+        }
       }
-      }
-      
     }
   }
 }

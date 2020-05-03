@@ -43,7 +43,7 @@ router.post('/getHot', (req, res) => {
 router.post('/getShow', (req, res) => {
     let {skip, limit, tag} = req.body
     let options = tag ? {tag} : {}
-    console.log(skip, limit, tag,'test');
+    // console.log(skip, limit, tag,'test');
 
     article.find(options, {__v:0}, {skip, limit,sort:{pv:-1}})
         .then(data => {

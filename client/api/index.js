@@ -1,6 +1,6 @@
 import axios from 'axios'
-// axios.defaults.baseURL = 'http://localhost'
-axios.defaults.baseURL = 'http://www.fyyd.vip'
+axios.defaults.baseURL = 'http://localhost'
+// axios.defaults.baseURL = 'http://www.fyyd.vip'
 axios.defaults.withCredentials = true
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 
@@ -8,7 +8,7 @@ axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded
 
 export default {
     getArticleInfo(){
-        console.log(333);
+        // console.log(333);
         return axios.post('/article/getInfo')
     },
     getArticleHot(){
@@ -30,5 +30,18 @@ export default {
     })(),
     getRegisterVCode(){
         return axios.post('/register/vcode')
+    },
+    getCheckVcode(svgCode){
+        return axios.post('/register/checkVcode',{svgCode})
+    },
+    postRegister(option){
+        return axios.post('/register',option)
+    },
+    postLogin(option){
+        return axios.post('/login',option)
+    },
+    postIfLogin(){
+        return axios.post('/login/ifLogin')
     }
+
 }
