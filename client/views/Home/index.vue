@@ -74,7 +74,9 @@ export default {
           "cctv",
           "潭州教育remi",
           "VUE",
-          "潭州教育追梦"
+          "潭州教育追梦",
+          "潭州教育海文",
+          "阿里图标"
         ],
         href: [
           "https://github.com/afeifeifei/front-end-interview-handbook/blob/master/Translations/Chinese/README.md",
@@ -95,7 +97,9 @@ export default {
           "http://tv.cctv.com/live/",
           "https://www.shiguangkey.com/video/903?videoId=242629&classId=17830&playback=1",
           "https://vuejs.org/",
-          "https://www.shiguangkey.com/video/1561?videoId=53934&classId=4298&playback=1"
+          "https://www.shiguangkey.com/video/1561?videoId=53934&classId=4298&playback=1",
+          "https://www.shiguangkey.com/video/1561?videoId=86919&classId=6240&playback=1",
+          "https://www.iconfont.cn/manage/index?manage_type=myprojects&projectId=1811983"
         ]
       }
     };
@@ -136,19 +140,23 @@ export default {
       transform-origin: right;
       height: 2000px;
       left: -140px;
-      /deep/ .el-drawer__body {
+      .el-drawer {
         position: relative;
         top: 100px;
-        
-        transform: rotate(-7deg);
-        .blog {
-          display: flex;
-          flex-direction: column;
+        background-color: #aaa;
+        .el-drawer__body {
+          .blog {
+            display: flex;
+            flex-direction: column;
             align-items: flex-start;
-          a{
-            width:150px;
-            margin:30px 100px;
-            text-decoration: none;
+            transform: rotate(-7deg);
+
+            a {
+              width: 150px;
+              text-align: left;
+              margin: 30px 50px;
+              text-decoration: none;
+            }
           }
         }
       }
@@ -171,14 +179,19 @@ export default {
 
 
 <style lang="less">
-.el-drawer.rtl {
-  width:20% !important;
-  .el-drawer__header{
+.el-drawer {
+  width: 25% !important;
+  .el-drawer__header {
+    flex-direction: row-reverse;
+    transform: rotate(-7deg);
 
-    flex-direction:  row-reverse;
-        transform: rotate(-7deg);
+    padding-top: 35px;
+  }
+}
 
-    padding-top:35px;
+@media only screen and (max-width: 500px) {
+  .el-drawer {
+    width: 40% !important;
   }
 }
 </style>

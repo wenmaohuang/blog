@@ -5,6 +5,7 @@
 
     <div class="nav-main">
       <div class="logo">FYYD</div>
+      <MobileNav></MobileNav>
       <div class="n-nav">
         <ul :class="'list' + whichActive">
           <li>
@@ -20,7 +21,7 @@
             <router-link to="/daily">日记</router-link>
           </li>
           <li>
-            <router-link to="/links">友连</router-link>
+            <router-link to="/links">友链</router-link>
           </li>
           <li>
             <router-link to="/about">关于</router-link>
@@ -44,6 +45,7 @@
 <script>
 import Register from "./Register";
 import Login from "./Login";
+import MobileNav from "./MobileNav"
 import request from "../api/index";
 const postLogin = request.postLogin;
 const postIfLogin = request.postIfLogin;
@@ -57,6 +59,7 @@ export default {
       routerList: ["Home", "Blog", "Message", "Daily", "Links", "About"],
       alertKey: 0,
       ifLogin: false,
+      ifShow: false,
       login: {
         user: "",
         photo: ""
@@ -70,8 +73,9 @@ export default {
     }
   },
   components: {
-    Register
-    // Login
+    Register,
+    // Login,
+    MobileNav
   },
   // mounted() {},
   methods: {
@@ -244,6 +248,7 @@ export default {
           position: relative;
           line-height: 60px;
           color: #212220;
+          text-align:center;
           text-decoration: none;
           transition: 0.3s;
           &::after {
@@ -282,6 +287,9 @@ export default {
     }
     @media only screen and (max-width: 500px) {
       .n-nav {
+        display: none;
+      }
+      .login {
         display: none;
       }
     }

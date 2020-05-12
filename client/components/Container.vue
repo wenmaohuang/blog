@@ -228,6 +228,7 @@
                                 width: 25px;
                                 height: 25px;
                                 color: #666;
+                                text-align: center;
                                 border-radius: 100%;
                                 background-color: #edef;
                                 text-shadow: 0 1px 0 rgba(255,255,255,.5);
@@ -266,6 +267,11 @@
                     }
                 }
 
+            }
+            @media only screen and (max-width: 500px){
+                .el-aside{
+                    display:none;
+                }
             }
 
 
