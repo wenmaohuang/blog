@@ -2,11 +2,7 @@
   <div class="main">
     <div class="drawer">
       <el-button @click="drawer = true" type="primary" style="margin-left: 16px;">
-        <div class="minus" :style="{display:'flex',flexDirection:'column'}">
-          <i class="el-icon-minus"></i>
-          <i class="el-icon-minus"></i>
-          <i class="el-icon-minus"></i>
-        </div>
+        <i class="iconfont icon-caidan"></i>
       </el-button>
 
       <el-drawer title :visible.sync="drawer" :show-close="true">
@@ -17,22 +13,9 @@
         </div>
       </el-drawer>
     </div>
-    <div
-      class="first"
-      :style="{height:bgHeight+'px',display:'flex',justifyContent:'center',alignItems:'center',}"
-    >
-      <a
-        href="http://www.fyyd.vip/#/blog/0"
-        :style="{display:'flex',fontSize:'40px',textDecoration:'none',backgroundColor:'green',padding:'5px',color:'red',borderRadius:'10px',boxShadow:'0 0 30px yellow inset' }"
-      >
-        <marquee
-          width="180px"
-          line-height="40px"
-          behavior="alternate"
-          scrollAmount="2"
-          direction="left"
-          scrolldelay="60"
-        >ENTER</marquee>
+    <div class="first" :style="{height:bgHeight+'px',}">
+      <a href="http://www.fyyd.vip/#/blog/0" :style="{}">
+        ENTER
       </a>
     </div>
     <div class="second">
@@ -76,7 +59,8 @@ export default {
           "VUE",
           "潭州教育追梦",
           "潭州教育海文",
-          "阿里图标"
+          "阿里图标",
+          "layUI"
         ],
         href: [
           "https://github.com/afeifeifei/front-end-interview-handbook/blob/master/Translations/Chinese/README.md",
@@ -99,7 +83,8 @@ export default {
           "https://vuejs.org/",
           "https://www.shiguangkey.com/video/1561?videoId=53934&classId=4298&playback=1",
           "https://www.shiguangkey.com/video/1561?videoId=86919&classId=6240&playback=1",
-          "https://www.iconfont.cn/manage/index?manage_type=myprojects&projectId=1811983"
+          "https://www.iconfont.cn/manage/index?manage_type=myprojects&projectId=1811983",
+          "https://www.layui.com/"
         ]
       }
     };
@@ -128,10 +113,18 @@ export default {
     right: 30px;
 
     .el-button {
-      .minus {
-        .el-icon-minus {
-          content: "\e6d8";
-          height: 5px;
+      background-color: transparent;
+      border-color: transparent;
+      i {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 20px;
+        border-radius: 50%;
+
+        &:hover {
+          background-color: blue;
         }
       }
     }
@@ -165,6 +158,19 @@ export default {
   .first {
     background-image: url("../../assets/img/3.jpg");
     background-size: 100% 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    a {
+      display: flex;
+      font-size: 40px;
+      text-decoration: none;
+      background-color: lightblue;
+      padding: 5px;
+      color: red;
+      border-radius: 10px;
+      box-shadow: 0 0 30px yellow inset;
+    }
   }
   .second {
     ul {
