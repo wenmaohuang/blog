@@ -57,6 +57,7 @@ export default {
   display: none;
   position: absolute;
   left: 0;
+  z-index: 1;
 
   .el-col {
         // background-color:transparent;

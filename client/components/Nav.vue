@@ -1,11 +1,11 @@
 <template>
   <div id="nav">
+    <MobileNav></MobileNav>
     <Register v-show="false"></Register>
     <!-- <Login v-show="false"></Login> -->
 
     <div class="nav-main">
       <div class="logo">FYYD</div>
-      <MobileNav></MobileNav>
       <div class="n-nav">
         <ul :class="'list' + whichActive">
           <li>
@@ -30,7 +30,7 @@
       </div>
       <div class="login">
         <div v-if="ifLogin">
-          <img :src="login.photo" alt width=80 height=45 />
+          <img :src="login.photo" alt width="80" height="45" />
           <span>{{login.user}}</span>
         </div>
         <div v-else>
@@ -45,7 +45,7 @@
 <script>
 import Register from "./Register";
 import Login from "./Login";
-import MobileNav from "./MobileNav"
+import MobileNav from "./MobileNav";
 import request from "../api/index";
 const postLogin = request.postLogin;
 const postIfLogin = request.postIfLogin;
@@ -90,7 +90,7 @@ export default {
         beforeClose: (action, instance, done) => {
           if (action === "confirm") {
             (function() {
-            let vm = this
+              let vm = this;
               this.register.submitDisabled = true;
               this.$refs["form"].validate(valid => {
                 if (valid) {
@@ -112,9 +112,9 @@ export default {
                           duration: 2000
                         });
                         done();
-                        setTimeout(()=>{
-                        vm.postIfLogin()
-                        },1000)
+                        setTimeout(() => {
+                          vm.postIfLogin();
+                        }, 1000);
                       }
                     })
                     .catch(() => {
@@ -162,7 +162,7 @@ export default {
                           message: res.data.msg,
                           type: "error",
                           duration: 2000
-                        });                       
+                        });
                       } else {
                         this.$message({
                           message: res.data.msg,
@@ -170,9 +170,9 @@ export default {
                           duration: 2000
                         });
                         done();
-                         setTimeout(()=>{
-                          window.location.reload()
-                        })
+                        setTimeout(() => {
+                          window.location.reload();
+                        });
                       }
                     })
                     .catch(() => {
@@ -248,7 +248,7 @@ export default {
           position: relative;
           line-height: 60px;
           color: #212220;
-          text-align:center;
+          text-align: center;
           text-decoration: none;
           transition: 0.3s;
           &::after {

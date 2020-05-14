@@ -38,3 +38,11 @@ export default {
   border-color: transparent;
 }
 </style>
+<style lang="less">
+@media only screen and (max-width: 500px){
+  .layui-layer{
+  left:0 !important;
+}
+}
+
+</style>

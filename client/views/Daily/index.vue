@@ -36,18 +36,20 @@ export default {
 };
 </script>
 
-<style lang='sass' scoped>
-.daily
-    box-sizing: border-box
-    max-width: 1360px
-    width: 100%
-    padding: 0 50px
-    >.daily-main
-        width: 100%
-        height: 500px
-        background-color: #eee
-        
+<style lang='less' scoped>
+.daily {
+  // width: 100%;
 
-    
+  .daily-main {
+    box-sizing: border-box;
+        margin: auto;
+  width: 100%;
 
+    max-width: 1260px;
+    padding: 70px 100px;
+
+    height: 500px;
+    background-color: #eee;
+  }
+}
 </style>

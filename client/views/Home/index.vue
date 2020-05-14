@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div class="home">
     <div class="drawer">
       <el-button @click="drawer = true" type="primary" style="margin-left: 16px;">
         <i class="iconfont icon-caidan"></i>
@@ -7,22 +7,27 @@
 
       <el-drawer title :visible.sync="drawer" :show-close="true">
         <div class="blog">
-          <router-link to="/">首页</router-link>
+          <!-- <router-link to="/">首页</router-link> -->
           <router-link to="/blog/0">博客</router-link>
           <router-link to="/message">留言</router-link>
+          <!-- <router-link to="/daily">日记</router-link>
+          <router-link to="/links">友链</router-link> -->
+          <router-link to="/about">关于</router-link>
         </div>
       </el-drawer>
     </div>
-    <div class="first" :style="{height:bgHeight+'px',}">
-      <a href="http://www.fyyd.vip/#/blog/0" :style="{}">ENTER</a>
+    <div class="bgc" :style="{height:bgHeight+'px',}">
+      <!-- <a href="http://www.fyyd.vip/#/blog/0" :style="{}">ENTER</a> -->
     </div>
-    <div class="second" v-show="true">
-      <ul>
-        <li v-for="(i,index) in obj" :key="index">
-          <a :href="i" :style="style">{{index}}</a>
-        </li>
-      </ul>
-    </div>
+    <el-collapse v-model="activeNames" @change="handleChange">
+      <el-collapse-item title="webpage" name="1">
+        <ul>
+          <li v-for="(i,index) in obj" :key="index">
+            <a :href="i" :style="style">{{index}}</a>
+          </li>
+        </ul>
+      </el-collapse-item>
+    </el-collapse>
   </div>
 </template>
 
@@ -33,6 +38,7 @@ export default {
     return {
       drawer: false,
       isClick: false,
+      activeNames: [""],
       bgHeight: 0,
       style: { display: "block", textDecoration: "none", textAlign: "center" },
       obj: {
@@ -71,6 +77,9 @@ export default {
   methods: {
     getWindowHeight() {
       this.bgHeight = window.innerHeight;
+    },
+    handleChange(val) {
+      console.log(val);
     }
   },
   mounted() {
@@ -84,7 +93,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.main {
+.home {
   width: 100%;
 
   .drawer {
@@ -126,7 +135,7 @@ export default {
             a {
               width: 150px;
               text-align: left;
-              margin: 30px 50px;
+              margin: 30px 42px;
               text-decoration: none;
             }
           }
@@ -134,7 +143,7 @@ export default {
       }
     }
   }
-  .first {
+  .bgc {
     background-image: url("../../assets/img/3.jpg");
     background-size: 100% 100%;
     display: flex;
@@ -151,11 +160,25 @@ export default {
       box-shadow: 0 0 30px yellow inset;
     }
   }
-  .second {
-    ul {
-      list-style-type: none;
-      li {
-        margin: 10px;
+  .el-collapse {
+    .el-collapse-item {
+      /deep/ .el-collapse-item__header {
+        // margin: 0 auto;
+        // background-color: #aaa;
+        display: flex;
+        justify-content: center;
+        // text-align: center;
+        // margin: 0 auto;
+        .el-collapse-item__arrow.el-icon-arrow-right {
+          // width:10%;
+          margin: 8px;
+        }
+        ul {
+          list-style-type: none;
+          li {
+            margin: 10px;
+          }
+        }
       }
     }
   }

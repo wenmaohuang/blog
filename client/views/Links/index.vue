@@ -1,6 +1,7 @@
 <template>
   <div class="Links">
     <Nav></Nav>
+
     <div class="canvas" ref="can">
       <div class="txt">
        
@@ -50,7 +51,7 @@
     },
     components:{
       Nav,
-      Yinshi
+      Yinshi,
     }
   }
 </script>
