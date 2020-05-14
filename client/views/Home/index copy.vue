@@ -14,12 +14,14 @@
       </el-drawer>
     </div>
     <div class="first" :style="{height:bgHeight+'px',}">
-      <a href="http://www.fyyd.vip/#/blog/0" :style="{}">ENTER</a>
+      <a href="http://www.fyyd.vip/#/blog/0" :style="{}">
+        ENTER
+      </a>
     </div>
     <div class="second" v-show="true">
       <ul>
-        <li v-for="(i,index) in obj" :key="index">
-          <a :href="i" :style="style">{{index}}</a>
+        <li v-for="(i,index) in obj.href" :key="index">
+          <a :href="i" :style="style">{{obj.msg[index]}}</a>
         </li>
       </ul>
     </div>
@@ -36,35 +38,56 @@ export default {
       bgHeight: 0,
       style: { display: "block", textDecoration: "none", textAlign: "center" },
       obj: {
-        localServer: "http://localhost/#/blog/0",
-        localClient: "http://localhost:8080/#/blog/0",
-        github: "https://github.com/",
-        expressServer: "http://www.fyyd.vip/#/blog/0",
-        nginxServer: "http://www.fyyd.vip:3000",
-        mongooseDatabase: "http://www.mongoosejs.net/docs/models.html",
-        elementUI: "https://element.eleme.cn/#/zh-CN/component/installation",
-        VUE: "https://vuejs.org/",
-        layUI: "https://www.layui.com/",
-        qqMusic: "https://y.qq.com/portal/player.html",
-        aliCloud: "https://www.aliyun.com/",
-        aliIcon:
-          "https://www.iconfont.cn/manage/index?manage_type=myprojects&projectId=1811983",
-        translateBaidu: "https://fanyi.baidu.com/?aldtype=16047#auto/zh",
-        searchBaidu: "http://baidu.com",
-        photoGirls: "https://www.umei.cc/bizhitupian/meinvbizhi/",
-        courseAfei:
-          "https://www.shiguangkey.com/video/5404?classId=13017&videoId=221997",
-        courseRemi:
-          "https://www.shiguangkey.com/video/903?videoId=242629&classId=17830&playback=1",
-        courseZhuimeng:
-          "https://www.shiguangkey.com/video/1561?videoId=53934&classId=4298&playback=1",
-        courseHaiwen:
-          "https://www.shiguangkey.com/video/1561?videoId=86919&classId=6240&playback=1",
-        cctv: "http://tv.cctv.com/live/",
-        exampleBlog: "https://www.yanshisan.cn/Blog/Article",
-        interview:
+        msg: [
+          "面试资料",
+          "local-server",
+          "local-client",
+          "github",
+          "express-server",
+          "nginx-server",
+          "十三燕",
+          "QQ音乐",
+          "阿里云",
+          "美女图片",
+          "潭州教育afei",
+          "百度翻译",
+          "mongoose-database",
+          "百度搜素",
+          "elementUI",
+          "cctv",
+          "潭州教育remi",
+          "VUE",
+          "潭州教育追梦",
+          "潭州教育海文",
+          "阿里图标",
+          "layUI",
+          "拉钩网"
+        ],
+        href: [
           "https://github.com/afeifeifei/front-end-interview-handbook/blob/master/Translations/Chinese/README.md",
-        jobLagou: "https://www.lagou.com/resume/myresume.html"
+          "http://localhost/#/blog/0",
+          "http://localhost:8080/#/blog/0",
+          "https://github.com/",
+          "http://www.fyyd.vip/#/blog/0",
+          "http://www.fyyd.vip:3000",
+          "https://www.yanshisan.cn/Blog/Article",
+          "https://y.qq.com/portal/player.html",
+          "https://www.aliyun.com/",
+          "https://www.umei.cc/bizhitupian/meinvbizhi/",
+          "https://www.shiguangkey.com/video/5404?classId=13017&videoId=221997",
+          "https://fanyi.baidu.com/?aldtype=16047#auto/zh",
+          "http://www.mongoosejs.net/docs/models.html",
+          "http://baidu.com",
+          "https://element.eleme.cn/#/zh-CN/component/installation",
+          "http://tv.cctv.com/live/",
+          "https://www.shiguangkey.com/video/903?videoId=242629&classId=17830&playback=1",
+          "https://vuejs.org/",
+          "https://www.shiguangkey.com/video/1561?videoId=53934&classId=4298&playback=1",
+          "https://www.shiguangkey.com/video/1561?videoId=86919&classId=6240&playback=1",
+          "https://www.iconfont.cn/manage/index?manage_type=myprojects&projectId=1811983",
+          "https://www.layui.com/",
+          "https://www.lagou.com/resume/myresume.html"
+        ]
       }
     };
   },
