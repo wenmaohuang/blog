@@ -1,5 +1,5 @@
 <template>
-  <canvas id="canvas" height="260"></canvas>
+  <canvas id="canvas" height="260" width="1300"></canvas>
 </template>
 
 <script>
@@ -98,13 +98,13 @@ export default {
 </script>
 <style scoped>
   #canvas{
-    display:flex;
-    justify-content: space-around;
+    display:block;
+    /* justify-content: space-around; */
     background-color: #222;
     width:100%;
-    max-width: 1260px;
-      margin: 0 auto;
-
+    height: 260px;
+      /* margin: 20px auto; */
+    /* padding: 20px; */
 
   }
 </style>

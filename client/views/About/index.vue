@@ -30,16 +30,14 @@
             </ul>
             <p>本站采用阿里云提供的服务器ESC。</p>
           </section>
-         
+
           <section>
             <h1>特别说明</h1>
             <ul>
               <li>本站文章仅代表个人观点，和任何组织或个人无关。</li>
-              
             </ul>
-            <br />
-            <br />
-           
+            <!-- <br />
+            <br /> -->
           </section>
         </article>
       </div>
@@ -60,36 +58,19 @@ export default {
 
 <style scoped lang="less">
 .About {
+  background-image: url("../../assets/img/2.jpg");
   width: 100%;
-//   padding-top: 61px;
-  .canvas {
-    position: relative;
-    width: 100%;
-    height: 260px;
-
-    .txt {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      text-align: center;
-      transform: translate(-50%, -50%);
-      color: #fff;
-
-      h2 {
-        font-size: 25px;
-        font-weight: normal;
-      }
-    }
-  }
+ 
   .about-main {
     box-sizing: border-box;
     width: 100%;
-    max-width: 1360px;
-    padding: 30px 50px;
-    // margin: 0 auto;
+    max-width: 1300px;
+    padding: 30px 20px;
+    height:800px;
+    margin: 0 auto;
     .a-m-content {
-      width: 100%;
       background-color: #fff;
+
       article {
         padding: 10px;
         section {
@@ -122,7 +103,7 @@ export default {
           ul {
             padding-left: 18px;
             li {
-                list-style-type: none;
+              list-style-type: none;
               line-height: 2rem;
               a {
                 color: #0366d6;

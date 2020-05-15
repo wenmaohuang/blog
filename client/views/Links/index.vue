@@ -7,6 +7,7 @@
        
       </div>
       <Yinshi></Yinshi>
+
     </div>
     <div class="link-main">
       <div class="rule">
@@ -27,7 +28,7 @@
           <li v-for="(item,index) in linksList" :key="index">
             <a :href="item.href" target="_blank">
               <img :src="item.icon">
-              <h3>{{item.name}}</h3>
+              <!-- <h3>{{item.name}}</h3> -->
               <p>{{item.des}}</p>
             </a>
           </li>
@@ -58,14 +59,18 @@
 
 <style scoped lang="less">
   .Links{
-    width: 100%;
+    // width: 100%;
     // padding-top: 61px;
+  background-image: url("../../assets/img/2.jpg");
     
     .canvas{
         
-      position: relative;
+      // position: relaabtaive;
+      padding: 20px;
+      // padding: 20px 20px 0 20px;
+    max-width: 1260px;
       margin: 0 auto;
-      width: 100%;
+      // width: 100%;
       height: 260px;
       .txt{
         position: absolute;
@@ -83,15 +88,16 @@
     .link-main{
       box-sizing: border-box;
       width: 100%;
-      max-width: 1360px;
-      padding: 30px 50px;
-      /*height: 500px;*/
+      max-width: 1300px;
+      padding: 0 20px;
+      // height: 500px;
       margin: 0 auto;
       .rule{
         box-sizing: border-box;
         padding: 20px;
-        width: 100%;
+        // width: 100%;
         background-color: #fff;
+        height: 280px;
         h3{
           margin-bottom: 1rem;
           padding-left: 1rem;
@@ -109,18 +115,27 @@
         }
       }
       .container{
+        box-sizing: border-box;
         width: 100%;
+        height: 500px;
+          padding:20px 0;
+
         ul{
           display: flex;
+          // box-sizing: border-box;
           width: 100%;
           flex-wrap: wrap;
+          // padding: 20px;
+        height: 220px;
+
           justify-content: space-between;
           li{
             box-sizing: border-box;
             width: 23.5%;
             height: 150px;
+            padding: 20px;
             background-color: #fff;
-            margin-top: 2%;
+            // margin-top: 2%;
             transition: .5s;
             list-style-type: none;
             cursor: pointer;
@@ -130,7 +145,7 @@
             }
             a{
               display: block;
-              padding: 20px;
+              // padding: 20px;
               background: #fff;
             text-decoration: none;
               color: #333;
@@ -148,10 +163,12 @@
               }
               p{
                 clear: both;
-                display: -webkit-box;
+                display: block;
                 overflow: hidden;
                 margin-top: 1rem;
+                padding: 10px 0;
                 height: 60px;
+                width: 50px;
                 text-overflow: ellipsis;
                 font-size: 13px;
                 -webkit-box-orient: vertical;

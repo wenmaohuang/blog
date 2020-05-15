@@ -39,6 +39,7 @@ export default {
 <style lang='less' scoped>
 .daily {
   // width: 100%;
+  background-image: url("../../assets/img/2.jpg");
 
   .daily-main {
     box-sizing: border-box;

@@ -127,9 +127,15 @@
         display: flex;
         justify-content: space-around;
         >.el-container{
-            max-width:1260px;
-            margin-top: 20px;
+            max-width:1300px;
+            margin: 20px auto;
+            // margin: 0 auto;
+            .el-main{
+                padding: 0 20px;
+            }
             >.el-aside{
+                margin: 0 20px 0 0;
+
                 width:300px;
                 height:1200px;
                 background-color:aqua;

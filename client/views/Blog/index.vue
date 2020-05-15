@@ -19,5 +19,7 @@
 
 <style scoped>
     .blog{
+  background-image: url("../../assets/img/2.jpg");
+        
     }
 </style>
