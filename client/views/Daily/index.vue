@@ -41,16 +41,17 @@ export default {
   // width: 100%;
   background-image: url("../../assets/img/2.jpg");
 
+
   .daily-main {
     box-sizing: border-box;
         margin: auto;
   width: 100%;
 
     max-width: 1260px;
-    padding: 70px 100px;
+    padding: 20px;
 
-    height: 500px;
-    background-color: #eee;
+    min-height: 800px;
+    // background-color: #eee;
   }
 }
 </style>
