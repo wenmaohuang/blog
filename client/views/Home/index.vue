@@ -11,7 +11,7 @@
           <router-link to="/blog/0">博客</router-link>
           <router-link to="/message">留言</router-link>
           <!-- <router-link to="/daily">日记</router-link>
-          <router-link to="/links">友链</router-link> -->
+          <router-link to="/links">友链</router-link>-->
           <router-link to="/about">关于</router-link>
         </div>
       </el-drawer>
@@ -19,6 +19,31 @@
     <div class="bgc" :style="{height:bgHeight+'px',}">
       <!-- <a href="http://www.fyyd.vip/#/blog/0" :style="{}">ENTER</a> -->
     </div>
+
+    <footer>
+      <div class="about">
+        <p>风移影动</p>
+        <p>自由自在的流浪</p>
+        <p>
+          <router-link to="/about">about me</router-link>
+        </p>
+      </div>
+      <div class="link">
+        <p>相关链接</p>
+        <p>
+          <router-link to="/blog/0">博客</router-link>
+        </p>
+        <p>
+          <router-link to="/daily">日记</router-link>
+        </p>
+      </div>
+      <div class="connect">
+        <p>联系我</p>
+        <p>地址:广州番禺小龙村</p>
+        <p>QQ:648371113</p>
+        <p>邮箱:648371113@qq.com</p>
+      </div>
+    </footer>
     <el-collapse v-model="activeNames" @change="handleChange">
       <el-collapse-item title="webpage" name="1">
         <ul>
@@ -58,6 +83,8 @@ export default {
         translateBaidu: "https://fanyi.baidu.com/?aldtype=16047#auto/zh",
         searchBaidu: "http://baidu.com",
         photoGirls: "https://www.umei.cc/bizhitupian/meinvbizhi/",
+        courseYinshi:
+          "https://www.shiguangkey.com/video/1346?videoId=141606&classId=9262&playback=1",
         courseAfei:
           "https://www.shiguangkey.com/video/5404?classId=13017&videoId=221997",
         courseRemi:
@@ -167,6 +194,7 @@ export default {
         // background-color: #aaa;
         display: flex;
         justify-content: center;
+        background-color: #aaa;
         // text-align: center;
         // margin: 0 auto;
         .el-collapse-item__arrow.el-icon-arrow-right {
@@ -194,6 +222,69 @@ export default {
     transform: rotate(-7deg);
 
     padding-top: 35px;
+  }
+}
+
+footer {
+  display: flex;
+  box-sizing: border-box;
+  justify-content: space-around;
+  width: 100%;
+  background-color: #232328;
+  color: #fff;
+  padding: 100px;
+
+  .about {
+    width: 100%;
+    p {
+      padding: 10px;
+      text-align: center;
+
+      &:nth-child(1){
+        font-size: 20px;
+      }
+      a {
+        color: #fff;
+        font-size: 16px;
+      text-align: center;
+
+      }
+    }
+  }
+  .link {
+    width: 100%;
+    p {
+      padding: 10px;
+      text-align: center;
+
+      &:nth-child(1){
+        font-size: 20px;
+      }
+      a {
+        color: #fff;
+        font-size: 16px;
+      text-align: center;
+
+      }
+    }
+  }
+  .connect {
+    width: 100%;
+    
+    p {
+      padding: 10px;
+      text-align: center;
+
+      &:nth-child(1){
+        font-size: 20px;
+      }
+      a {
+        color: #fff;
+        font-size: 16px;
+      text-align: center;
+      
+      }
+    }
   }
 }
 
