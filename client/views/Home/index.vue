@@ -232,7 +232,7 @@ footer {
   width: 100%;
   background-color: #232328;
   color: #fff;
-  padding: 100px;
+  padding: 100px 0;
 
   .about {
     width: 100%;
