@@ -14,7 +14,11 @@
           </div>
         </div>
       </div>
-      <div class="content">{{i.content}}</div>
+      <div class="content">
+        <img src="../assets/img/1.jpg" alt width="200" height="200" />
+        <p v-html="i.content"></p>
+        <p>{{test()}}</p>
+      </div>
     </section>
   </div>
 </template>
@@ -34,12 +38,18 @@ export default {
       articleList: [],
       year: getYear,
       month: getMonth,
+
       date: getDate
     };
   },
   computed: {
     id() {
       return this.$route.params.id;
+    }
+  },
+  methods: {
+    test() {
+      console.log(this.articleList);
     }
   },
   watch: {
@@ -53,6 +63,11 @@ export default {
   mounted() {
     getArticleShow(this.$route.params.id).then(res => {
       this.articleList = res.data.data;
+       if(location.href.indexOf("#reloaded")==-1){
+        location.href=location.href+"#reloaded";
+        location.reload();
+    }
+      window.console.log(this.articleList, 666);
     });
   }
 };
@@ -66,13 +81,13 @@ export default {
     width: 100%;
     height: 330px;
     padding: 0 20px;
-    margin-bottom:20px;
+    margin-bottom: 20px;
     background-color: #fff;
     .head {
       display: flex;
       justify-content: space-between;
       font-size: 16px;
-      padding:5px;
+      padding: 5px;
       h5 {
         width: 100%;
         border-bottom: 1px solid #ddd;
@@ -98,8 +113,13 @@ export default {
         }
       }
     }
+
     .content {
+      display: flex;
       padding: 20px;
+      p {
+        padding: 0 20px;
+      }
     }
   }
 }

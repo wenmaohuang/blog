@@ -24,7 +24,7 @@ router.post('/getInfo', (req, res) => {
 router.post('/getHot', (req, res) => {
     article.find({}, {_id: 0, __v: 0}, {sort: {pv: -1}, skip: 0, limit: 8})
         .then(data => {
-            console.log(data)
+            // console.log(data)
             res.send({
                 code: 0,
                 msg: '请求成功',
@@ -59,6 +59,23 @@ router.post('/getShow', (req, res) => {
                 msg: '服务器错误'
             })
         })
+})
+
+router.post('/delete',(req,res)=>{
+    console.log(req.body,'bbb')
+    let title = req.body.title
+    article.deleteOne({title:title})
+    .then(data=>{
+        res.send({
+            code:'hhh'
+        })
+    })
+    .catch(err=>{
+        res.send({
+            code:'err'
+        })
+    })
+    
 })
 
 module.exports = router

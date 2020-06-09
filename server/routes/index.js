@@ -10,5 +10,5 @@ router.use('/register',require('./register/index'))
 
 router.use('/login',require('./login/index'))
 
-
+router.use('/upload',require('./upload/index'))
 module.exports = router;

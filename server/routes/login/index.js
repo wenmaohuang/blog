@@ -58,5 +58,15 @@ router.post('/ifLogin', (req, res) => {
         userInfo: req.session.login
     })
 })
+
+router.post("/logout",(req,res)=>{
+    req.session.destroy()
+    res.send(
+        {
+            code:0,
+            msg:'退出成功'
+        }
+    )
+})
 module.exports = router
 

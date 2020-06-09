@@ -2,9 +2,11 @@
   <div id="nav">
     <MobileNav></MobileNav>
     <Register v-show="false"></Register>
-    <!-- <Login v-show="false"></Login> -->
+    <!-- <Avatar v-show="false"></Avatar> -->
+    <Avatar :dialogVisible="ifShowAvatar" @handleClose="closeAvatar"></Avatar>
 
     <div class="nav-main">
+
       <div class="logo">FYYD</div>
       <div class="n-nav">
         <ul :class="'list' + whichActive">
@@ -28,12 +30,26 @@
           </li>
         </ul>
       </div>
+
       <div class="login">
-        <div v-if="ifLogin">
-          <img :src="login.photo" alt width="80" height="45" />
-          <span>{{login.user}}</span>
-        </div>
-        <div v-else>
+        <el-popover v-if="ifLogin" trigger="hover" placement="top-start" width="100" content="欢迎登录">
+          <p>欢迎登录!!!!</p>
+          <el-button type="danger" @click="ifShowAvatar = true">修改头像
+
+          </el-button>
+          <el-button type="danger" @click="handlerLogout()">退出登录</el-button>
+         
+          <el-button
+            slot="reference"
+            :style="{
+            backgroundImage:'url('+login.photo+')',
+            backgroundSize:'cover',
+            width:'40px',
+            height:'40px',    
+          }"
+          ></el-button>
+        </el-popover>
+        <div v-else class="else">
           <el-button @click="handlerLogin" type="primary">登录</el-button>
           <el-button @click="handlerRegister" type="success">注册</el-button>
         </div>
@@ -46,10 +62,13 @@
 import Register from "./Register";
 import Login from "./Login";
 import MobileNav from "./MobileNav";
+import Avatar from "./Avatar";
+
 import request from "../api/index";
 const postLogin = request.postLogin;
 const postIfLogin = request.postIfLogin;
 const postRegister = request.postRegister;
+const postLogout = request.postLogout;
 console.log(postIfLogin());
 
 export default {
@@ -60,6 +79,7 @@ export default {
       alertKey: 0,
       ifLogin: false,
       ifShow: false,
+      ifShowAvatar : false,
       login: {
         user: "",
         photo: ""
@@ -75,7 +95,8 @@ export default {
   components: {
     Register,
     // Login,
-    MobileNav
+    MobileNav,
+    Avatar
   },
   // mounted() {},
   methods: {
@@ -194,7 +215,33 @@ export default {
       })
         .then(() => {})
         .catch(() => {});
-    }
+    },
+    handlerLogout() {
+      postLogout()
+        .then(() => {
+          this.$message({
+            message: "退出成功",
+            type: "success",
+            duration: 2000
+          });
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000);
+        })
+        .catch(() => {
+          this.$message({
+            message: "退出失败",
+            type: "error",
+            duration: 2000
+          });
+        });
+    },
+     closeAvatar(){
+        this.ifShowAvatar = false;
+      },
+      handlerIcon() {
+        
+      }
   },
   created() {
     postIfLogin().then(res => {
@@ -230,9 +277,23 @@ export default {
     }
     .login {
       line-height: 60px;
+      // width: 120px;
+      .el-popover {
+        // width: 60px;
+        // height: 60px;
+        p {
+          padding: 5px;
+        }
+        // img {
+        //   width: 50px;
+        //   height: 50px;
+        //   border-radius: 50%;
+        // }
+      }
     }
     .n-nav {
       width: 580px;
+      // background-image: url("http://localhost/img/defaultPhoto.png");
       ul {
         display: flex;
         width: 100%;
@@ -305,5 +366,18 @@ export default {
   .el-message-box {
     width: 300px;
   }
+}
+
+.el-popover {
+  // width: 60px;
+  // height: 60px;
+  p {
+    padding: 5px;
+  }
+  // img {
+  //   width: 50px;
+  //   height: 50px;
+  //   border-radius: 50%;
+  // }
 }
 </style>

@@ -12,8 +12,8 @@ let article = mongoose.model('article',new Schema({
         {type:Schema.Types.ObjectID,ref:'comment'}
     ]
 }))
-console.log('这是文章');
-// for(let i=0;i<100;i++){
+// console.log('这是文章');
+// for(let i=0;i<10;i++){
 //     article.create({
 //         type:['原创','转载'][(Math.random()*2)|0],
 //         title:`第${i+1}篇文章`,
