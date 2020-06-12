@@ -95,6 +95,7 @@ export default {
           "https://www.shiguangkey.com/video/1561?videoId=53934&classId=4298&playback=1",
         courseHaiwen:
           "https://www.shiguangkey.com/video/1561?videoId=86919&classId=6240&playback=1",
+          wanzhang:"https://www.shiguangkey.com/video/5404?videoId=125677&classId=8638&playback=1",
         cctv: "http://tv.cctv.com/live/",
         exampleBlog: "https://www.yanshisan.cn/Blog/Article",
         interview:

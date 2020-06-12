@@ -15,7 +15,7 @@
         </div>
       </div>
       <div class="content">
-        <img src="../assets/img/1.jpg" alt width="200" height="200" />
+        <img src="../assets/img/1.jpg" alt=""  />
         <p v-html="i.content"></p>
         <p>{{test()}}</p>
       </div>
@@ -117,6 +117,11 @@ export default {
     .content {
       display: flex;
       padding: 20px;
+      img{
+        width: 200px;
+        // height: 200px;
+        background-size: contain;       
+      }
       p {
         padding: 0 20px;
       }
