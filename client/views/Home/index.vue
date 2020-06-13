@@ -85,17 +85,18 @@ export default {
         translateBaidu: "https://fanyi.baidu.com/?aldtype=16047#auto/zh",
         searchBaidu: "http://baidu.com",
         photoGirls: "https://www.umei.cc/bizhitupian/meinvbizhi/",
-        courseYinshi:
+        yinshi:
           "https://www.shiguangkey.com/video/1346?videoId=141606&classId=9262&playback=1",
-        courseAfei:
+        afei:
           "https://www.shiguangkey.com/video/5404?classId=13017&videoId=221997",
-        courseRemi:
+        remi:
           "https://www.shiguangkey.com/video/903?videoId=242629&classId=17830&playback=1",
-        courseZhuimeng:
+        zhuimeng:
           "https://www.shiguangkey.com/video/1561?videoId=53934&classId=4298&playback=1",
-        courseHaiwen:
+        haiwen:
           "https://www.shiguangkey.com/video/1561?videoId=86919&classId=6240&playback=1",
           wanzhang:"https://www.shiguangkey.com/video/5404?videoId=125677&classId=8638&playback=1",
+          designModeWanZhang:"https://www.shiguangkey.com/video/903?videoId=191211&classId=12327&playback=1",
         cctv: "http://tv.cctv.com/live/",
         exampleBlog: "https://www.yanshisan.cn/Blog/Article",
         interview:
