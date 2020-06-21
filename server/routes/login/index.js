@@ -53,7 +53,7 @@ router.post("/", (req, res) => {
         })
 })
 router.post('/ifLogin', (req, res) => {
-    console.log(999)
+    // console.log(req.session,999)
     res.send({
         userInfo: req.session.login
     })

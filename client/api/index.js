@@ -1,6 +1,6 @@
 import axios from 'axios'
-// axios.defaults.baseURL = 'http://localhost'
-axios.defaults.baseURL = 'http://www.fyyd.vip'
+axios.defaults.baseURL = 'http://localhost'
+// axios.defaults.baseURL = 'http://www.fyyd.vip'
 axios.defaults.withCredentials = true
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 
@@ -43,6 +43,16 @@ export default {
     },
     postLogout(){
         return axios.post('/login/logout')
+    },
+    postMessage(options){
+        return axios.post('/message/commit',options)
+    },
+    getMessage(){
+        return axios.post('/message/getList')
+    },
+    getDaily(){
+        return axios.get('/daily')
     }
+    
 
 }

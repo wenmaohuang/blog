@@ -3,22 +3,10 @@
     <Nav></Nav>
     <div class="daily-main">
       <el-timeline>
-        <el-timeline-item timestamp="2018/4/12" placement="top">
+        <el-timeline-item :timestamp="i.time" placement="top" v-for="(i,index) in content" :key=index> 
           <el-card>
-            <h4>更新 Github 模板</h4>
-            <p>王小虎 提交于 2018/4/12 20:46</p>
-          </el-card>
-        </el-timeline-item>
-        <el-timeline-item timestamp="2018/4/3" placement="top">
-          <el-card>
-            <h4>更新 Github 模板</h4>
-            <p>王小虎 提交于 2018/4/3 20:46</p>
-          </el-card>
-        </el-timeline-item>
-        <el-timeline-item timestamp="2018/4/2" placement="top">
-          <el-card>
-            <h4>更新 Github 模板</h4>
-            <p>王小虎 提交于 2018/4/2 20:46</p>
+            <h4>{{i.content}}</h4>
+            <!-- <p>{{i.time}}</p> -->
           </el-card>
         </el-timeline-item>
       </el-timeline>
@@ -28,10 +16,28 @@
 </template>
 <script>
 import Nav from "../../components/Nav";
+import request from "../../api/index"
+const getDaily = request.getDaily
+
+
 export default {
   name: "index",
+  data(){
+    return {
+      content:''
+    }
+  },
   components: {
     Nav
+  },
+  mounted(){
+    getDaily().then(res=>{
+        console.log(res.data.data,1112321)
+        this.content = res.data.data
+
+    }).catch(()=>{
+        console.log('err')
+    })
   }
 };
 </script>

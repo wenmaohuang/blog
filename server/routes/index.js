@@ -11,4 +11,7 @@ router.use('/register',require('./register/index'))
 router.use('/login',require('./login/index'))
 
 router.use('/upload',require('./upload/index'))
+router.use('/message',require('./message/index'))
+router.use('/daily',require('./daily/index.js'))
+
 module.exports = router;

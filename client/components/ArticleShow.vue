@@ -56,6 +56,7 @@ export default {
     id() {
       getArticleShow(this.id, true).then(res => {
         this.articleList = res.data.data;
+        console.log(this.articleList,111)
       });
     }
   },

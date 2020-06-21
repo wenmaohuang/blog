@@ -70,21 +70,21 @@ router.post('/getShow', (req, res) => {
 //     })
 // })
 
-router.post('/delete',(req,res)=>{
-    console.log(req.body,'bbb')
-    let title = req.body.title
-    article.deleteOne({title:title})
-    .then(data=>{
-        res.send({
-            code:'hhh'
-        })
-    })
-    .catch(err=>{
-        res.send({
-            code:'err'
-        })
-    })
+// router.post('/delete',(req,res)=>{
+//     console.log(req.body,'bbb')
+//     let title = req.body.title
+//     article.deleteOne({title:title})
+//     .then(data=>{
+//         res.send({
+//             code:'hhh'
+//         })
+//     })
+//     .catch(err=>{
+//         res.send({
+//             code:'err'
+//         })
+//     })
     
-})
+// })
 
 module.exports = router
