@@ -9,7 +9,7 @@
                         <p>沟通交流,拉近你我~</p>
                         <RichText @Sub="handleSubmit"></RichText>
                     </section>
-                    <section>
+                    <section class="mes">
                         <ul>
                             <li v-for="(item,index) in commentList" :key="index">
                                 <div class="comment-parent">
@@ -36,11 +36,10 @@
 import Nav from "../../components/Nav";
 import RichText from "../../components/RichText";
 import request from "../../api/index";
-import { get } from 'http';
+import { get } from "http";
 const postIfLogin = request.postIfLogin;
 const postMessage = request.postMessage;
-const getMessage = request.getMessage
-
+const getMessage = request.getMessage;
 
 export default {
     name: "index",
@@ -146,7 +145,7 @@ export default {
                             })
                             .catch(() => {
                                 // res.send({ code: 1 });
-                                layer.msg('服务器错误~请稍后再试', {icon: 2});
+                                layer.msg("服务器错误~请稍后再试", { icon: 2 });
                             });
                     } else {
                         layer.msg("请先登录", { icon: 2 });
@@ -156,15 +155,14 @@ export default {
                     layer.msg("服务器出错了", { icon: 2 });
                 });
             // console.log(val);
-        },
+        }
     },
-    mounted(){
-        getMessage().then((res)=>{
-            console.log(res.data.data,333)
-            this.commentList = res.data.data
+    mounted() {
+        getMessage().then(res => {
+            console.log(res.data.data, 333);
+            this.commentList = res.data.data;
             // this.commentList = res.
-            
-        })
+        });
     },
     components: {
         Nav,
@@ -207,6 +205,24 @@ export default {
                         text-align: center;
 
                         margin: 1rem atuo;
+                    }
+                }
+                .mes {
+                    ul {
+                        li {
+                            border-bottom: 1px dashed #aaa;
+                            margin: 10px;
+                            .comment-parent {
+                            .p-content{
+                                margin: 10px;
+
+                            }
+                            .p-time{
+                                margin: 10px;
+
+                            }
+                            }
+                        }
                     }
                 }
             }

@@ -335,11 +335,24 @@ export default {
       }
 
       > .visitor {
+          background-color: #386;
+        margin-top: 20px;
+        
+        h3 {
+          position: relative;
+          margin: 0 20px;
+          padding:20px 0 10px;
+          line-height: 30px;
+          font-weight: 400;
+          border-bottom: 1px solid #e8e;
+          // color: #383;
+          font-size: 18px;
+        }
         ul {
           display: flex;
           flex-wrap: wrap;
+          margin:20px;
           list-style-type: none;
-          background-color: #386;
 
           li {
             width: 50px;
