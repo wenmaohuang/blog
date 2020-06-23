@@ -150,9 +150,9 @@ export default {
   },
 
   computed: {
-    getArticleTags() {
-      return ['全部文章', ...this.articleTages];
-    },
+    // getArticleTags() {
+    //   return [...this.articleTages];
+    // },
 
     getArticleRecommend() {
       return this.articleHot[0] || {};
@@ -163,7 +163,7 @@ export default {
     getArticleInfo()
       .then(res => {
         this.articleTages = res.data.data.tags; // console.log(res.data.data.tags);
-        // console.log(1111111);
+        console.log(this.articleTages);
       })
       .catch(err => {
         console.log(err);

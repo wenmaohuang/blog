@@ -48,7 +48,7 @@ const routesList = [{
         component: () => import('../views/About')
     },
     {
-        path: '/blog:id',
+        path: '/blog',
         name: 'Blog',
         meta: {
             title: '博客'

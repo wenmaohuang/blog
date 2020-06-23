@@ -2,6 +2,7 @@
   <div id="nav">
     <MobileNav></MobileNav>
     <Register v-show="false"></Register>
+    <!-- <Avatar v-show="false"></Avatar> -->
     <Avatar :dialogVisible="ifShowAvatar" @handleClose="closeAvatar"></Avatar>
 
     <div class="nav-main">
@@ -68,6 +69,7 @@ const postLogin = request.postLogin;
 const postIfLogin = request.postIfLogin;
 const postRegister = request.postRegister;
 const postLogout = request.postLogout;
+// console.log(postIfLogin());
 
 export default {
   name: "Nav",
@@ -243,7 +245,6 @@ export default {
   },
   created() {
     postIfLogin().then(res => {
-      // console.log(res, 12345);
       if (res.data.userInfo) {
         this.ifLogin = true;
         this.login.user = res.data.userInfo.user;

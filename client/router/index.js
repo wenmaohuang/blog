@@ -18,6 +18,12 @@ const routes = [
     component: ()=>import('../views/About')
 },
 {
+    path:'/blog/1',
+    name:'Blog',
+    meta:{title:'博客'},
+    component: ()=>import('../views/Blog')
+},
+{
     path:'/blog/:id',
     name:'Blog',
     meta:{title:'博客'},
