@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="content">
-                <img src="http://www.fyyd.vip/img/1.jpg" alt />
+                <img src="http://www.fyyd.vip/img/1.png" alt />
                 <p v-html="i.content"></p>
             </div>
             <div class="footer">
