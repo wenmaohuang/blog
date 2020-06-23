@@ -6,7 +6,7 @@ let article = mongoose.model('article',new Schema({
     content:{type:String,required:true},
     date:{type:Date,default:Date.now()},
     tag:{type:String,required:true},
-    surface:{type:String,default: '/img/defaultPhoto.png'},
+    surface:{type:String,default: '/img/1.png'},
     pv:{type:Number,default:0},
     comment:[
         {type:Schema.Types.ObjectID,ref:'comment'}
