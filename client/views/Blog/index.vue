@@ -6,8 +6,8 @@
 </template>
 
 <script>
-    import Nav from '../../components/Nav'
-    import Container from '../../components/Container'
+    import Nav from '../../src/components/Nav'
+    import Container from '../../src/components/Container'
     export default {
         name: "index",
         components:{
@@ -19,7 +19,7 @@
 
 <style scoped>
     .blog{
-  background-image: url("../../assets/img/2.jpg");
+  background-image: url("../../src/assets/img/2.jpg");
         
     }
 </style>

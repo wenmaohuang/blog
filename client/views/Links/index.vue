@@ -39,8 +39,8 @@
 </template>
 
 <script>
-  import Nav from "../../components/Nav";
-  import Yinshi from "../../components/Yinshi";
+  import Nav from "../../src/components/Nav";
+  import Yinshi from "../../src/components/Yinshi";
   export default {
     name: "Links",
     data(){
@@ -61,7 +61,7 @@
   .Links{
     // width: 100%;
     // padding-top: 61px;
-  background-image: url("../../assets/img/2.jpg");
+  background-image: url("../../src/assets/img/2.jpg");
     
     .canvas{
         

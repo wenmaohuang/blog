@@ -175,7 +175,7 @@ export default {
     }
   }
   .bgc {
-    background-image: url("../../assets/img/3.jpg");
+    background-image: url("../../src/assets/img/3.jpg");
     background-size: 100% 100%;
     display: flex;
     justify-content: center;

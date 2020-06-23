@@ -30,13 +30,17 @@
         </div>
     </div>
 </template>
-    <script src="../../public/layui/layui.js"></script>
+    
+<script src="./static/layui/layui.js"></script>
 
 <script>
-import Nav from "../../components/Nav";
-import RichText from "../../components/RichText";
+import Nav from "../../src/components/Nav";
+import RichText from "../../src/components/RichText";
 import request from "../../api/index";
 import { get } from "http";
+
+
+
 const postIfLogin = request.postIfLogin;
 const postMessage = request.postMessage;
 const getMessage = request.getMessage;
@@ -46,6 +50,7 @@ export default {
     // filter(){},
     data() {
         return {
+            layui:null,
             commentList: [
                 {
                     _id: "11",
@@ -122,6 +127,8 @@ export default {
         }
     },
     methods: {
+       
+
         handleSubmit(val) {
             // console.log(val,'222')
             postIfLogin()
@@ -135,8 +142,7 @@ export default {
                             content: val
                         })
                             .then(res => {
-                                // res.send({ code: 0 });
-                                // console.log(res.data, 222);
+                               
 
                                 layer.msg("留言成功", { icon: 1 });
                                 setTimeout(() => {
@@ -144,7 +150,6 @@ export default {
                                 }, 1000);
                             })
                             .catch(() => {
-                                // res.send({ code: 1 });
                                 layer.msg("服务器错误~请稍后再试", { icon: 2 });
                             });
                     } else {
@@ -154,15 +159,14 @@ export default {
                 .catch(() => {
                     layer.msg("服务器出错了", { icon: 2 });
                 });
-            // console.log(val);
         }
     },
+    created() {},
     mounted() {
         getMessage().then(res => {
-            console.log(res.data.data, 333);
             this.commentList = res.data.data;
-            // this.commentList = res.
         });
+        
     },
     components: {
         Nav,
@@ -173,9 +177,8 @@ export default {
 
 <style lang='less' scoped>
 .message {
-    background-image: url("../../assets/img/2.jpg");
+    background-image: url("../../src/assets/img/2.jpg");
     background-size: cover;
-    // background-repeat: repeat;
     min-height: 850px;
 
     .main {
@@ -213,14 +216,12 @@ export default {
                             border-bottom: 1px dashed #aaa;
                             margin: 10px;
                             .comment-parent {
-                            .p-content{
-                                margin: 10px;
-
-                            }
-                            .p-time{
-                                margin: 10px;
-
-                            }
+                                .p-content {
+                                    margin: 10px;
+                                }
+                                .p-time {
+                                    margin: 10px;
+                                }
                             }
                         }
                     }

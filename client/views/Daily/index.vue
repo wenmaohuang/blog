@@ -15,7 +15,7 @@
   </div>
 </template>
 <script>
-import Nav from "../../components/Nav";
+import Nav from "../../src/components/Nav";
 import request from "../../api/index"
 const getDaily = request.getDaily
 
@@ -45,7 +45,7 @@ export default {
 <style lang='less' scoped>
 .daily {
   // width: 100%;
-  background-image: url("../../assets/img/2.jpg");
+  background-image: url("../../src/assets/img/2.jpg");
 
 
   .daily-main {

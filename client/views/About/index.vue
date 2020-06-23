@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import Nav from "../../components/Nav";
+import Nav from "../../src/components/Nav";
 
 export default {
   name: "About",
@@ -58,7 +58,7 @@ export default {
 
 <style scoped lang="less">
 .About {
-  background-image: url("../../assets/img/2.jpg");
+  background-image: url("../../src/assets/img/2.jpg");
   width: 100%;
  
   .about-main {

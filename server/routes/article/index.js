@@ -61,30 +61,6 @@ router.post('/getShow', (req, res) => {
         })
 })
 
-// router.post('/getArticleTitle',(req,res)=>{
-//     article.find({})
-//     .then(data=>{
-//         res.send({code:0})
-//     }).catch(err=>{
-//         res.send({code:1})
-//     })
-// })
 
-// router.post('/delete',(req,res)=>{
-//     console.log(req.body,'bbb')
-//     let title = req.body.title
-//     article.deleteOne({title:title})
-//     .then(data=>{
-//         res.send({
-//             code:'hhh'
-//         })
-//     })
-//     .catch(err=>{
-//         res.send({
-//             code:'err'
-//         })
-//     })
-    
-// })
 
 module.exports = router
