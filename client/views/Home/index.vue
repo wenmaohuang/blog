@@ -172,7 +172,7 @@ export default {
     }
   }
   .bgc {
-    background-image: url("http://www./fyyd.vip/img/3.jpg");
+    background-image: url("../../public/static/img/3.jpg");
     background-size: 100% 100%;
     display: flex;
     justify-content: center;

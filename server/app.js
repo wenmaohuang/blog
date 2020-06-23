@@ -14,7 +14,7 @@ app.use(express.urlencoded({
 app.use(history());
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, '../client/dist')))
-// app.use(express.static(path.join(__dirname, './public')))
+app.use(express.static(path.join(__dirname, './public')))
 
 app.use((req, res, next) => {
     res.header({
