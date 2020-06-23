@@ -18,7 +18,7 @@
                 v-for="(item,index) in articleTages"
                 :key="index"
               >
-                <router-link :to="'/blog/'+index">{{item}}</router-link>
+                <router-link :to="'/blog/'+item">{{item}}</router-link>
               </li>
             </ul>
             <div class="cover" :style="{top:coverIndex*40 + 'px'}"></div>
@@ -163,7 +163,7 @@ export default {
     getArticleInfo()
       .then(res => {
         this.articleTages = res.data.data.tags; // console.log(res.data.data.tags);
-        console.log(this.articleTages);
+        // console.log(this.a);
       })
       .catch(err => {
         console.log(err);

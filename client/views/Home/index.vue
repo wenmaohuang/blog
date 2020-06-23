@@ -8,7 +8,7 @@
       <el-drawer title :visible.sync="drawer" :show-close="true">
         <div class="blog">
           <!-- <router-link to="/">首页</router-link> -->
-          <router-link to="/blog/0">博客</router-link>
+          <router-link to="/blog/全部文章">博客</router-link>
           <router-link to="/message">留言</router-link>
           <!-- <router-link to="/daily">日记</router-link>
           <router-link to="/links">友链</router-link>-->
@@ -31,7 +31,7 @@
       <div class="link">
         <p>相关链接</p>
         <p>
-          <router-link to="/blog/0">博客</router-link>
+          <router-link to="/blog/全部文章">博客</router-link>
         </p>
         <p>
           <router-link to="/daily">日记</router-link>
