@@ -1,6 +1,7 @@
 <template>
     <div id="app">
-        <router-view v-if="isRouterAlive"></router-view>
+        <!-- <router-view v-if="isRouterAlive"></router-view> -->
+        <router-view v-wechat-title="$route.meta.title"/>
     </div>
 </template>
 <script>
@@ -10,7 +11,7 @@
         },
         data(){
             return{
-                isRouterAlive:true
+                // isRouterAlive:true
             }
         },
         mounted(){

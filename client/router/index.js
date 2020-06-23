@@ -20,10 +20,19 @@ const routes = [{
         },
         component: () => import('../views/About')
     },
+    
+    {
+        path: '/blog',
+        name: 'Blog',
+        meta: {
+            title: '博客'
+        },
+        component: () => import('../views/Blog'),
+    },
+    
 
     {
         path: '/blog/:id',
-        name: 'Blog',
         meta: {
             title: '博客'
         },
@@ -33,7 +42,7 @@ const routes = [{
                 path: '/全部文章',
                 name: '全部文章',
                 meta: {
-                    title: '博客'
+                    title: '全部文章'
                 },
                 component: () => import('../views/Blog'),
             },
@@ -41,7 +50,7 @@ const routes = [{
                 path: '/HTML&CSS',
                 name: 'HTML&CSS',
                 meta: {
-                    title: '博客'
+                    title: 'HTML&CSS'
                 },
                 component: () => import('../views/Blog'),
             },

@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="content">
-                <img src="../../src/assets/img/1.jpg" alt />
+                <img src="http://www./fyyd.vip/img/1.jpg" alt />
                 <p v-html="i.content"></p>
             </div>
             <div class="footer">
@@ -31,7 +31,6 @@
         </section>
     </div>
 </template>
-
 <script>
 import request from "../../api";
 const getArticleShow = request.getArticleShow;
@@ -72,6 +71,7 @@ export default {
         getArticleShow(this.$route.params.id,true).then(res => {
             this.articleList = res.data.data;
             // console.log(this.articleList,555)
+            console.log(this,666)
         
         });
     }

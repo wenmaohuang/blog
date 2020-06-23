@@ -46,7 +46,7 @@
     data(){
       return {
         linksList:[
-          {href:"http://www.fyyd.vip",icon:"img/1.png",des:"开发者"}
+          {href:"http://www.fyyd.vip",icon:"img/2.png",des:"开发者"}
         ]
       }
     },
@@ -61,7 +61,7 @@
   .Links{
     // width: 100%;
     // padding-top: 61px;
-  background-image: url("../../src/assets/img/2.jpg");
+  background-image: url("http://www.fyyd.vip/img/2.jpg");
     
     .canvas{
         

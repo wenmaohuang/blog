@@ -7,17 +7,14 @@
 
       <el-drawer title :visible.sync="drawer" :show-close="true">
         <div class="blog">
-          <!-- <router-link to="/">首页</router-link> -->
-          <router-link to="/blog/全部文章">博客</router-link>
+          <router-link to="/blog">博客</router-link>
           <router-link to="/message">留言</router-link>
-          <!-- <router-link to="/daily">日记</router-link>
           <router-link to="/links">友链</router-link>-->
           <router-link to="/about">关于</router-link>
         </div>
       </el-drawer>
     </div>
     <div class="bgc" :style="{height:bgHeight+'px',}">
-      <!-- <a href="http://www.fyyd.vip/#/blog/0" :style="{}">ENTER</a> -->
     </div>
 
     <footer>
@@ -175,7 +172,7 @@ export default {
     }
   }
   .bgc {
-    background-image: url("../../src/assets/img/3.jpg");
+    background-image: url("http://www./fyyd.vip/img/3.jpg");
     background-size: 100% 100%;
     display: flex;
     justify-content: center;

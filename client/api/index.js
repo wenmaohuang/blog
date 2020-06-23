@@ -1,6 +1,6 @@
 import axios from 'axios'
-// axios.defaults.baseURL = 'http://localhost'
-axios.defaults.baseURL = 'http://www.fyyd.vip'
+axios.defaults.baseURL = 'http://localhost'
+// axios.defaults.baseURL = 'http://www.fyyd.vip'
 axios.defaults.withCredentials = true
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 
@@ -20,7 +20,12 @@ export default {
                 skip = 0
                 limit = 5
             }
-            let tag = ['','HTML&CSS','JavaScript','Node',"Vue&React",'other'][index]
+            // let tag = ['全部文章','HTML&CSS','JavaScript','Node',"Vue&React",'other'][index]
+            let tag = index
+            if(tag === '全部文章'){
+                tag = ''
+            }
+            
             let data = {skip,limit,tag}
             skip += limit
             return axios.post('/article/getShow',data)
