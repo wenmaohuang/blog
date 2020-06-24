@@ -89,6 +89,14 @@ const routes = [{
         ]
     },
     {
+        path: '/content',
+        name: 'content',
+        meta: {
+            title: '博客'
+        },
+        component:()=>import('../views/Blog/articleDetail/ArticleDetail.vue')
+    },
+    {
         path: '/daily',
         name: 'Daily',
         meta: {

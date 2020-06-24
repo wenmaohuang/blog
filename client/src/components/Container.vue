@@ -18,12 +18,13 @@
                                 v-for="(item,index) in articleTages"
                                 :key="index"
                             >
-                                <router-link  :to="'/blog/'+item">{{item}}</router-link>
+                                <router-link :to="'/blog/'+item">{{item}}</router-link>
                             </li>
                         </ul>
                         <div class="cover" :style="{top:coverIndex*40 + 'px'}"></div>
                     </div>
                 </div>
+                <HotArticle></HotArticle>
                 <div class="hot">
                     <h3>热门文章</h3>
                     <ul>
@@ -63,13 +64,14 @@
 <script>
 import request from "../../api/index";
 import ArticleShow from "./ArticleShow";
-
+import HotArticle from "./HotArticle"
 let getArticleInfo = request.getArticleInfo;
 let getArticleHot = request.getArticleHot;
 export default {
     name: "Container",
     components: {
-        ArticleShow
+        ArticleShow,
+        HotArticle
     },
 
     data() {
@@ -153,10 +155,6 @@ export default {
     },
 
     computed: {
-        // getArticleTags() {
-        //   return [...this.articleTages];
-        // },
-
         getArticleRecommend() {
             return this.articleHot[0] || {};
         }
@@ -166,7 +164,6 @@ export default {
         getArticleInfo()
             .then(res => {
                 this.articleTages = res.data.data.tags; // console.log(res.data.data.tags);
-                // console.log(this.a);
             })
             .catch(err => {
                 console.log(err);
@@ -197,7 +194,6 @@ export default {
 
         > .el-aside {
             margin: 0 20px 0 0;
-
             width: 300px;
             height: 1200px;
             background-color: aqua;
@@ -348,7 +344,6 @@ export default {
                     line-height: 30px;
                     font-weight: 400;
                     border-bottom: 1px solid #e8e;
-                    // color: #383;
                     font-size: 18px;
                 }
                 ul {

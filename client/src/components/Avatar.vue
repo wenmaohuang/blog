@@ -1,17 +1,14 @@
 <template>
-  <el-dialog
-      
+  <el-dialog   
       title="头像上传"
       :visible.sync="dialogVisible"
       width="30%"
       :before-close="beforeClose"
       :close-on-click-modal="false"
   >
-  
-
     <el-upload
       class="avatar-uploader"
-      action="http://localhost/upload/avatar"
+      action="http://www.fyyd.vip/upload/avatar"
       :show-file-list="false"
       :on-success="handleAvatarSuccess"
       :before-upload="beforeAvatarUpload"
@@ -22,10 +19,7 @@
     </el-upload>
   </el-dialog>
 </template>
-
 <script>
-// import request from '../api'
-
 export default {
   data() {
     return {
@@ -37,8 +31,6 @@ export default {
   props:['dialogVisible'],
   methods: {
     handleAvatarSuccess(res, file) {
-          console.log(res,file)
-console.log(URL,1234321)
         this.imageUrl = URL.createObjectURL(file.raw);
         this.$message({
             message:"头像上传成功!",
@@ -52,8 +44,6 @@ console.log(URL,1234321)
     beforeAvatarUpload(file) {
       const isJPG = file.type === "image/jpeg";
       const isLt2M = file.size / 1024 / 1024 < 2;
-      console.log(file);
-
       if (!isJPG) {
         this.$message.error("上传头像图片只能是 JPG 格式!");
       }
@@ -71,13 +61,10 @@ console.log(URL,1234321)
 
 <style>
 .avatar-uploader .el-upload {
+  position: relative;
   border: 1px dashed #d9d9d9;
   border-radius: 6px;
   cursor: pointer;
-  position: relative;
-  /* position: absolute;
-  z-index: 1;
-  margin: 20% 40%; */
   background-color: #aaa;
   overflow: hidden;
 }

@@ -2,6 +2,7 @@
     <div class="blog">
         <Nav></Nav>
         <Container></Container>
+        <!-- <router-view></router-view> -->
     </div>
 </template>
 
