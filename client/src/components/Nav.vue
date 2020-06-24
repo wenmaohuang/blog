@@ -34,9 +34,7 @@
       <div class="login">
         <el-popover v-if="ifLogin" trigger="hover" placement="top-start" width="100" content="欢迎登录">
           <p>欢迎登录!!!!</p>
-          <el-button type="danger" @click="ifShowAvatar = true">修改头像
-
-          </el-button>
+          <el-button type="danger" @click="ifShowAvatar = true">修改头像</el-button>
           <el-button type="danger" @click="handlerLogout()">退出登录</el-button>
          
           <el-button
@@ -276,12 +274,7 @@ export default {
     }
     .login {
       line-height: 60px;
-      .el-popover {
-        p {
-          padding: 5px;
-        }
       
-      }
     }
     .n-nav {
       width: 580px;
@@ -360,10 +353,24 @@ export default {
 }
 
 .el-popover {
+        display:flex;
+        flex-direction: column;
+        p {
+          padding: 5px;
+        }
+        .el-button{
+          margin:5px;
+        }
+
+      
+      }
+
+// .el-popover {
+
  
-  p {
-    padding: 5px;
-  }
+//   p {
+//     padding: 5px;
+//   }
   
-}
+// }
 </style>

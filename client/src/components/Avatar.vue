@@ -6,9 +6,10 @@
       :before-close="beforeClose"
       :close-on-click-modal="false"
   >
+      <!-- action="http://www.fyyd.vip/upload/avatar" -->
     <el-upload
       class="avatar-uploader"
-      action="http://www.fyyd.vip/upload/avatar"
+      action="/upload/avatar"
       :show-file-list="false"
       :on-success="handleAvatarSuccess"
       :before-upload="beforeAvatarUpload"

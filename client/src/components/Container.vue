@@ -83,62 +83,62 @@ export default {
             visitor: [
                 {
                     user: "afei",
-                    photo: "/img/defaultPhoto.png"
+                    photo: "/img/2.png"
                 },
 
                 {
                     user: "afei",
-                    photo: "/img/defaultPhoto.png"
+                    photo: "/img/2.png"
                 },
 
                 {
                     user: "afei",
-                    photo: "/img/defaultPhoto.png"
+                    photo: "/img/2.png"
                 },
 
                 {
                     user: "afei",
-                    photo: "/img/defaultPhoto.png"
+                    photo: "/img/2.png"
                 },
 
                 {
                     user: "afei",
-                    photo: "/img/defaultPhoto.png"
+                    photo: "/img/2.png"
                 },
 
                 {
                     user: "afei",
-                    photo: "/img/defaultPhoto.png"
+                    photo: "/img/2.png"
                 },
 
                 {
                     user: "afei",
-                    photo: "/img/defaultPhoto.png"
+                    photo: "/img/2.png"
                 },
 
                 {
                     user: "afei",
-                    photo: "/img/defaultPhoto.png"
+                    photo: "/img/2.png"
                 },
 
                 {
                     user: "afei",
-                    photo: "/img/defaultPhoto.png"
+                    photo: "/img/2.png"
                 },
 
                 {
                     user: "afei",
-                    photo: "/img/defaultPhoto.png"
+                    photo: "/img/2.png"
                 },
 
                 {
                     user: "afei",
-                    photo: "/img/defaultPhoto.png"
+                    photo: "/img/2.png"
                 },
 
                 {
                     user: "afei",
-                    photo: "/img/defaultPhoto.png"
+                    photo: "/img/2.png"
                 }
             ]
         };
