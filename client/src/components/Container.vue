@@ -25,7 +25,7 @@
                     </div>
                 </div>
                 <HotArticle></HotArticle>
-                <div class="hot">
+                <!-- <div class="hot">
                     <h3>热门文章</h3>
                     <ul>
                         <li v-for="(i,index) in articleHot" :key="index">
@@ -33,7 +33,7 @@
                             <a :href="i._id">{{i.title}}</a>
                         </li>
                     </ul>
-                </div>
+                </div> -->
                 <div class="recommend">
                     <h3>置顶文章</h3>
                     <ul>
@@ -66,7 +66,7 @@ import request from "../../api/index";
 import ArticleShow from "./ArticleShow";
 import HotArticle from "./HotArticle"
 let getArticleInfo = request.getArticleInfo;
-let getArticleHot = request.getArticleHot;
+// let getArticleHot = request.getArticleHot;
 export default {
     name: "Container",
     components: {
@@ -167,14 +167,14 @@ export default {
             })
             .catch(err => {
                 console.log(err);
-            }),
-            getArticleHot()
-                .then(res => {
-                    this.articleHot = res.data.data;
-                })
-                .catch(err => {
-                    console.log(err);
-                });
+            })
+            // getArticleHot()
+            //     .then(res => {
+            //         this.articleHot = res.data.data;
+            //     })
+            //     .catch(err => {
+            //         console.log(err);
+            //     });
     }
 };
 </script>
@@ -269,8 +269,7 @@ export default {
                 }
             }
 
-            > .hot,
-            .recommend {
+            > .recommend {
                 box-sizing: border-box;
                 margin-top: 20px;
                 background-color: #89ab22;
