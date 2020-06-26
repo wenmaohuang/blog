@@ -31,7 +31,7 @@
     </div>
 </template>
     
-<script src="./static/layui/layui.js"></script>
+<script src="/static/layui/layui.js"></script>
 
 <script>
 import Nav from "../../src/components/Nav";

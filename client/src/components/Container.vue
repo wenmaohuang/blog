@@ -47,11 +47,11 @@
                     <h3>最近访客</h3>
                     <ul>
                         <li
-                            v-for="(i,index) in visitor"
+                            v-for="(item,index) in visitor"
                             :key="index"
-                            :style="{backgroundImage:'url('+i.photo+')'}"
+                            :style="{backgroundImage:'url(http://localhost'+item.photo+')'}"
                         >
-                            <p>{{i.user}}</p>
+                            <!-- <p>{{item.user}}</p> -->
                         </li>
                     </ul>
                 </div>
@@ -83,62 +83,62 @@ export default {
             visitor: [
                 {
                     user: "afei",
-                    photo: "/img/2.png"
+                    photo: "/img/5.jpg"
                 },
 
                 {
                     user: "afei",
-                    photo: "/img/2.png"
+                    photo: "/img/5.jpg"
                 },
 
                 {
                     user: "afei",
-                    photo: "/img/2.png"
+                    photo: "/img/5.jpg"
                 },
 
                 {
                     user: "afei",
-                    photo: "/img/2.png"
+                    photo: "/img/5.jpg"
                 },
 
                 {
                     user: "afei",
-                    photo: "/img/2.png"
+                    photo: "/img/5.jpg"
                 },
 
                 {
                     user: "afei",
-                    photo: "/img/2.png"
+                    photo: "/img/5.jpg"
                 },
 
                 {
                     user: "afei",
-                    photo: "/img/2.png"
+                    photo: "/img/5.jpg"
                 },
 
                 {
                     user: "afei",
-                    photo: "/img/2.png"
+                    photo: "/img/5.jpg"
                 },
 
                 {
                     user: "afei",
-                    photo: "/img/2.png"
+                    photo: "/img/5.jpg"
                 },
 
                 {
                     user: "afei",
-                    photo: "/img/2.png"
+                    photo: "/img/5.jpg"
                 },
 
                 {
                     user: "afei",
-                    photo: "/img/2.png"
+                    photo: "/img/5.jpg"
                 },
 
                 {
                     user: "afei",
-                    photo: "/img/2.png"
+                    photo: "/img/5.jpg"
                 }
             ]
         };
@@ -356,6 +356,8 @@ export default {
                         height: 50px;
                         margin: 10px;
                         background-size: cover;
+                        background-position:60%;
+                        border-radius:50%;
                     }
                 }
             }

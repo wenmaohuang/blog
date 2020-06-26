@@ -4,7 +4,7 @@
     <button type="button" @click="handleClick" class="layui-btn">提交</button>
   </div>
 </template>
-    <script src="./static/layui/layui.js"></script>
+    <script src="/static/layui/layui.js"></script>
 
 <script>
 export default {
