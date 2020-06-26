@@ -35,6 +35,9 @@
         <el-popover v-if="ifLogin" trigger="hover" placement="top-start" width="100" content="欢迎登录">
           <p>欢迎登录!!!!</p>
           <el-button type="danger" @click="ifShowAvatar = true">修改头像</el-button>
+          <el-button type="danger" >
+            <a href="http://www.fyyd.vip:3002">用户管理</a>
+          </el-button>
           <el-button type="danger" @click="handlerLogout()">退出登录</el-button>
          
           <el-button
