@@ -9,7 +9,7 @@
                 <div class="blog">
                     <router-link to="/blog">博客</router-link>
                     <router-link to="/message">留言</router-link>
-                    <router-link to="/links">友链</router-link>-->
+                    <router-link to="/links">友链</router-link>
                     <router-link to="/about">关于</router-link>
                 </div>
             </el-drawer>
