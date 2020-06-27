@@ -49,7 +49,7 @@
                         <li
                             v-for="(item,index) in visitor"
                             :key="index"
-                            :style="{backgroundImage:'url(http://localhost'+item.photo+')'}"
+                            :style="{backgroundImage:'url(http://www.fyyd.vip'+item.photo+')'}"
                         >
                             <!-- <p>{{item.user}}</p> -->
                         </li>

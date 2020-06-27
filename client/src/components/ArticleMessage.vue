@@ -1,13 +1,12 @@
 <template>
     <div class="message">
-        <Nav></Nav>
+        <!-- <Nav></Nav> -->
         <div class="main">
             <div class="content">
                 <article>
                     <section>
-                        <h2>留言板</h2>
-                        <p>沟通交流,拉近你我~</p>
-                        <RichText @Sub="handleSubmit"></RichText>
+                        <h5>发表评论</h5>
+                        <MessageRichText @Sub="handleSubmit"></MessageRichText>
                     </section>
                     <section class="mes">
                         <ul>
@@ -34,8 +33,7 @@
 <script src="/static/layui/layui.js"></script>
 
 <script>
-import Nav from "../../src/components/Nav";
-import RichText from "../../src/components/RichText";
+import MessageRichText from "./MessageRichText";
 import request from "../../api/index";
 import { get } from "http";
 
@@ -169,22 +167,22 @@ export default {
         
     },
     components: {
-        Nav,
-        RichText
+        // Nav,
+        MessageRichText
     }
 };
 </script>
 
 <style lang='less' scoped>
 .message {
-    background-image: url("../../src/assets/img/2.jpg");
-    background-size: cover;
-    min-height: 850px;
+    // background-image: url("../../src/assets/img/2.jpg");
+    // background-size: cover;
+    // min-height: 850px;
 
     .main {
         box-sizing: border-box;
-        max-width: 1300px;
-        padding: 20px;
+        max-width: 1260px;
+        // padding: 0 20px;
         margin: 0 auto;
 
         .content {
@@ -196,11 +194,11 @@ export default {
                     box-sizing: border-box;
                     width: 100%;
                     padding: 20px 15px;
-                    h2 {
-                        font-weight: 700;
-                        font-size: 2rem;
+                    h5 {
+                        // font-weight: 700;
+                        font-size: 1.5rem;
                         // margin: 0 atuo;
-                        text-align: center;
+                        // text-align: center;
                         // background-color: #aaa;
                     }
                     p {

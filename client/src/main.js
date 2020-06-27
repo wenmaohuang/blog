@@ -5,6 +5,11 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import VueWechatTitle from 'vue-wechat-title'; 
 import store from '../store/index'
+
+import vueAplayer from 'vue-aplayer'
+ 
+Vue.use(vueAplayer)
+
 // import vConsole from 'vconsole'
 // let vconsole = new vConsole()
 // Vue.use(vconsole)

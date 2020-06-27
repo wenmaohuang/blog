@@ -43,6 +43,7 @@ export default {
     data() {
         return {
             articleList: [],
+            // article: '',
             content:'test',
             title:''
         };
@@ -53,16 +54,14 @@ export default {
         }
     },
     methods: {
-        handleArticleList(a) {
-            console.log(a,2222)
-            console.log(this.content, 888);
-        console.log(this.$refs.title,999)
+        handleArticleList: function(item) {
+            // console.log(this.$store.commit('edit'),555)
+            // return item
+            this.$store.state.article = item
+            // console.log(this.$store.state.article,111);
+            // this.$store.commit('handleArticleList')
+        },
 
-            
-        // console.log(this.$refs.contentTest.value,'1111')
-        // console.log(e)
-
-        }
     },
     watch: {
         id() {
@@ -75,7 +74,7 @@ export default {
     mounted() {
         getArticleShow(this.$route.params.id, true).then(res => {
             this.articleList = res.data.data;
-            console.log(this, 666);
+            // console.log(this, 666);
         });
     }
 };
