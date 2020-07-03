@@ -119,7 +119,7 @@ export default {
                   //验证都通过
                   postRegister(this.form)
                     .then(res => {
-                      this.getVCode();
+                      // this.getVCode();
                       if (res.data.code) {
                         this.$message({
                           message: res.data.msg,
@@ -140,7 +140,7 @@ export default {
                       }
                     })
                     .catch(() => {
-                      this.getVCode(); //注册成功
+                      // this.getVCode(); //注册成功
                       this.$message({
                         message: "注册失败请稍后再试~",
                         type: "error",

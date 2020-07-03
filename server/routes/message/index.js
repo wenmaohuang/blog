@@ -23,10 +23,11 @@ router.post("/commit",(req,res)=>{
 
   /*添加评论*/
   messageDB.create({user, content})
-    .then(()=>{
+    .then((data)=>{
       res.send({
         code : 0,
-        msg : "留言成功!"
+        msg : "留言成功!",
+        data
       });
     })
     .catch(()=>{
@@ -40,7 +41,7 @@ router.post("/commit",(req,res)=>{
 /*提交留言的留言*/
 router.post("/childCommit",(req,res)=>{
   let {parentId,user,content,reUser} = req.body;
-
+console.log(req.body,'mm');
   //验证数据
   if (!parentId || !user || !content || !reUser){
     res.send({
@@ -55,6 +56,7 @@ router.post("/childCommit",(req,res)=>{
   messageDB.findById(parentId)
     .then(data=>{
       if (data){
+        console.log(data,'oo');
         //父留言存在
         messageDB.updateOne({_id:parentId},{$push:{'children':{user,content,reUser}}})
           .then(d=>{
@@ -86,8 +88,8 @@ router.post("/getList",(req,res)=>{
 
   /*拿取数据*/
   messageDB.find({},{},{skip,limit,sort:{date:-1}})
-    .populate("user",{_id:1,user:1,photo:1})
-    .populate("children.user",{_id:1,user:1,photo:1})
+    .populate("user")
+    .populate("children.user")
     .then(data=>{
       res.send({
         code : 0,

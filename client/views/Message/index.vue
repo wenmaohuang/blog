@@ -18,10 +18,24 @@
                                     <div class="p-content" v-html="item.content"></div>
                                     <div class="p-time">
                                         <span>{{item.date|getTime}}</span>
-                                        <a href>回复</a>
+                                        <span class="reply" @click="reply(index,item._id)">回复</span>
                                     </div>
                                 </div>
-                                <div class="comment-children"></div>
+                                <ChildMessage :parentComment="item" :parentUser="item.user.user" :childCommentList="item.children"></ChildMessage>
+                                <ParentRichText
+                                    ref="parentR"
+                                    :childIndex="ind"
+                                    @Parent="parentSubmit"
+                                ></ParentRichText>
+                                
+                                <!-- <section class="child">
+                                    <ul>
+                                        <li
+                                            v-for="(childItem,childIndex) in item.children"
+                                            :key="childIndex"
+                                        ></li>
+                                    </ul>
+                                </section>-->
                             </li>
                         </ul>
                     </section>
@@ -36,87 +50,31 @@
 <script>
 import Nav from "../../src/components/Nav";
 import RichText from "../../src/components/RichText";
+import ParentRichText from "../../src/components/ParentRichText";
+import ChildMessage from "../../src/components/ChildMessage";
+
+
 import request from "../../api/index";
 import { get } from "http";
-
-
 
 const postIfLogin = request.postIfLogin;
 const postMessage = request.postMessage;
 const getMessage = request.getMessage;
+const postChildMessage = request.postChildMessage;
 
 export default {
     name: "index",
+    computed: {},
     // filter(){},
     data() {
         return {
-            layui:null,
-            commentList: [
-                // {
-                //     _id: "11",
-                //     user: {
-                //         _id: "xxx",
-                //         user: "阿飞",
-                //         photo: "http://localhost:8080/img/defaultPhoto.jpg"
-                //     },
-                //     content: "<p>11</p><p>22</p>",
-                //     date: new Date() + "",
-                //     children: [
-                //         {
-                //             user: {
-                //                 _id: "xxx",
-                //                 user: "xiao",
-                //                 photo:
-                //                     "http://localhost:8080/img/defaultPhoto.jpg"
-                //             },
-                //             content: "shan lu shi ba wan",
-                //             $user: "阿飞"
-                //         },
-                //         {
-                //             user: {
-                //                 _id: "xxx",
-                //                 user: "hua",
-                //                 photo:
-                //                     "http://localhost:8080/img/defaultPhoto.jpg"
-                //             },
-                //             content: "shan lu shi ba wan",
-                //             $user: "hua"
-                //         }
-                //     ]
-                // },
-                // {
-                //     _id: "11",
-                //     user: {
-                //         _id: "xxx",
-                //         user: "阿飞",
-                //         photo: "http://localhost:8080/img/defaultPhoto.jpg"
-                //     },
-                //     content: "<p>11</p><p>22</p>",
-                //     date: new Date() + "",
-                //     children: [
-                //         {
-                //             user: {
-                //                 _id: "xxx",
-                //                 user: "xiao",
-                //                 photo:
-                //                     "http://localhost:8080/img/defaultPhoto.jpg"
-                //             },
-                //             content: "shan lu shi ba wan",
-                //             $user: "阿飞"
-                //         },
-                //         {
-                //             user: {
-                //                 _id: "xxx",
-                //                 user: "hua",
-                //                 photo:
-                //                     "http://localhost:8080/img/defaultPhoto.jpg"
-                //             },
-                //             content: "shan lu shi ba wan",
-                //             $user: "hua"
-                //         }
-                //     ]
-                // }
-            ]
+            layui: null,
+            commentList: [],
+            commentIndex: "",
+            ind: 1,
+            childReply: "",
+            isTrue: true,
+            parentId: ""
         };
     },
     filters: {
@@ -127,14 +85,12 @@ export default {
         }
     },
     methods: {
-       
-
         handleSubmit(val) {
             // console.log(val,'222')
             postIfLogin()
                 .then(res => {
                     if (res.data.userInfo) {
-                        console.log(res.data, 111);
+                        console.log(res.data, "nn");
                         // res.send({code:0})
                         // res.send({ code: 0 });
                         postMessage({
@@ -142,8 +98,6 @@ export default {
                             content: val
                         })
                             .then(res => {
-                               
-
                                 layer.msg("留言成功", { icon: 1 });
                                 setTimeout(() => {
                                     window.location.reload();
@@ -159,18 +113,59 @@ export default {
                 .catch(() => {
                     layer.msg("服务器出错了", { icon: 2 });
                 });
+        },
+        parentSubmit(val) {
+            postIfLogin()
+                .then(res => {
+                    if (res.data.userInfo) {
+                        console.log(res.data, 111);
+                        // res.send({code:0})
+                        // res.send({ code: 0 });
+                        console.log(val, "pp");
+                        postChildMessage({
+                            parentId: this.parentId,
+                            user: res.data.userInfo._id,
+                            content: val,
+                            reUser: res.data.userInfo.user
+                        })
+                            .then(res => {
+                                layer.msg("留言成功", { icon: 1 });
+                                setTimeout(() => {
+                                    window.location.reload();
+                                }, 10000);
+                            })
+                            .catch(() => {
+                                layer.msg("服务器错误~请稍后再试", { icon: 2 });
+                            });
+                    } else {
+                        layer.msg("请先登录", { icon: 2 });
+                    }
+                })
+                .catch(() => {
+                    layer.msg("服务器出错了", { icon: 2 });
+                });
+        },
+
+        reply(index, _id) {
+            this.commentIndex = index;
+            // console.log(this.commentIndex, "gg");
+            this.parentId = _id;
+            // console.log(this.$refs, "ff", index);
+            this.$refs.parentR[index].parentReply(index);
         }
     },
     created() {},
     mounted() {
         getMessage().then(res => {
             this.commentList = res.data.data;
+            console.log(this.commentList, 44);
         });
-        
     },
     components: {
         Nav,
-        RichText
+        RichText,
+        ParentRichText,
+        ChildMessage
     }
 };
 </script>
@@ -212,7 +207,7 @@ export default {
                 }
                 .mes {
                     ul {
-                        li {
+                        > li {
                             border-bottom: 1px dashed #aaa;
                             margin: 10px;
                             .comment-parent {
@@ -221,8 +216,12 @@ export default {
                                 }
                                 .p-time {
                                     margin: 10px;
+                                    .reply {
+                                        cursor: pointer;
+                                    }
                                 }
                             }
+                            
                         }
                     }
                 }

@@ -19,6 +19,7 @@ export default {
   methods: {
     handleClick() {
       this.$emit('Sub',this.layedit.getContent(this.index));
+      //  this.$emit('SubArticle',this.layedit.getContent(this.index));
     }
   },
   mounted() {

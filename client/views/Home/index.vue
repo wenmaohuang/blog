@@ -41,7 +41,7 @@
             </div>
         </footer>
         <el-collapse v-model="activeNames" @change="handleChange">
-            <el-collapse-item title="webpage" name="1">
+            <el-collapse-item title="" name="1">
                 <!-- <ul>
                     <li v-for="(item,index) in obj" :key="index">
                         <a :href="item" :style="style">{{index}}</a>
@@ -75,6 +75,7 @@ export default {
                 textAlign: "center"
             },
             obj: {
+                mongoose:"https://mongoosejs.com/docs/guide.html",
                 localServer: "http://localhost/#/blog/0",
                 localClient: "http://localhost:8080/#/blog/0",
                 github: "https://github.com/",
@@ -82,7 +83,7 @@ export default {
                 expressServer: "http://www.fyyd.vip/#/blog/0",
                 expressServer3002: "http://www.fyyd.vip:3002",
                 nginxServer: "http://www.fyyd.vip:3000",
-                mongooseDatabase: "http://www.mongoosejs.net/docs/models.html",
+                // mongooseDatabase: "http://www.mongoosejs.net/docs/models.html",
                 elementUI:
                     "https://element.eleme.cn/#/zh-CN/component/installation",
                 VUE: "https://vuejs.org/",

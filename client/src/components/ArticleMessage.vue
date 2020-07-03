@@ -1,11 +1,12 @@
 <template>
     <div class="message">
-        <!-- <Nav></Nav> -->
         <div class="main">
             <div class="content">
                 <article>
                     <section>
                         <h5>发表评论</h5>
+                        <!-- <MessageRichText @Sub="handleSubmit"></MessageRichText> -->
+                        <!-- <MessageRichText @Sub="handleSubmit(val);handleSubmitMessage()"></MessageRichText> -->
                         <MessageRichText @Sub="handleSubmit"></MessageRichText>
                     </section>
                     <section class="mes">
@@ -14,13 +15,21 @@
                                 <div class="comment-parent">
                                     <div class="p-img"></div>
                                     <div class="p-name">{{item.user.user}}</div>
+                                   
                                     <div class="p-content" v-html="item.content"></div>
                                     <div class="p-time">
                                         <span>{{item.date|getTime}}</span>
-                                        <a href>回复</a>
+                                        <!-- <a href>回复</a> -->
+                                        <span class="reply" @click="reply(index,item._id)">回复</span>
+
                                     </div>
                                 </div>
-                                <div class="comment-children"></div>
+                                <ChildMessage :parentComment="item" :parentUser="item.user.user" :childCommentList="item.children"></ChildMessage>
+                                <ParentRichText
+                                    ref="parentR"
+                                    @Parent="parentSubmit"
+                                ></ParentRichText>
+                                <!-- <div class="comment-children"></div> -->
                             </li>
                         </ul>
                     </section>
@@ -37,84 +46,25 @@ import MessageRichText from "./MessageRichText";
 import request from "../../api/index";
 import { get } from "http";
 
+import ParentRichText from "../../src/components/ParentRichText";
+import ChildMessage from "../../src/components/ChildMessage";
 
-
+// const postIfLogin = request.postIfLogin;
+const postArticleComment = request.postArticleComment;
+const postArticleMessage = request.postArticleMessage;
+const getArticleMessage = request.getArticleMessage;
+const postArticleChildMessage = request.postArticleChildMessage
 const postIfLogin = request.postIfLogin;
-const postMessage = request.postMessage;
-const getMessage = request.getMessage;
+
+// const getArticlecomment = request.getArticlecomment;
 
 export default {
     name: "index",
-    // filter(){},
     data() {
         return {
-            layui:null,
-            commentList: [
-                // {
-                //     _id: "11",
-                //     user: {
-                //         _id: "xxx",
-                //         user: "阿飞",
-                //         photo: "http://localhost:8080/img/defaultPhoto.jpg"
-                //     },
-                //     content: "<p>11</p><p>22</p>",
-                //     date: new Date() + "",
-                //     children: [
-                //         {
-                //             user: {
-                //                 _id: "xxx",
-                //                 user: "xiao",
-                //                 photo:
-                //                     "http://localhost:8080/img/defaultPhoto.jpg"
-                //             },
-                //             content: "shan lu shi ba wan",
-                //             $user: "阿飞"
-                //         },
-                //         {
-                //             user: {
-                //                 _id: "xxx",
-                //                 user: "hua",
-                //                 photo:
-                //                     "http://localhost:8080/img/defaultPhoto.jpg"
-                //             },
-                //             content: "shan lu shi ba wan",
-                //             $user: "hua"
-                //         }
-                //     ]
-                // },
-                // {
-                //     _id: "11",
-                //     user: {
-                //         _id: "xxx",
-                //         user: "阿飞",
-                //         photo: "http://localhost:8080/img/defaultPhoto.jpg"
-                //     },
-                //     content: "<p>11</p><p>22</p>",
-                //     date: new Date() + "",
-                //     children: [
-                //         {
-                //             user: {
-                //                 _id: "xxx",
-                //                 user: "xiao",
-                //                 photo:
-                //                     "http://localhost:8080/img/defaultPhoto.jpg"
-                //             },
-                //             content: "shan lu shi ba wan",
-                //             $user: "阿飞"
-                //         },
-                //         {
-                //             user: {
-                //                 _id: "xxx",
-                //                 user: "hua",
-                //                 photo:
-                //                     "http://localhost:8080/img/defaultPhoto.jpg"
-                //             },
-                //             content: "shan lu shi ba wan",
-                //             $user: "hua"
-                //         }
-                //     ]
-                // }
-            ]
+            layui: null,
+            commentList: [],
+            comment: {}
         };
     },
     filters: {
@@ -125,27 +75,32 @@ export default {
         }
     },
     methods: {
-       
-
         handleSubmit(val) {
-            // console.log(val,'222')
+            // this.$store.state.articleMessage.content = val;
+            // console.log(this.comment,78);
+            console.log(val,89);
+
+                this.$emit('handleComment',val)
+        },
+         parentSubmit(val) {
             postIfLogin()
                 .then(res => {
                     if (res.data.userInfo) {
                         console.log(res.data, 111);
                         // res.send({code:0})
                         // res.send({ code: 0 });
-                        postMessage({
+                        console.log(val, "pp");
+                        postArticleChildMessage({
+                            parentId: this.parentId,
                             user: res.data.userInfo._id,
-                            content: val
+                            content: val,
+                            reUser: res.data.userInfo.user
                         })
                             .then(res => {
-                               
-
                                 layer.msg("留言成功", { icon: 1 });
                                 setTimeout(() => {
                                     window.location.reload();
-                                }, 1000);
+                                }, 10000);
                             })
                             .catch(() => {
                                 layer.msg("服务器错误~请稍后再试", { icon: 2 });
@@ -157,37 +112,58 @@ export default {
                 .catch(() => {
                     layer.msg("服务器出错了", { icon: 2 });
                 });
+        },
+         reply(index, _id) {
+            this.commentIndex = index;
+            // console.log(this.commentIndex, "gg");
+            this.parentId = _id;
+            // console.log(this.$refs, "ff", index);
+            this.$refs.parentR[index].parentReply(index);
         }
     },
     created() {},
+    watch:{
+        article(){
+             
+        }
+    },
     mounted() {
-        getMessage().then(res => {
-            this.commentList = res.data.data;
+        console.log(this.$store.state.article, 12);
+        console.log(this.comment, 23);
+        // this.commentList = this.$store.state.article.comment
+        getArticleMessage().then(res => {
+            this.articleList = res.data.data;
+            this.articleList.forEach(element => {
+                if(element.title === this.$store.state.article.title){
+                    this.commentList = element.comment
+            console.log(this.commentList,56);
+
+                }
+            });
+
         });
-        
+        // getArticlecomment().then(res => {
+        //     this.commentList = res.data.data;
+        //
+        // });
     },
     components: {
-        // Nav,
-        MessageRichText
+        MessageRichText,
+        ParentRichText,
+        ChildMessage
     }
 };
 </script>
 
 <style lang='less' scoped>
 .message {
-    // background-image: url("../../src/assets/img/2.jpg");
-    // background-size: cover;
-    // min-height: 850px;
-
     .main {
         box-sizing: border-box;
         max-width: 1260px;
-        // padding: 0 20px;
         margin: 0 auto;
 
         .content {
             width: 100%;
-            // height: 500px;
             background-color: #fff;
             article {
                 section {
@@ -195,11 +171,7 @@ export default {
                     width: 100%;
                     padding: 20px 15px;
                     h5 {
-                        // font-weight: 700;
                         font-size: 1.5rem;
-                        // margin: 0 atuo;
-                        // text-align: center;
-                        // background-color: #aaa;
                     }
                     p {
                         font-size: 1.25rem;
@@ -219,6 +191,9 @@ export default {
                                 }
                                 .p-time {
                                     margin: 10px;
+                                    .reply{
+                                        cursor: pointer;
+                                    }
                                 }
                             }
                         }

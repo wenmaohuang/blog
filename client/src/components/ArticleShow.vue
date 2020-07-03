@@ -34,9 +34,19 @@
         </section>
     </div>
 </template>
+
+<script src="/static/layui/layui.js"></script>
+
 <script>
 import request from "../../api";
 const getArticleShow = request.getArticleShow;
+
+// import request from "../../../api/index";
+
+// const postIfLogin = request.postIfLogin;
+// const postArticleComment = request.postArticleComment;
+// const postArticleMessage = request.postArticleMessage;
+
 
 export default {
     name: "ArticleShow",
@@ -61,6 +71,7 @@ export default {
             // console.log(this.$store.state.article,111);
             // this.$store.commit('handleArticleList')
         },
+     
 
     },
     watch: {

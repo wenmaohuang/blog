@@ -52,12 +52,33 @@ export default {
     postMessage(options){
         return axios.post('/message/commit',options)
     },
+    postChildMessage(options){
+        return axios.post('/message/childCommit',options)
+    },
+    
+    postArticleMessage(options){
+        return axios.post('/article/messageCommit',options)
+    },
+    postArticleComment(options){
+        return axios.post('/articlemessage/messageCommit',options)
+    },
+    postArticleChildMessage(options){
+        return axios.post('/articlemessage/childmessageCommit',options)
+    },
     getMessage(){
         return axios.post('/message/getList')
     },
+    getArticleMessage(){
+        return axios.post('/article/message')
+    },
+    getArticlecomment(){
+        return axios.post('/articlemessage/message')
+    },
     getDaily(){
         return axios.get('/daily')
-    }
+    },
+   
+
     
 
 }

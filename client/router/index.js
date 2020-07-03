@@ -94,7 +94,7 @@ const routes = [{
         meta: {
             title: '博客'
         },
-        component:()=>import('../views/Blog/articleDetail/ArticleDetail.vue')
+        component:()=>import('../views/Blog/articleContent/ArticleContent.vue')
     },
     {
         path: '/daily',

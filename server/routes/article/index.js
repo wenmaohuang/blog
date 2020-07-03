@@ -1,6 +1,8 @@
 var article = require('../../db/article')
 var articleInfo = require('../../db/articleInfo')
 const express = require("express")
+// const articlemessageDB = require("../../db/articlemessage.js")
+
 let router = express.Router()
 router.post('/getInfo', (req, res) => {
     articleInfo.findOne({}, {_id: 0, __v: 0})
@@ -61,6 +63,86 @@ router.post('/getShow', (req, res) => {
         })
 })
 
+router.post("/messageCommit",(req,res)=>{
+    let {articleId,comment} = req.body;
+    console.log(req.body,'eee')
+   
+  
+    /*验证数据*/
+    if (!articleId || !comment){
+      res.send({
+        code : 1,
+        msg : "数据格式错误"
+      });
+      return;
+    }
+    // console.log(article.comment);
+    /*添加评论*/
+    article.updateOne({
+      _id: articleId,
+    },{
+      
+      $push:{comment}
+    })
+      .then((data)=>{
+        res.send({
+          code : 0,
+          msg : "留言成功!",
+          data
+        });
+      })
+      .catch(()=>{
+        res.send({
+          code : 4,
+          msg : "服务器错误~",
+          data:[]
+        });
+      })
 
+      // article.updateOne({content:'xxx'})
+      // .then(()=>{
+      //   res.send({
+      //     code : 0,
+      //     msg : "留言成功!"
+      //   });
+      // })
+      // .catch(()=>{
+      //   res.send({
+      //     code : 4,
+      //     msg : "服务器错误~"
+      //   });
+      // })
+
+      
+  });
+
+
+  
+
+      
+
+
+  router.post("/message",(req,res)=>{
+    let {skip,limit} = req.body;
+  
+    /*拿取数据*/
+    article.find({},{},{skip,limit,sort:{date:-1}})
+      .populate({path:"comment",populate:{path:"user"}})
+      .populate({path:"children.comment",populate:{path:"user"}})
+      .then(data=>{
+        res.send({
+          code : 0,
+          msg : "请求成功",
+          data
+        });
+      })
+      .catch(()=>{
+        res.send({
+          code : 4,
+          msg : "服务器错误",
+          data : []
+        });
+      })
+  });
 
 module.exports = router

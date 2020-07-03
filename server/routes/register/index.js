@@ -4,17 +4,32 @@ const userDB = require('../../db/user')
 let router = express.Router()
 
 router.post('/vcode', (req, res) => {
+    // console.log(req.session,33);
     if (req.session.registerVCodeTime) {
-        let t_ = new Date - new Date(req.session.registerVCodeTime)
-        if (t_ <= 60000) {
+        // let _t = new Date - new Date(req.session.registerVCodeTime)
+        // if (_t <= 60000) {
+        //     res.send({
+        //         code: 2,
+        //         data: req.session.registerVCode.data,
+        //         msg: "请求过于频繁",
+        //         time: 60000 - _t
+        //     });
+        //     return;
+        // }
+        let _t = new Date() - req.session.registerVCodeTime
+        if(_t <= 60000){
             res.send({
-                code: 2,
-                data: req.session.registerVCode.data,
+                code:2,
+                data:req.session.registerVCode.data,
                 msg: "请求过于频繁",
-                time: 60000 - t_
-            });
+                // time: req.session.registerVCodeTime
+
+            })
             return;
+
         }
+
+
     }
     let captcha = svgCaptcha.create()
 
@@ -24,7 +39,7 @@ router.post('/vcode', (req, res) => {
     res.send({
         code: 0,
         data: captcha.data,
-        time:6000
+        time:60000
     })
 })
 router.post("/checkVcode",(req,res)=>{

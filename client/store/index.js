@@ -4,7 +4,10 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state:{
         articleList:'test',
-        article:{}
+        article:{},
+        articleContent:'',
+        articleMessage:{},
+        articleMessageList:{}
     },
     mutations:{
         // handleClick(){

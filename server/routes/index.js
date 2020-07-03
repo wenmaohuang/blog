@@ -4,6 +4,7 @@ var router = express.Router();
 
 /*文章相关的接口*/
 router.use('/article',require('./article/index'))
+router.use('/articlemessage',require('./articlemessage/index'))
 
 // 注册相关接口
 router.use('/register',require('./register/index'))
