@@ -5,7 +5,7 @@ let articleInfo = mongoose.model('articleInfo',new mongoose.Schema({
     num:Number
 }))
 // articleInfo.create({
-//     tags:['全部文章','HTML&CSS','JavaScript','Node',"Vue&React",'other'],
+//     tags:['全部文章','HTML&CSS','JavaScript','Node',"Vue&React","mongoose","express",'other'],
 //     num:100
 // })
 // console.log(1);

@@ -164,6 +164,8 @@ export default {
         getArticleInfo()
             .then(res => {
                 this.articleTages = res.data.data.tags; // console.log(res.data.data.tags);
+                console.log(this.articleTages,'aa');
+                console.log(res,'bb');
             })
             .catch(err => {
                 console.log(err);

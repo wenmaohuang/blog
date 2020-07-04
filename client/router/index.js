@@ -79,6 +79,14 @@ const routes = [{
                 component: () => import('../views/Blog'),
             },
             {
+                path: '/Mongoose',
+                name: 'Mongoose',
+                meta: {
+                    title: '博客'
+                },
+                component: () => import('../views/Blog'),
+            },
+            {
                 path: '/Other',
                 name: 'Other',
                 meta: {
