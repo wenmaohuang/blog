@@ -25,7 +25,7 @@ router.post('/getInfo', (req, res) => {
 
 })
 router.post('/getHot', (req, res) => {
-  console.log(res,'dd');
+  // console.log(res,'dd');
     article.find({}, {_id: 0, __v: 0}, {sort: {pv: -1}, skip: 0, limit: 8})
         .then(data => {
             console.log(data,'cc')

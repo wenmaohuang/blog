@@ -9,6 +9,10 @@ export default {
         // console.log(333);
         return axios.post('/article/getInfo')
     },
+    getUser(){
+        // console.log(333);
+        return axios.post('/visitor/getUser')
+    },
     getArticleHot(){
         return axios.post('/article/getHot')
     },

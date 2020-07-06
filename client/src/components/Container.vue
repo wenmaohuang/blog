@@ -66,6 +66,7 @@ import request from "../../api/index";
 import ArticleShow from "./ArticleShow";
 import HotArticle from "./HotArticle"
 let getArticleInfo = request.getArticleInfo;
+let getUser = request.getUser
 // let getArticleHot = request.getArticleHot;
 export default {
     name: "Container",
@@ -80,67 +81,68 @@ export default {
             articleTages: [],
             articleHot: [],
             coverIndex: this.$route.params.id * 1,
-            visitor: [
-                {
-                    user: "afei",
-                    photo: "/img/5.jpg"
-                },
+            visitor:[]
+            // visitor: [
+            //     {
+            //         user: "afei",
+            //         photo: "/img/5.jpg"
+            //     },
 
-                {
-                    user: "afei",
-                    photo: "/img/5.jpg"
-                },
+            //     {
+            //         user: "afei",
+            //         photo: "/img/5.jpg"
+            //     },
 
-                {
-                    user: "afei",
-                    photo: "/img/5.jpg"
-                },
+            //     {
+            //         user: "afei",
+            //         photo: "/img/5.jpg"
+            //     },
 
-                {
-                    user: "afei",
-                    photo: "/img/5.jpg"
-                },
+            //     {
+            //         user: "afei",
+            //         photo: "/img/5.jpg"
+            //     },
 
-                {
-                    user: "afei",
-                    photo: "/img/5.jpg"
-                },
+            //     {
+            //         user: "afei",
+            //         photo: "/img/5.jpg"
+            //     },
 
-                {
-                    user: "afei",
-                    photo: "/img/5.jpg"
-                },
+            //     {
+            //         user: "afei",
+            //         photo: "/img/5.jpg"
+            //     },
 
-                {
-                    user: "afei",
-                    photo: "/img/5.jpg"
-                },
+            //     {
+            //         user: "afei",
+            //         photo: "/img/5.jpg"
+            //     },
 
-                {
-                    user: "afei",
-                    photo: "/img/5.jpg"
-                },
+            //     {
+            //         user: "afei",
+            //         photo: "/img/5.jpg"
+            //     },
 
-                {
-                    user: "afei",
-                    photo: "/img/5.jpg"
-                },
+            //     {
+            //         user: "afei",
+            //         photo: "/img/5.jpg"
+            //     },
 
-                {
-                    user: "afei",
-                    photo: "/img/5.jpg"
-                },
+            //     {
+            //         user: "afei",
+            //         photo: "/img/5.jpg"
+            //     },
 
-                {
-                    user: "afei",
-                    photo: "/img/5.jpg"
-                },
+            //     {
+            //         user: "afei",
+            //         photo: "/img/5.jpg"
+            //     },
 
-                {
-                    user: "afei",
-                    photo: "/img/5.jpg"
-                }
-            ]
+            //     {
+            //         user: "afei",
+            //         photo: "/img/5.jpg"
+            //     }
+            // ]
         };
     },
 
@@ -177,7 +179,13 @@ export default {
             //     .catch(err => {
             //         console.log(err);
             //     });
-    }
+            getUser().then(res=>{
+                this.visitor = res.data.data 
+                console.log(res.data.data,'aaa');
+            }).catch(()=>{
+
+            })
+    },
 };
 </script>
 <style lang="less" scoped>
