@@ -39,8 +39,8 @@
                 <p>QQ:648371113</p>
                 <p>邮箱:648371113@qq.com</p>
             </div>
-        </footer>
-        <el-collapse v-model="activeNames" @change="handleChange">
+        </footer >
+        <el-collapse v-show="ifLogin" v-model="activeNames" @change="handleChange">
             <el-collapse-item title="" name="1">
                 <!-- <ul>
                     <li v-for="(item,index) in obj" :key="index">
@@ -60,6 +60,11 @@
     </div>
 </template>
 <script>
+import request from "../../api/index";
+
+
+const postIfLogin = request.postIfLogin;
+
 export default {
     name: "index",
     data() {
@@ -69,6 +74,7 @@ export default {
             count: 0,
             activeNames: [""],
             bgHeight: 0,
+            ifLogin:false,
             style: {
                 display: "block",
                 textDecoration: "none",
@@ -136,6 +142,15 @@ export default {
         this.getWindowHeight();
         window.addEventListener("resize", this.getWindowHeight);
     },
+    created() {
+    postIfLogin().then(res => {
+      if (res.data.userInfo) {
+        this.ifLogin = true;
+      } else {
+        this.ifLogin = false;
+      }
+    });
+  },
     destroyed() {
         window.removeEventListener("resize", this.getWindowHeight);
     }
