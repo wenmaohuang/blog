@@ -68,7 +68,8 @@ export default {
             // console.log(this.$store.commit('edit'),555)
             // return item
             this.$store.state.article = item
-            // console.log(this.$store.state.article,111);
+            console.log(item,'cc');
+            console.log(this.$store.state.article,'dd');
             // this.$store.commit('handleArticleList')
         },
      
