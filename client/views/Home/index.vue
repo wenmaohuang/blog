@@ -6,11 +6,15 @@
             </el-button>
 
             <el-drawer title :visible.sync="drawer" :show-close="true">
+
                 <div class="blog">
+                  <el-button @click="handlerLogin">登录</el-button>
+
                     <router-link to="/blog">博客</router-link>
                     <router-link to="/message">留言</router-link>
                     <router-link to="/links">友链</router-link>
                     <router-link to="/about">关于</router-link>
+
                 </div>
             </el-drawer>
         </div>
@@ -64,6 +68,10 @@
 <script>
 import request from "../../api/index";
 import Search from "../../src/components/Search"
+import Login from "../../src/components/Login";
+
+// import request from "../../api/index";
+const postLogin = request.postLogin;
 
 
 const postIfLogin = request.postIfLogin;
@@ -143,7 +151,63 @@ export default {
             // if(this.count > 50){
             //   this.count = 0
             // }
+        },
+        handlerLogin() {
+      const h = this.$createElement;
+      this.$msgbox({
+        title: "登录",
+        message: h(Login, ),
+        showCancelButton: true,
+        showConfirmButton: true,
+        closeOnClickModal: false,
+        confirmButtonText: "马上登录",
+        cancelButtonText: "取消",
+        beforeClose: (action, instance, done) => {
+          if (action === "confirm") {
+            (function() {
+              this.$refs["form"].validate(valid => {
+                if (valid) {
+                  postLogin(this.form)
+                    .then(res => {
+                      console.log(res);
+                      if (res.data.code) {
+                        this.$message({
+                          message: res.data.msg,
+                          type: "error",
+                          duration: 2000
+                        });
+                      } else {
+                        this.$message({
+                          message: res.data.msg,
+                          type: "success",
+                          duration: 2000
+                        });
+                        done();
+                        setTimeout(() => {
+                          window.location.reload();
+                        });
+                      }
+                    })
+                    .catch(() => {
+                      this.$message({
+                        message: "登录失败,稍后再试",
+                        type: "error",
+                        duration: 2000
+                      });
+                    });
+                } else {
+                  return false;
+                }
+              });
+            }.call(instance.$children[2]));
+          } else {
+            done();
+          }
         }
+      })
+        .then(() => {})
+        .catch(() => {});
+    },
     },
     components:{
         Search
@@ -206,6 +270,10 @@ export default {
                         flex-direction: column;
                         align-items: flex-start;
                         transform: rotate(-7deg);
+                        .el-button{
+                            margin: 0 20px;
+                            
+                        }
 
                         a {
                             width: 150px;
