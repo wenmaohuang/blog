@@ -17,7 +17,7 @@ export default {
     name: "Search",
     methods: {
         fn() {
-            fetch("http://localhost:3002/search?word=" + this.word)
+            fetch("http://www.fyyd.vip:3002/search?word=" + this.word)
                 .then(res => res.json())
                 .then(msg => {
 
