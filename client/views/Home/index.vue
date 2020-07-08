@@ -123,7 +123,11 @@ export default {
                 exampleBlog: "https://www.yanshisan.cn/Blog/Article",
                 interview:
                     "https://github.com/afeifeifei/front-end-interview-handbook/blob/master/Translations/Chinese/README.md",
-                jobLagou: "https://www.lagou.com/resume/myresume.html"
+                jobLagou: "https://www.lagou.com/resume/myresume.html",
+                "51job":"https://i.51job.com/userset/my_51job.php?lang=c",
+                zhilian:"https://i.zhaopin.com/",
+                "58tongcheng":"https://my.58.com/pro/myjob/index/?PGTID=0d000000-0000-05c4-710e-6428d7138f3a&ClickID=1",
+                boss:"https://www.zhipin.com/web/geek/recommend?ka=header-personal"
             }
         };
     },
