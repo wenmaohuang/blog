@@ -14,7 +14,9 @@
                 </div>
             </el-drawer>
         </div>
-        <div class="bgc" :style="{height:bgHeight+'px',}"></div>
+        <div class="bgc" :style="{height:bgHeight+'px',}">
+            <Search></Search>
+        </div>
 
         <footer>
             <div class="about">
@@ -61,6 +63,7 @@
 </template>
 <script>
 import request from "../../api/index";
+import Search from "../../src/components/Search"
 
 
 const postIfLogin = request.postIfLogin;
@@ -137,6 +140,9 @@ export default {
             //   this.count = 0
             // }
         }
+    },
+    components:{
+        Search
     },
     mounted() {
         this.getWindowHeight();

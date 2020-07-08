@@ -4,7 +4,7 @@ var userDB = require('../../db/user')
 router.post("/getUser", (req, res) => {
     userDB.find()
         .then(data => {
-            console.log(data,'aaaa');
+            // console.log(data,'aaaa');
             res.send({
                 data
             })

@@ -16,11 +16,15 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, '../client/dist')))
 app.use(express.static(path.join(__dirname, './public')))
 
+
+
+
 app.use((req, res, next) => {
     res.header({
         'Access-Control-Allow-Credentials': true,
         'Access-Control-Allow-Origin': req.headers.origin || '*',
         'Access-Control-Allow-Headers': 'Content-Type',
+        // 'Access-Control-Allow-Headers': 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild',
         'Access-Control-Allow-Methods': 'PUT,POST,GET,DELETE,OPTIONS',
         'Content-Type': 'application/json;charset=utf-8'
     })
@@ -30,8 +34,14 @@ app.use((req, res, next) => {
         next()
     }
 })
+
+// console.log(request,'eee');
+
+
+
 app.use(require('./middleware/session'))
 app.use('/', require('./routes/index'))
 
+// app.get('aa',)
 
 module.exports = app

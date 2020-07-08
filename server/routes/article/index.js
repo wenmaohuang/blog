@@ -5,10 +5,10 @@ const express = require("express")
 
 let router = express.Router()
 router.post('/getInfo', (req, res) => {
-  console.log(req.body,'bb');
+  // console.log(req.body,'bb');
     articleInfo.findOne({}, {_id: 0, __v: 0})
         .then(data => {
-            console.log(data,444);
+            // console.log(data,444);
             res.send({
                 code: 0,
                 msg: '请求成功',
@@ -28,7 +28,7 @@ router.post('/getHot', (req, res) => {
   // console.log(res,'dd');
     article.find({}, {_id: 0, __v: 0}, {sort: {pv: -1}, skip: 0, limit: 8})
         .then(data => {
-            console.log(data,'cc')
+            // console.log(data,'cc')
             res.send({
                 code: 0,
                 msg: '请求成功',
@@ -48,6 +48,8 @@ router.post('/getShow', (req, res) => {
     let {skip, limit, tag} = req.body
     let options = tag ? {tag} : {}
     // console.log(skip, limit, tag,'test');
+// console.log(request,'eee');
+
 
     article.find(options, {__v:0}, {skip, limit,sort:{pv:-1}})
         .then(data => {
@@ -65,10 +67,12 @@ router.post('/getShow', (req, res) => {
         })
 })
 
+
 router.post("/messageCommit",(req,res)=>{
     let {articleId,comment} = req.body;
-    console.log(req.body,'eee')
+    // console.log(req.body,'eee')
    
+// console.log(request,'eee');
   
     /*验证数据*/
     if (!articleId || !comment){
