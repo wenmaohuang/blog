@@ -84,7 +84,7 @@ export default {
     .search{
         .input{
             input{
-                width: 300px;
+                width: 250px;
             }
         }
     }
