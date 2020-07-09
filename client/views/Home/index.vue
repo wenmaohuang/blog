@@ -6,15 +6,13 @@
             </el-button>
 
             <el-drawer title :visible.sync="drawer" :show-close="true">
-
                 <div class="blog">
-                  <el-button @click="handlerLogin">登录</el-button>
+                    <el-button @click="handlerLogin">登录</el-button>
 
                     <router-link to="/blog">博客</router-link>
                     <router-link to="/message">留言</router-link>
                     <router-link to="/links">友链</router-link>
                     <router-link to="/about">关于</router-link>
-
                 </div>
             </el-drawer>
         </div>
@@ -45,20 +43,21 @@
                 <p>QQ:648371113</p>
                 <p>邮箱:648371113@qq.com</p>
             </div>
-        </footer >
+        </footer>
         <el-collapse v-show="ifLogin" v-model="activeNames" @change="handleChange">
-            <el-collapse-item title="" name="1">
+            <el-collapse-item title name="1">
                 <!-- <ul>
                     <li v-for="(item,index) in obj" :key="index">
                         <a :href="item" :style="style">{{index}}</a>
                     </li>
                 </ul>-->
-                <ul class="infinite-list" v-infinite-scroll="load" style="overflow:scroll;height:150px;">
-                    <li
-                        v-for="(item,index) in obj"
-                        class="infinite-list-item"
-                        :key="index"
-                    ><a :href="item" :style="style">{{ index }}</a>
+                <ul
+                    class="infinite-list"
+                    v-infinite-scroll="load"
+                    style="overflow:scroll;height:150px;"
+                >
+                    <li v-for="(item,index) in obj" class="infinite-list-item" :key="index">
+                        <a :href="item" :style="style">{{ index }}</a>
                     </li>
                 </ul>
             </el-collapse-item>
@@ -67,12 +66,11 @@
 </template>
 <script>
 import request from "../../api/index";
-import Search from "../../src/components/Search"
+import Search from "../../src/components/Search";
 import Login from "../../src/components/Login";
 
 // import request from "../../api/index";
 const postLogin = request.postLogin;
-
 
 const postIfLogin = request.postIfLogin;
 
@@ -85,14 +83,14 @@ export default {
             count: 0,
             activeNames: [""],
             bgHeight: 0,
-            ifLogin:false,
+            ifLogin: false,
             style: {
                 display: "block",
                 textDecoration: "none",
                 textAlign: "center"
             },
             obj: {
-                mongoose:"https://mongoosejs.com/docs/guide.html",
+                mongoose: "https://mongoosejs.com/docs/guide.html",
                 localServer: "http://localhost/#/blog/0",
                 localClient: "http://localhost:8080/#/blog/0",
                 github: "https://github.com/",
@@ -132,10 +130,12 @@ export default {
                 interview:
                     "https://github.com/afeifeifei/front-end-interview-handbook/blob/master/Translations/Chinese/README.md",
                 jobLagou: "https://www.lagou.com/resume/myresume.html",
-                "51job":"https://i.51job.com/userset/my_51job.php?lang=c",
-                zhilian:"https://i.zhaopin.com/",
-                "58tongcheng":"https://my.58.com/pro/myjob/index/?PGTID=0d000000-0000-05c4-710e-6428d7138f3a&ClickID=1",
-                boss:"https://www.zhipin.com/web/geek/recommend?ka=header-personal"
+                "51job": "https://i.51job.com/userset/my_51job.php?lang=c",
+                zhilian: "https://i.zhaopin.com/",
+                "58tongcheng":
+                    "https://my.58.com/pro/myjob/index/?PGTID=0d000000-0000-05c4-710e-6428d7138f3a&ClickID=1",
+                boss:
+                    "https://www.zhipin.com/web/geek/recommend?ka=header-personal"
             }
         };
     },
@@ -153,63 +153,63 @@ export default {
             // }
         },
         handlerLogin() {
-      const h = this.$createElement;
-      this.$msgbox({
-        title: "登录",
-        message: h(Login, ),
-        showCancelButton: true,
-        showConfirmButton: true,
-        closeOnClickModal: false,
-        confirmButtonText: "马上登录",
-        cancelButtonText: "取消",
-        beforeClose: (action, instance, done) => {
-          if (action === "confirm") {
-            (function() {
-              this.$refs["form"].validate(valid => {
-                if (valid) {
-                  postLogin(this.form)
-                    .then(res => {
-                      console.log(res);
-                      if (res.data.code) {
-                        this.$message({
-                          message: res.data.msg,
-                          type: "error",
-                          duration: 2000
-                        });
-                      } else {
-                        this.$message({
-                          message: res.data.msg,
-                          type: "success",
-                          duration: 2000
-                        });
+            const h = this.$createElement;
+            this.$msgbox({
+                title: "登录",
+                message: h(Login),
+                showCancelButton: true,
+                showConfirmButton: true,
+                closeOnClickModal: false,
+                confirmButtonText: "马上登录",
+                cancelButtonText: "取消",
+                beforeClose: (action, instance, done) => {
+                    if (action === "confirm") {
+                        (function() {
+                            this.$refs["form"].validate(valid => {
+                                if (valid) {
+                                    postLogin(this.form)
+                                        .then(res => {
+                                            console.log(res);
+                                            if (res.data.code) {
+                                                this.$message({
+                                                    message: res.data.msg,
+                                                    type: "error",
+                                                    duration: 2000
+                                                });
+                                            } else {
+                                                this.$message({
+                                                    message: res.data.msg,
+                                                    type: "success",
+                                                    duration: 2000
+                                                });
+                                                done();
+                                                setTimeout(() => {
+                                                    window.location.reload();
+                                                });
+                                            }
+                                        })
+                                        .catch(() => {
+                                            this.$message({
+                                                message: "登录失败,稍后再试",
+                                                type: "error",
+                                                duration: 2000
+                                            });
+                                        });
+                                } else {
+                                    return false;
+                                }
+                            });
+                        }.call(instance.$children[2]));
+                    } else {
                         done();
-                        setTimeout(() => {
-                          window.location.reload();
-                        });
-                      }
-                    })
-                    .catch(() => {
-                      this.$message({
-                        message: "登录失败,稍后再试",
-                        type: "error",
-                        duration: 2000
-                      });
-                    });
-                } else {
-                  return false;
+                    }
                 }
-              });
-            }.call(instance.$children[2]));
-          } else {
-            done();
-          }
+            })
+                .then(() => {})
+                .catch(() => {});
         }
-      })
-        .then(() => {})
-        .catch(() => {});
     },
-    },
-    components:{
+    components: {
         Search
     },
     mounted() {
@@ -217,14 +217,14 @@ export default {
         window.addEventListener("resize", this.getWindowHeight);
     },
     created() {
-    postIfLogin().then(res => {
-      if (res.data.userInfo) {
-        this.ifLogin = true;
-      } else {
-        this.ifLogin = false;
-      }
-    });
-  },
+        postIfLogin().then(res => {
+            if (res.data.userInfo) {
+                this.ifLogin = true;
+            } else {
+                this.ifLogin = false;
+            }
+        });
+    },
     destroyed() {
         window.removeEventListener("resize", this.getWindowHeight);
     }
@@ -268,17 +268,24 @@ export default {
                     .blog {
                         display: flex;
                         flex-direction: column;
-                        align-items: flex-start;
+                        align-items: center;
                         transform: rotate(-7deg);
-                        .el-button{
-                            margin: 0 20px;
-                            
+                        padding-right: 70px;
+                        font-size: 20px;
+                        // margin: 0 auto;
+                        .el-button {
+                            // margin: 0 20px;
+                            width: 150px;
+                            font-size: 20px;
+                            padding-bottom: 30px;
+
+                            // text-align: left;
                         }
 
                         a {
                             width: 150px;
-                            text-align: left;
-                            margin: 30px 42px;
+                            text-align: center;
+                            margin: 30px 0;
                             text-decoration: none;
                         }
                     }
@@ -306,26 +313,9 @@ export default {
     .el-collapse {
         .el-collapse-item {
             margin: 0 auto;
-            .infinite-list::-webkit-scrollbar {display:none}
-            // /deep/ .el-collapse-item__header {
-            //     // margin: 0 auto;
-            //     // background-color: #aaa;
-            //     display: flex;
-            //     justify-content: center;
-            //     background-color: #aaa;
-            //     // text-align: center;
-            //     // margin: 0 auto;
-            //     .el-collapse-item__arrow.el-icon-arrow-right {
-            //         // width:10%;
-            //         margin: 8px;
-            //     }
-            //     ul {
-            //         list-style-type: none;
-            //         li {
-            //             margin: 10px;
-            //         }
-            //     }
-            // }
+            .infinite-list::-webkit-scrollbar {
+                display: none;
+            }
         }
     }
 }
@@ -404,8 +394,16 @@ footer {
 }
 
 @media only screen and (max-width: 500px) {
-    .el-drawer {
-        width: 40% !important;
+    .el-drawer__wrapper {
+        transform: rotate(5deg) !important;
+        .el-drawer__header {
+            transform: rotate(-5deg) !important;
+        }
+        .el-drawer__body {
+            .blog {
+                transform: rotate(-5deg) !important;
+            }
+        }
     }
 }
 </style>

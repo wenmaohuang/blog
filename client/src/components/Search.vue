@@ -80,35 +80,13 @@ export default {
         }
     }
 }
-/* #wrap{
-        width: 400px;
-        margin: 50px auto;
-        font-family: "Microsoft YaHei";
+@media only screen and (max-width: 500px) {
+    .search{
+        .input{
+            input{
+                width: 300px;
+            }
+        }
     }
-    #wrap input{
-        width: 396px;
-        height: 40px;
-        text-indent: 1em;
-        font-size: 18px;
-    }
-    #wrap ul li a{
-        display: block;
-        width: 100%;
-        height: 25px;
-        line-height: 25px;
-        text-decoration: none;
-        font-size: 12px;
-        text-indent: 1em;
-        color: #333;
-        transition: background-color .3s;
-    }
-    #wrap ul li:nth-child(odd) a{
-        background-color: rgba(238, 238, 238, 0.99);
-    }
-    #wrap ul li:nth-child(even) a{
-        background-color: #e8e8e8;
-    }
-    #wrap ul li:hover a{
-        background-color: #aaa;
-    } */
+}
 </style>
