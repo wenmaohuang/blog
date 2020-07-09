@@ -136,7 +136,8 @@ export default {
                     "https://my.58.com/pro/myjob/index/?PGTID=0d000000-0000-05c4-710e-6428d7138f3a&ClickID=1",
                 boss:
                     "https://www.zhipin.com/web/geek/recommend?ka=header-personal",
-                xiaochengxu:"https://developers.weixin.qq.com/miniprogram/dev/framework/"
+                xiaochengxu:"https://developers.weixin.qq.com/miniprogram/dev/framework/",
+                bilibili:"https://www.bilibili.com/video/BV1nE41117BQ?p=9"
             }
         };
     },
