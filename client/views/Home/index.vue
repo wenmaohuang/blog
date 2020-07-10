@@ -137,6 +137,7 @@ export default {
                 boss:
                     "https://www.zhipin.com/web/geek/recommend?ka=header-personal",
                 xiaochengxu:"https://developers.weixin.qq.com/miniprogram/dev/framework/",
+                xiaochengxuAdmin:"https://mp.weixin.qq.com/wxamp/wacodepage/getcodepage?token=174094833&lang=zh_CN",
                 bilibili:"https://www.bilibili.com/video/BV1nE41117BQ?p=9"
             }
         };
