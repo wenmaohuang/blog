@@ -1,9 +1,18 @@
 var app = require('../app')
 var debug = require('debug')('server:server')
-var http = require('http')
+var fs = require('fs')
+var path = require('path')
+// var http = require('http')
+var https = require('https')
+var options = {
+    key:fs.readFileSync(path.join(__dirname,'../https/4197482_www.fyyd.vip.key')),
+    cert:fs.readFileSync(path.join(__dirname,'../https/4197482_www.fyyd.vip.pem'))
+}
 var port = normalizePort(process.env.PORT || '80')
 app.set('port', port)
-var server = http.createServer(app)
+// var server = http.createServer(app)
+var server = https.createServer(app)
+https.createServer(options,app)
 server.listen(port)
 server.on('error', onError)
 server.on('listening', onListening)
