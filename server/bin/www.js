@@ -8,7 +8,7 @@ var options = {
     key:fs.readFileSync(path.join(__dirname,'../https/4197482_www.fyyd.vip.key')),
     cert:fs.readFileSync(path.join(__dirname,'../https/4197482_www.fyyd.vip.pem'))
 }
-var port = normalizePort(process.env.PORT || '80')
+var port = normalizePort(process.env.PORT || '443')
 app.set('port', port)
 // var server = http.createServer(app)
 var server = https.createServer(app)
