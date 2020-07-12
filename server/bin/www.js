@@ -2,7 +2,7 @@ var app = require('../app')
 var debug = require('debug')('server:server')
 var fs = require('fs')
 var path = require('path')
-// var http = require('http')
+var http = require('http')
 var https = require('https')
 var options = {
     key:fs.readFileSync(path.join(__dirname,'../https/4197482_www.fyyd.vip.key')),
@@ -10,7 +10,7 @@ var options = {
 }
 var port = normalizePort(process.env.PORT || '443')
 app.set('port', port)
-// var server = http.createServer(app)
+http.createServer(app).listen(80)
 var server = https.createServer(app)
 https.createServer(options,app)
 server.listen(port)
