@@ -5,8 +5,10 @@ var path = require('path')
 var http = require('http')
 var https = require('https')
 var options = {
-    key:fs.readFileSync(path.join(__dirname,'../https/4197482_www.fyyd.vip.key')),
-    cert:fs.readFileSync(path.join(__dirname,'../https/4197482_www.fyyd.vip.pem'))
+    key:fs.readFileSync(path.join(__dirname,'../https/privatekey.pem')),
+    cert:fs.readFileSync(path.join(__dirname,'../https/certificate.pem'))
+    // key:fs.readFileSync(path.join(__dirname,'../https/4197482_www.fyyd.vip.key')),
+    // cert:fs.readFileSync(path.join(__dirname,'../https/4197482_www.fyyd.vip.pem'))
 }
 var port = normalizePort(process.env.PORT || '443')
 app.set('port', port)
