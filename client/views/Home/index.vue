@@ -137,7 +137,7 @@ export default {
                 boss:
                     "https://www.zhipin.com/web/geek/recommend?ka=header-personal",
                 xiaochengxu:"https://developers.weixin.qq.com/miniprogram/dev/framework/",
-                xiaochengxuAdmin:"https://mp.weixin.qq.com/wxamp/wacodepage/getcodepage?token=174094833&lang=zh_CN",
+                xiaochengxuAdmin:"https://developers.weixin.qq.com/miniprogram/en/dev/framework/",
                 bilibili:"https://www.bilibili.com/video/BV1nE41117BQ?p=9",
                 move:"http://27k.cc/?m=vod-play-id-37805-src-1-num-1.html"
             }
