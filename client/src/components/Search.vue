@@ -1,8 +1,8 @@
 <template>
     <div class="search">
         <div class="input">
-            <input type="text" v-model="word" @input="fn" @keyup.enter="handleClick"/>
-            <button @click="handleClick" >搜索</button>
+            <input type="text" v-model="word" @input="fn" @keyup.enter="handleClick" />
+            <button @click="handleClick">搜索</button>
         </div>
         <ul>
             <li v-for="(item,index) in jsonArr" :key="index">
@@ -20,25 +20,43 @@ export default {
             fetch("http://www.fyyd.vip:3002/search?word=" + this.word)
                 .then(res => res.json())
                 .then(msg => {
-
-                    console.log(msg, "ggg");
-                    console.log(this.word,'kkk');
+                    // console.log(msg, "ggg");
+                    // console.log(this.word,'kkk');
                     this.jsonArr = msg;
                 });
         },
         handleClick() {
-            console.log(111);
-                    console.log(this.word, "hhh");
+            // console.log(111);
+            // console.log(this.word, "hhh");
+            // this.wordList.push(this.word);
 
-                    window.location.href="https://www.baidu.com/s?wd=" + this.word
 
+             function setStore(data) {
+                const list = JSON.parse(localStorage.getItem("list")) || [];
+                list.push(data);
+                if(list.length>8){
+                    list.shift()
+                }
+                localStorage.setItem("list", JSON.stringify(list));
+            }
+            setStore(this.word)
+
+            window.location.href = "https://www.baidu.com/s?wd=" + this.word;
+            // localStorage.setItem("hisData", this.wordList);
+
+           
         }
     },
     data() {
         return {
             jsonArr: [],
-            word: ""
+            word: "",
+            // hisData:[],
+            wordList: []
         };
+    },
+    mounted() {
+        console.log(localStorage, "aa");
     }
 };
 </script>
@@ -46,28 +64,28 @@ export default {
 <style scoped lang='less'>
 .search {
     position: absolute;
-    top:150px;
-    .input{
-    display: flex;
+    top: 150px;
+    .input {
+        display: flex;
 
         input {
-        height: 50px;
-        width: 400px;
-        font-size: 20px;
-        border-width: 0;
-        border-radius: 10px 0 0 10px;
-        text-indent: 0.5em;
-    }
-    button {
-        height: 50px;
-        font-size: 20px;
-        border-width: 0;
-        width: 80px;
-        border-radius: 0 10px 10px 0;
-    }
+            height: 50px;
+            width: 400px;
+            font-size: 20px;
+            border-width: 0;
+            border-radius: 10px 0 0 10px;
+            text-indent: 0.5em;
+        }
+        button {
+            height: 50px;
+            font-size: 20px;
+            border-width: 0;
+            width: 80px;
+            border-radius: 0 10px 10px 0;
+        }
     }
     ul {
-        margin-top:20px;
+        margin-top: 20px;
         // padding:20px 10px;
 
         border-radius: 10px;
@@ -81,9 +99,9 @@ export default {
     }
 }
 @media only screen and (max-width: 500px) {
-    .search{
-        .input{
-            input{
+    .search {
+        .input {
+            input {
                 width: 250px;
             }
         }
