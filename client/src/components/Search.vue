@@ -17,7 +17,7 @@ export default {
     name: "Search",
     methods: {
         fn() {
-            fetch("http://test.fyyd.vip:3102/search?word=" + this.word)
+            fetch("https://test.fyyd.vip:3102/search?word=" + this.word)
                 .then(res => res.json())
                 .then(msg => {
                     // console.log(msg, "ggg");
