@@ -1,7 +1,13 @@
 <template>
     <div class="search">
         <div class="input">
-            <input type="text" v-model="word" @input="fn" @keyup.enter="handleClick" />
+            <input
+                type="text"
+                v-model="word"
+                @input="fn"
+                @keyup.enter="handleClick"
+                @focus="handleFocus"
+            />
             <button @click="handleClick">搜索</button>
         </div>
         <ul>
@@ -18,33 +24,46 @@ export default {
     methods: {
         fn() {
             fetch("https://test.fyyd.vip:3102/search?word=" + this.word)
+            // fetch("http://localhost:3002/search?word=" + this.word)
                 .then(res => res.json())
                 .then(msg => {
                     // console.log(msg, "ggg");
                     // console.log(this.word,'kkk');
                     this.jsonArr = msg;
+                    console.log(this.jsonArr,'e1');
                 });
         },
+        // fnSpace() {
+        //     // fetch("https://test.fyyd.vip:3102/search?word=" + this.word)
+        //     fetch("http://localhost:3002/search?word=" + this.word)
+        //         .then(res => res.json())
+        //         .then(msg => {
+        //             // console.log(msg, "ggg");
+        //             console.log(msg, "kkk");
+        //             this.jsonArr = msg;
+        //         });
+        // },
         handleClick() {
             // console.log(111);
             // console.log(this.word, "hhh");
             // this.wordList.push(this.word);
 
-
-             function setStore(data) {
+            function setStore(data) {
                 const list = JSON.parse(localStorage.getItem("list")) || [];
                 list.push(data);
-                if(list.length>8){
-                    list.shift()
+                if (list.length > 8) {
+                    list.shift();
                 }
                 localStorage.setItem("list", JSON.stringify(list));
             }
-            setStore(this.word)
+            setStore(this.word);
 
             window.location.href = "https://www.baidu.com/s?wd=" + this.word;
             // localStorage.setItem("hisData", this.wordList);
-
-           
+        },
+        handleFocus(){
+            this.jsonArr = JSON.parse(localStorage.getItem("list"))
+            console.log(this.jsonArr,'d1');
         }
     },
     data() {
