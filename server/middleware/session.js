@@ -4,7 +4,7 @@ let mongoose = require('mongoose')
 
 module.exports = session({
     secret:'afei',
-    cookie:{maxAge:30*60*1000},
+    cookie:{maxAge:3*60*60*1000},
     rolling:false,
     resave:false,
     saveUninitialized:false,
