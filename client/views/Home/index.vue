@@ -44,8 +44,8 @@
                 <p>邮箱:648371113@qq.com</p>
             </div>
         </footer>
-        <el-collapse v-show="ifLogin" v-model="activeNames" @change="handleChange">
-            <el-collapse-item title name="1">
+        <el-collapse  v-model="activeNames" @change="handleChange" @mouseenter.native.once="handleEnter" @mouseover.native="handleOver" @mouseleave.native="handleLeave">
+            <el-collapse-item v-show="ifLogin" title name="1">
                 <!-- <ul>
                     <li v-for="(item,index) in obj" :key="index">
                         <a :href="item" :style="style">{{index}}</a>
@@ -54,9 +54,18 @@
                 <ul
                     class="infinite-list"
                     v-infinite-scroll="load"
-                    style="overflow:scroll;height:150px;"
+                    style="overflow:scroll;height:250px;"
                 >
-                    <li v-for="(item,index) in obj" class="infinite-list-item" :key="index">
+                    <input
+                        type="text"
+                        v-model="word"
+                        @input="handleSearch"
+                        @keyup.delete="handleDelete"
+                        ref="autoFocus"
+                        style="display:block;width:250px;height:45px;font-size:20px;text-indent:1em;margin:0 auto;border-radius:10px;border-width:1px;border-style:solid"
+                    />
+
+                    <li v-for="(item,index) in searchObj" class="infinite-list-item" :key="index">
                         <a :href="item" :style="style">{{ index }}</a>
                     </li>
                 </ul>
@@ -84,11 +93,17 @@ export default {
             activeNames: [""],
             bgHeight: 0,
             ifLogin: false,
+            word: "",
             style: {
                 display: "block",
                 textDecoration: "none",
-                textAlign: "center"
+                textAlign: "center",
+                fontSize:"20px"
             },
+            ifFocus:false,
+            reg: {},
+            searchObj: {},
+            searchKye: "",
             obj: {
                 mongoose: "https://mongoosejs.com/docs/guide.html",
                 localServer: "http://localhost/#/blog/0",
@@ -136,20 +151,101 @@ export default {
                     "https://my.58.com/pro/myjob/index/?PGTID=0d000000-0000-05c4-710e-6428d7138f3a&ClickID=1",
                 boss:
                     "https://www.zhipin.com/web/geek/recommend?ka=header-personal",
-                xiaochengxu:"https://developers.weixin.qq.com/miniprogram/en/dev/framework/",
-                xiaochengxuAdmin:"https://mp.weixin.qq.com/wxamp/wacodepage/getcodepage?token=174094833&lang=zh_CN",
-                bilibili:"https://www.bilibili.com/video/BV1nE41117BQ?p=9",
-                move:"http://27k.cc/?m=vod-play-id-37805-src-1-num-1.html",
-                flutter:"https://flutter.dev/docs/development/tools/android-studio"
+                xiaochengxu:
+                    "https://developers.weixin.qq.com/miniprogram/en/dev/framework/",
+                xiaochengxuAdmin:
+                    "https://mp.weixin.qq.com/wxamp/wacodepage/getcodepage?token=174094833&lang=zh_CN",
+                bilibili: "https://www.bilibili.com/video/BV1nE41117BQ?p=9",
+                move: "http://27k.cc/?m=vod-play-id-37805-src-1-num-1.html",
+                flutter:
+                    "https://flutter.dev/docs/development/tools/android-studio"
             }
         };
     },
+    computed: {
+        // computedObj(){
+        //     return this.obj;
+        // }
+    },
+    watch: {
+        // obj(){
+        // }
+    },
+    //   directives: { //自定义的v-focus指令
+    //         focus: {
+    //             inserted: function (el, {value}) {
+    //                 if (value) {
+    //                     el.focus();
+    //                 }
+    //             }
+    //         }
+    //     },
     methods: {
         getWindowHeight() {
             this.bgHeight = window.innerHeight;
         },
         handleChange(val) {
             console.log(val);
+        },
+        handleEnter(){
+                    this.searchObj = Object.assign({},this.obj)
+        },
+        handleOver(){
+            console.log('c2');
+            this.activeNames = ['1']
+            this.$refs.autoFocus.focus();
+                    // this.searchObj = this.obj;
+
+
+            // this.ifFocus = true
+            // this.activeNames = ["1"]
+        },
+
+   
+
+        handleLeave(){
+            this.activeNames = ['1']
+        },
+        handleSearch() {
+            for (var key in this.obj) {
+                if (this.word) {
+                        this.$delete(this.searchObj, key);
+                        console.log('e2');
+                    this.reg = new RegExp("^" + this.word);
+                    this.searchKey = key.match(this.reg);
+                    if (this.searchKey !== null) {
+                        this.searchKeyInput = this.searchKey["input"];
+                        console.log(this.searchKey, "p1");
+                        this.$set(
+                            this.searchObj,
+                            this.searchKeyInput,
+                            this.obj[this.searchKeyInput]
+                        );
+                    }
+                }
+                if (this.word === "") {
+                    console.log("a2");
+                }
+            }
+            console.log(this.searchObj, "j1");
+        },
+        handleDelete() {
+            console.log("u1");
+            // if (this.word) {
+                for (var key in this.searchObj) {
+                    // console.log(this.word, "w1");
+                    this.reg = new RegExp("^" + this.word);
+                    this.searchKey = key.match(this.reg);
+
+                    this.$delete(this.searchObj, key);
+                }
+                if(this.word === ''){
+                    this.searchObj = Object.assign({},this.obj)
+
+                }
+            
+                    // this.$delete(this.searchObj, key);
+
         },
         load() {
             this.count += 2;
@@ -220,6 +316,8 @@ export default {
     mounted() {
         this.getWindowHeight();
         window.addEventListener("resize", this.getWindowHeight);
+
+        // console.log(this.$refs,'d2');
     },
     created() {
         postIfLogin().then(res => {
@@ -229,6 +327,7 @@ export default {
                 this.ifLogin = false;
             }
         });
+        //  this.changfouce();
     },
     destroyed() {
         window.removeEventListener("resize", this.getWindowHeight);
@@ -316,7 +415,12 @@ export default {
         }
     }
     .el-collapse {
+        // &:hover{
+        //     // activeNames: ["1"]
+        // }
         .el-collapse-item {
+            // z-index: 1;
+            position: relative;
             margin: 0 auto;
             .infinite-list::-webkit-scrollbar {
                 display: none;

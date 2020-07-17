@@ -7,6 +7,7 @@
                 @input="fn"
                 @keyup.enter="handleClick"
                 @focus="handleFocus"
+                ref="autoFocus"
             />
             <button @click="handleClick">搜索</button>
         </div>
@@ -76,6 +77,7 @@ export default {
     },
     mounted() {
         console.log(localStorage, "aa");
+        this.$refs.autoFocus.focus();
     }
 };
 </script>
