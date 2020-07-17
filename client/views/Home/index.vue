@@ -44,7 +44,12 @@
                 <p>邮箱:648371113@qq.com</p>
             </div>
         </footer>
-        <el-collapse  v-model="activeNames" @change="handleChange" @mouseenter.native.once="handleEnter" @mouseover.native="handleOver" >
+        <el-collapse
+            v-model="activeNames"
+            @change="handleChange"
+            @mouseenter.native.once="handleEnter"
+            @mouseover.native="handleOver"
+        >
             <el-collapse-item v-show="ifLogin" title name="1">
                 <!-- <ul>
                     <li v-for="(item,index) in obj" :key="index">
@@ -98,33 +103,33 @@ export default {
                 display: "block",
                 textDecoration: "none",
                 textAlign: "center",
-                fontSize:"20px"
+                fontSize: "20px"
             },
-            ifFocus:false,
+            ifFocus: false,
             reg: {},
             searchObj: {},
             searchKye: "",
             obj: {
-                mongoose: "https://mongoosejs.com/docs/guide.html",
-                localServer: "http://localhost/#/blog/0",
-                localClient: "http://localhost:8080/#/blog/0",
                 github: "https://github.com/",
-                npm: "https://www.npmjs.com/",
-                expressServer: "http://www.fyyd.vip/#/blog/0",
-                expressServer3002: "http://www.fyyd.vip:3002",
-                nginxServer: "http://www.fyyd.vip:3000",
+
+                mongoosejs: "https://mongoosejs.com/docs/guide.html",
+                // localServer: "http://localhost/#/blog/0",
+                // localClient: "http://localhost:8080/#/blog/0",
+                npmjs: "https://www.npmjs.com/",
+                // expressServer: "http://www.fyyd.vip/#/blog/0",
+                // expressServer3002: "http://www.fyyd.vip:3002",
+                // nginxServer: "http://www.fyyd.vip:3000",
                 // mongooseDatabase: "http://www.mongoosejs.net/docs/models.html",
-                elementUI:
+                element:
                     "https://element.eleme.cn/#/zh-CN/component/installation",
-                VUE: "https://vuejs.org/",
-                layUI: "https://www.layui.com/",
+                vuejs: "https://vuejs.org/",
+                layui: "https://www.layui.com/",
                 qqMusic: "https://y.qq.com/portal/player.html",
-                aliCloud: "https://www.aliyun.com/",
-                aliIcon:
+                aliyun: "https://www.aliyun.com/",
+                iconfont:
                     "https://www.iconfont.cn/manage/index?manage_type=myprojects&projectId=1811983",
-                translateBaidu:
-                    "https://fanyi.baidu.com/?aldtype=16047#auto/zh",
-                searchBaidu: "http://baidu.com",
+                fanyi: "https://fanyi.baidu.com/?aldtype=16047#auto/zh",
+                // searchBaidu: "http://baidu.com",
                 photoGirls: "https://www.umei.cc/bizhitupian/meinvbizhi/",
                 yinshi:
                     "https://www.shiguangkey.com/video/1346?videoId=141606&classId=9262&playback=1",
@@ -136,29 +141,34 @@ export default {
                     "https://www.shiguangkey.com/video/1561?videoId=53934&classId=4298&playback=1",
                 haiwen:
                     "https://www.shiguangkey.com/video/1561?videoId=86919&classId=6240&playback=1",
-                wanzhang:
+                wanzhang1:
                     "https://www.shiguangkey.com/video/5404?videoId=125677&classId=8638&playback=1",
-                designModeWanZhang:
+                wanZhang2:
                     "https://www.shiguangkey.com/video/903?videoId=191211&classId=12327&playback=1",
                 cctv: "http://tv.cctv.com/live/",
-                exampleBlog: "https://www.yanshisan.cn/Blog/Article",
-                interview:
+                yanshisan: "https://www.yanshisan.cn/Blog/Article",
+                afeifeifei:
                     "https://github.com/afeifeifei/front-end-interview-handbook/blob/master/Translations/Chinese/README.md",
-                jobLagou: "https://www.lagou.com/resume/myresume.html",
+                lagou: "https://www.lagou.com/resume/myresume.html",
                 "51job": "https://i.51job.com/userset/my_51job.php?lang=c",
-                zhilian: "https://i.zhaopin.com/",
+                zhaopin: "https://i.zhaopin.com/",
                 "58tongcheng":
                     "https://my.58.com/pro/myjob/index/?PGTID=0d000000-0000-05c4-710e-6428d7138f3a&ClickID=1",
-                boss:
+                zhipin:
                     "https://www.zhipin.com/web/geek/recommend?ka=header-personal",
-                xiaochengxu:
+                weixin:
                     "https://developers.weixin.qq.com/miniprogram/en/dev/framework/",
-                xiaochengxuAdmin:
+                weixinAdmin:
                     "https://mp.weixin.qq.com/wxamp/wacodepage/getcodepage?token=174094833&lang=zh_CN",
                 bilibili: "https://www.bilibili.com/video/BV1nE41117BQ?p=9",
-                move: "http://27k.cc/?m=vod-play-id-37805-src-1-num-1.html",
+                movie: "http://27k.cc/?m=vod-play-id-37805-src-1-num-1.html",
                 flutter:
-                    "https://flutter.dev/docs/development/tools/android-studio"
+                    "https://flutter.dev/docs/development/tools/android-studio",
+                typescript:
+                    "https://www.typescriptlang.org/docs/handbook/gulp.html",
+                node: "https://nodejs.org/dist/latest-v14.x/docs/api/",
+                webpack:
+                    "https://webpack.js.org/concepts/entry-points/#single-entry-shorthand-syntax"
             }
         };
     },
@@ -187,21 +197,18 @@ export default {
         handleChange(val) {
             console.log(val);
         },
-        handleEnter(){
-                    this.searchObj = Object.assign({},this.obj)
+        handleEnter() {
+            this.searchObj = Object.assign({}, this.obj);
         },
-        handleOver(){
-            console.log('c2');
+        handleOver() {
+            console.log("c2");
             // this.activeNames = ['1']
             this.$refs.autoFocus.focus();
-                    // this.searchObj = this.obj;
-
+            // this.searchObj = this.obj;
 
             // this.ifFocus = true
             // this.activeNames = ["1"]
         },
-
-   
 
         // handleLeave(){
         //     this.activeNames = ['1']
@@ -209,8 +216,8 @@ export default {
         handleSearch() {
             for (var key in this.obj) {
                 if (this.word) {
-                        this.$delete(this.searchObj, key);
-                        console.log('e2');
+                    this.$delete(this.searchObj, key);
+                    console.log("e2");
                     this.reg = new RegExp("^" + this.word);
                     this.searchKey = key.match(this.reg);
                     if (this.searchKey !== null) {
@@ -232,20 +239,18 @@ export default {
         handleDelete() {
             console.log("u1");
             // if (this.word) {
-                for (var key in this.searchObj) {
-                    // console.log(this.word, "w1");
-                    this.reg = new RegExp("^" + this.word);
-                    this.searchKey = key.match(this.reg);
+            for (var key in this.searchObj) {
+                // console.log(this.word, "w1");
+                this.reg = new RegExp("^" + this.word);
+                this.searchKey = key.match(this.reg);
 
-                    this.$delete(this.searchObj, key);
-                }
-                if(this.word === ''){
-                    this.searchObj = Object.assign({},this.obj)
+                this.$delete(this.searchObj, key);
+            }
+            if (this.word === "") {
+                this.searchObj = Object.assign({}, this.obj);
+            }
 
-                }
-            
-                    // this.$delete(this.searchObj, key);
-
+            // this.$delete(this.searchObj, key);
         },
         load() {
             this.count += 2;
