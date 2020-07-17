@@ -44,7 +44,7 @@
                 <p>邮箱:648371113@qq.com</p>
             </div>
         </footer>
-        <el-collapse  v-model="activeNames" @change="handleChange" @mouseenter.native.once="handleEnter" @mouseover.native="handleOver" @mouseleave.native="handleLeave">
+        <el-collapse  v-model="activeNames" @change="handleChange" @mouseenter.native.once="handleEnter" @mouseover.native="handleOver" >
             <el-collapse-item v-show="ifLogin" title name="1">
                 <!-- <ul>
                     <li v-for="(item,index) in obj" :key="index">
@@ -90,7 +90,7 @@ export default {
             drawer: false,
             isClick: false,
             count: 0,
-            activeNames: [""],
+            activeNames: ["1"],
             bgHeight: 0,
             ifLogin: false,
             word: "",
@@ -192,7 +192,7 @@ export default {
         },
         handleOver(){
             console.log('c2');
-            this.activeNames = ['1']
+            // this.activeNames = ['1']
             this.$refs.autoFocus.focus();
                     // this.searchObj = this.obj;
 
@@ -203,9 +203,9 @@ export default {
 
    
 
-        handleLeave(){
-            this.activeNames = ['1']
-        },
+        // handleLeave(){
+        //     this.activeNames = ['1']
+        // },
         handleSearch() {
             for (var key in this.obj) {
                 if (this.word) {
