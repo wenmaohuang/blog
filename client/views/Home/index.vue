@@ -108,7 +108,7 @@ export default {
             ifFocus: false,
             reg: {},
             searchObj: {},
-            newObj:{},
+            newObj: {},
             searchKye: "",
             obj: {
                 github: "https://github.com/",
@@ -329,7 +329,7 @@ export default {
             .map(key => {
                 this.newObj[key] = this.obj[key];
             });
-        console.log(this.newObj,'g2');
+        console.log(this.newObj, "g2");
         // console.log(this.$refs,'d2');
     },
     created() {
@@ -445,15 +445,15 @@ export default {
 
 
 <style lang="less" scoped>
-.el-drawer {
-    width: 25% !important;
-    .el-drawer__header {
-        flex-direction: row-reverse;
-        transform: rotate(-7deg);
+// .el-drawer {
+//     width: 25% !important;
+//     .el-drawer__header {
+//         flex-direction: row-reverse;
+//         transform: rotate(-7deg);
 
-        padding-top: 35px;
-    }
-}
+//         padding-top: 35px;
+//     }
+// }
 
 footer {
     display: flex;
@@ -516,14 +516,18 @@ footer {
 }
 
 @media only screen and (max-width: 500px) {
-    .el-drawer__wrapper {
-        transform: rotate(5deg) !important;
-        .el-drawer__header {
-            transform: rotate(-5deg) !important;
-        }
-        .el-drawer__body {
-            .blog {
+    /deep/ .el-drawer {
+        width: 40% !important;
+        // background-color: #333 !important;
+        .el-drawer__wrapper {
+            transform: rotate(5deg) !important;
+            .el-drawer__header {
                 transform: rotate(-5deg) !important;
+            }
+            .el-drawer__body {
+                .blog {
+                    transform: rotate(-5deg) !important;
+                }
             }
         }
     }
