@@ -10,9 +10,9 @@ import vueAplayer from 'vue-aplayer'
  
 Vue.use(vueAplayer)
 
-// import vConsole from 'vconsole'
-// let vconsole = new vConsole()
-// Vue.use(vconsole)
+import vConsole from 'vconsole'
+let vconsole = new vConsole()
+Vue.use(vconsole)
 
 Vue.use(VueWechatTitle)
 
