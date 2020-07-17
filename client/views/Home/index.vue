@@ -108,6 +108,7 @@ export default {
             ifFocus: false,
             reg: {},
             searchObj: {},
+            newObj:{},
             searchKye: "",
             obj: {
                 github: "https://github.com/",
@@ -198,7 +199,7 @@ export default {
             console.log(val);
         },
         handleEnter() {
-            this.searchObj = Object.assign({}, this.obj);
+            this.searchObj = Object.assign({}, this.newObj);
         },
         handleOver() {
             console.log("c2");
@@ -247,7 +248,7 @@ export default {
                 this.$delete(this.searchObj, key);
             }
             if (this.word === "") {
-                this.searchObj = Object.assign({}, this.obj);
+                this.searchObj = Object.assign({}, this.newObj);
             }
 
             // this.$delete(this.searchObj, key);
@@ -322,6 +323,13 @@ export default {
         this.getWindowHeight();
         window.addEventListener("resize", this.getWindowHeight);
 
+        this.newObj = {};
+        Object.keys(this.obj)
+            .sort()
+            .map(key => {
+                this.newObj[key] = this.obj[key];
+            });
+        console.log(this.newObj,'g2');
         // console.log(this.$refs,'d2');
     },
     created() {
