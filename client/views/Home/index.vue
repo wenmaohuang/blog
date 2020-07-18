@@ -169,7 +169,9 @@ export default {
                     "https://www.typescriptlang.org/docs/handbook/gulp.html",
                 node: "https://nodejs.org/dist/latest-v14.x/docs/api/",
                 webpack:
-                    "https://webpack.js.org/concepts/entry-points/#single-entry-shorthand-syntax"
+                    "https://webpack.js.org/concepts/entry-points/#single-entry-shorthand-syntax",
+                    react:"https://reactjs.org/docs/getting-started.html",
+                    angular:"https://angular.io/docs"
             }
         };
     },
