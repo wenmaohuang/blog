@@ -116,6 +116,13 @@ export default {
             padding: 8px;
             // padding: 10px 0;
             font-size: 16px;
+                width:460px;
+                overflow: hidden;
+
+            a{
+                // width:400px;
+                // display: inline-block
+            }
         }
     }
 }

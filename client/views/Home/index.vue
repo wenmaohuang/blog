@@ -167,9 +167,11 @@ export default {
                     angular:"https://angular.io/docs",
                     nginx:"http://nginx.org/en/docs/",
                     centos:"https://www.linuxidc.com/Linux/2018-06/152959.htm",
-                    express:"http://expressjs.com/en/4x/api.html",
+                    express:"https://www.expressjs.com.cn/5x/api.html",
                     blogadmin:"http://www.fyyd.vip:3002/",
-                    reactblog:"http://www.fyyd.vip:3001/"
+                    reactblog:"http://www.fyyd.vip:3001/",
+                    mysql:"https://dev.mysql.com/doc/refman/8.0/en/connection-options.html",
+                    apache:"http://httpd.apache.org/docs/2.4/"
             }
         };
     },
