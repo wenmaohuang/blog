@@ -114,13 +114,7 @@ export default {
                 github: "https://github.com/",
 
                 mongoosejs: "https://mongoosejs.com/docs/guide.html",
-                // localServer: "http://localhost/#/blog/0",
-                // localClient: "http://localhost:8080/#/blog/0",
                 npmjs: "https://www.npmjs.com/",
-                // expressServer: "http://www.fyyd.vip/#/blog/0",
-                // expressServer3002: "http://www.fyyd.vip:3002",
-                // nginxServer: "http://www.fyyd.vip:3000",
-                // mongooseDatabase: "http://www.mongoosejs.net/docs/models.html",
                 element:
                     "https://element.eleme.cn/#/zh-CN/component/installation",
                 vuejs: "https://vuejs.org/",
@@ -130,7 +124,6 @@ export default {
                 iconfont:
                     "https://www.iconfont.cn/manage/index?manage_type=myprojects&projectId=1811983",
                 fanyi: "https://fanyi.baidu.com/?aldtype=16047#auto/zh",
-                // searchBaidu: "http://baidu.com",
                 photoGirls: "https://www.umei.cc/bizhitupian/meinvbizhi/",
                 yinshi:
                     "https://www.shiguangkey.com/video/1346?videoId=141606&classId=9262&playback=1",
@@ -171,7 +164,12 @@ export default {
                 webpack:
                     "https://webpack.js.org/concepts/entry-points/#single-entry-shorthand-syntax",
                     react:"https://reactjs.org/docs/getting-started.html",
-                    angular:"https://angular.io/docs"
+                    angular:"https://angular.io/docs",
+                    nginx:"http://nginx.org/en/docs/",
+                    centos:"https://www.linuxidc.com/Linux/2018-06/152959.htm",
+                    express:"http://expressjs.com/en/4x/api.html",
+                    blogadmin:"http://www.fyyd.vip:3002/",
+                    reactblog:"http://www.fyyd.vip:3001/"
             }
         };
     },
