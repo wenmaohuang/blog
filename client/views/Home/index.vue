@@ -174,6 +174,7 @@ export default {
                     apache:"http://httpd.apache.org/docs/2.4/",
                     gulpjs:"https://gulpjs.com/docs/en/api/registry",
                     babel:"https://babeljs.io/docs/en/",
+                    less:"http://lesscss.org/"
             }
         };
     },
