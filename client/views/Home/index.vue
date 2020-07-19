@@ -171,7 +171,8 @@ export default {
                     blogadmin:"http://www.fyyd.vip:3002/",
                     reactblog:"http://www.fyyd.vip:3001/",
                     mysql:"https://dev.mysql.com/doc/refman/8.0/en/connection-options.html",
-                    apache:"http://httpd.apache.org/docs/2.4/"
+                    apache:"http://httpd.apache.org/docs/2.4/",
+                    gulpjs:"https://gulpjs.com/docs/en/api/registry"
             }
         };
     },
