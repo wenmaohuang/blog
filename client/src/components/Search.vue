@@ -133,6 +133,14 @@ export default {
                 width: 250px;
             }
         }
+        ul{
+            li{
+                width: 250px;
+
+                a{
+                }
+            }
+        }
     }
 }
 </style>
