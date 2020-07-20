@@ -42,7 +42,7 @@
                     </div>
                 </div>
             </div>
-            <div class="content">{{article.content}}</div>
+            <div class="content" v-html="article.content"></div>
         </div>
         <ArticleMessage @handleComment="comment"></ArticleMessage>
     </div>
