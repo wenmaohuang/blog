@@ -1,10 +1,10 @@
 <template>
-    <div class="articleShow" >
-        <section  v-for="(item,index) in articleList" :key="index">
+    <div class="articleShow">
+        <section v-for="(item,index) in articleList" :key="index">
             <div class="head">
                 <h5>
                     <span>{{'【'+item.type+'】'}}</span>
-                    <a :model="item.title" :value="item.title" ref='title'>{{item.title}}</a>
+                    <a :model="item.title" :value="item.title" ref="title">{{item.title}}</a>
                 </h5>
                 <div class="time">
                     <p>{{item.day}}</p>
@@ -15,10 +15,12 @@
                 </div>
             </div>
             <div class="content">
-                <router-link to="/content">
-                    <!-- <img src="http://www.fyyd.vip/img/1.png" @click="handleArticleList(item)" alt /> -->
+                <!-- <img src="http://www.fyyd.vip/img/1.png" @click="handleArticleList(item)" alt /> -->
+                <router-link class='img' to="/content">
                     <img :src="item.surface" @click="handleArticleList(item)" alt />
-                    <p v-html="item.content"></p>
+                </router-link>
+                <router-link class='p' to="/content">
+                    <p v-html="item.content" @click="handleArticleList(item)"></p>
                 </router-link>
             </div>
             <div class="footer">
@@ -47,15 +49,14 @@ const getArticleShow = request.getArticleShow;
 // const postArticleComment = request.postArticleComment;
 // const postArticleMessage = request.postArticleMessage;
 
-
 export default {
     name: "ArticleShow",
     data() {
         return {
             articleList: [],
             // article: '',
-            content:'test',
-            title:''
+            content: "test",
+            title: ""
         };
     },
     computed: {
@@ -67,13 +68,11 @@ export default {
         handleArticleList: function(item) {
             // console.log(this.$store.commit('edit'),555)
             // return item
-            this.$store.state.article = item
-            console.log(item,'cc');
-            console.log(this.$store.state.article,'dd');
+            this.$store.state.article = item;
+            console.log(item, "cc");
+            console.log(this.$store.state.article, "dd");
             // this.$store.commit('handleArticleList')
-        },
-     
-
+        }
     },
     watch: {
         id() {
@@ -133,14 +132,28 @@ export default {
             }
         }
         .content {
-            display: flex;
             padding: 20px;
-            img {
-                width: 200px;
-                background-size: contain;
+                display: flex;
+            .img {
+
+                img {
+                    width: 250px;
+                    height: 160px;
+                    background-size: contain;
+                }
             }
-            p {
-                padding: 0 20px;
+            .p {
+                    width: 100%;
+                      width: 100%;
+                    height: 260px;
+                    overflow: hidden;
+                    padding: 0 30px;
+                    text-align: center;
+
+                p {
+                    // width: 500px;
+                  
+                }
             }
         }
         .footer {
