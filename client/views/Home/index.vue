@@ -459,8 +459,9 @@ export default {
 .el-message-box{
     position: absolute;
     left: 0px;
-    width: 380px;
-    margin: 50% 10px;
+    right: 0px;
+    width: 95%;
+    margin: 50% auto;
        
     }
     }
