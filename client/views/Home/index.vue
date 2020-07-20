@@ -241,7 +241,7 @@ export default {
                     console.log("a2");
                 }
             }
-            console.log(this.searchObj, "j1");
+            // console.log(this.searchObj, "j1");
         },
         handleDelete() {
             console.log("u1");
@@ -337,7 +337,7 @@ export default {
             .map(key => {
                 this.newObj[key] = this.obj[key];
             });
-        console.log(this.newObj, "g2");
+        // console.log(this.newObj, "g2");
         // console.log(this.$refs,'d2');
     },
     created() {
