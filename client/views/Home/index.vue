@@ -174,7 +174,8 @@ export default {
                     apache:"http://httpd.apache.org/docs/2.4/",
                     gulpjs:"https://gulpjs.com/docs/en/api/registry",
                     babel:"https://babeljs.io/docs/en/",
-                    less:"http://lesscss.org/"
+                    less:"http://lesscss.org/",
+                    meinv:"https://www.tupianzj.com/meinv/mm/"
             }
         };
     },
@@ -266,6 +267,8 @@ export default {
         },
         handlerLogin() {
             const h = this.$createElement;
+            console.log(this,'a1');
+            // console.log(h);
             this.$msgbox({
                 title: "登录",
                 message: h(Login),
@@ -448,6 +451,23 @@ export default {
 }
 </style>
 
+<style lang="less">
+.el-message-box__wrapper{
+    // position: flex !important;
+    // margin:50% 50%;
+    @media only screen and (max-width: 500px){
+.el-message-box{
+    position: absolute;
+    left: 0px;
+    width: 380px;
+    margin: 50% 10px;
+       
+    }
+    }
+    
+}
+</style>
+
 
 <style lang="less" scoped>
 // .el-drawer {
@@ -518,7 +538,10 @@ footer {
             }
         }
     }
+    
 }
+
+
 
 @media only screen and (max-width: 500px) {
     /deep/ .el-drawer {
@@ -536,5 +559,6 @@ footer {
             }
         }
     }
+ 
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="login">
     <el-form
         ref="form"
         :model="form"
@@ -77,7 +77,10 @@
 </script>
 
 <style scoped lang="less">
-  .el-form{
+  .login{
+    
+    width: 100%;
+    .el-form{
     user-select: none;
     padding-right: 30px;
 
@@ -99,5 +102,6 @@
         font-size: 12px;
       }
     }
+  }
   }
 </style>
