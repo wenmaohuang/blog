@@ -21,7 +21,7 @@ export default {
         return axios.post('/article/getHot')
     },
     getArticleTItle(){
-        return axios.post('/article/getTitle')
+        return axios.get('/article/getTitle')
     },
     getArticleShow:(function(){
         let skip = 0

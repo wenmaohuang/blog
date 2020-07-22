@@ -44,7 +44,7 @@ router.post('/getHot', (req, res) => {
         })
 })
 
-router.post('/getTitle', (req, res) => {
+router.get('/getTitle', (req, res) => {
   // console.log(res,'dd');
     article.find({})
         .then(data => {
