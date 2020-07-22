@@ -165,6 +165,7 @@ export default {
                     "https://webpack.js.org/concepts/entry-points/#single-entry-shorthand-syntax",
                     react:"https://reactjs.org/docs/getting-started.html",
                     angular:"https://angular.io/docs",
+                    angularblog:"http://www.fyyd.vip:3003",
                     nginx:"http://nginx.org/en/docs/",
                     centos:"https://www.linuxidc.com/Linux/2018-06/152959.htm",
                     express:"https://www.expressjs.com.cn/5x/api.html",
