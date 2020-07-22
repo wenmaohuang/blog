@@ -80,10 +80,11 @@ import request from "../../api/index";
 import ArticleShow from "./ArticleShow";
 import HotArticle from "./HotArticle";
 let getArticleInfo = request.getArticleInfo;
+
 // const getArticleShow = request.getArticleShow;
 
 let getUser = request.getUser;
-let getArticleHot = request.getArticleHot;
+let getArticleTItle = request.getArticleTItle;
 export default {
     name: "Container",
     components: {
@@ -229,7 +230,7 @@ export default {
             .catch(err => {
                 console.log(err);
             });
-        // getArticleHot()
+        // getArticleTItle()
         //     .then(res => {
         //         this.articleHot = res.data.data;
         //     })
@@ -242,7 +243,7 @@ export default {
                 // console.log(res.data.data,'aaa');
             })
             .catch(() => {});
-        getArticleHot().then(res => {
+        getArticleTItle().then(res => {
             this.articleList = res.data.data;
 
             // console.log(this.articleList, 666);

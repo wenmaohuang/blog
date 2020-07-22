@@ -44,6 +44,26 @@ router.post('/getHot', (req, res) => {
         })
 })
 
+router.post('/getTitle', (req, res) => {
+  // console.log(res,'dd');
+    article.find({})
+        .then(data => {
+            // console.log(data,'cc')
+            res.send({
+                code: 0,
+                msg: '请求成功',
+                data
+            })
+        })
+        .catch(() => {
+            res.send({
+                code: 4,
+                msg: "服务器错误",
+                data: null
+            })
+        })
+})
+
 router.post('/getShow', (req, res) => {
     let {skip, limit, tag} = req.body
     let options = tag ? {tag} : {}

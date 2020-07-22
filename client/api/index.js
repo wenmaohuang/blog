@@ -20,6 +20,9 @@ export default {
     getArticleHot(){
         return axios.post('/article/getHot')
     },
+    getArticleTItle(){
+        return axios.post('/article/getTitle')
+    },
     getArticleShow:(function(){
         let skip = 0
         let limit = 5
