@@ -18,7 +18,7 @@
               <router-link to="/">首页</router-link>
             </el-menu-item>
             <el-menu-item index="1-2">
-            <router-link to="/blog/blog">博客</router-link>
+            <router-link to="/blog">博客</router-link>
             </el-menu-item>
             <el-menu-item index="1-3">
             <router-link to="/message">留言</router-link>
@@ -57,7 +57,7 @@ export default {
   display: none;
   position: absolute;
   left: 0;
-  z-index: 1;
+  z-index: 11;
 
   .el-col {
         // background-color:transparent;
