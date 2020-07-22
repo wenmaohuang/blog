@@ -18,8 +18,8 @@ var server = http.createServer(app)
 server.listen(port)
 server.on('error', onError)
 server.on('listening', onListening)
-var host = server.address().address;
-console.log('Example app listening at http://%s:%s', host, port);
+// var host = server.address().address;
+// console.log('Example app listening at http://%s:%s', host, port);
 
 function normalizePort(val) {
     var port = parseInt(val, 10)

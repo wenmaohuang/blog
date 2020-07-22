@@ -244,9 +244,13 @@ export default {
             })
             .catch(() => {});
         getTitle().then(res => {
+            console.log(res,'a&');
             this.articleList = res.data.data;
 
             // console.log(this.articleList, 666);
+        })
+        .catch(()=>{
+            console.log('error occur');
         });
     }
 };
