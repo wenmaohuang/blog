@@ -72,7 +72,8 @@ export default {
             console.log(item, "cc");
             console.log(this.$store.state.article, "dd");
             // this.$store.commit('handleArticleList')
-        }
+        },
+        
     },
     watch: {
         id() {
