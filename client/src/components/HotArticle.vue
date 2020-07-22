@@ -100,4 +100,9 @@ export default {
         }
     }
 }
+@media only screen and (max-width: 500px) {
+//    .hot{
+//        display: none;
+//    } 
+}
 </style>

@@ -2,11 +2,13 @@
     <div id="container" @click.stop="handleBlurSearchTitle">
         <el-container>
             <el-main>
+                    <ArticleSearch></ArticleSearch>
                 <ArticleShow></ArticleShow>
+
             </el-main>
             <el-aside>
                 <div class="search">
-                    <div class="search-main">
+                    <!-- <div class="search-main">
                         <input
                             type="text"
                             v-model="word"
@@ -18,12 +20,18 @@
                         <i class="el-icon-search"></i>
                         <div class="search-title" v-show="isShow">
                             <ul>
-                            <router-link v-for="(item,index) in searchArr" :key="index"  class="img" to="/content">
-                                <li @click="handleClick(item)">{{item}}</li>
-                            </router-link>
-                        </ul>
+                                <router-link
+                                    v-for="(item,index) in searchArr"
+                                    :key="index"
+                                    class="img"
+                                    to="/content"
+                                >
+                                    <li @click="handleClick(item)">{{item}}</li>
+                                </router-link>
+                            </ul>
                         </div>
-                    </div>
+                    </div> -->
+                    <ArticleSearch></ArticleSearch>
                     <div class="search-article">
                         <ul>
                             <li
@@ -79,17 +87,19 @@
 import request from "../../api/index";
 import ArticleShow from "./ArticleShow";
 import HotArticle from "./HotArticle";
+import ArticleSearch from "./ArticleSearch"
 let getArticleInfo = request.getArticleInfo;
 
 // const getArticleShow = request.getArticleShow;
 
 let getUser = request.getUser;
-let getTitle = request.getArticleTitle;
+// let getTitle = request.getArticleTitle;
 export default {
     name: "Container",
     components: {
         ArticleShow,
-        HotArticle
+        HotArticle,
+        ArticleSearch
     },
 
     data() {
@@ -101,40 +111,33 @@ export default {
             coverIndex: this.$route.params.id * 1,
             visitor: [],
             searchArr: [],
-            isShow:true,
+            isShow: true
             // blurPadding: ""
         };
     },
 
     methods: {
-        handleSeachTitle(){
-            this.articleList.forEach(item => {
-                // console.log('a..');
-                if (this.searchArr.length < this.articleList.length) {
-                    this.searchArr.push(item.title);
+        // handleSeachTitle() {
+        //     this.articleList.forEach(item => {
+        //         // console.log('a..');
+        //         if (this.searchArr.length < this.articleList.length) {
+        //             this.searchArr.push(item.title);
+        //         }
+        //     });
+        // },
+        // handleBlurSearchTitle() {
+        //     this.searchArr = [];
+        // },
+       
+        handleClick(item) {
+            // console.log(item, "a)");
+            this.articleList.forEach(i => {
+                if (i.title === item) {
+                    this.$store.state.article = i;
+                    // console.log(i, "a*");
                 }
             });
-        },
-        handleBlurSearchTitle(){
-            this.searchArr = [];
-        },
-        // handleEvent(e){
-        //     console.log(e.target,'a&');
-        // },
-        handleClick(item){
-            // this.$store.state.article = item
-            console.log(item,'a)');
-            this.articleList.forEach(i => {
-                // console.log(i.title,item);
-                if(i.title === item){
-            this.$store.state.article = i
-
-                console.log(i,'a*');
-                    // console.log();
-                }
-            })
-            
-            console.log(this.$store.state.article,item,'a=');
+            // console.log(this.$store.state.article, item, "a=");
         },
         handleMouseenter(index) {
             this.coverIndex = index;
@@ -143,74 +146,32 @@ export default {
         handleMouseleave() {
             this.coverIndex = 0;
         },
-        handleSearch() {
-            // console.log(this.articleList,'a/');
-            // for (var title in this.articleList) {
-
-            this.searchArr = [];
-
-            this.articleList.forEach(item => {
-                // console.log('a..');
-                // this.searchArr.push(item.title);
-                if (this.word) {
-                    // this.$delete(this.searchObj, key);
-                    // console.log("e2");
-                    this.reg = new RegExp("^" + this.word);
-                    // console.log(item.title,"a;");
-                    this.searchTitle = item.title.match(this.reg);
-                    // console.log(this.searchTitle, "a,,");
-                    if (this.searchTitle !== null) {
-                        this.searchTitleInput = this.searchTitle["input"];
-                        console.log(this.searchTitleInput, "p1");
-                        this.searchArr.push(this.searchTitleInput);
-                        console.log(this.searchArr, "a[");
-                        // this.$set(
-                        //     this.searchObj,
-                        //     this.searchTitleInput,
-                        //     this.obj[this.searchTitleInput]
-                        // );
-                    }
-                }
-                if (this.word === "") {
-                    // console.log("a2");
-                }
-            });
-            // console.log(this.searchObj, "j1");
-        },
-        handleDelete() {
-            // for (var key in this.searchObj) {
-            //     this.reg = new RegExp("^" + this.word);
-            //     this.searchKey = key.match(this.reg);
-
-            //     this.$delete(this.searchObj, key);
-            // }
-            if (this.word === "") {
-                this.articleList.forEach(item => {
-                    // console.log('a..');
-                    if (this.searchArr.length < this.articleList.length) {
-                        this.searchArr.push(item.title);
-                    }
-                });
-            }
-
-            // this.$delete(this.searchObj, key);
-        },
-        // handleFocus() {
+        // handleSearch() {
+        //     this.searchArr = [];
         //     this.articleList.forEach(item => {
-        //         // console.log('a..');
-        //         if (this.searchArr.length < this.articleList.length) {
-        //             this.searchArr.push(item.title);
+        //         if (this.word) {
+        //             this.reg = new RegExp("^" + this.word);
+        //             this.searchTitle = item.title.match(this.reg);
+        //             if (this.searchTitle !== null) {
+        //                 this.searchTitleInput = this.searchTitle["input"];
+        //                 this.searchArr.push(this.searchTitleInput);                       
+        //             }
+        //         }
+        //         if (this.word === "") {
         //         }
         //     });
-        //     // this.blurPadding = "10px";
-        //     // this.isShow = true
-
         // },
-        // handleBlur() {
-        //     // this.searchArr = [];
-        //     // this.blurborderradius = 0;
-        //     // this.isShow = false
+        // handleDelete() {
+        //     if (this.word === "") {
+        //         this.articleList.forEach(item => {
+        //             if (this.searchArr.length < this.articleList.length) {
+        //                 this.searchArr.push(item.title);
+        //             }
+        //         });
+        //     }
+
         // }
+     
     },
 
     computed: {
@@ -220,38 +181,30 @@ export default {
     },
 
     mounted() {
-        console.log(this.$store.state.article,'a-');
+        // console.log(this.$store.state.article, "a-");
         getArticleInfo()
             .then(res => {
-                this.articleTages = res.data.data.tags; // console.log(res.data.data.tags);
-                // console.log(this.articleTages,'aa');
-                // console.log(res,'bb');
+                this.articleTages = res.data.data.tags; 
+              
             })
             .catch(err => {
                 console.log(err);
             });
-        // getArticleTitle()
-        //     .then(res => {
-        //         this.articleHot = res.data.data;
-        //     })
-        //     .catch(err => {
-        //         console.log(err);
-        //     });
+    
         getUser()
             .then(res => {
                 this.visitor = res.data.data;
-                // console.log(res.data.data,'aaa');
             })
             .catch(() => {});
-        getTitle().then(res => {
-            console.log(res,'a&');
-            this.articleList = res.data.data;
+        // getTitle()
+        //     .then(res => {
+        //         console.log(res, "a&");
+        //         this.articleList = res.data.data;
 
-            // console.log(this.articleList, 666);
-        })
-        .catch(()=>{
-            console.log('error occur');
-        });
+        //     })
+        //     .catch(() => {
+        //         console.log("error occur");
+        //     });
     }
 };
 </script>
@@ -263,7 +216,7 @@ export default {
     justify-content: space-around;
 
     > .el-container {
-    // position:absolute;
+        // position:absolute;
 
         max-width: 1300px;
         margin: 20px auto;
@@ -282,62 +235,53 @@ export default {
             > .search {
                 background-color: #fff;
 
-                .search-main {
+                // .search-main {
+                //     position: relative;
+                //     z-index: 10;
+                //     height: 40px;
+                //     padding: 20px;
+                //     background-color: grey;
 
-                    position: relative;
-                    z-index: 10;
-                    height: 40px;
-                    padding: 20px;
-                    background-color: grey;
+                //     input {
+                //         width: 100%;
+                //         height: 40px;
+                //         border-radius: 20px;
+                //         border: 0;
+                //         outline: 0;
+                //         text-indent: 2em;
+                //     }
 
-                    input {
-                        width: 100%;
-                        height: 40px;
-                        border-radius: 20px;
-                        border: 0;
-                        outline: 0;
-                        text-indent: 2em;
-                    }
+                //     i {
+                //         position: absolute;
+                //         font-size: 18px;
+                //         line-height: 20;
+                //         cursor: pointer;
 
-                    i {
-                        position: absolute;
-                        font-size: 18px;
-                        line-height: 20;
-                        cursor: pointer;
+                //         &::before {
+                //             position: relative;
+                //             top: -160px;
+                //             left: -30px;
+                //         }
+                //     }
+                //     .search-title {
+                //         position: absolute;
+                //         top: 80px;
+                //         background-color: #789;
+                //         border-radius: 10px;
+                //         ul {
+                //             margin: 10px;
+                //             margin-block-start: 0;
+                //             margin-block-end: 0;
+                         
 
-                        &::before {
-                            position: relative;
-                            top: -160px;
-                            left: -30px;
-                        }
-                    }
-                    .search-title{
-                        // padding: 10px;
-                         position: absolute;
-                        // z-index: 1;
-                        top: 80px;
-                        background-color: #789;
-                        // padding: 10px !important;
-                        border-radius: 10px;
-                        ul {
-                            margin: 10px;
-                            // list-style-type: none;
-                            margin-block-start: 0;
-                            margin-block-end: 0;
-                            // box-sizing: border-box;
-                            // padding: 0;
-                        // opacity:1;
-
-                        li {
-                            // padding: 5px;
-                            padding: 5px;
-                            font-size: 16px;
-                            color: #fff;
-                        }
-                    }
-                    }
-                    
-                }
+                //             li {
+                //                 padding: 5px;
+                //                 font-size: 16px;
+                //                 color: #fff;
+                //             }
+                //         }
+                //     }
+                // }
 
                 .search-article {
                     position: relative;
@@ -475,6 +419,8 @@ export default {
         @media only screen and (max-width: 500px) {
             .el-aside {
                 display: none;
+           
+
             }
         }
     }

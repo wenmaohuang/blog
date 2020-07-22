@@ -20,7 +20,7 @@
                     <span>...</span>
                 </div>
                 <aplayer
-                 :music="{
+                    :music="{
                     title:'faded',artist:'walker',src:'mp3/faded.m4a',pic:'img/4.jpg'
                     }"
                     :list="[
@@ -31,7 +31,6 @@
                     :autoplay="true"
                     :shuffle="true"
                     repeat="repeat-all"
-                   
                 ></aplayer>
 
                 <div class="time">
@@ -42,6 +41,19 @@
                     </div>
                 </div>
             </div>
+             <aplayer class="maxaplayer"
+                    :music="{
+                    title:'faded',artist:'walker',src:'mp3/faded.m4a',pic:'img/4.jpg'
+                    }"
+                    :list="[
+                     {title:'少年',artist:'梦然',src:'mp3/少年.m4a',pic:'img/4.jpg'},
+                     {title:'faded',artist:'walker',src:'mp3/faded.m4a',pic:'img/4.jpg'}
+                     ]"
+                    :listFolded="true"
+                    :autoplay="true"
+                    :shuffle="true"
+                    repeat="repeat-all"
+                ></aplayer>
             <div class="content" v-html="article.content"></div>
         </div>
         <ArticleMessage @handleComment="comment"></ArticleMessage>
@@ -58,8 +70,6 @@ import request from "../../../api/index";
 const postIfLogin = request.postIfLogin;
 const postArticleComment = request.postArticleComment;
 const postArticleMessage = request.postArticleMessage;
-
-
 
 import ArticleMessage from "../../../src/components/ArticleMessage";
 
@@ -78,12 +88,12 @@ export default {
         ArticleMessage
     },
     methods: {
-        comment(val){
+        comment(val) {
             postIfLogin()
                 .then(res => {
                     if (res.data.userInfo) {
                         console.log(res.data, 111);
-                        console.log(val,98);
+                        console.log(val, 98);
 
                         postArticleComment({
                             user: res.data.userInfo._id,
@@ -127,7 +137,6 @@ export default {
                 .catch(() => {
                     layer.msg("服务器出错了", { icon: 2 });
                 });
-        
         }
     },
 
@@ -148,8 +157,12 @@ export default {
     min-height: 900px;
 
     .detail {
+    display: flex;
+    flex-direction: column;
+
         // background-color: #aaa;
-        background-color: #fff;
+        background-color: #418b55;
+        color: #fff;
 
         margin: 20px auto 0;
         width: 1260px;
@@ -180,7 +193,14 @@ export default {
                         background-color: transparent !important;
                     }
                 }
+               
             }
+             @media only screen and (max-width: 500px) {
+                 .aplayer{
+                     display: none;
+                   
+                 }   
+                }
             .time {
                 display: flex;
                 flex-direction: column;
@@ -198,13 +218,35 @@ export default {
                 }
             }
         }
+         @media only screen and (min-width: 500px) {
+                 .maxaplayer{
+                     display: none;
+                   
+                 }   
+                }
         .content {
             // background-color: #eee;
             padding: 0 25px;
             font-size: 16px;
             min-height: 400px;
             margin-top: 20px;
+            p {
+                margin: 10px;
+                line-height: 30px;
+                blockquote {
+                    p {
+                        margin: 10px;
+                    }
+                }
+            }
         }
     }
+}
+@media only screen and (max-width: 500px){
+   .articleDetail{
+       .detail{
+              width: 100%;
+       }
+   } 
 }
 </style>
