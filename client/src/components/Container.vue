@@ -84,7 +84,7 @@ let getArticleInfo = request.getArticleInfo;
 // const getArticleShow = request.getArticleShow;
 
 let getUser = request.getUser;
-let getArticleTItle = request.getArticleTItle;
+let getTitle = request.getArticleTitle;
 export default {
     name: "Container",
     components: {
@@ -230,7 +230,7 @@ export default {
             .catch(err => {
                 console.log(err);
             });
-        // getArticleTItle()
+        // getArticleTitle()
         //     .then(res => {
         //         this.articleHot = res.data.data;
         //     })
@@ -243,7 +243,7 @@ export default {
                 // console.log(res.data.data,'aaa');
             })
             .catch(() => {});
-        getArticleTItle().then(res => {
+        getTitle().then(res => {
             this.articleList = res.data.data;
 
             // console.log(this.articleList, 666);
