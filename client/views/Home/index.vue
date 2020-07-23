@@ -177,7 +177,7 @@ export default {
                     babel:"https://babeljs.io/docs/en/",
                     less:"http://lesscss.org/",
                     meinv:"https://www.tupianzj.com/meinv/mm/",
-                    mdn:"https://developer.mozilla.org/zh-CN/docs/Web/JavaScript",
+                    mdn:"https://developer.mozilla.org/en-US/docs/Web/JavaScript",
                     threejs:"http://www.webgl3d.cn/"
             }
         };
