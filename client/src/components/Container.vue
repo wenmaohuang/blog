@@ -2,9 +2,8 @@
     <div id="container" @click.stop="handleBlurSearchTitle">
         <el-container>
             <el-main>
-                    <ArticleSearch></ArticleSearch>
+                <ArticleSearch class="isshow"></ArticleSearch>
                 <ArticleShow></ArticleShow>
-
             </el-main>
             <el-aside>
                 <div class="search">
@@ -30,7 +29,7 @@
                                 </router-link>
                             </ul>
                         </div>
-                    </div> -->
+                    </div>-->
                     <ArticleSearch></ArticleSearch>
                     <div class="search-article">
                         <ul>
@@ -87,7 +86,7 @@
 import request from "../../api/index";
 import ArticleShow from "./ArticleShow";
 import HotArticle from "./HotArticle";
-import ArticleSearch from "./ArticleSearch"
+import ArticleSearch from "./ArticleSearch";
 let getArticleInfo = request.getArticleInfo;
 
 // const getArticleShow = request.getArticleShow;
@@ -99,7 +98,7 @@ export default {
     components: {
         ArticleShow,
         HotArticle,
-        ArticleSearch
+        ArticleSearch,
     },
 
     data() {
@@ -111,7 +110,7 @@ export default {
             coverIndex: this.$route.params.id * 1,
             visitor: [],
             searchArr: [],
-            isShow: true
+            isShow: true,
             // blurPadding: ""
         };
     },
@@ -128,10 +127,10 @@ export default {
         // handleBlurSearchTitle() {
         //     this.searchArr = [];
         // },
-       
+
         handleClick(item) {
             // console.log(item, "a)");
-            this.articleList.forEach(i => {
+            this.articleList.forEach((i) => {
                 if (i.title === item) {
                     this.$store.state.article = i;
                     // console.log(i, "a*");
@@ -154,7 +153,7 @@ export default {
         //             this.searchTitle = item.title.match(this.reg);
         //             if (this.searchTitle !== null) {
         //                 this.searchTitleInput = this.searchTitle["input"];
-        //                 this.searchArr.push(this.searchTitleInput);                       
+        //                 this.searchArr.push(this.searchTitleInput);
         //             }
         //         }
         //         if (this.word === "") {
@@ -171,28 +170,26 @@ export default {
         //     }
 
         // }
-     
     },
 
     computed: {
         getArticleRecommend() {
             return this.articleHot[0] || {};
-        }
+        },
     },
 
     mounted() {
         // console.log(this.$store.state.article, "a-");
         getArticleInfo()
-            .then(res => {
-                this.articleTages = res.data.data.tags; 
-              
+            .then((res) => {
+                this.articleTages = res.data.data.tags;
             })
-            .catch(err => {
+            .catch((err) => {
                 console.log(err);
             });
-    
+
         getUser()
-            .then(res => {
+            .then((res) => {
                 this.visitor = res.data.data;
             })
             .catch(() => {});
@@ -205,7 +202,7 @@ export default {
         //     .catch(() => {
         //         console.log("error occur");
         //     });
-    }
+    },
 };
 </script>
 <style lang="less" scoped>
@@ -224,6 +221,12 @@ export default {
         // margin: 0 auto;
         .el-main {
             padding: 0 20px;
+            @media only screen and (min-width: 500px) {
+                .isshow {
+                    display: none;
+                }
+            }
+            
         }
 
         > .el-aside {
@@ -272,7 +275,6 @@ export default {
                 //             margin: 10px;
                 //             margin-block-start: 0;
                 //             margin-block-end: 0;
-                         
 
                 //             li {
                 //                 padding: 5px;
@@ -419,8 +421,6 @@ export default {
         @media only screen and (max-width: 500px) {
             .el-aside {
                 display: none;
-           
-
             }
         }
     }

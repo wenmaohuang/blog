@@ -176,7 +176,9 @@ export default {
                     gulpjs:"https://gulpjs.com/docs/en/api/registry",
                     babel:"https://babeljs.io/docs/en/",
                     less:"http://lesscss.org/",
-                    meinv:"https://www.tupianzj.com/meinv/mm/"
+                    meinv:"https://www.tupianzj.com/meinv/mm/",
+                    mdn:"https://developer.mozilla.org/zh-CN/docs/Web/JavaScript",
+                    threejs:"http://www.webgl3d.cn/"
             }
         };
     },
