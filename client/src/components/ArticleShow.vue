@@ -164,7 +164,7 @@ console.log(e);
                       width: 100%;
                     height: 260px;
                     overflow: hidden;
-                    line-height: 20px;
+                    line-height: 30px;
                     padding: 0 30px;
                     text-align: center;
 
