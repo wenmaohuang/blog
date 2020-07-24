@@ -27,17 +27,18 @@
 <script>
 import request from "../../api/index";
 let getTitle = request.getArticleTitle;
+const postArticleReadCount = request.postArticleReadCount;
 
 export default {
     data() {
         return {
-            word:'',
-            searchArr: []
+            word: "",
+            searchArr: [],
         };
     },
     methods: {
         handleSeachTitle() {
-            this.articleList.forEach(item => {
+            this.articleList.forEach((item) => {
                 // console.log('a..');
                 if (this.searchArr.length < this.articleList.length) {
                     this.searchArr.push(item.title);
@@ -49,7 +50,7 @@ export default {
         },
         handleSearch() {
             this.searchArr = [];
-            this.articleList.forEach(item => {
+            this.articleList.forEach((item) => {
                 if (this.word) {
                     this.reg = new RegExp("^" + this.word);
                     this.searchTitle = item.title.match(this.reg);
@@ -65,34 +66,49 @@ export default {
         },
         handleClick(item) {
             // console.log(item, "a)");
-            this.articleList.forEach(i => {
+            this.articleList.forEach((i) => {
                 if (i.title === item) {
                     this.$store.state.article = i;
                     // console.log(i, "a*");
                 }
             });
+
+            console.log(this.$store.state.article.readcount, "a#");
+            this.$store.state.article.readcount =
+                this.$store.state.article.readcount + 1;
+            console.log(this.$store.state.article.readcount, "a%");
+            postArticleReadCount({
+                articleId: this.$store.state.article._id,
+                readcount: this.$store.state.article.readcount,
+            })
+                .then((res) => {
+                    res.send({ code: 0 });
+                })
+                .catch((e) => {
+                    console.log(e);
+                });
             // console.log(this.$store.state.article, item, "a=");
         },
         handleDelete() {
             if (this.word === "") {
-                this.articleList.forEach(item => {
+                this.articleList.forEach((item) => {
                     if (this.searchArr.length < this.articleList.length) {
                         this.searchArr.push(item.title);
                     }
                 });
             }
-        }
+        },
     },
     mounted() {
         getTitle()
-            .then(res => {
+            .then((res) => {
                 console.log(res, "a&");
                 this.articleList = res.data.data;
             })
             .catch(() => {
                 console.log("error occur");
             });
-    }
+    },
 };
 </script>
 
@@ -143,5 +159,4 @@ export default {
         }
     }
 }
-
 </style>

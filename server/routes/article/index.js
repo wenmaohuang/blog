@@ -87,6 +87,40 @@ router.post('/getShow', (req, res) => {
         })
 })
 
+router.post("/readCount",(req,res)=>{
+  let {articleId,readcount} =req.body
+  console.log(articleId,readcount,'a^');
+  if(!articleId || !readcount){
+    res.send({
+      code : 1,
+      msg : "数据格式错误"
+    });
+    return;
+  
+  }
+
+  article.updateOne({
+    _id: articleId,
+  },{
+    
+    $set:{readcount}
+  })
+    .then((data)=>{
+      res.send({
+        code : 0,
+        msg : "阅读量加1!",
+        data
+      });
+    })
+    .catch(()=>{
+      res.send({
+        code : 4,
+        msg : "服务器错误~",
+        data:[]
+      });
+    })
+  
+})
 
 router.post("/messageCommit",(req,res)=>{
     let {articleId,comment} = req.body;

@@ -29,7 +29,9 @@
                         <span>{{'【'+item.tag+'】'}}</span>
                     </h5>
                     <div class="reader">
-                        <span>10</span>
+                        <span class="iconfont icon-yuedu"></span>
+                        <span>{{item.readcount}}</span>
+                        
                     </div>
                 </div>
             </div>
@@ -42,6 +44,7 @@
 <script>
 import request from "../../api";
 const getArticleShow = request.getArticleShow;
+const postArticleReadCount = request.postArticleReadCount
 
 // import request from "../../../api/index";
 
@@ -56,7 +59,8 @@ export default {
             articleList: [],
             // article: '',
             content: "test",
-            title: ""
+            title: "",
+            readcount:0,
         };
     },
     computed: {
@@ -68,7 +72,19 @@ export default {
         handleArticleList: function(item) {
             // console.log(this.$store.commit('edit'),555)
             // return item
+
+            // item.readcount = item.readcount + 1
             this.$store.state.article = item;
+            console.log(this.$store.state.article.readcount,'a#');
+            this.$store.state.article.readcount = this.$store.state.article.readcount + 1 
+            console.log(this.$store.state.article.readcount,'a%');
+            postArticleReadCount({articleId:this.$store.state.article._id,readcount:this.$store.state.article.readcount}).then(res=>{
+                    res.send({code:0})
+            }).catch(e=>{
+console.log(e);
+            })
+
+            // this.$store.state.article.readcount = this.readcount + 1
             console.log(item, "cc");
             console.log(this.$store.state.article, "dd");
             // this.$store.commit('handleArticleList')
@@ -174,10 +190,19 @@ export default {
                     }
                 }
                 .reader {
+                    display:flex;
+                    flex-direction: column;
+                    .iconfont{
+                        width: 20px;
+                        font-size: 25px;
+                        text-align: center;
+
+                    }
                     span {
                         display: inline-block;
                         box-sizing: border-box;
-                        padding: 10px 0;
+                        text-align: center;
+                        // padding: 10px 0;
                     }
                 }
             }

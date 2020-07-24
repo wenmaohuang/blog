@@ -124,9 +124,9 @@ export default {
         //         }
         //     });
         // },
-        // handleBlurSearchTitle() {
-        //     this.searchArr = [];
-        // },
+        handleBlurSearchTitle() {
+            this.searchArr = [];
+        },
 
         handleClick(item) {
             // console.log(item, "a)");

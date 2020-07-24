@@ -76,6 +76,9 @@ export default {
     postArticleChildMessage(options){
         return axios.post('/articlemessage/childmessageCommit',options)
     },
+    postArticleReadCount(options){
+        return axios.post('./article/readCount',options)
+    },
     getMessage(){
         return axios.post('/message/getList')
     },
