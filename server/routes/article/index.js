@@ -69,22 +69,30 @@ router.post('/getShow', (req, res) => {
     let options = tag ? {tag} : {}
     // console.log(skip, limit, tag,'test');
 // console.log(request,'eee');
+// console.log(req.body,'a!');
+// console.log(date- new Date(),'a@');
+// console.log(article,'a~');
+// let newDate = new Date()
+// console.log(res.db,'b,');
 
+    article.find({$and:[options,{pv:{$lt:1}}]}, {__v:0} ,{skip, limit,sort:{readcount:-1,date:-1}})
+    .then(data => {
+        res.send({
+            code: 0,
+            data,
 
-    article.find(options, {__v:0}, {skip, limit,sort:{pv:-1}})
-        .then(data => {
-            res.send({
-                code: 0,
-                data,
-
-            })
         })
-        .catch(err => {
-            res.send({
-                code: 4,
-                msg: '服务器错误'
-            })
+    })
+    .catch(err => {
+        res.send({
+            code: 4,
+            msg: '服务器错误'
         })
+    })
+
+  
+
+   
 })
 
 router.post("/readCount",(req,res)=>{

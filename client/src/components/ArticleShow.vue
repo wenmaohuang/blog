@@ -100,6 +100,7 @@ console.log(e);
     },
 
     mounted() {
+        // console.log(this.$store.state.article,'b.');
         getArticleShow(this.$route.params.id, true).then(res => {
             this.articleList = res.data.data;
             // console.log(this, 666);

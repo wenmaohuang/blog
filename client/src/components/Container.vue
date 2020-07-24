@@ -89,6 +89,9 @@ import HotArticle from "./HotArticle";
 import ArticleSearch from "./ArticleSearch";
 let getArticleInfo = request.getArticleInfo;
 
+let getArticleHot = request.getArticleHot;
+
+
 // const getArticleShow = request.getArticleShow;
 
 let getUser = request.getUser;
@@ -180,6 +183,14 @@ export default {
 
     mounted() {
         // console.log(this.$store.state.article, "a-");
+
+         getArticleHot()
+                .then(res => {
+                    this.articleHot = res.data.data;
+                })
+                .catch(err => {
+                    console.log(err);
+                });
         getArticleInfo()
             .then((res) => {
                 this.articleTages = res.data.data.tags;

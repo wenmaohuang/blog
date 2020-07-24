@@ -3,7 +3,7 @@
         <h3>热门文章</h3>
         <ul>
             <li v-for="(i,index) in articleHot" :key="index">
-                <i>{{index}}</i>
+                <i>{{index+1}}</i>
                 <a :href="i._id">{{i.title}}</a>
             </li>
         </ul>
