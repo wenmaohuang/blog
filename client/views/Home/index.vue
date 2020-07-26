@@ -178,7 +178,8 @@ export default {
                     less:"http://lesscss.org/",
                     meinv:"https://www.tupianzj.com/meinv/mm/",
                     mdn:"https://developer.mozilla.org/en-US/docs/Web/JavaScript",
-                    threejs:"http://www.webgl3d.cn/"
+                    threejs:"http://www.webgl3d.cn/",
+                    bootCDN:"https://www.bootcdn.cn/"
             }
         };
     },
