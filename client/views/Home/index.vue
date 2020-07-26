@@ -154,7 +154,7 @@ export default {
                     "https://developers.weixin.qq.com/miniprogram/en/dev/framework/",
                 weixinAdmin:
                     "https://mp.weixin.qq.com/wxamp/wacodepage/getcodepage?token=174094833&lang=zh_CN",
-                bilibili: "https://www.bilibili.com/video/BV1nE41117BQ?p=9",
+                bilibiliweixin: "https://www.bilibili.com/video/BV1nE41117BQ?p=9",
                 movie: "http://27k.cc/?m=vod-play-id-37805-src-1-num-1.html",
                 flutter:
                     "https://flutter.dev/docs/development/tools/android-studio",
@@ -179,7 +179,9 @@ export default {
                     meinv:"https://www.tupianzj.com/meinv/mm/",
                     mdn:"https://developer.mozilla.org/en-US/docs/Web/JavaScript",
                     threejs:"http://www.webgl3d.cn/",
-                    bootCDN:"https://www.bootcdn.cn/"
+                    bootCDN:"https://www.bootcdn.cn/",
+                    bilibiliangualar:"https://www.bilibili.com/video/BV1bt411e71b?from=search&seid=15562787847422779010",
+                    angularcn:"https://angular.cn/tutorial/toh-pt3"
             }
         };
     },
