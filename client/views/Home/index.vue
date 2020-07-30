@@ -111,6 +111,7 @@ export default {
             newObj: {},
             searchKye: "",
             obj: {
+                bilibiligulp:"https://www.bilibili.com/video/BV1D4411P7tx?p=3",
                 github: "https://github.com/",
 
                 mongoosejs: "https://mongoosejs.com/docs/guide.html",
@@ -181,7 +182,8 @@ export default {
                     threejs:"http://www.webgl3d.cn/",
                     bootCDN:"https://www.bootcdn.cn/",
                     bilibiliangualar:"https://www.bilibili.com/video/BV1bt411e71b?from=search&seid=15562787847422779010",
-                    angularcn:"https://angular.cn/tutorial/toh-pt3"
+                    angularcn:"https://angular.cn/tutorial/toh-pt3",
+                    angulartantui:"https://ng.ant.design/components/collapse/en#ng-content"
             }
         };
     },
