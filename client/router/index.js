@@ -10,6 +10,14 @@ const routes = [{
         component: () => import('../views/Home')
     },
     {
+        path: '/content',
+        name: 'content',
+        meta: {
+            title: '博客'
+        },
+        component:()=>import('../views/Blog/articleContent/ArticleContent.vue')
+    },
+    {
         path: '/nav',
         name: 'Nav',
         meta: {
@@ -65,16 +73,7 @@ const routes = [{
                     title: '博客'
                 },
                 component: () => import('../views/Blog'),
-                children:[
-                    {
-                        path: '/',
-                        // name: 'content',
-                        meta: {
-                            title: '博客'
-                        },
-                        component:()=>import('../views/Blog/articleContent/ArticleContent.vue')
-                    },
-                ]
+               
               
             },
            
