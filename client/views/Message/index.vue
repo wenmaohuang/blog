@@ -1,6 +1,6 @@
 <template>
     <div class="message">
-        <Nav></Nav>
+        <!-- <Nav></Nav> -->
         <div class="main">
             <div class="content">
                 <article>
@@ -48,7 +48,7 @@
 <script src="/static/layui/layui.js"></script>
 
 <script>
-import Nav from "../../src/components/Nav";
+// import Nav from "../../src/components/Nav";
 import RichText from "../../src/components/RichText";
 import ParentRichText from "../../src/components/ParentRichText";
 import ChildMessage from "../../src/components/ChildMessage";
@@ -162,7 +162,7 @@ export default {
         });
     },
     components: {
-        Nav,
+        // Nav,
         RichText,
         ParentRichText,
         ChildMessage

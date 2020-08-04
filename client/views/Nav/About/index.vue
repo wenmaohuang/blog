@@ -58,14 +58,14 @@ export default {
 
 <style scoped lang="less">
 .About {
-  background-image: url("../../src/assets/img/2.jpg");
+  background-image: url("../../../src/assets/img/2.jpg");
   width: 100%;
  
   .about-main {
     box-sizing: border-box;
     width: 100%;
     max-width: 1300px;
-    padding: 30px 20px;
+    padding: 20px 20px;
     height:800px;
     margin: 0 auto;
     .a-m-content {

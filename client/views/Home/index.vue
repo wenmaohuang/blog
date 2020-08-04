@@ -4,15 +4,15 @@
             <el-button @click="drawer = true" type="primary" style="margin-left: 16px;">
                 <i class="iconfont icon-caidan"></i>
             </el-button>
-
-            <el-drawer title :visible.sync="drawer" :show-close="true">
+            <el-drawer title :visible.sync="drawer" :show-close="true" :modal="false">
                 <div class="blog">
-                    <el-button @click="handlerLogin">登录</el-button>
+                    <!-- <el-button @click="handlerLogin">登录</el-button> -->
+                    <DialogLogin></DialogLogin>
 
-                    <router-link to="/blog">博客</router-link>
-                    <router-link to="/message">留言</router-link>
-                    <router-link to="/links">友链</router-link>
-                    <router-link to="/about">关于</router-link>
+                    <router-link to="/nav/blog">博客</router-link>
+                    <router-link to="/nav/message">留言</router-link>
+                    <router-link to="/nav/links">友链</router-link>
+                    <router-link to="/nav/about">关于</router-link>
                 </div>
             </el-drawer>
         </div>
@@ -25,16 +25,16 @@
                 <p>风移影动</p>
                 <p>自由自在的流浪</p>
                 <p>
-                    <router-link to="/about">about me</router-link>
+                    <router-link to="/nav/about">about me</router-link>
                 </p>
             </div>
             <div class="link">
                 <p>相关链接</p>
                 <p>
-                    <router-link to="/blog/全部文章">博客</router-link>
+                    <router-link to="/nav/blog">博客</router-link>
                 </p>
                 <p>
-                    <router-link to="/daily">日记</router-link>
+                    <router-link to="/nav/daily">日记</router-link>
                 </p>
             </div>
             <div class="connect">
@@ -51,11 +51,6 @@
             @mouseover.native="handleOver"
         >
             <el-collapse-item v-show="ifLogin" title name="1">
-                <!-- <ul>
-                    <li v-for="(item,index) in obj" :key="index">
-                        <a :href="item" :style="style">{{index}}</a>
-                    </li>
-                </ul>-->
                 <ul
                     class="infinite-list"
                     v-infinite-scroll="load"
@@ -81,10 +76,10 @@
 <script>
 import request from "../../api/index";
 import Search from "../../src/components/Search";
-import Login from "../../src/components/Login";
+// import Login from "../../src/components/Login";
+import DialogLogin from "../../src/components/DialogLogin";
 
-// import request from "../../api/index";
-const postLogin = request.postLogin;
+// const postLogin = request.postLogin;
 
 const postIfLogin = request.postIfLogin;
 
@@ -92,6 +87,7 @@ export default {
     name: "index",
     data() {
         return {
+            // dialogFormVisible: false,
             drawer: false,
             isClick: false,
             count: 0,
@@ -103,7 +99,7 @@ export default {
                 display: "block",
                 textDecoration: "none",
                 textAlign: "center",
-                fontSize: "20px"
+                fontSize: "20px",
             },
             ifFocus: false,
             reg: {},
@@ -111,7 +107,7 @@ export default {
             newObj: {},
             searchKye: "",
             obj: {
-                bilibiligulp:"https://www.bilibili.com/video/BV1D4411P7tx?p=3",
+                bilibiligulp: "https://www.bilibili.com/video/BV1D4411P7tx?p=3",
                 github: "https://github.com/",
 
                 mongoosejs: "https://mongoosejs.com/docs/guide.html",
@@ -155,7 +151,8 @@ export default {
                     "https://developers.weixin.qq.com/miniprogram/en/dev/framework/",
                 weixinAdmin:
                     "https://mp.weixin.qq.com/wxamp/wacodepage/getcodepage?token=174094833&lang=zh_CN",
-                bilibiliweixin: "https://www.bilibili.com/video/BV1nE41117BQ?p=9",
+                bilibiliweixin:
+                    "https://www.bilibili.com/video/BV1nE41117BQ?p=9",
                 movie: "http://27k.cc/?m=vod-play-id-37805-src-1-num-1.html",
                 flutter:
                     "https://flutter.dev/docs/development/tools/android-studio",
@@ -164,70 +161,49 @@ export default {
                 node: "https://nodejs.org/dist/latest-v14.x/docs/api/",
                 webpack:
                     "https://webpack.js.org/concepts/entry-points/#single-entry-shorthand-syntax",
-                    react:"https://reactjs.org/docs/getting-started.html",
-                    angular:"https://angular.io/docs",
-                    angularblog:"http://www.fyyd.vip:3003",
-                    nginx:"http://nginx.org/en/docs/",
-                    centos:"https://www.linuxidc.com/Linux/2018-06/152959.htm",
-                    express:"https://www.expressjs.com.cn/5x/api.html",
-                    blogadmin:"http://www.fyyd.vip:3002/",
-                    reactblog:"http://www.fyyd.vip:3001/",
-                    mysql:"https://dev.mysql.com/doc/refman/8.0/en/connection-options.html",
-                    apache:"http://httpd.apache.org/docs/2.4/",
-                    gulpjs:"https://gulpjs.com/docs/en/api/registry",
-                    babel:"https://babeljs.io/docs/en/",
-                    less:"http://lesscss.org/",
-                    meinv:"https://www.tupianzj.com/meinv/mm/",
-                    mdn:"https://developer.mozilla.org/en-US/docs/Web/JavaScript",
-                    threejs:"http://www.webgl3d.cn/",
-                    bootCDN:"https://www.bootcdn.cn/",
-                    bilibiliangualar:"https://www.bilibili.com/video/BV1bt411e71b?from=search&seid=15562787847422779010",
-                    angularcn:"https://angular.cn/tutorial/toh-pt3",
-                    angulartantui:"https://ng.ant.design/components/collapse/en#ng-content"
-            }
+                react: "https://reactjs.org/docs/getting-started.html",
+                angular: "https://angular.io/docs",
+                angularblog: "http://www.fyyd.vip:3003",
+                nginx: "http://nginx.org/en/docs/",
+                centos: "https://www.linuxidc.com/Linux/2018-06/152959.htm",
+                express: "https://www.expressjs.com.cn/5x/api.html",
+                blogadmin: "http://www.fyyd.vip:3002/",
+                reactblog: "http://www.fyyd.vip:3001/",
+                mysql:
+                    "https://dev.mysql.com/doc/refman/8.0/en/connection-options.html",
+                apache: "http://httpd.apache.org/docs/2.4/",
+                gulpjs: "https://gulpjs.com/docs/en/api/registry",
+                babel: "https://babeljs.io/docs/en/",
+                less: "http://lesscss.org/",
+                meinv: "https://www.tupianzj.com/meinv/mm/",
+                mdn: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+                threejs: "http://www.webgl3d.cn/",
+                bootCDN: "https://www.bootcdn.cn/",
+                bilibiliangualar:
+                    "https://www.bilibili.com/video/BV1bt411e71b?from=search&seid=15562787847422779010",
+                angularcn: "https://angular.cn/tutorial/toh-pt3",
+                angulartantui:
+                    "https://ng.ant.design/components/collapse/en#ng-content",
+            },
         };
     },
-    computed: {
-        // computedObj(){
-        //     return this.obj;
-        // }
-    },
-    watch: {
-        // obj(){
-        // }
-    },
-    //   directives: { //自定义的v-focus指令
-    //         focus: {
-    //             inserted: function (el, {value}) {
-    //                 if (value) {
-    //                     el.focus();
-    //                 }
-    //             }
-    //         }
-    //     },
+    computed: {},
+    watch: {},
+
     methods: {
         getWindowHeight() {
             this.bgHeight = window.innerHeight;
         },
-        handleChange(val) {
-            console.log(val);
-        },
+        // handleChange(val) {
+        //     // console.log(val);
+        // },
         handleEnter() {
             this.searchObj = Object.assign({}, this.newObj);
         },
         handleOver() {
-            console.log("c2");
-            // this.activeNames = ['1']
             this.$refs.autoFocus.focus();
-            // this.searchObj = this.obj;
-
-            // this.ifFocus = true
-            // this.activeNames = ["1"]
         },
 
-        // handleLeave(){
-        //     this.activeNames = ['1']
-        // },
         handleSearch() {
             for (var key in this.obj) {
                 if (this.word) {
@@ -245,95 +221,86 @@ export default {
                         );
                     }
                 }
-                if (this.word === "") {
-                    console.log("a2");
-                }
+                // if (this.word === "") {
+                //     console.log();
+                // }
             }
-            // console.log(this.searchObj, "j1");
         },
         handleDelete() {
             console.log("u1");
-            // if (this.word) {
             for (var key in this.searchObj) {
-                // console.log(this.word, "w1");
                 this.reg = new RegExp("^" + this.word);
                 this.searchKey = key.match(this.reg);
-
                 this.$delete(this.searchObj, key);
             }
             if (this.word === "") {
                 this.searchObj = Object.assign({}, this.newObj);
             }
-
-            // this.$delete(this.searchObj, key);
         },
         load() {
             this.count += 2;
-            // if(this.count > 50){
-            //   this.count = 0
-            // }
         },
-        handlerLogin() {
-            const h = this.$createElement;
-            console.log(this,'a1');
-            // console.log(h);
-            this.$msgbox({
-                title: "登录",
-                message: h(Login),
-                showCancelButton: true,
-                showConfirmButton: true,
-                closeOnClickModal: false,
-                confirmButtonText: "马上登录",
-                cancelButtonText: "取消",
-                beforeClose: (action, instance, done) => {
-                    if (action === "confirm") {
-                        (function() {
-                            this.$refs["form"].validate(valid => {
-                                if (valid) {
-                                    postLogin(this.form)
-                                        .then(res => {
-                                            console.log(res);
-                                            if (res.data.code) {
-                                                this.$message({
-                                                    message: res.data.msg,
-                                                    type: "error",
-                                                    duration: 2000
-                                                });
-                                            } else {
-                                                this.$message({
-                                                    message: res.data.msg,
-                                                    type: "success",
-                                                    duration: 2000
-                                                });
-                                                done();
-                                                setTimeout(() => {
-                                                    window.location.reload();
-                                                });
-                                            }
-                                        })
-                                        .catch(() => {
-                                            this.$message({
-                                                message: "登录失败,稍后再试",
-                                                type: "error",
-                                                duration: 2000
-                                            });
-                                        });
-                                } else {
-                                    return false;
-                                }
-                            });
-                        }.call(instance.$children[2]));
-                    } else {
-                        done();
-                    }
-                }
-            })
-                .then(() => {})
-                .catch(() => {});
-        }
+        // handlerLogin() {
+        //     const h = this.$createElement;
+        //     console.log(this, "a1");
+        //     this.$msgbox({
+        //         title: "登录",
+        //         message: h(Login),
+        //         showCancelButton: true,
+        //         showConfirmButton: true,
+        //         closeOnClickModal: false,
+        //         confirmButtonText: "马上登录",
+        //         cancelButtonText: "取消",
+        //         beforeClose: (action, instance, done) => {
+        //             if (action === "confirm") {
+        //                 (function () {
+        //                     this.$refs["form"].validate((valid) => {
+        //                         if (valid) {
+        //                             postLogin(this.form)
+        //                                 .then((res) => {
+        //                                     console.log(res);
+        //                                     if (res.data.code) {
+        //                                         this.$message({
+        //                                             message: res.data.msg,
+        //                                             type: "error",
+        //                                             duration: 2000,
+        //                                         });
+        //                                     } else {
+        //                                         this.$message({
+        //                                             message: res.data.msg,
+        //                                             type: "success",
+        //                                             duration: 2000,
+        //                                         });
+        //                                         done();
+        //                                         setTimeout(() => {
+        //                                             window.location.reload();
+        //                                         });
+        //                                     }
+        //                                 })
+        //                                 .catch(() => {
+        //                                     this.$message({
+        //                                         message: "登录失败,稍后再试",
+        //                                         type: "error",
+        //                                         duration: 2000,
+        //                                     });
+        //                                 });
+        //                         } else {
+        //                             return false;
+        //                         }
+        //                     });
+        //                 }.call(instance.$children[2]));
+        //             } else {
+        //                 done();
+        //             }
+        //         },
+        //     })
+        //         .then(() => {})
+        //         .catch(() => {});
+        // },
     },
     components: {
-        Search
+        Search,
+        DialogLogin,
     },
     mounted() {
         this.getWindowHeight();
@@ -342,25 +309,22 @@ export default {
         this.newObj = {};
         Object.keys(this.obj)
             .sort()
-            .map(key => {
+            .map((key) => {
                 this.newObj[key] = this.obj[key];
             });
-        // console.log(this.newObj, "g2");
-        // console.log(this.$refs,'d2');
     },
     created() {
-        postIfLogin().then(res => {
+        postIfLogin().then((res) => {
             if (res.data.userInfo) {
                 this.ifLogin = true;
             } else {
                 this.ifLogin = false;
             }
         });
-        //  this.changfouce();
     },
     destroyed() {
         window.removeEventListener("resize", this.getWindowHeight);
-    }
+    },
 };
 </script>
 
@@ -405,16 +369,16 @@ export default {
                         transform: rotate(-7deg);
                         padding-right: 70px;
                         font-size: 20px;
-                        // margin: 0 auto;
-                        .el-button {
-                            // margin: 0 20px;
-                            width: 150px;
-                            font-size: 20px;
-                            padding-bottom: 30px;
+                        .dialogLogin {
+                                padding-bottom: 15px;
 
-                            // text-align: left;
+                            .el-button {
+                                width: 150px;
+                                font-size: 20px;
+                            }
                         }
 
+                       
                         a {
                             width: 150px;
                             text-align: center;
@@ -444,9 +408,6 @@ export default {
         }
     }
     .el-collapse {
-        // &:hover{
-        //     // activeNames: ["1"]
-        // }
         .el-collapse-item {
             // z-index: 1;
             position: relative;
@@ -460,35 +421,21 @@ export default {
 </style>
 
 <style lang="less">
-.el-message-box__wrapper{
-    // position: flex !important;
-    // margin:50% 50%;
-    @media only screen and (max-width: 500px){
-.el-message-box{
-    position: absolute;
-    left: 0px;
-    right: 0px;
-    width: 95%;
-    margin: 50% auto;
-       
+.el-message-box__wrapper {
+    @media only screen and (max-width: 500px) {
+        .el-message-box {
+            position: absolute;
+            left: 0px;
+            right: 0px;
+            width: 95%;
+            margin: 50% auto;
+        }
     }
-    }
-    
 }
 </style>
 
 
 <style lang="less" scoped>
-// .el-drawer {
-//     width: 25% !important;
-//     .el-drawer__header {
-//         flex-direction: row-reverse;
-//         transform: rotate(-7deg);
-
-//         padding-top: 35px;
-//     }
-// }
-
 footer {
     display: flex;
     box-sizing: border-box;
@@ -547,10 +494,7 @@ footer {
             }
         }
     }
-    
 }
-
-
 
 @media only screen and (max-width: 500px) {
     /deep/ .el-drawer {
@@ -568,6 +512,5 @@ footer {
             }
         }
     }
- 
 }
 </style>

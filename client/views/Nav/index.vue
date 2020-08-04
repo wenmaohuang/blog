@@ -14,19 +14,19 @@
             <router-link to="/">首页</router-link>
           </li>
           <li>
-            <router-link to="/blog">博客</router-link>
+            <router-link to="/nav/blog">博客</router-link>
           </li>
           <li>
-            <router-link to="/message">留言</router-link>
+            <router-link to="/nav/message">留言</router-link>
           </li>
           <li>
-            <router-link to="/daily">日记</router-link>
+            <router-link to="/nav/daily">日记</router-link>
           </li>
           <li>
-            <router-link to="/links">友链</router-link>
+            <router-link to="/nav/links">友链</router-link>
           </li>
           <li>
-            <router-link to="/blog/about">关于</router-link>
+            <router-link to="/nav/about">关于</router-link>
           </li>
         </ul>
       </div>
@@ -54,16 +54,18 @@
           <el-button @click="handlerLogin" type="primary">登录</el-button>
           <el-button @click="handlerRegister" type="success">注册</el-button>
         </div>
+
       </div>
     </div>
+<router-view></router-view>
   </div>
 </template>
 
 <script>
-import Register from "./Register";
-import Login from "./Login";
-import MobileNav from "./MobileNav";
-import Avatar from "./Avatar";
+import Register from "../../src/components/Register";
+import Login from "../../src/components/Login";
+import MobileNav from "../../src/components/MobileNav";
+import Avatar from "../../src/components/Avatar";
 
 import request from "../../api/index";
 const postLogin = request.postLogin;
@@ -264,7 +266,7 @@ export default {
   > .nav-main {
     display: flex;
     justify-content: space-around;
-    max-width: 1260px;
+    // max-width: 1260px;
     height: 60px;
     margin: 0 auto;
     background-color: pink;

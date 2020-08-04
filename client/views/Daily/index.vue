@@ -1,6 +1,6 @@
 <template>
   <div class="daily">
-    <Nav></Nav>
+    <!-- <Nav></Nav> -->
     <div class="daily-main">
       <el-timeline>
         <el-timeline-item :timestamp="i.time" placement="top" v-for="(i,index) in content" :key=index> 
@@ -15,7 +15,7 @@
   </div>
 </template>
 <script>
-import Nav from "../../src/components/Nav";
+// import Nav from "../../src/components/Nav";
 import request from "../../api/index"
 const getDaily = request.getDaily
 
@@ -28,7 +28,7 @@ export default {
     }
   },
   components: {
-    Nav
+    // Nav
   },
   mounted(){
     getDaily().then(res=>{

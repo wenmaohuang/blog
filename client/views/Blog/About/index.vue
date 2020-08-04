@@ -1,6 +1,6 @@
 <template>
   <div class="About">
-    <!-- <Nav></Nav> -->
+    <Nav></Nav>
     <div class="about-main">
       <div class="a-m-content">
         <article>
@@ -46,12 +46,12 @@
 </template>
 
 <script>
-// import Nav from "../../src/components/Nav";
+import Nav from "../../src/components/Nav";
 
 export default {
   name: "About",
   components: {
-    // Nav
+    Nav
   }
 };
 </script>

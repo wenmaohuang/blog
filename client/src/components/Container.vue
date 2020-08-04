@@ -39,7 +39,7 @@
                                 v-for="(item,index) in articleTages"
                                 :key="index"
                             >
-                                <router-link :to="'/blog/'+item">{{item}}</router-link>
+                                <router-link :to="'/nav/blog/'+item">{{item}}</router-link>
                             </li>
                         </ul>
                         <div class="cover" :style="{top:coverIndex*40 + 'px'}"></div>

@@ -1,6 +1,6 @@
-// import Vue from 'vue'
-// import VueRouter from 'vue-router'
-// Vue.use(VueRouter)
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+Vue.use(VueRouter)
 const routes = [{
         path: '/',
         name: 'Home',
@@ -10,121 +10,85 @@ const routes = [{
         component: () => import('../views/Home')
     },
     {
-        path: '/about',
-        name: 'About',
+        path: '/nav',
+        name: 'Nav',
         meta: {
             title: '关于'
         },
-        component: () => import('../views/About')
-    },
-    
-    {
-        path: '/blog',
-        name: 'Blog',
-        meta: {
-            title: '博客'
-        },
-        component: () => import('../views/Blog'),
-    },
-    
-
-    {
-        path: '/blog/:id',
-        meta: {
-            title: '博客'
-        },
-        component: () => import('../views/Blog'),
+        
+        component: () => import('../views/Nav'),
         children:[
             {
-                path: '/全部文章',
-                name: '全部文章',
+                path: 'about',
+                name: 'About',
                 meta: {
-                    title: '全部文章'
+                    title: '关于'
                 },
-                component: () => import('../views/Blog'),
+                component: () => import('../views/Nav/About')
             },
             {
-                path: '/HTML&CSS',
-                name: 'HTML&CSS',
+                path: 'links',
+                name: 'Links',
                 meta: {
-                    title: 'HTML&CSS'
+                    title: '友链'
                 },
-                component: () => import('../views/Blog'),
+                component: () => import('../views/Links')
             },
             {
-                path: '/JavaScript',
-                name: 'JavaScript',
+                path: 'daily',
+                name: 'Daily',
+                meta: {
+                    title: '日记'
+                },
+                component: () => import('../views/Daily')
+            },
+            {
+                path: 'message',
+                name: 'Message',
+                meta: {
+                    title: '留言'
+                },
+                component: () => import('../views/Message')
+            },
+            {
+                path: 'blog',
+                name: 'Blog',
                 meta: {
                     title: '博客'
                 },
                 component: () => import('../views/Blog'),
+               
             },
             {
-                path: '/Node',
-                name: 'Node',
+                path: 'blog/:id',
                 meta: {
                     title: '博客'
                 },
                 component: () => import('../views/Blog'),
+                children:[
+                    {
+                        path: '/',
+                        // name: 'content',
+                        meta: {
+                            title: '博客'
+                        },
+                        component:()=>import('../views/Blog/articleContent/ArticleContent.vue')
+                    },
+                ]
+              
             },
-            {
-                path: '/Vue&React',
-                name: 'Vue&React',
-                meta: {
-                    title: '博客'
-                },
-                component: () => import('../views/Blog'),
-            },
-            {
-                path: '/Mongoose',
-                name: 'Mongoose',
-                meta: {
-                    title: '博客'
-                },
-                component: () => import('../views/Blog'),
-            },
-            {
-                path: '/Other',
-                name: 'Other',
-                meta: {
-                    title: '博客'
-                },
-                component: () => import('../views/Blog'),
-            },
+           
         ]
     },
-    {
-        path: '/content',
-        name: 'content',
-        meta: {
-            title: '博客'
-        },
-        component:()=>import('../views/Blog/articleContent/ArticleContent.vue')
-    },
-    {
-        path: '/daily',
-        name: 'Daily',
-        meta: {
-            title: '日记'
-        },
-        component: () => import('../views/Daily')
-    },
-    {
-        path: '/links',
-        name: 'Links',
-        meta: {
-            title: '友链'
-        },
-        component: () => import('../views/Links')
-    },
-    {
-        path: '/message',
-        name: 'Message',
-        meta: {
-            title: '留言'
-        },
-        component: () => import('../views/Message')
-    },
+    
+    
+   
+    
+
+    
+    
+    
+   
 ]
 
 const router = new VueRouter({

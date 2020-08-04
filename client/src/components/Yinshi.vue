@@ -100,7 +100,7 @@ export default {
   #canvas{
     display:block;
     /* justify-content: space-around; */
-    background-color: #222;
+    background-color: #fff;
     width:100%;
     height: 260px;
       /* margin: 20px auto; */

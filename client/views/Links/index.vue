@@ -1,14 +1,13 @@
 <template>
   <div class="Links">
-    <Nav></Nav>
+    <!-- <Nav></Nav> -->
 
-    <div class="canvas" ref="can">
+    <!-- <div class="canvas" ref="can">
       <div class="txt">
        
       </div>
-      <Yinshi></Yinshi>
 
-    </div>
+    </div> -->
     <div class="link-main">
       <div class="rule">
         <h3>链接说明</h3>
@@ -23,23 +22,25 @@
         描述：自由自在地流浪</p>
 
       </div>
-      <div class="container">
+      <Yinshi></Yinshi>
+
+      <!-- <div class="container">
         <ul>
           <li v-for="(item,index) in linksList" :key="index">
             <a :href="item.href" target="_blank">
               <img :src="item.icon">
-              <!-- <h3>{{item.name}}</h3> -->
               <p>{{item.des}}</p>
             </a>
           </li>
         </ul>
-      </div>
+      </div> -->
+      
     </div>
   </div>
 </template>
 
 <script>
-  import Nav from "../../src/components/Nav";
+  // import Nav from "../../src/components/Nav";
   import Yinshi from "../../src/components/Yinshi";
   export default {
     name: "Links",
@@ -51,7 +52,7 @@
       }
     },
     components:{
-      Nav,
+      // Nav,
       Yinshi,
     }
   }
@@ -61,12 +62,15 @@
   .Links{
     // width: 100%;
     // padding-top: 61px;
-  background-image: url("http://www.fyyd.vip/img/2.jpg");
+  // background-image: url("http://www.fyyd.vip/static/img/2.jpg");
+  background-image: url("../../src/assets/img/2.jpg");
+  height: 800px;
+
     
     .canvas{
         
       // position: relaabtaive;
-      padding: 20px;
+      // padding: 20px;
       // padding: 20px 20px 0 20px;
     max-width: 1260px;
       margin: 0 auto;
@@ -89,7 +93,7 @@
       box-sizing: border-box;
       width: 100%;
       max-width: 1300px;
-      padding: 0 20px;
+      padding: 20px 20px 0;
       // height: 500px;
       margin: 0 auto;
       .rule{
