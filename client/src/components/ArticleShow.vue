@@ -174,6 +174,11 @@ console.log(e);
                   
                 }
             }
+            @media only screen and (max-width: 500px) {
+                .p{
+                    display:none;
+                }
+            }
         }
         .footer {
             position: absolute;
