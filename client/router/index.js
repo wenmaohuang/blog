@@ -5,7 +5,7 @@ const routes = [{
         path: '/',
         name: 'Home',
         meta: {
-            title: '主页'
+            title: '风移影动'
         },
         component: () => import('../views/Home')
     },
