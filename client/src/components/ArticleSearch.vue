@@ -39,7 +39,6 @@ export default {
     methods: {
         handleSeachTitle() {
             this.articleList.forEach((item) => {
-                // console.log('a..');
                 if (this.searchArr.length < this.articleList.length) {
                     this.searchArr.push(item.title);
                 }
@@ -87,7 +86,6 @@ export default {
                 .catch((e) => {
                     console.log(e);
                 });
-            // console.log(this.$store.state.article, item, "a=");
         },
         handleDelete() {
             if (this.word === "") {

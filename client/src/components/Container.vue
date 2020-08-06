@@ -7,29 +7,6 @@
             </el-main>
             <el-aside>
                 <div class="search">
-                    <!-- <div class="search-main">
-                        <input
-                            type="text"
-                            v-model="word"
-                            @input="handleSearch"
-                            @keyup.delete="handleDelete"
-                            @click.stop="handleSeachTitle"
-                            placeholder="请输入搜索内容"
-                        />
-                        <i class="el-icon-search"></i>
-                        <div class="search-title" v-show="isShow">
-                            <ul>
-                                <router-link
-                                    v-for="(item,index) in searchArr"
-                                    :key="index"
-                                    class="img"
-                                    to="/content"
-                                >
-                                    <li @click="handleClick(item)">{{item}}</li>
-                                </router-link>
-                            </ul>
-                        </div>
-                    </div>-->
                     <ArticleSearch></ArticleSearch>
                     <div class="search-article">
                         <ul>
@@ -46,15 +23,7 @@
                     </div>
                 </div>
                 <HotArticle></HotArticle>
-                <!-- <div class="hot">
-                    <h3>热门文章</h3>
-                    <ul>
-                        <li v-for="(i,index) in articleHot" :key="index">
-                            <i>{{index}}</i>
-                            <a :href="i._id">{{i.title}}</a>
-                        </li>
-                    </ul>
-                </div>-->
+               
                 <div class="recommend">
                     <h3>置顶文章</h3>
                     <ul>
@@ -72,7 +41,6 @@
                             :key="index"
                             :style="{backgroundImage:'url(http://www.fyyd.vip'+item.photo+')'}"
                         >
-                            <!-- <p>{{item.user}}</p> -->
                         </li>
                     </ul>
                 </div>
@@ -90,12 +58,7 @@ import ArticleSearch from "./ArticleSearch";
 let getArticleInfo = request.getArticleInfo;
 
 let getArticleHot = request.getArticleHot;
-
-
-// const getArticleShow = request.getArticleShow;
-
 let getUser = request.getUser;
-// let getTitle = request.getArticleTitle;
 export default {
     name: "Container",
     components: {
@@ -119,27 +82,17 @@ export default {
     },
 
     methods: {
-        // handleSeachTitle() {
-        //     this.articleList.forEach(item => {
-        //         // console.log('a..');
-        //         if (this.searchArr.length < this.articleList.length) {
-        //             this.searchArr.push(item.title);
-        //         }
-        //     });
-        // },
+        
         handleBlurSearchTitle() {
             this.searchArr = [];
         },
 
         handleClick(item) {
-            // console.log(item, "a)");
             this.articleList.forEach((i) => {
                 if (i.title === item) {
                     this.$store.state.article = i;
-                    // console.log(i, "a*");
                 }
             });
-            // console.log(this.$store.state.article, item, "a=");
         },
         handleMouseenter(index) {
             this.coverIndex = index;
@@ -148,31 +101,7 @@ export default {
         handleMouseleave() {
             this.coverIndex = 0;
         },
-        // handleSearch() {
-        //     this.searchArr = [];
-        //     this.articleList.forEach(item => {
-        //         if (this.word) {
-        //             this.reg = new RegExp("^" + this.word);
-        //             this.searchTitle = item.title.match(this.reg);
-        //             if (this.searchTitle !== null) {
-        //                 this.searchTitleInput = this.searchTitle["input"];
-        //                 this.searchArr.push(this.searchTitleInput);
-        //             }
-        //         }
-        //         if (this.word === "") {
-        //         }
-        //     });
-        // },
-        // handleDelete() {
-        //     if (this.word === "") {
-        //         this.articleList.forEach(item => {
-        //             if (this.searchArr.length < this.articleList.length) {
-        //                 this.searchArr.push(item.title);
-        //             }
-        //         });
-        //     }
-
-        // }
+        
     },
 
     computed: {
@@ -182,7 +111,6 @@ export default {
     },
 
     mounted() {
-        // console.log(this.$store.state.article, "a-");
 
          getArticleHot()
                 .then(res => {
@@ -204,32 +132,22 @@ export default {
                 this.visitor = res.data.data;
             })
             .catch(() => {});
-        // getTitle()
-        //     .then(res => {
-        //         console.log(res, "a&");
-        //         this.articleList = res.data.data;
-
-        //     })
-        //     .catch(() => {
-        //         console.log("error occur");
-        //     });
+      
     },
 };
 </script>
 <style lang="less" scoped>
 #container {
-    // position:absolute;
-    // z-index: 10;
+    
     display: flex;
     justify-content: space-around;
 
     > .el-container {
-        // position:absolute;
+    
 
         max-width: 1300px;
         margin: 20px auto;
 
-        // margin: 0 auto;
         .el-main {
             padding: 0 20px;
             @media only screen and (min-width: 500px) {
@@ -249,52 +167,7 @@ export default {
             > .search {
                 background-color: #fff;
 
-                // .search-main {
-                //     position: relative;
-                //     z-index: 10;
-                //     height: 40px;
-                //     padding: 20px;
-                //     background-color: grey;
-
-                //     input {
-                //         width: 100%;
-                //         height: 40px;
-                //         border-radius: 20px;
-                //         border: 0;
-                //         outline: 0;
-                //         text-indent: 2em;
-                //     }
-
-                //     i {
-                //         position: absolute;
-                //         font-size: 18px;
-                //         line-height: 20;
-                //         cursor: pointer;
-
-                //         &::before {
-                //             position: relative;
-                //             top: -160px;
-                //             left: -30px;
-                //         }
-                //     }
-                //     .search-title {
-                //         position: absolute;
-                //         top: 80px;
-                //         background-color: #789;
-                //         border-radius: 10px;
-                //         ul {
-                //             margin: 10px;
-                //             margin-block-start: 0;
-                //             margin-block-end: 0;
-
-                //             li {
-                //                 padding: 5px;
-                //                 font-size: 16px;
-                //                 color: #fff;
-                //             }
-                //         }
-                //     }
-                // }
+               
 
                 .search-article {
                     position: relative;

@@ -58,7 +58,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       filename: 'index.html',
       template: 'index.html',
       // url: BASE_URL,
-      inject: true
+      inject: true,
+      favicon: path.resolve('static/img/favicon.ico') 
     }),
 
     new webpack.DefinePlugin({
