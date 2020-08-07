@@ -22,23 +22,14 @@ Vue.use(VueWechatTitle)
 
 Vue.config.productionTip = false
 
-import global_ from '../config/global.js'
-Vue.prototype.GLOBAL = global_;
-axios.defaults.baseURL=global_.BASE_URL;
+// import global_ from '../config/global.js'
 
-
-
-
-
-// import global_ from './Base.vue'
 // Vue.prototype.GLOBAL = global_;
 // axios.defaults.baseURL=global_.BASE_URL;
 
-
-// axios.defaults.baseURL = process.env.BASE_URL
-// Vue.prototype.baseURL = process.env.BASE_URL
-
-// console.log(Vue,777)           
+Vue.prototype.baseURL = process.env.BASE_URL
+axios.defaults.baseURL = process.env.BASE_URL
+console.log(axios.defaults.baseURL,'!^');
 
 new Vue({
     router,

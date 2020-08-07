@@ -6,7 +6,6 @@
     <Avatar :dialogVisible="ifShowAvatar" @handleClose="closeAvatar"></Avatar>
 
     <div class="nav-main">
-
       <div class="logo">FYYD</div>
       <div class="n-nav">
         <ul :class="'list' + whichActive">
@@ -35,11 +34,11 @@
         <el-popover v-if="ifLogin" trigger="hover" placement="top-start" width="100" content="欢迎登录">
           <p>欢迎登录!!!!</p>
           <el-button type="danger" @click="ifShowAvatar = true">修改头像</el-button>
-          <el-button type="danger" >
+          <el-button type="danger">
             <a href="http://www.fyyd.vip:3002">用户管理</a>
           </el-button>
           <el-button type="danger" @click="handlerLogout()">退出登录</el-button>
-         
+
           <el-button
             slot="reference"
             :style="{
@@ -53,11 +52,12 @@
         <div v-else class="else">
           <el-button @click="handlerLogin" type="primary">登录</el-button>
           <el-button @click="handlerRegister" type="success">注册</el-button>
+          <!-- <img src="/static/img/qqlogin.png" onclick="handleQQLogin"> -->
+          <p id="qqLoginBtn"></p>
         </div>
-
       </div>
     </div>
-<router-view></router-view>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -82,27 +82,33 @@ export default {
       alertKey: 0,
       ifLogin: false,
       ifShow: false,
-      ifShowAvatar : false,
+      ifShowAvatar: false,
       login: {
         user: "",
-        photo: ""
-      }
+        photo: "",
+      },
     };
   },
   computed: {
     whichActive() {
       let index = this.routerList.indexOf(this.$route.name);
       return index + 1;
-    }
+    },
+  },
+  mounted() {
+    QC.Login({
+      btnId: "qqLoginBtn", //插入按钮的节点id
+    });
   },
   components: {
     Register,
     // Login,
     MobileNav,
-    Avatar
+    Avatar,
   },
   // mounted() {},
   methods: {
+    handleQQLogin() {},
     handlerRegister() {
       const h = this.$createElement;
       this.$msgbox({
@@ -113,27 +119,27 @@ export default {
         closeOnClickModal: false,
         beforeClose: (action, instance, done) => {
           if (action === "confirm") {
-            (function() {
+            (function () {
               let vm = this;
               this.register.submitDisabled = true;
-              this.$refs["form"].validate(valid => {
+              this.$refs["form"].validate((valid) => {
                 if (valid) {
                   //验证都通过
                   postRegister(this.form)
-                    .then(res => {
+                    .then((res) => {
                       // this.getVCode();
                       if (res.data.code) {
                         this.$message({
                           message: res.data.msg,
                           type: "error",
-                          duration: 2000
+                          duration: 2000,
                         });
                       } else {
                         //注册成功
                         this.$message({
                           message: "注册成功！",
                           type: "success",
-                          duration: 2000
+                          duration: 2000,
                         });
                         done();
                         setTimeout(() => {
@@ -146,7 +152,7 @@ export default {
                       this.$message({
                         message: "注册失败请稍后再试~",
                         type: "error",
-                        duration: 2000
+                        duration: 2000,
                       });
                     });
                 } else {
@@ -158,7 +164,7 @@ export default {
           } else {
             done(); //关闭弹窗
           }
-        }
+        },
       })
         .then(() => {})
         .catch(() => {});
@@ -175,23 +181,23 @@ export default {
         cancelButtonText: "取消",
         beforeClose: (action, instance, done) => {
           if (action === "confirm") {
-            (function() {
-              this.$refs["form"].validate(valid => {
+            (function () {
+              this.$refs["form"].validate((valid) => {
                 if (valid) {
                   postLogin(this.form)
-                    .then(res => {
+                    .then((res) => {
                       console.log(res);
                       if (res.data.code) {
                         this.$message({
                           message: res.data.msg,
                           type: "error",
-                          duration: 2000
+                          duration: 2000,
                         });
                       } else {
                         this.$message({
                           message: res.data.msg,
                           type: "success",
-                          duration: 2000
+                          duration: 2000,
                         });
                         done();
                         setTimeout(() => {
@@ -203,7 +209,7 @@ export default {
                       this.$message({
                         message: "登录失败,稍后再试",
                         type: "error",
-                        duration: 2000
+                        duration: 2000,
                       });
                     });
                 } else {
@@ -214,7 +220,7 @@ export default {
           } else {
             done();
           }
-        }
+        },
       })
         .then(() => {})
         .catch(() => {});
@@ -225,7 +231,7 @@ export default {
           this.$message({
             message: "退出成功",
             type: "success",
-            duration: 2000
+            duration: 2000,
           });
           setTimeout(() => {
             window.location.reload();
@@ -235,19 +241,17 @@ export default {
           this.$message({
             message: "退出失败",
             type: "error",
-            duration: 2000
+            duration: 2000,
           });
         });
     },
-     closeAvatar(){
-        this.ifShowAvatar = false;
-      },
-      handlerIcon() {
-        
-      }
+    closeAvatar() {
+      this.ifShowAvatar = false;
+    },
+    handlerIcon() {},
   },
   created() {
-    postIfLogin().then(res => {
+    postIfLogin().then((res) => {
       if (res.data.userInfo) {
         this.ifLogin = true;
         this.login.user = res.data.userInfo.user;
@@ -256,7 +260,7 @@ export default {
         this.ifLogin = false;
       }
     });
-  }
+  },
 };
 </script>
 
@@ -278,8 +282,15 @@ export default {
       font-size: 40px;
     }
     .login {
-      line-height: 60px;
-      
+      display: flex;
+      align-items: center;
+      .else {
+        display: flex;
+       
+        #qqLoginBtn {
+          padding: 10px 
+        }
+      }
     }
     .n-nav {
       width: 580px;
@@ -358,24 +369,21 @@ export default {
 }
 
 .el-popover {
-        display:flex;
-        flex-direction: column;
-        p {
-          padding: 5px;
-        }
-        .el-button{
-          margin:5px;
-        }
-
-      
-      }
+  display: flex;
+  flex-direction: column;
+  p {
+    padding: 5px;
+  }
+  .el-button {
+    margin: 5px;
+  }
+}
 
 // .el-popover {
 
- 
 //   p {
 //     padding: 5px;
 //   }
-  
+
 // }
 </style>

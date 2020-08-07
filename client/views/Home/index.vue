@@ -24,9 +24,11 @@
             <div class="about">
                 <p>风移影动</p>
                 <p>自由自在的流浪</p>
+                <p>备案:粤ICP备19161033号</p>
                 <p>
                     <router-link to="/nav/about">about me</router-link>
                 </p>
+
             </div>
             <div class="link">
                 <p>相关链接</p>
@@ -36,6 +38,8 @@
                 <p>
                     <router-link to="/nav/daily">日记</router-link>
                 </p>
+                <p id="qqLoginBtn"></p>
+
             </div>
             <div class="connect">
                 <p>联系我</p>
@@ -241,69 +245,16 @@ export default {
         load() {
             this.count += 2;
         },
-        // handlerLogin() {
-        //     const h = this.$createElement;
-        //     console.log(this, "a1");
-        //     this.$msgbox({
-        //         title: "登录",
-        //         message: h(Login),
-        //         showCancelButton: true,
-        //         showConfirmButton: true,
-        //         closeOnClickModal: false,
-        //         confirmButtonText: "马上登录",
-        //         cancelButtonText: "取消",
-        //         beforeClose: (action, instance, done) => {
-        //             if (action === "confirm") {
-        //                 (function () {
-        //                     this.$refs["form"].validate((valid) => {
-        //                         if (valid) {
-        //                             postLogin(this.form)
-        //                                 .then((res) => {
-        //                                     console.log(res);
-        //                                     if (res.data.code) {
-        //                                         this.$message({
-        //                                             message: res.data.msg,
-        //                                             type: "error",
-        //                                             duration: 2000,
-        //                                         });
-        //                                     } else {
-        //                                         this.$message({
-        //                                             message: res.data.msg,
-        //                                             type: "success",
-        //                                             duration: 2000,
-        //                                         });
-        //                                         done();
-        //                                         setTimeout(() => {
-        //                                             window.location.reload();
-        //                                         });
-        //                                     }
-        //                                 })
-        //                                 .catch(() => {
-        //                                     this.$message({
-        //                                         message: "登录失败,稍后再试",
-        //                                         type: "error",
-        //                                         duration: 2000,
-        //                                     });
-        //                                 });
-        //                         } else {
-        //                             return false;
-        //                         }
-        //                     });
-        //                 }.call(instance.$children[2]));
-        //             } else {
-        //                 done();
-        //             }
-        //         },
-        //     })
-        //         .then(() => {})
-        //         .catch(() => {});
-        // },
+       
     },
     components: {
         Search,
         DialogLogin,
     },
     mounted() {
+        QC.Login({
+            btnId: "qqLoginBtn"	//插入按钮的节点id
+        });
         this.getWindowHeight();
         window.addEventListener("resize", this.getWindowHeight);
 
