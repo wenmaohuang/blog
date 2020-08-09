@@ -26,8 +26,20 @@ Vue.config.productionTip = false
 
 // Vue.prototype.GLOBAL = global_;
 // axios.defaults.baseURL=global_.BASE_URL;
+console.log(process.env.NODE_ENV,'@!');
 
-Vue.prototype.baseURL = process.env.BASE_URL
+// if(process.env.NODE_ENV === 'develoment'){
+//     axios.defaults.baseURL = 'http://localhost:3000'
+// }
+// if(process.env.NODE_ENV === 'production')
+// {
+//     axios.defaults.baseURL = 'https://www.fyyd.vip'
+// }
+
+
+
+
+// Vue.prototype.baseURL = process.env.BASE_URL
 axios.defaults.baseURL = process.env.BASE_URL
 console.log(axios.defaults.baseURL,'!^');
 

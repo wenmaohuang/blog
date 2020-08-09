@@ -38,7 +38,7 @@
                 <p>
                     <router-link to="/nav/daily">日记</router-link>
                 </p>
-                <p id="qqLoginBtn"></p>
+                <p id="qqLoginBtn" @click="handleQQLogin"></p>
 
             </div>
             <div class="connect">
@@ -82,6 +82,7 @@ import request from "../../api/index";
 import Search from "../../src/components/Search";
 // import Login from "../../src/components/Login";
 import DialogLogin from "../../src/components/DialogLogin";
+import axios from "axios"
 
 // const postLogin = request.postLogin;
 
@@ -110,6 +111,10 @@ export default {
             searchObj: {},
             newObj: {},
             searchKye: "",
+            appid: 101896922,
+            appkey:'a514dac8c90c50a2d3f9d17748b274b2',
+            redirectURI:'https%3a%2f%2fwww.fyyd.vip%2fcb',
+            state:'abc12345',
             obj: {
                 ant:"https://ant.design/components/divider/",
                 bilibiligulp: "https://www.bilibili.com/video/BV1D4411P7tx?p=3",
@@ -196,6 +201,23 @@ export default {
     watch: {},
 
     methods: {
+        handleQQLogin(){
+            axios.get("https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=" + appid + "&redirect_uri=" + redirectURI + "&state=" + state)
+            .then((data)=>{
+                console.log(data,'!*');
+            })
+            .catch(()=>{
+
+            })
+            axios.get(" https://graph.qq.com/oauth2.0/token?grant_type=authorization_code&client_id=" + appid + "&client_secret="+ appkey + "&redirect_uri=" + redirectURI + "&code=" + code)
+            .then((data)=>{
+                console.log(data,'!(');
+            })
+            .catch(()=>{
+
+            })
+
+        },
         getWindowHeight() {
             this.bgHeight = window.innerHeight;
         },
@@ -255,6 +277,13 @@ export default {
         QC.Login({
             btnId: "qqLoginBtn"	//插入按钮的节点id
         });
+        QC.api('get_user_info',{
+            access_token:'',
+            oauth_consumer_key:'',
+            openid:''
+        })
+        console.log(this.$axios,'!&');
+        console.log(QC.api(),'!%');
         this.getWindowHeight();
         window.addEventListener("resize", this.getWindowHeight);
 
