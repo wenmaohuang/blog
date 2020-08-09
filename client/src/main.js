@@ -40,8 +40,15 @@ console.log(process.env.NODE_ENV,'@!');
 
 
 // Vue.prototype.baseURL = process.env.BASE_URL
+
+
+
 axios.defaults.baseURL = process.env.BASE_URL
 console.log(axios.defaults.baseURL,'!^');
+
+
+    // axios.defaults.baseURL = 'https://www.fyyd.vip'
+
 
 new Vue({
     router,
