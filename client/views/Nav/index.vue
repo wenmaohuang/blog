@@ -53,7 +53,7 @@
           <el-button @click="handlerLogin" type="primary">登录</el-button>
           <el-button @click="handlerRegister" type="success">注册</el-button>
           <!-- <img src="/static/img/qqlogin.png" onclick="handleQQLogin"> -->
-          <p id="qqLoginBtn"></p>
+          <p id="qqLogin"></p>
         </div>
       </div>
     </div>
@@ -97,7 +97,7 @@ export default {
   },
   mounted() {
     QC.Login({
-      btnId: "qqLoginBtn", //插入按钮的节点id
+      btnId: "qqLogin", //插入按钮的节点id
     });
   },
   components: {
@@ -270,6 +270,8 @@ export default {
   > .nav-main {
     display: flex;
     justify-content: space-around;
+      align-items: center;
+
     // max-width: 1260px;
     height: 60px;
     margin: 0 auto;
@@ -284,10 +286,22 @@ export default {
     .login {
       display: flex;
       align-items: center;
+      // height: 20px;
+      // line-height: 20px;
       .else {
         display: flex;
-       
-        #qqLoginBtn {
+      align-items: center;
+
+      // height: 20px;
+
+      // height: 20px;
+
+        .el-button{
+          height: 10% !important;
+          line-height: 10px;
+
+        }
+        #qqLogin {
           padding: 10px 
         }
       }

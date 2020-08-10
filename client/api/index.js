@@ -94,6 +94,9 @@ export default {
         return axios.get('/daily')
     },
 
+
+    
+
     // postSearch(){
     //     return axios.get('/search')
     // }

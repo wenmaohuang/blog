@@ -34,20 +34,9 @@ export default {
                     console.log(this.jsonArr,'e1');
                 });
         },
-        // fnSpace() {
-        //     // fetch("https://test.fyyd.vip:3102/search?word=" + this.word)
-        //     fetch("http://localhost:3002/search?word=" + this.word)
-        //         .then(res => res.json())
-        //         .then(msg => {
-        //             // console.log(msg, "ggg");
-        //             console.log(msg, "kkk");
-        //             this.jsonArr = msg;
-        //         });
-        // },
+    
         handleClick() {
-            // console.log(111);
-            // console.log(this.word, "hhh");
-            // this.wordList.push(this.word);
+           
 
             function setStore(data) {
                 const list = JSON.parse(localStorage.getItem("list")) || [];

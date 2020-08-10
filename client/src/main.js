@@ -41,10 +41,14 @@ console.log(process.env.NODE_ENV,'@!');
 
 // Vue.prototype.baseURL = process.env.BASE_URL
 
+// Vue.prototype.$axios = axios
+// axios.defaults.baseURL = '/proxy'  //关键代码
+
+
 
 
 axios.defaults.baseURL = process.env.BASE_URL
-console.log(axios.defaults.baseURL,'!^');
+// console.log(axios.defaults.baseURL,'!^');
 
 
     // axios.defaults.baseURL = 'https://www.fyyd.vip'

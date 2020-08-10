@@ -13,7 +13,12 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+
+     
+
+
+    },
     url:'https://www.fyyd.vip',
 
 

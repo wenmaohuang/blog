@@ -191,38 +191,29 @@ export default {
 
   methods: {
     handleQQLogin() {
-      axios
-        .get(
-          "https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=" +
-            this.appid +
-            "&redirect_uri=" +
-            this.redirectURI +
-            "&state=" +
-            this.state
-        )
-        .then((data) => {
-          console.log(data, "!*");
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    //   axios
-    //     .get(
-    //       " https://graph.qq.com/oauth2.0/token?grant_type=authorization_code&client_id=" +
-    //         appid +
-    //         "&client_secret=" +
-    //         appkey +
-    //         "&redirect_uri=" +
-    //         redirectURI +
-    //         "&code=" +
-    //         code
-    //     )
-    //     .then((data) => {
-    //       console.log(data, "!(");
-    //     })
-    //     .catch(() => {
-    //       console.log(err);
-    //     });
+      //   fetch(
+
+      //     "https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=" +
+      //       this.appid +
+      //       "&redirect_uri=" +
+      //       this.redirectURI +
+      //       "&state=" +
+      //       this.state,
+      //     {
+      //       mode: "no-cors",
+      //       headers: {
+      //         "Content-Type": "application/x-www-form-urlencoded",
+      //       },
+      //     }
+      //   ).then((data) => {
+      //     console.log(data, "@$");
+      //   });
+
+      QC.Login.showPopup({
+        appId: "101896922",
+        redirectURI: "https://www.fyyd.vip/cb", //登录成功后会自动跳往该地址
+      });
+      console.log(QC.Login.check(),'@&');
     },
     getWindowHeight() {
       this.bgHeight = window.innerHeight;
@@ -283,6 +274,7 @@ export default {
       btnId: "qqLoginBtn", //插入按钮的节点id
       appid: 101896922,
     });
+    console.log(QC, "@^");
     // QC.api('get_user_info',{
     //     access_token:'',
     //     oauth_consumer_key:'',
