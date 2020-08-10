@@ -37,7 +37,7 @@
         <p>
           <router-link to="/nav/daily">日记</router-link>
         </p>
-        <p id="qqLoginBtn" @click="handleQQLogin"></p>
+        <p id="qqLoginBtn" ></p>
       </div>
       <div class="connect">
         <p>联系我</p>
@@ -193,7 +193,7 @@ export default {
     // handleQQLogin() {
     //  QC.Login.showPopup({
     //     appId: "101896922",
-    //     // redirectURI: "https://www.fyyd.vip/nav/blog", //登录成功后会自动跳往该地址
+    //     redirectURI: "https://www.fyyd.vip/nav/blog", //登录成功后会自动跳往该地址
     //   });
 
      
@@ -256,6 +256,8 @@ export default {
     QC.Login({
       btnId: "qqLoginBtn", //插入按钮的节点id
       appid: 101896922,
+        // redirectURI: "https://www.fyyd.vip/nav/blog", //登录成功后会自动跳往该地址
+
     });
     console.log(QC, "@^");
 
