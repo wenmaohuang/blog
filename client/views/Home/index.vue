@@ -190,31 +190,14 @@ export default {
   watch: {},
 
   methods: {
-    handleQQLogin() {
-      //   fetch(
+    // handleQQLogin() {
+    //  QC.Login.showPopup({
+    //     appId: "101896922",
+    //     // redirectURI: "https://www.fyyd.vip/nav/blog", //登录成功后会自动跳往该地址
+    //   });
 
-      //     "https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=" +
-      //       this.appid +
-      //       "&redirect_uri=" +
-      //       this.redirectURI +
-      //       "&state=" +
-      //       this.state,
-      //     {
-      //       mode: "no-cors",
-      //       headers: {
-      //         "Content-Type": "application/x-www-form-urlencoded",
-      //       },
-      //     }
-      //   ).then((data) => {
-      //     console.log(data, "@$");
-      //   });
-
-      QC.Login.showPopup({
-        appId: "101896922",
-        redirectURI: "https://www.fyyd.vip/cb", //登录成功后会自动跳往该地址
-      });
-      console.log(QC.Login.check(),'@&');
-    },
+     
+    // },
     getWindowHeight() {
       this.bgHeight = window.innerHeight;
     },
@@ -275,13 +258,13 @@ export default {
       appid: 101896922,
     });
     console.log(QC, "@^");
-    // QC.api('get_user_info',{
-    //     access_token:'',
-    //     oauth_consumer_key:'',
-    //     openid:''
-    // })
-    // console.log(this.$axios,'!&');
-    // console.log(QC.api(),'!%');
+
+    //  QC.Login.showPopup({
+    //     appId: "101896922",
+    //     redirectURI: "https://www.fyyd.vip/nav/blog", //登录成功后会自动跳往该地址
+    //   });
+    //   console.log(QC.Login.check(),'@&');
+   
     this.getWindowHeight();
     window.addEventListener("resize", this.getWindowHeight);
 
