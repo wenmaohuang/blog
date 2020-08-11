@@ -187,7 +187,13 @@ export default {
     };
   },
   computed: {},
-  watch: {},
+  watch: {
+    'ifLogin':function(){
+      console.log('#(');
+      window.location.href = 'https://www.fyyd.vip'
+
+    }
+  },
 
   methods: {
     handldeLogin(data, opts) {
@@ -200,6 +206,13 @@ export default {
       }
       
     },
+    logoutFun(){
+
+    },
+    outCallBackFun(){
+console.log(QC.Login.check(),'#*');
+      // window.location.href = 'https://www.fyyd.vip'
+    },
     handleQQLogin() {
       // console.log(document.querySelector("#qq_login_iframe").src, "@[");
       window.location.href = document.querySelector("#qq_login_iframe").src;
@@ -207,15 +220,7 @@ export default {
       console.log(QC.Login.check(), "#!");
     },
 
-    // loginFun(){
-    //   // console.log(QC.Login.check(),'@*');
-
-    //   QC.api(get_user_info,{
-    //   })
-    //   .success(function(data){
-    //     console.log('@-');
-    //   })
-    // },
+  
     getWindowHeight() {
       this.bgHeight = window.innerHeight;
     },
@@ -285,8 +290,8 @@ export default {
         showModal: true,
         // size:'A_L'
       },
-      this.handldeLogin
-    );
+      this.handldeLogin,this.logoutFun, this.outCallBackFun
+    )
 
     // console.log(QC, "@^");
 
