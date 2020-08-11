@@ -194,6 +194,9 @@ export default {
       // console.log(document.querySelector("#qq_login_iframe").src, "@[");
       window.location.href = document.querySelector("#qq_login_iframe").src
 
+      console.log(QC.Login.check(),'#!');
+      
+
       
     },
 
@@ -268,7 +271,10 @@ export default {
       // btnId:'login_btn_modal',
       showModal: true,
       // size:'A_L'
-    });
+    },function(data,opts){
+      console.log(data,opts,'#$');
+    })
+    
 
     // console.log(QC, "@^");
 
@@ -285,6 +291,7 @@ export default {
   created() {
     postIfLogin().then((res) => {
       if (res.data.userInfo) {
+        
         this.ifLogin = true;
       } else {
         this.ifLogin = false;
