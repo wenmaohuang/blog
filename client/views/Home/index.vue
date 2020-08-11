@@ -190,14 +190,19 @@ export default {
   watch: {},
 
   methods: {
+    handldeLogin(data, opts) {
+      console.log(data, opts, "#$");
+      if (QC.Login.check()) {
+        this.ifLogin = true;
+      } else {
+        this.ifLogin = false;
+      }
+    },
     handleQQLogin() {
       // console.log(document.querySelector("#qq_login_iframe").src, "@[");
-      window.location.href = document.querySelector("#qq_login_iframe").src
+      window.location.href = document.querySelector("#qq_login_iframe").src;
 
-      console.log(QC.Login.check(),'#!');
-      
-
-      
+      console.log(QC.Login.check(), "#!");
     },
 
     // loginFun(){
@@ -264,27 +269,22 @@ export default {
     DialogLogin,
   },
 
-  updated(){
-    console.log(QC.Login.check(),'#%');
+  updated() {
+    console.log(QC.Login.check(), "#%");
   },
 
   mounted() {
-    QC.Login({
-      btnId: "qqLoginBtn", //插入按钮的节点id
-      appid: 101896922,
-      redirectURI: "https://www.fyyd.vip/nav/blog", //登录成功后会自动跳往该地址
-      // btnId:'login_btn_modal',
-      showModal: true,
-      // size:'A_L'
-    },function(data,opts){
-      console.log(data,opts,'#$');
-      if(QC.Login.check()){
-         this.ifLogin = true;
-      } else {
-        this.ifLogin = false;
-      }
-    })
-    
+    QC.Login(
+      {
+        btnId: "qqLoginBtn", //插入按钮的节点id
+        appid: 101896922,
+        redirectURI: "https://www.fyyd.vip/nav/blog", //登录成功后会自动跳往该地址
+        // btnId:'login_btn_modal',
+        showModal: true,
+        // size:'A_L'
+      },
+      this.handldeLogin
+    );
 
     // console.log(QC, "@^");
 
@@ -301,7 +301,6 @@ export default {
   created() {
     postIfLogin().then((res) => {
       if (res.data.userInfo) {
-        
         this.ifLogin = true;
       } else {
         this.ifLogin = false;
