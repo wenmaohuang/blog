@@ -37,7 +37,7 @@
         <p>
           <router-link to="/nav/daily">日记</router-link>
         </p>
-        <p id="qqLoginBtn" ></p>
+        <p id="qqLoginBtn" @click="handleQQLogin"></p>
       </div>
       <div class="connect">
         <p>联系我</p>
@@ -190,13 +190,25 @@ export default {
   watch: {},
 
   methods: {
-    // handleQQLogin() {
-    //  QC.Login.showPopup({
-    //     appId: "101896922",
-    //     redirectURI: "https://www.fyyd.vip/nav/blog", //登录成功后会自动跳往该地址
-    //   });
+    handleQQLogin() {
+    // console.log(QC.Login.check(),'@=');
+    console.log(QC,'@[');
+// this.$nextTick(function () {
+// console.log(this,'@]');});  
 
+  
      
+    },
+
+
+    // loginFun(){
+    //   // console.log(QC.Login.check(),'@*');
+
+    //   QC.api(get_user_info,{
+    //   })
+    //   .success(function(data){
+    //     console.log('@-');
+    //   })
     // },
     getWindowHeight() {
       this.bgHeight = window.innerHeight;
@@ -256,16 +268,18 @@ export default {
     QC.Login({
       btnId: "qqLoginBtn", //插入按钮的节点id
       appid: 101896922,
-        // redirectURI: "https://www.fyyd.vip/nav/blog", //登录成功后会自动跳往该地址
+        redirectURI: "https://www.fyyd.vip/nav/blog", //登录成功后会自动跳往该地址
+        // btnId:'login_btn_modal',
+        showModal:true,
+        // size:'A_L'
 
-    });
-    console.log(QC, "@^");
+    })
 
-    //  QC.Login.showPopup({
-    //     appId: "101896922",
-    //     redirectURI: "https://www.fyyd.vip/nav/blog", //登录成功后会自动跳往该地址
-    //   });
-    //   console.log(QC.Login.check(),'@&');
+    
+    
+    // console.log(QC, "@^");
+
+  
    
     this.getWindowHeight();
     window.addEventListener("resize", this.getWindowHeight);
