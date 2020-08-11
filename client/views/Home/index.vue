@@ -197,6 +197,7 @@ export default {
       } else {
         this.ifLogin = false;
       }
+      window.location.href = 'https://www.fyyd.vip'
       
     },
     handleQQLogin() {
