@@ -263,6 +263,11 @@ export default {
     Search,
     DialogLogin,
   },
+
+  updated(){
+    console.log(QC.Login.check(),'#%');
+  },
+
   mounted() {
     QC.Login({
       btnId: "qqLoginBtn", //插入按钮的节点id
@@ -273,6 +278,11 @@ export default {
       // size:'A_L'
     },function(data,opts){
       console.log(data,opts,'#$');
+      if(QC.Login.check()){
+         this.ifLogin = true;
+      } else {
+        this.ifLogin = false;
+      }
     })
     
 
