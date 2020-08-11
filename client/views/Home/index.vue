@@ -191,15 +191,11 @@ export default {
 
   methods: {
     handleQQLogin() {
-    // console.log(QC.Login.check(),'@=');
-    console.log(QC,'@[');
-// this.$nextTick(function () {
-// console.log(this,'@]');});  
+      // console.log(document.querySelector("#qq_login_iframe").src, "@[");
+      window.location.href = document.querySelector("#qq_login_iframe").src
 
-  
-     
+      
     },
-
 
     // loginFun(){
     //   // console.log(QC.Login.check(),'@*');
@@ -268,19 +264,14 @@ export default {
     QC.Login({
       btnId: "qqLoginBtn", //插入按钮的节点id
       appid: 101896922,
-        redirectURI: "https://www.fyyd.vip/nav/blog", //登录成功后会自动跳往该地址
-        // btnId:'login_btn_modal',
-        showModal:true,
-        // size:'A_L'
+      redirectURI: "https://www.fyyd.vip/nav/blog", //登录成功后会自动跳往该地址
+      // btnId:'login_btn_modal',
+      showModal: true,
+      // size:'A_L'
+    });
 
-    })
-
-    
-    
     // console.log(QC, "@^");
 
-  
-   
     this.getWindowHeight();
     window.addEventListener("resize", this.getWindowHeight);
 
