@@ -197,11 +197,7 @@ export default {
       } else {
         this.ifLogin = false;
       }
-      setTimeout(
-        function(){
-      window.location.reload()
-        },10
-      )
+      
     },
     handleQQLogin() {
       // console.log(document.querySelector("#qq_login_iframe").src, "@[");
