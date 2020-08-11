@@ -197,6 +197,7 @@ export default {
       } else {
         this.ifLogin = false;
       }
+      window.location.reload()
     },
     handleQQLogin() {
       // console.log(document.querySelector("#qq_login_iframe").src, "@[");
