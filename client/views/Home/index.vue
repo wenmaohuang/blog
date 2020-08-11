@@ -198,7 +198,7 @@ export default {
         this.ifLogin = false;
       }
       setTimeout(
-        ()=>{
+        function(){
       window.location.reload()
         },10
       )
