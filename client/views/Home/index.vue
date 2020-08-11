@@ -194,7 +194,6 @@ export default {
       console.log(data, opts, "#$");
       if (QC.Login.check()) {
         this.ifLogin = true;
-      window.location.href = 'https://www.fyyd.vip'
 
       } else {
         this.ifLogin = false;
