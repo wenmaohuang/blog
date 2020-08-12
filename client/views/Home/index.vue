@@ -231,10 +231,11 @@ export default {
     handleQQLogin() {
       // console.log(document.querySelector("#qq_login_iframe").src, "@[");
       window.location.href = document.querySelector("#qq_login_iframe").src;
-      var qqLoginBtn = document.querySelector("#qqLoginBtn");
-      // qqLoginBtn.onclick = function(){
-      //   window.location.reload()
-      // }
+      var face = document.querySelector(".face");
+      console.log(face,'$@');
+      face.onclick = function(){
+        window.location.reload()
+      }
 
       console.log(QC.Login.check(), "#!");
     },
