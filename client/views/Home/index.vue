@@ -231,13 +231,13 @@ export default {
     handleQQLogin() {
       // console.log(document.querySelector("#qq_login_iframe").src, "@[");
       window.location.href = document.querySelector("#qq_login_iframe").src;
-      var face = document.querySelector(".face");
-      console.log(face,'$@');
-      face.onclick = function(){
-        window.location.reload()
-      window.location.href = 'https://www.fyyd.vip'
+      // var face = document.querySelector(".face");
+      // console.log(face,'$@');
+      // face.onclick = function(){
+      //   window.location.reload()
+      // window.location.href = 'https://www.fyyd.vip'
 
-      }
+      // }
 
       console.log(QC.Login.check(), "#!");
     },
