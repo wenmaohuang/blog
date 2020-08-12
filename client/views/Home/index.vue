@@ -187,13 +187,13 @@ export default {
     };
   },
   computed: {},
-  // watch: {
-  //   'ifLogin':function(){
-  //     // console.log('#(');
-  //     // window.location.href = 'https://www.fyyd.vip'
-
-  //   }
-  // },
+  watch: {
+    ifLogin(val,oldval){
+      if(val === oldval){
+        window.location.reload()
+      }
+    }
+  },
 
   methods: {
     handldeLogin(data, opts) {
@@ -231,9 +231,9 @@ export default {
       // console.log(document.querySelector("#qq_login_iframe").src, "@[");
       window.location.href = document.querySelector("#qq_login_iframe").src;
       var qqLoginBtn = document.querySelector("#qqLoginBtn")
-      qqLoginBtn.onclick = function(){
-        window.location.reload()
-      }
+      // qqLoginBtn.onclick = function(){
+      //   window.location.reload()
+      // }
 
       console.log(QC.Login.check(), "#!");
     },
