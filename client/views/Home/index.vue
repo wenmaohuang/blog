@@ -217,7 +217,7 @@ export default {
                 ].join("");
             dom && (dom.innerHTML = QC.String.format(_logoutTemplate, {
                 nickname : QC.String.escHTML(data.nickname), //做xss过滤
-                figureurl : reqData.figureurl
+                figureurl : data.figureurl
             }));
       
     },
