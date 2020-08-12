@@ -10,7 +10,7 @@
       <div class="n-nav">
         <ul :class="'list' + whichActive">
           <li>
-            <router-link to="/">首页</router-link>
+            <router-link to="/" @click="handleReload">首页</router-link>
           </li>
           <li>
             <router-link to="/nav/blog">博客</router-link>
@@ -97,7 +97,9 @@ export default {
   },
   mounted() {
     QC.Login({
-      btnId: "qqLogin", //插入按钮的节点id
+      btnId: "qqLogin", //插入按钮的节点id,
+        showModal: true
+
     });
   },
   components: {
@@ -108,6 +110,9 @@ export default {
   },
   // mounted() {},
   methods: {
+    handleReload(){
+      window.location.reload()
+    },
     handleQQLogin() {},
     handlerRegister() {
       const h = this.$createElement;
