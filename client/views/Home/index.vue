@@ -93,7 +93,7 @@ export default {
       activeNames: ["1"],
       bgHeight: 0,
       ifLogin: false,
-      ifTrue:true,
+      ifTrue: true,
       word: "",
       style: {
         display: "block",
@@ -189,16 +189,13 @@ export default {
   },
   computed: {},
   watch: {
-    ifLogin: {
-      handler: function (val, oldval) {
-        if (this.ifLogin) {
-          if (this.ifTrue) {
-            window.location.reload();
-            this.ifTrue = false
-          }
+    ifLogin(val, oldval) {
+      if (this.ifLogin) {
+        if (this.ifTrue) {
+          window.location.reload();
+          this.ifTrue = false;
         }
-      },
-      immediate: true,
+      }
     },
   },
 
