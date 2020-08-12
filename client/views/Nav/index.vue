@@ -9,8 +9,8 @@
       <div class="logo">FYYD</div>
       <div class="n-nav">
         <ul :class="'list' + whichActive">
-          <li>
-            <router-link to="/" @click="handleReload">首页</router-link>
+          <li @click="handleReload"> 
+            <router-link to="/" >首页</router-link>
           </li>
           <li>
             <router-link to="/nav/blog">博客</router-link>
@@ -53,7 +53,7 @@
           <el-button @click="handlerLogin" type="primary">登录</el-button>
           <el-button @click="handlerRegister" type="success">注册</el-button>
           <!-- <img src="/static/img/qqlogin.png" onclick="handleQQLogin"> -->
-          <p id="qqLogin"></p>
+          <p id="qqLogin" @click="handleQQLogin"></p>
         </div>
       </div>
     </div>
@@ -110,10 +110,14 @@ export default {
   },
   // mounted() {},
   methods: {
+     handleQQLogin() {
+      window.location.href = document.querySelector("#qq_login_iframe").src;
+      // console.log(QC.Login.check(), "#!");
+    },
     handleReload(){
       window.location.reload()
     },
-    handleQQLogin() {},
+    // handleQQLogin() {},
     handlerRegister() {
       const h = this.$createElement;
       this.$msgbox({
