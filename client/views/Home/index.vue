@@ -197,8 +197,8 @@ export default {
   },
 
   methods: {
-    handleReload(){
-          window.location.reload();
+    handleReload() {
+      window.location.reload();
     },
     handldeLogin(data, opts) {
       console.log(data, opts, "#$");
@@ -207,8 +207,20 @@ export default {
       } else {
         this.ifLogin = false;
       }
-      window.location.reload();
 
+      var flag = true;
+      function once() {
+        if (flag) {
+          alert("我被调用");
+          window.location.reload();
+
+          flag = false;
+        } else {
+          return;
+        }
+      }
+      once();
+      once();
 
       var dom = document.getElementById(opts["btnId"]),
         _logoutTemplate = [
