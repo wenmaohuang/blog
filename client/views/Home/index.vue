@@ -93,6 +93,7 @@ export default {
       activeNames: ["1"],
       bgHeight: 0,
       ifLogin: false,
+      ifTrue:true,
       word: "",
       style: {
         display: "block",
@@ -188,15 +189,21 @@ export default {
   },
   computed: {},
   watch: {
-    // ifLogin(val, oldval) {
-    //   console.log(val, oldval, "$!");
-    //   if (this.ifLogin) {
-    //       window.location.reload();
-    //   }
-    // },
+    ifLogin(val, oldval) {
+      console.log(val, oldval, "$!");
+     this.reloadOnce()
+    },
   },
 
   methods: {
+    reloadOnce(){
+        if(this.ifTrue){
+          window.location.reload();
+          this.ifTrue = false
+        }else{
+          return
+        }
+    },
     handleReload() {
       window.location.reload();
     },
@@ -207,21 +214,6 @@ export default {
       } else {
         this.ifLogin = false;
       }
-
-      var flag = true;
-      function once() {
-        if (flag) {
-          alert("我被调用");
-          window.location.reload();
-
-          flag = false;
-        } else {
-          return;
-        }
-      }
-      once();
-      once();
-
       var dom = document.getElementById(opts["btnId"]),
         _logoutTemplate = [
           //头像
@@ -243,17 +235,8 @@ export default {
       // window.location.href = 'https://www.fyyd.vip'
     },
     handleQQLogin() {
-      // console.log(document.querySelector("#qq_login_iframe").src, "@[");
       window.location.href = document.querySelector("#qq_login_iframe").src;
-      // var face = document.querySelector(".face");
-      // console.log(face,'$@');
-      // face.onclick = function(){
-      //   window.location.reload()
-      // window.location.href = 'https://www.fyyd.vip'
-
-      // }
-
-      console.log(QC.Login.check(), "#!");
+      // console.log(QC.Login.check(), "#!");
     },
 
     handleStop() {
