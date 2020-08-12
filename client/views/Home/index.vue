@@ -189,7 +189,7 @@ export default {
   },
   computed: {},
   watch: {
-    ifLogin:'reloadOnce',
+    // ifLogin:'reloadOnce',
   },
 
   methods: {
