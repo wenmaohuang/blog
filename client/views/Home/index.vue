@@ -235,6 +235,8 @@ export default {
       console.log(face,'$@');
       face.onclick = function(){
         window.location.reload()
+      window.location.href = 'https://www.fyyd.vip'
+
       }
 
       console.log(QC.Login.check(), "#!");
