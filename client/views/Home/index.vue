@@ -190,7 +190,14 @@ export default {
   watch: {
     ifLogin:{
       handler:function(val,oldval){
+        let ifTrue = true
+        if(ifTrue){
         window.location.reload()
+        ifTrue = false
+        }else{
+          ifTrue = true
+        }
+
       },
       immediate:true
     }
