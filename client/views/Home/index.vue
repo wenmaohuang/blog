@@ -190,13 +190,15 @@ export default {
   computed: {},
   watch: {
     ifLogin(val, oldval) {
-      console.log(val,oldval,'$!');
+      console.log(val, oldval, "$!");
       if (this.ifLogin) {
         if (this.ifTrue) {
-          // window.location.reload();
-          this.ifTrue = false;
+          window.location.reload();
+        } else {
+          console.log("a");
         }
       }
+      this.ifTrue = false;
     },
   },
 
