@@ -28,7 +28,6 @@
           <router-link to="/nav/about">about me</router-link>
         </p>
         <p>粤ICP备19161033号</p>
-
       </div>
       <div class="link">
         <p>相关链接</p>
@@ -199,26 +198,49 @@ export default {
   methods: {
     handldeLogin(data, opts) {
       console.log(data, opts, "#$");
-      
-      
-    },
-    logoutFun(){
+        if (QC.Login.check()) {
+        this.ifLogin = true;
 
+      } else {
+        this.ifLogin = false;
+      }
+
+      var dom = document.getElementById(opts['btnId']),
+                _logoutTemplate=[
+                    //头像
+                    '<span><img src="{figureurl}" class="{size_key}"/></span>',
+                    //昵称
+                    '<span>{nickname}</span>',
+                    //退出
+                    '<span><a @click.stop="handleStop" href="javascript:QC.Login.signOut();">退出</a></span>'
+                ].join("");
+            dom && (dom.innerHTML = QC.String.format(_logoutTemplate, {
+                nickname : QC.String.escHTML(data.nickname), //做xss过滤
+                figureurl : data.figureurl
+            }));
+
+
+      
     },
-    outCallBackFun(){
-console.log(QC.Login.check(),'#*');
+    logoutFun() {},
+    outCallBackFun() {
+      console.log(QC.Login.check(), "#*");
       // window.location.href = 'https://www.fyyd.vip'
     },
     handleQQLogin() {
       // console.log(document.querySelector("#qq_login_iframe").src, "@[");
       window.location.href = document.querySelector("#qq_login_iframe").src;
+      var qqLoginBtn = document.querySelector("#qqLoginBtn")
+      qqLoginBtn.onclick = function(){
+        window.location.reload()
+      }
 
       console.log(QC.Login.check(), "#!");
     },
 
-  handleStop(){
-console.log('stop');
-  },
+    handleStop() {
+      console.log("stop");
+    },
     getWindowHeight() {
       this.bgHeight = window.innerHeight;
     },
@@ -287,33 +309,12 @@ console.log('stop');
         // btnId:'login_btn_modal',
         showModal: true,
         // size:'A_L'
-      },
-      function(data,opts){
-        if (QC.Login.check()) {
-        this.ifLogin = true;
-
-      } else {
-        this.ifLogin = false;
+      },this.handldeLogin,
+      function (opts) {
+        console.log("QQ登录 注销成功 !");
+        window.location.reload();
       }
-
-      var dom = document.getElementById(opts['btnId']),
-                _logoutTemplate=[
-                    //头像
-                    '<span><img src="{figureurl}" class="{size_key}"/></span>',
-                    //昵称
-                    '<span>{nickname}</span>',
-                    //退出
-                    '<span><a @click.stop="handleStop" href="javascript:QC.Login.signOut();">退出</a></span>'
-                ].join("");
-            dom && (dom.innerHTML = QC.String.format(_logoutTemplate, {
-                nickname : QC.String.escHTML(data.nickname), //做xss过滤
-                figureurl : data.figureurl
-            }));
-      }.call(this), function (opts) {
-            console.log('QQ登录 注销成功 !')
-            window.location.reload()
-        }
-    )
+    );
 
     // console.log(QC, "@^");
 
