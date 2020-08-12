@@ -305,7 +305,9 @@ console.log(QC.Login.check(),'#*');
         showModal: true,
         // size:'A_L'
       },
-      this.handldeLogin
+      this.handldeLogin, function (opts) {
+            console.log('QQ登录 注销成功 !')
+        }
     )
 
     // console.log(QC, "@^");
