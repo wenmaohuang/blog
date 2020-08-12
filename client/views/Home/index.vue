@@ -38,7 +38,7 @@
         <p>
           <router-link to="/nav/daily">日记</router-link>
         </p>
-        <p id="qqLoginBtn" @click="handleQQLogin"></p>
+        <p id="qqLoginBtn" @click.stop="handleQQLogin"></p>
       </div>
       <div class="connect">
         <p>联系我</p>
