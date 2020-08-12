@@ -191,7 +191,7 @@ export default {
     ifLogin: {
       handler: function (val, oldval) {
         if (this.ifLogin) {
-          let ifTrue = true;
+          let ifTrue = true
           if (ifTrue) {
             window.location.reload();
             ifTrue = false
