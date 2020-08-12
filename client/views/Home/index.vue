@@ -93,7 +93,6 @@ export default {
       activeNames: ["1"],
       bgHeight: 0,
       ifLogin: false,
-      ifTrue: true,
       word: "",
       style: {
         display: "block",
@@ -189,20 +188,18 @@ export default {
   },
   computed: {},
   watch: {
-    ifLogin(val, oldval) {
-      console.log(val, oldval, "$!");
-      if (this.ifLogin) {
-        if (this.ifTrue) {
-          window.location.reload();
-        } else {
-          console.log("a");
-        }
-      }
-      this.ifTrue = false;
-    },
+    // ifLogin(val, oldval) {
+    //   console.log(val, oldval, "$!");
+    //   if (this.ifLogin) {
+    //       window.location.reload();
+    //   }
+    // },
   },
 
   methods: {
+    handleReload(){
+          window.location.reload();
+    },
     handldeLogin(data, opts) {
       console.log(data, opts, "#$");
       if (QC.Login.check()) {
