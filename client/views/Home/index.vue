@@ -207,6 +207,8 @@ export default {
       } else {
         this.ifLogin = false;
       }
+      window.location.reload();
+
 
       var dom = document.getElementById(opts["btnId"]),
         _logoutTemplate = [
