@@ -53,7 +53,7 @@
           <el-button @click="handlerLogin" type="primary">登录</el-button>
           <el-button @click="handlerRegister" type="success">注册</el-button>
           <!-- <img src="/static/img/qqlogin.png" onclick="handleQQLogin"> -->
-          <!-- <p id="qqLogin"></p> -->
+          <p id="qqLogin"></p>
         </div>
       </div>
     </div>
@@ -96,9 +96,9 @@ export default {
     },
   },
   mounted() {
-    // QC.Login({
-    //   btnId: "qqLogin", //插入按钮的节点id
-    // });
+    QC.Login({
+      btnId: "qqLogin", //插入按钮的节点id
+    });
   },
   components: {
     Register,
