@@ -24,10 +24,11 @@
       <div class="about">
         <p>风移影动</p>
         <p>自由自在的流浪</p>
-        <p>备案:粤ICP备19161033号</p>
         <p>
           <router-link to="/nav/about">about me</router-link>
         </p>
+        <p>粤ICP备19161033号</p>
+
       </div>
       <div class="link">
         <p>相关链接</p>
