@@ -216,7 +216,7 @@ export default {
                     '<span><a href="javascript:QC.Login.signOut();">退出</a></span>'
                 ].join("");
             dom && (dom.innerHTML = QC.String.format(_logoutTemplate, {
-                nickname : QC.String.escHTML(reqData.nickname), //做xss过滤
+                nickname : QC.String.escHTML(data.nickname), //做xss过滤
                 figureurl : reqData.figureurl
             }));
       
