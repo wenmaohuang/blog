@@ -115,7 +115,7 @@ export default {
       // console.log(QC.Login.check(), "#!");
     },
     handleReload(){
-      window.location.reload()
+      // window.location.reload()
     },
     // handleQQLogin() {},
     handlerRegister() {
