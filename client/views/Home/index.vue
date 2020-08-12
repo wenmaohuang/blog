@@ -213,7 +213,7 @@ export default {
                     //昵称
                     '<span>{nickname}</span>',
                     //退出
-                    '<span><a href="javascript:QC.Login.signOut();">退出</a></span>'
+                    '<span><a @click.stop="handleStop" href="javascript:QC.Login.signOut();">退出</a></span>'
                 ].join("");
             dom && (dom.innerHTML = QC.String.format(_logoutTemplate, {
                 nickname : QC.String.escHTML(data.nickname), //做xss过滤
@@ -235,7 +235,9 @@ console.log(QC.Login.check(),'#*');
       console.log(QC.Login.check(), "#!");
     },
 
-  
+  handleStop(){
+console.log('stop');
+  },
     getWindowHeight() {
       this.bgHeight = window.innerHeight;
     },
