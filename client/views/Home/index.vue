@@ -188,10 +188,11 @@ export default {
   },
   computed: {},
   watch: {
-    ifLogin(val,oldval){
-      if(val !== oldval){
+    ifLogin:{
+      handler:function(val,oldval){
         window.location.reload()
-      }
+      },
+      immediate:true
     }
   },
 
