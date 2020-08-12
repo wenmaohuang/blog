@@ -188,45 +188,43 @@ export default {
   },
   computed: {},
   watch: {
-    ifLogin:{
-      handler:function(val,oldval){
-        let ifTrue = true
-        if(this.ifLogin){
-        window.location.reload()
-        ifTrue = false
+    ifLogin: {
+      handler: function (val, oldval) {
+        if (this.ifLogin) {
+          let ifTrue = true;
+          if (ifTrue) {
+            window.location.reload();
+            ifTrue = false
+          }
         }
-
       },
-      immediate:true
-    }
+      immediate: true,
+    },
   },
 
   methods: {
     handldeLogin(data, opts) {
       console.log(data, opts, "#$");
-        if (QC.Login.check()) {
+      if (QC.Login.check()) {
         this.ifLogin = true;
-
       } else {
         this.ifLogin = false;
       }
 
-      var dom = document.getElementById(opts['btnId']),
-                _logoutTemplate=[
-                    //头像
-                    '<span><img src="{figureurl}" class="{size_key}"/></span>',
-                    //昵称
-                    '<span>{nickname}</span>',
-                    //退出
-                    '<span><a @click.stop="handleStop" href="javascript:QC.Login.signOut();">退出</a></span>'
-                ].join("");
-            dom && (dom.innerHTML = QC.String.format(_logoutTemplate, {
-                nickname : QC.String.escHTML(data.nickname), //做xss过滤
-                figureurl : data.figureurl
-            }));
-
-
-      
+      var dom = document.getElementById(opts["btnId"]),
+        _logoutTemplate = [
+          //头像
+          '<span><img src="{figureurl}" class="{size_key}"/></span>',
+          //昵称
+          "<span>{nickname}</span>",
+          //退出
+          '<span><a @click.stop="handleStop" href="javascript:QC.Login.signOut();">退出</a></span>',
+        ].join("");
+      dom &&
+        (dom.innerHTML = QC.String.format(_logoutTemplate, {
+          nickname: QC.String.escHTML(data.nickname), //做xss过滤
+          figureurl: data.figureurl,
+        }));
     },
     logoutFun() {},
     outCallBackFun() {
@@ -236,7 +234,7 @@ export default {
     handleQQLogin() {
       // console.log(document.querySelector("#qq_login_iframe").src, "@[");
       window.location.href = document.querySelector("#qq_login_iframe").src;
-      var qqLoginBtn = document.querySelector("#qqLoginBtn")
+      var qqLoginBtn = document.querySelector("#qqLoginBtn");
       // qqLoginBtn.onclick = function(){
       //   window.location.reload()
       // }
@@ -315,7 +313,8 @@ export default {
         // btnId:'login_btn_modal',
         showModal: true,
         // size:'A_L'
-      },this.handldeLogin,
+      },
+      this.handldeLogin,
       function (opts) {
         console.log("QQ登录 注销成功 !");
         window.location.reload();
