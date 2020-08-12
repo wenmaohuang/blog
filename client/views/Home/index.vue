@@ -189,7 +189,7 @@ export default {
   computed: {},
   watch: {
     ifLogin(val,oldval){
-      if(val === oldval){
+      if(val !== oldval){
         window.location.reload()
       }
     }
