@@ -189,10 +189,7 @@ export default {
   },
   computed: {},
   watch: {
-    ifLogin(val, oldval) {
-      console.log(val, oldval, "$!");
-     this.reloadOnce()
-    },
+    ifLogin:'reloadOnce',
   },
 
   methods: {
