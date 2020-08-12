@@ -93,6 +93,7 @@ export default {
       activeNames: ["1"],
       bgHeight: 0,
       ifLogin: false,
+      ifTrue:true,
       word: "",
       style: {
         display: "block",
@@ -191,10 +192,9 @@ export default {
     ifLogin: {
       handler: function (val, oldval) {
         if (this.ifLogin) {
-          let ifTrue = true
-          if (ifTrue) {
+          if (this.ifTrue) {
             window.location.reload();
-            ifTrue = false
+            this.ifTrue = false
           }
         }
       },
