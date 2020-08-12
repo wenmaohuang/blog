@@ -187,13 +187,13 @@ export default {
     };
   },
   computed: {},
-  watch: {
-    'ifLogin':function(){
-      // console.log('#(');
-      // window.location.href = 'https://www.fyyd.vip'
+  // watch: {
+  //   'ifLogin':function(){
+  //     // console.log('#(');
+  //     // window.location.href = 'https://www.fyyd.vip'
 
-    }
-  },
+  //   }
+  // },
 
   methods: {
     handldeLogin(data, opts) {
