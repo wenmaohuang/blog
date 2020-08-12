@@ -290,7 +290,7 @@ console.log(QC.Login.check(),'#*');
         showModal: true,
         // size:'A_L'
       },
-      this.handldeLogin,this.logoutFun, this.outCallBackFun
+      this.handldeLogin
     )
 
     // console.log(QC, "@^");
