@@ -98,7 +98,8 @@ export default {
         width: 100px;
         .el-submenu__title {
           background-color: transparent;
-          border-bottom-width: 0 transparent !important;
+          height: 58px;
+          border-bottom: 0 transparent !important;
           // border-width: 0 !important;
 
           //   background-color: #aaa;
