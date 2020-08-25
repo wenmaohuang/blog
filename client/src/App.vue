@@ -33,6 +33,9 @@ export default {
 <style lang="less" scoped>
 @import "../src/assets/css/font.css";
 #app {
+    width:100%;
+    margin: 0;
+    padding: 0;
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

@@ -275,6 +275,7 @@ export default {
 
 <style lang="less" scoped>
 #nav {
+  widows: 100%;
   overflow: hidden;
   > .nav-main {
     display: flex;

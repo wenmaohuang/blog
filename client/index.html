@@ -49,19 +49,43 @@
     <!-- built files will be auto injected -->
     <style>
         html {
-            /* display:flex;
-            width: 100%; */
-        }
-
-        body {
-            /* display: flex; */
-            overflow-x: hidden;
-
+            /* display:flex; */
             width: 100%;
             margin: 0;
+            padding:0;
+            /* background-color: #333; */
+        }
+        
+
+        body {
+            display:flex;
+            /* position: absolute; */
+            /* display: flex; */
+            /* overflow-x: hidden; */
+            /* white-space:nowrap; */
+            /* min-width:10px; */
+            /* background-color: #aaa; */
+            overflow: auto;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            border-width: 0;
+
+            
 
         }
+        @media only screen and (max-width: 500px){
+            body{
+                width: 100%;
+            }
+        }
     </style>
+    <!-- <script>
+        var domBody = document.querySelector('body')
+        domBody.style.width = window.innerWidth+'px';  
+        console.log(window.innerWidth,'2w');
+        console.log(domBody.style.width,'2s');
+    </script> -->
 
 </body>
 
