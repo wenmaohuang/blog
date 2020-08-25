@@ -83,6 +83,7 @@ import axios from "axios";
 const postIfLogin = request.postIfLogin;
 
 export default {
+
   name: "index",
   data() {
     return {
@@ -191,6 +192,7 @@ export default {
   watch: {
     // ifLogin:'reloadOnce',
   },
+  
 
   methods: {
     reloadOnce(){
@@ -214,7 +216,7 @@ export default {
       var dom = document.getElementById(opts["btnId"]),
         _logoutTemplate = [
           //头像
-          '<span><img src="{figureurl}" class="{size_key}"/></span>',
+          '<span><img src="{figureurl}"  class="{size_key}"/></span>',
           //昵称
           "<span>{nickname}</span>",
           //退出
@@ -526,4 +528,7 @@ footer {
     }
   }
 }
+// @media only screen and (max-width: 500px) {
+  
+// }
 </style>
