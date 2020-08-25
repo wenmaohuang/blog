@@ -83,6 +83,8 @@ export default {
       ifLogin: false,
       ifShow: false,
       ifShowAvatar: false,
+      isShowModal:true,
+
       login: {
         user: "",
         photo: "",
@@ -96,9 +98,14 @@ export default {
     },
   },
   mounted() {
+    if(window.innerWidth<500){
+      this.isShowModal = false
+    }
     QC.Login({
       btnId: "qqLogin", //插入按钮的节点id,
-        showModal: true
+        // showModal: true
+        showModal: this.isShowModal,
+
 
     });
   },
