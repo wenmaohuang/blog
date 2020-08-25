@@ -46,13 +46,13 @@ export default {
     return {};
   },
   watch: {
-    $route: function () {
-      console.log(this.$route.path, "1a");
-      if (this.$route.path === "/nav/message") {
-        console.log(this, "1z");
-        this.closemenu(localStorage.getItem("index"));
-      }
-    },
+    // $route: function () {
+    //   console.log(this.$route.path, "1a");
+    //   if (this.$route.path === "/nav/message") {
+    //     console.log(this, "1z");
+    //     this.closemenu(localStorage.getItem("index"));
+    //   }
+    // },
   },
 
   methods: {
@@ -171,10 +171,14 @@ export default {
         text-align: center;
         //   background-color: #aaa;
         // padding: 5px;
-
         line-height: 45px;
         height: 45px;
         width: 100px;
+        background-color: #369;
+
+        a {
+          color: #fff;
+        }
       }
     }
   }
