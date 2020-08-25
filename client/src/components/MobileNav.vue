@@ -4,12 +4,11 @@
     <el-col :span="12">
       <!-- <h5>默认颜色</h5> -->
       <el-menu
-      mode="horizontal"
+        mode="horizontal"
         class="el-menu-vertical-demo"
         @open="handleOpen"
         @close="handleClose"
         menu-trigger="click"
-
       >
         <el-submenu index="1">
           <template slot="title">
@@ -44,20 +43,17 @@
 <script>
 export default {
   data() {
-    return {
-    
-    };
+    return {};
   },
   watch: {
     $route: function () {
-        console.log(this.$route.path,'1a');
+      console.log(this.$route.path, "1a");
       if (this.$route.path === "/nav/message") {
-          console.log(this,'1z');
+        console.log(this, "1z");
         this.closemenu(localStorage.getItem("index"));
       }
-    }
+    },
   },
-  
 
   methods: {
     handleOpen(key, keyPath) {
@@ -80,40 +76,49 @@ export default {
 </script>
 <style lang="less">
 .tac {
-  display: none;
-  position: absolute;
-  left: 0;
-  z-index: 11;
+  //   display: none;
+  //   position: absolute;
+  //   left: 0;
+  //   z-index: 11;
 
+  background-color: transparent;
   .el-col {
-    // background-color:transparent;
-    .el-menu {
+    background-color: transparent;
+    .el-menu--horizontal {
+      //   display: none;
+      position: absolute;
+      left: 0;
       background-color: transparent;
-      border-right-color: transparent;
+      width: 100px !important;
 
       .el-submenu {
-        min-width: 100px;
+        // background-color: #aaa !important;
+        background-color: transparent;
 
+        width: 100px;
         .el-submenu__title {
           background-color: transparent;
-          i {
-            &:nth-child(1) {
-              margin-left: 5px;
-            }
-          }
-        }
-        .el-menu-item-group {
-          background-color: #aaa;
-          min-width: 100px;
-          ul {
-            .el-menu-item {
-              padding: 10px;
-              min-width: 100px;
-              line-height: 30px;
-            }
-          }
+          border-bottom-width: 0 transparent !important;
+          // border-width: 0 !important;
+
+          //   background-color: #aaa;
+          width: 100px !important;
+
+          //   i {
+          //     &:nth-child(1) {
+          //       margin-left: 5px;
+          //     }
+          //   }
         }
       }
+      .is-opened {
+        background-color: transparent;
+        width: 100px !important;
+      }
+      .is-active {
+        background-color: transparent;
+      }
+
       // .el-menu {
       //     background-color: #aaa;
 
@@ -126,5 +131,56 @@ export default {
   .tac {
     display: block;
   }
+}
+</style>
+
+<style lang="less">
+.el-menu--horizontal {
+  //   display: none;
+  position: absolute;
+  left: 0 !important;
+  background-color: transparent;
+  width: 100px !important;
+
+  .el-menu {
+    // background-color: #aaa;
+    padding: 0;
+    margin: 0;
+    width: 100% !important;
+  }
+  .el-menu--popup {
+    width: 100px;
+    min-width: 100px !important;
+  }
+  .el-menu--popup-bottom-start {
+    width: 100px !important;
+    min-width: 100px !important;
+  }
+  .el-menu-item-group {
+    //   background-color: #aaa;
+    width: 100px;
+    .el-menu-item-group__title {
+      width: 100px;
+      padding: 0;
+    }
+    ul {
+      width: 100px;
+
+      .el-menu-item {
+        text-align: center;
+        //   background-color: #aaa;
+        // padding: 5px;
+
+        line-height: 45px;
+        height: 45px;
+        width: 100px;
+      }
+    }
+  }
+
+  // .el-menu {
+  //     background-color: #aaa;
+
+  // }
 }
 </style>
