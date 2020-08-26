@@ -90,6 +90,8 @@ export default {
       left: 0;
       background-color: transparent;
       width: 100px !important;
+      border-bottom: 0 dashed transparent;
+
 
       .el-submenu {
         // background-color: #aaa !important;
@@ -98,8 +100,10 @@ export default {
         width: 100px;
         .el-submenu__title {
           background-color: transparent;
-          height: 58px;
-          border-bottom: 0 transparent !important;
+          // height: 58px;
+          border-bottom: 0 dashed transparent;
+          transition: 0 0 !important;
+          
           // border-width: 0 !important;
 
           //   background-color: #aaa;
@@ -112,13 +116,7 @@ export default {
           //   }
         }
       }
-      .is-opened {
-        background-color: transparent;
-        width: 100px !important;
-      }
-      .is-active {
-        background-color: transparent;
-      }
+    
 
       // .el-menu {
       //     background-color: #aaa;
