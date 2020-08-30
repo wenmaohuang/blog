@@ -90,7 +90,7 @@ export default {
       left: 0;
       background-color: transparent;
       width: 100px !important;
-      border-bottom: 0 dashed transparent;
+      border-bottom: 0 transparent;
 
 
       .el-submenu {
@@ -101,8 +101,8 @@ export default {
         .el-submenu__title {
           background-color: transparent;
           // height: 58px;
-          border-bottom: 0 dashed transparent;
-          transition: 0 0 !important;
+          border-bottom: 0 transparent;
+          // transition: 0 0 !important;
           
           // border-width: 0 !important;
 
