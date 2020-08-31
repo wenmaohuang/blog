@@ -113,6 +113,7 @@ export default {
       redirectURI: "https%3a%2f%2fwww.fyyd.vip%2fcb",
       state: "abc12345",
       obj: {
+        redux:"https://redux.js.org/tutorials/essentials/part-4-using-data",
         material:"https://material-ui.com/components/tables/#table",
         ant: "https://ant.design/components/divider/",
         bilibiligulp: "https://www.bilibili.com/video/BV1D4411P7tx?p=3",
