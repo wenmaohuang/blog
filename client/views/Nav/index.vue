@@ -16,7 +16,7 @@
             <router-link to="/nav/blog">博客</router-link>
           </li>
           <li v-show="ifLogin">
-            <router-link  to=":3002">管理</router-link>
+            <a  :href="adminUrl">管理</a>
           </li>
           <li>
             <router-link to="/nav/message">留言</router-link>
@@ -88,6 +88,7 @@ export default {
       ifShow: false,
       ifShowAvatar: false,
       isShowModal:true,
+      adminUrl:"http://www.fyyd.vip:3002",
 
       login: {
         user: "",
