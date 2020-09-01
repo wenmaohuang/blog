@@ -15,6 +15,9 @@
           <li>
             <router-link to="/nav/blog">博客</router-link>
           </li>
+          <li v-show="ifLogin">
+            <a  href="https:www.fyyd.vip:3002">管理</a>
+          </li>
           <li>
             <router-link to="/nav/message">留言</router-link>
           </li>
@@ -107,6 +110,12 @@ export default {
         showModal: this.isShowModal,
 
 
+    },function(){
+      if (QC.Login.check()) {
+        this.ifLogin = true;
+      } else {
+        this.ifLogin = false;
+      }
     });
   },
   components: {
