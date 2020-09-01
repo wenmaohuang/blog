@@ -16,7 +16,7 @@
             <router-link to="/nav/blog">博客</router-link>
           </li>
           <li v-show="ifLogin">
-            <a  href="https:www.fyyd.vip:3002">管理</a>
+            <router-link  to=":3002">管理</router-link>
           </li>
           <li>
             <router-link to="/nav/message">留言</router-link>
