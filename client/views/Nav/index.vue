@@ -79,13 +79,7 @@ const postLogout = request.postLogout;
 
 export default {
   name: "Nav",
-  handldeLogin(){
-    if (QC.Login.check()) {
-      this.ifLogin = true;
-    } else {
-      this.ifLogin = false;
-    }
-  },
+
   data() {
     return {
       routerList: ["Home", "Blog", "Message", "Daily", "Links", "About"],
@@ -133,6 +127,13 @@ export default {
     },
     handleReload(){
       // window.location.reload()
+    },
+    handldeLogin(){
+      if (QC.Login.check()) {
+        this.ifLogin = true;
+      } else {
+        this.ifLogin = false;
+      }
     },
     // handleQQLogin() {},
     handlerRegister() {
