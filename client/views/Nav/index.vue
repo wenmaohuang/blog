@@ -79,6 +79,13 @@ const postLogout = request.postLogout;
 
 export default {
   name: "Nav",
+  handldeLogin(){
+    if (QC.Login.check()) {
+      this.ifLogin = true;
+    } else {
+      this.ifLogin = false;
+    }
+  },
   data() {
     return {
       routerList: ["Home", "Blog", "Message", "Daily", "Links", "About"],
@@ -110,13 +117,7 @@ export default {
         showModal: this.isShowModal,
 
 
-    },function(){
-      if (QC.Login.check()) {
-        this.ifLogin = true;
-      } else {
-        this.ifLogin = false;
-      }
-    });
+    },this.handldeLogin);
   },
   components: {
     Register,
