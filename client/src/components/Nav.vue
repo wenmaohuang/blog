@@ -70,6 +70,8 @@ const postLogin = request.postLogin;
 const postIfLogin = request.postIfLogin;
 const postRegister = request.postRegister;
 const postLogout = request.postLogout;
+
+
 // console.log(postIfLogin());
 
 export default {

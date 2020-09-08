@@ -135,6 +135,20 @@ export default {
       } else {
         this.ifLogin = false;
       }
+      var dom = document.getElementById(opts["btnId"]),
+          _logoutTemplate = [
+            //头像
+            '<span><img src="{figureurl}"  class="{size_key}"/></span>',
+            //昵称
+            "<span>{nickname}</span>",
+            //退出
+            '<span><a @click.stop="handleStop" href="javascript:QC.Login.signOut();">退出</a></span>',
+          ].join("");
+      dom &&
+      (dom.innerHTML = QC.String.format(_logoutTemplate, {
+        nickname: QC.String.escHTML(data.nickname), //做xss过滤
+        figureurl: data.figureurl,
+      }));
     },
     // handleQQLogin() {},
     handlerRegister() {
