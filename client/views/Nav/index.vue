@@ -297,7 +297,7 @@ export default {
       if (res.data.userInfo) {
         this.ifLogin = true;
         this.login.user = res.data.userInfo.user;
-        this.login.photo = "http://www.fyyd.vip" + res.data.userInfo.photo;
+        this.login.photo = "https://www.fyyd.vip" + res.data.userInfo.photo;
       } else {
         this.ifLogin = false;
       }
