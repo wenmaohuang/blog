@@ -130,11 +130,11 @@ export default {
       // window.location.reload()
     },
     handldeLogin(){
-      if (QC.Login.check()) {
-        this.ifLogin = true;
-      } else {
-        this.ifLogin = false;
-      }
+      // if (QC.Login.check()) {
+      //   this.ifLogin = true;
+      // } else {
+      //   this.ifLogin = false;
+      // }
       // var dom = document.getElementById(opts["btnId"]),
       //     _logoutTemplate = [
       //       //头像
