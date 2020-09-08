@@ -5,8 +5,9 @@
       width="30%"
       :before-close="beforeClose"
       :close-on-click-modal="false"
+         action="https://www.fyyd.vip/upload/avatar"
+
   >
-      <!-- action="http://www.fyyd.vip/upload/avatar" -->
     <el-upload
       class="avatar-uploader"
       action="/upload/avatar"
