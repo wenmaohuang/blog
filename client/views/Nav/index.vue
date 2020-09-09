@@ -126,8 +126,8 @@ export default {
   // mounted() {},
   methods: {
     handleRefresh(){
-      this.$router.push('/')
-      window.location.reload()
+      this.$router.replace('/')
+      // window.location.reload()
     },
      handleQQLogin() {
       window.location.href = document.querySelector("#qq_login_iframe").src;
