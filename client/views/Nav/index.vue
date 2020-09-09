@@ -115,7 +115,7 @@ export default {
 
 
 
-    },this.handldeLogin());
+    },this.handldeLogin);
   },
   components: {
     Register,
