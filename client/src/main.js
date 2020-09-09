@@ -8,7 +8,7 @@ import store from '../store/index'
 import axios from 'axios'
 
 import vueAplayer from 'vue-aplayer'
-
+// window.router=router
 Vue.use(vueAplayer)
 
 import vConsole from 'vconsole'

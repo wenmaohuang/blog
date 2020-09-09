@@ -87,7 +87,7 @@ export default {
       ifShowAvatar: false,
       isShowModal: true,
       adminUrl: "http://www.fyyd.vip:3002",
-      accessToken:'',
+      accessToken: '',
 
       login: {
         user: "",
@@ -124,23 +124,31 @@ export default {
   }, // mounted() {},
   methods: {
     handleRefresh() {
-      if(QC.Login.check()){
-        QC.Login.getMe(function (openId, accessToken) {
-          console.log(openId,accessToken,'vb');
-          this.accessToken = accessToken
-
-
-        })
-        // this.$router.replace(encodeURI('/?#access_token='+this.accessToken+'&expires_in=7776000'))
-        this.$router.push({path:'/',query:{'access_token':this.accessToken,expires_in:7776000}})
-
-      }
-      else{
-        this.$router.replace('/')
-        // this.$router.push({path:'/',query:{'access_token':this.accessToken,expires_in:7776000}})
-
-      }
+      // if (QC.Login.check()) {
+      //   QC.Login.getMe(function (openId, accessToken) {
+      //     console.log(openId, accessToken, 'vb');
+      //     this.accessToken = accessToken
+      //
+      //
+      //   })
+      //   // this.$router.replace(encodeURI('/?#access_token='+this.accessToken+'&expires_in=7776000'))
+      //   this.$router.push({
+      //     path: '/',
+      //     query: {
+      //       'access_token': this.accessToken,
+      //       expires_in: 7776000
+      //     }
+      //   })
+      //
+      // } else {
+      //   this.$router.replace('/')
+      //   // this.$router.push({path:'/',query:{'access_token':this.accessToken,expires_in:7776000}})
+      //
+      // }
       // window.location.reload()
+      // this.$router.push('/')
+      window.location.href='https://www.fyyd.vip'
+
     },
     handleQQLogin() {
       window.location.href = document.querySelector("#qq_login_iframe").src;
