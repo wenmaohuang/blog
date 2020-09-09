@@ -87,6 +87,7 @@ export default {
       ifShowAvatar: false,
       isShowModal: true,
       adminUrl: "http://www.fyyd.vip:3002",
+      accessToken:'',
 
       login: {
         user: "",
@@ -123,7 +124,13 @@ export default {
   }, // mounted() {},
   methods: {
     handleRefresh() {
-      this.$router.replace('/')
+      if(QC.login.check()){
+        this.$router.replace('/'+'?#access_token='+this.accessToken+'&expires_in=7776000')
+
+      }
+      else{
+        this.$router.replace('/')
+      }
       // window.location.reload()
     },
     handleQQLogin() {
@@ -144,6 +151,7 @@ export default {
 
       QC.Login.getMe(function (openId, accessToken) {
         console.log(openId,accessToken,'vb');
+        this.accessToken = accessToken
 
 
       })
