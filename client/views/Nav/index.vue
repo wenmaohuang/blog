@@ -9,8 +9,8 @@
       <div class="logo">FYYD</div>
       <div class="n-nav">
         <ul :class="'list' + whichActive">
-          <li @click="handleReload"> 
-            <router-link @click="handleRefresh" to="/" >首页</router-link>
+          <li @click="handleRefresh"> <a>首页</a>
+<!--            <router-link @click="handleRefresh" to="/" >首页</router-link>-->
           </li>
           <li>
             <router-link to="/nav/blog">博客</router-link>
