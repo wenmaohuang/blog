@@ -131,7 +131,7 @@ export default {
 
 
         })
-        this.$router.replace('/?#access_token='+this.accessToken+'&expires_in=7776000')
+        this.$router.replace('/\?#access_token='+this.accessToken+'&expires_in=7776000')
 
       }
       else{
