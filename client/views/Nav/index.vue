@@ -129,7 +129,7 @@ export default {
     handleReload(){
       // window.location.reload()
     },
-    handldeLogin(){
+    handldeLogin(opts){
       // if (QC.Login.check()) {
       //   this.ifLogin = true;
       // } else {
