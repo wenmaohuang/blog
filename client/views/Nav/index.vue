@@ -124,7 +124,7 @@ export default {
   }, // mounted() {},
   methods: {
     handleRefresh() {
-      if(QC.login.check()){
+      if(QC.Login.check()){
         QC.Login.getMe(function (openId, accessToken) {
           console.log(openId,accessToken,'vb');
           this.accessToken = accessToken
