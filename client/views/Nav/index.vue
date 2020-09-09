@@ -113,6 +113,8 @@ export default {
 
 
     }, this.handldeLogin);
+
+
   },
   components: {
     Register, // Login,
@@ -138,7 +140,13 @@ export default {
       //   this.ifLogin = false;
       // }
 
-      console.log(this.$route.path,'cv');
+      console.log(this.$route.path, 'cv');
+
+      QC.Login.getMe(function (openId, accessToken) {
+        console.log(openId,accessToken,'vb');
+
+
+      })
       var dom = document.getElementById(opts["btnId"]), _logoutTemplate = [//头像
         '<span><img src="{figureurl}"  class="{size_key}"/></span>', //昵称
         "<span>{nickname}</span>", //退出
