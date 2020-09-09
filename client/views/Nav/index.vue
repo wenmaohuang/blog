@@ -131,11 +131,14 @@ export default {
 
 
         })
-        this.$router.replace(encodeURI('/?#access_token='+this.accessToken+'&expires_in=7776000'))
+        // this.$router.replace(encodeURI('/?#access_token='+this.accessToken+'&expires_in=7776000'))
+        this.$router.push({path:'/',query:{'access_token':this.accessToken,expires_in:7776000}})
 
       }
       else{
         this.$router.replace('/')
+        // this.$router.push({path:'/',query:{'access_token':this.accessToken,expires_in:7776000}})
+
       }
       // window.location.reload()
     },
