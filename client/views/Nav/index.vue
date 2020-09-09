@@ -125,6 +125,12 @@ export default {
   methods: {
     handleRefresh() {
       if(QC.login.check()){
+        QC.Login.getMe(function (openId, accessToken) {
+          console.log(openId,accessToken,'vb');
+          this.accessToken = accessToken
+
+
+        })
         this.$router.replace('/'+'?#access_token='+this.accessToken+'&expires_in=7776000')
 
       }
@@ -149,12 +155,7 @@ export default {
 
       console.log(this.$route.path, 'cv');
 
-      QC.Login.getMe(function (openId, accessToken) {
-        console.log(openId,accessToken,'vb');
-        this.accessToken = accessToken
 
-
-      })
       var dom = document.getElementById(opts["btnId"]), _logoutTemplate = [//头像
         '<span><img src="{figureurl}"  class="{size_key}"/></span>', //昵称
         "<span>{nickname}</span>", //退出
