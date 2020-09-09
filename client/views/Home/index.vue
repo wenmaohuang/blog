@@ -37,7 +37,7 @@
         <p>
           <router-link to="/nav/daily">日记</router-link>
         </p>
-        <p id="login_btn_modal" style="{width:100%}" @click.stop="handleQQLogin"></p>
+        <p id="qqLoginBtn" style="{width:100%}" @click.stop="handleQQLogin"></p>
       </div>
       <div class="connect">
         <p>联系我</p>
@@ -313,7 +313,7 @@ export default {
         // btnId: "qqLoginBtn", //插入按钮的节点id
         // appid: 101896922,
         redirectURI: "https://www.fyyd.vip/nav/blog", //登录成功后会自动跳往该地址
-        btnId:'login_btn_modal',
+        btnId:'qqLoginBtn',
         showModal: this.isShowModal,
         // size:'A_L'
       },

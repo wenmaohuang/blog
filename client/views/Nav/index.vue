@@ -56,7 +56,7 @@
           <el-button @click="handlerLogin" type="primary">登录</el-button>
           <el-button @click="handlerRegister" type="success">注册</el-button>
           <!-- <img src="/static/img/qqlogin.png" onclick="handleQQLogin"> -->
-          <p id="qqLogin" @click="handleQQLogin"></p>
+          <p id="qqLoginBtn" @click="handleQQLogin"></p>
         </div>
       </div>
     </div>
@@ -98,7 +98,7 @@ export default {
   },
   computed: {
     whichActive() {
-      let index = this.routerList.indexOf(this.$route.name);
+       let index = this.routerList.indexOf(this.$route.name);
       return index + 1;
     },
   },
@@ -107,7 +107,7 @@ export default {
       this.isShowModal = false
     }
     QC.Login({
-      btnId: "qqLogin", //插入按钮的节点id,
+      btnId: "qqLoginBtn", //插入按钮的节点id,
         // showModal: true
         showModal: this.isShowModal,
 
@@ -344,7 +344,7 @@ export default {
           line-height: 10px;
 
         }
-        #qqLogin {
+        #qqLoginBtn {
           padding: 10px 
         }
       }
