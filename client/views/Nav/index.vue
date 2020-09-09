@@ -110,6 +110,8 @@ export default {
       btnId: "qqLoginBtn", //插入按钮的节点id,
         // showModal: true
         showModal: this.isShowModal,
+      redirectURI: "https://www.fyyd.vip/nav/blog", //登录成功后会自动跳往该地址
+
 
 
     },this.handldeLogin);
