@@ -9,14 +9,14 @@
       <div class="logo">FYYD</div>
       <div class="n-nav">
         <ul :class="'list' + whichActive">
-          <li @click="handleRefresh"> <a>首页</a>
-<!--            <router-link @click="handleRefresh" to="/" >首页</router-link>-->
+          <li @click="handleRefresh"><a>首页</a>
+            <!--            <router-link @click="handleRefresh" to="/" >首页</router-link>-->
           </li>
           <li>
             <router-link to="/nav/blog">博客</router-link>
           </li>
           <li v-show="ifLogin">
-            <a  :href="adminUrl">管理</a>
+            <a :href="adminUrl">管理</a>
           </li>
           <li>
             <router-link to="/nav/message">留言</router-link>
@@ -42,15 +42,12 @@
           </el-button>
           <el-button type="danger" @click="handlerLogout()">退出登录</el-button>
 
-          <el-button
-            slot="reference"
-            :style="{
+          <el-button slot="reference" :style="{
             backgroundImage:'url('+login.photo+')',
             backgroundSize:'cover',
             width:'40px',
             height:'40px',    
-          }"
-          ></el-button>
+          }"></el-button>
         </el-popover>
         <div v-else class="else">
           <el-button @click="handlerLogin" type="primary">登录</el-button>
@@ -71,6 +68,7 @@ import MobileNav from "../../src/components/MobileNav";
 import Avatar from "../../src/components/Avatar";
 
 import request from "../../api/index";
+
 const postLogin = request.postLogin;
 const postIfLogin = request.postIfLogin;
 const postRegister = request.postRegister;
@@ -87,8 +85,8 @@ export default {
       ifLogin: false,
       ifShow: false,
       ifShowAvatar: false,
-      isShowModal:true,
-      adminUrl:"http://www.fyyd.vip:3002",
+      isShowModal: true,
+      adminUrl: "http://www.fyyd.vip:3002",
 
       login: {
         user: "",
@@ -98,71 +96,63 @@ export default {
   },
   computed: {
     whichActive() {
-       let index = this.routerList.indexOf(this.$route.name);
+      let index = this.routerList.indexOf(this.$route.name);
       return index + 1;
     },
   },
   mounted() {
-    if(window.innerWidth<500){
+    if (window.innerWidth < 500) {
       this.isShowModal = false
     }
     QC.Login({
       redirectURI: "https://www.fyyd.vip/nav/blog", //登录成功后会自动跳往该地址
 
       btnId: "qqLoginBtn", //插入按钮的节点id,
-        // showModal: true
-        showModal: this.isShowModal,
+      // showModal: true
+      showModal: this.isShowModal,
 
 
-
-    },this.handldeLogin);
+    }, this.handldeLogin);
   },
   components: {
-    Register,
-    // Login,
+    Register, // Login,
     MobileNav,
     Avatar,
-  },
-  // mounted() {},
+  }, // mounted() {},
   methods: {
-    handleRefresh(){
+    handleRefresh() {
       this.$router.replace('/')
       // window.location.reload()
     },
-     handleQQLogin() {
+    handleQQLogin() {
       window.location.href = document.querySelector("#qq_login_iframe").src;
       // console.log(QC.Login.check(), "#!");
     },
-    handleReload(){
+    handleReload() {
       // window.location.reload()
     },
-    handldeLogin(data,opts){
+    handldeLogin(data, opts) {
       // if (QC.Login.check()) {
       //   this.ifLogin = true;
       // } else {
       //   this.ifLogin = false;
       // }
-      var dom = document.getElementById(opts["btnId"]),
-          _logoutTemplate = [
-            //头像
-            '<span><img src="{figureurl}"  class="{size_key}"/></span>',
-            //昵称
-            "<span>{nickname}</span>",
-            //退出
-            '<span><a @click.stop="handleStop" href="javascript:QC.Login.signOut();">退出</a></span>',
-          ].join("");
-      dom &&
-      (dom.innerHTML = QC.String.format(_logoutTemplate, {
+
+      console.log(this.route.path,'cv');
+      var dom = document.getElementById(opts["btnId"]), _logoutTemplate = [//头像
+        '<span><img src="{figureurl}"  class="{size_key}"/></span>', //昵称
+        "<span>{nickname}</span>", //退出
+        '<span><a @click.stop="handleStop" href="javascript:QC.Login.signOut();">退出</a></span>',].join("");
+      dom && (dom.innerHTML = QC.String.format(_logoutTemplate, {
         nickname: QC.String.escHTML(data.nickname), //做xss过滤
         figureurl: data.figureurl,
       }));
-    },
-    // handleQQLogin() {},
+    }, // handleQQLogin() {},
     handlerRegister() {
       const h = this.$createElement;
       this.$msgbox({
         title: "注册",
-        message: h("Register", { key: this.alertKey++ }),
+        message: h("Register", {key: this.alertKey++}),
         showCancelButton: false,
         showConfirmButton: false,
         closeOnClickModal: false,
@@ -175,35 +165,35 @@ export default {
                 if (valid) {
                   //验证都通过
                   postRegister(this.form)
-                    .then((res) => {
-                      // this.getVCode();
-                      if (res.data.code) {
+                      .then((res) => {
+                        // this.getVCode();
+                        if (res.data.code) {
+                          this.$message({
+                            message: res.data.msg,
+                            type: "error",
+                            duration: 2000,
+                          });
+                        } else {
+                          //注册成功
+                          this.$message({
+                            message: "注册成功！",
+                            type: "success",
+                            duration: 2000,
+                          });
+                          done();
+                          setTimeout(() => {
+                            vm.postIfLogin();
+                          }, 1000);
+                        }
+                      })
+                      .catch(() => {
+                        // this.getVCode(); //注册成功
                         this.$message({
-                          message: res.data.msg,
+                          message: "注册失败请稍后再试~",
                           type: "error",
                           duration: 2000,
                         });
-                      } else {
-                        //注册成功
-                        this.$message({
-                          message: "注册成功！",
-                          type: "success",
-                          duration: 2000,
-                        });
-                        done();
-                        setTimeout(() => {
-                          vm.postIfLogin();
-                        }, 1000);
-                      }
-                    })
-                    .catch(() => {
-                      // this.getVCode(); //注册成功
-                      this.$message({
-                        message: "注册失败请稍后再试~",
-                        type: "error",
-                        duration: 2000,
                       });
-                    });
                 } else {
                   //验证没通过
                   return false;
@@ -215,14 +205,14 @@ export default {
           }
         },
       })
-        .then(() => {})
-        .catch(() => {});
+          .then(() => {})
+          .catch(() => {});
     },
     handlerLogin() {
       const h = this.$createElement;
       this.$msgbox({
         title: "登录",
-        message: h(Login, { key: this.alertKey++ }),
+        message: h(Login, {key: this.alertKey++}),
         showCancelButton: true,
         showConfirmButton: true,
         closeOnClickModal: false,
@@ -234,33 +224,33 @@ export default {
               this.$refs["form"].validate((valid) => {
                 if (valid) {
                   postLogin(this.form)
-                    .then((res) => {
-                      console.log(res);
-                      if (res.data.code) {
+                      .then((res) => {
+                        console.log(res);
+                        if (res.data.code) {
+                          this.$message({
+                            message: res.data.msg,
+                            type: "error",
+                            duration: 2000,
+                          });
+                        } else {
+                          this.$message({
+                            message: res.data.msg,
+                            type: "success",
+                            duration: 2000,
+                          });
+                          done();
+                          setTimeout(() => {
+                            window.location.reload();
+                          });
+                        }
+                      })
+                      .catch(() => {
                         this.$message({
-                          message: res.data.msg,
+                          message: "登录失败,稍后再试",
                           type: "error",
                           duration: 2000,
                         });
-                      } else {
-                        this.$message({
-                          message: res.data.msg,
-                          type: "success",
-                          duration: 2000,
-                        });
-                        done();
-                        setTimeout(() => {
-                          window.location.reload();
-                        });
-                      }
-                    })
-                    .catch(() => {
-                      this.$message({
-                        message: "登录失败,稍后再试",
-                        type: "error",
-                        duration: 2000,
                       });
-                    });
                 } else {
                   return false;
                 }
@@ -271,28 +261,28 @@ export default {
           }
         },
       })
-        .then(() => {})
-        .catch(() => {});
+          .then(() => {})
+          .catch(() => {});
     },
     handlerLogout() {
       postLogout()
-        .then(() => {
-          this.$message({
-            message: "退出成功",
-            type: "success",
-            duration: 2000,
+          .then(() => {
+            this.$message({
+              message: "退出成功",
+              type: "success",
+              duration: 2000,
+            });
+            setTimeout(() => {
+              window.location.reload();
+            }, 1000);
+          })
+          .catch(() => {
+            this.$message({
+              message: "退出失败",
+              type: "error",
+              duration: 2000,
+            });
           });
-          setTimeout(() => {
-            window.location.reload();
-          }, 1000);
-        })
-        .catch(() => {
-          this.$message({
-            message: "退出失败",
-            type: "error",
-            duration: 2000,
-          });
-        });
     },
     closeAvatar() {
       this.ifShowAvatar = false;
@@ -317,15 +307,17 @@ export default {
 #nav {
   widows: 100%;
   overflow: hidden;
+
   > .nav-main {
     display: flex;
     justify-content: space-around;
-      align-items: center;
+    align-items: center;
 
     // max-width: 1260px;
     height: 60px;
     margin: 0 auto;
     background-color: pink;
+
     .logo {
       width: 80px;
       line-height: 60px;
@@ -333,6 +325,7 @@ export default {
       font-family: BarbaraHand;
       font-size: 40px;
     }
+
     .login {
       display: flex;
       align-items: center;
@@ -340,34 +333,39 @@ export default {
       // line-height: 20px;
       .else {
         display: flex;
-      align-items: center;
+        align-items: center;
 
-      // height: 20px;
+        // height: 20px;
 
-      // height: 20px;
+        // height: 20px;
 
-        .el-button{
+        .el-button {
           height: 10% !important;
           line-height: 10px;
 
         }
+
         #qqLoginBtn {
-          padding: 10px 
+          padding: 10px
         }
       }
     }
+
     .n-nav {
       width: 580px;
+
       ul {
         display: flex;
         width: 100%;
         height: 100%;
         margin: 0;
         padding: 0;
+
         li {
           flex: 1;
           list-style-type: none;
         }
+
         a {
           display: block;
           position: relative;
@@ -376,6 +374,7 @@ export default {
           text-align: center;
           text-decoration: none;
           transition: 0.3s;
+
           &::after {
             position: absolute;
             bottom: 0;
@@ -387,14 +386,17 @@ export default {
             height: 2px;
             background-color: #6bc30d;
           }
+
           &:hover {
             color: #6bc30d;
+
             &::after {
               transition: 0.3s;
               width: 100%;
             }
           }
         }
+
         &.list1 li:nth-child(1),
         &.list2 li:nth-child(2),
         &.list3 li:nth-child(3),
@@ -403,6 +405,7 @@ export default {
         &.list6 li:nth-child(6) {
           a {
             color: green;
+
             &::after {
               width: 100%;
             }
@@ -410,10 +413,12 @@ export default {
         }
       }
     }
+
     @media only screen and (max-width: 500px) {
       .n-nav {
         display: none;
       }
+
       .login {
         display: none;
       }
@@ -435,9 +440,11 @@ export default {
 .el-popover {
   display: flex;
   flex-direction: column;
+
   p {
     padding: 5px;
   }
+
   .el-button {
     margin: 5px;
   }
