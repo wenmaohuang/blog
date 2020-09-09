@@ -10,7 +10,7 @@
       <div class="n-nav">
         <ul :class="'list' + whichActive">
           <li @click="handleReload"> 
-            <router-link to="/" >首页</router-link>
+            <router-link @click="handleRefresh" to="/" >首页</router-link>
           </li>
           <li>
             <router-link to="/nav/blog">博客</router-link>
@@ -125,6 +125,9 @@ export default {
   },
   // mounted() {},
   methods: {
+    handleRefresh(){
+      this.$router.push('/')
+    },
      handleQQLogin() {
       window.location.href = document.querySelector("#qq_login_iframe").src;
       // console.log(QC.Login.check(), "#!");
