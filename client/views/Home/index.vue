@@ -335,8 +335,7 @@ export default {
       .map((key) => {
         this.newObj[key] = this.obj[key];
       });
-  },
-  created() {
+
     postIfLogin().then((res) => {
       if (res.data.userInfo) {
         this.ifLogin = true;
@@ -344,6 +343,9 @@ export default {
         this.ifLogin = false;
       }
     });
+  },
+  created() {
+
   },
   destroyed() {
     window.removeEventListener("resize", this.getWindowHeight);
