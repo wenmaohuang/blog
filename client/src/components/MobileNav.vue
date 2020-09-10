@@ -21,6 +21,9 @@
             <el-menu-item index="1-2">
               <router-link to="/nav/blog">博客</router-link>
             </el-menu-item>
+            <li v-show="ifLogin">
+              <a :href="adminUrl">管理</a>
+            </li>
             <el-menu-item index="1-3">
               <router-link to="/nav/message" @click="handleCloseItem">留言</router-link>
             </el-menu-item>
@@ -43,7 +46,11 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+
+      adminUrl: "http://www.fyyd.vip:3002",
+
+    };
   },
   watch: {
     // $route: function () {
