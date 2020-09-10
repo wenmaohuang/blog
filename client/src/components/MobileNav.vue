@@ -1,15 +1,8 @@
-
 <template>
   <el-row class="tac">
     <el-col :span="12">
       <!-- <h5>默认颜色</h5> -->
-      <el-menu
-        mode="horizontal"
-        class="el-menu-vertical-demo"
-        @open="handleOpen"
-        @close="handleClose"
-        menu-trigger="click"
-      >
+      <el-menu mode="horizontal" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" menu-trigger="click">
         <el-submenu index="1">
           <template slot="title">
             <i class="iconfont icon-caidan"></i>
@@ -21,9 +14,9 @@
             <el-menu-item index="1-2">
               <router-link to="/nav/blog">博客</router-link>
             </el-menu-item>
-            <li v-show="ifLogin">
+            <el-menu-item v-show="$store.state.ifLogin">
               <a :href="adminUrl">管理</a>
-            </li>
+            </el-menu-item>
             <el-menu-item index="1-3">
               <router-link to="/nav/message" @click="handleCloseItem">留言</router-link>
             </el-menu-item>
@@ -47,6 +40,7 @@
 export default {
   data() {
     return {
+      ifLogin: false,
 
       adminUrl: "http://www.fyyd.vip:3002",
 
@@ -62,6 +56,16 @@ export default {
     // },
   },
 
+  mounted() {
+    if (QC.Login.check()) {
+      this.$store.state.ifLogin = true;
+    } else {
+      this.$store.state.ifLogin = false;
+    }
+
+    console.log(this.$store.state,'bn');
+  },
+
   methods: {
     handleOpen(key, keyPath) {
       console.log(key, keyPath);
@@ -73,8 +77,7 @@ export default {
       console.log(key, keyPath);
       console.log("1q");
       // close(1)
-    },
-    // handleCloseItem() {
+    }, // handleCloseItem() {
     //   this.open_list = "1";
     //   this.openeds= ['']
     // }
@@ -89,8 +92,10 @@ export default {
   //   z-index: 11;
 
   background-color: transparent;
+
   .el-col {
     background-color: transparent;
+
     .el-menu--horizontal {
       //   display: none;
       position: absolute;
@@ -105,12 +110,13 @@ export default {
         background-color: transparent;
 
         width: 100px;
+
         .el-submenu__title {
           background-color: transparent;
           // height: 58px;
           border-bottom: 0 transparent;
           // transition: 0 0 !important;
-          
+
           // border-width: 0 !important;
 
           //   background-color: #aaa;
@@ -123,7 +129,7 @@ export default {
           //   }
         }
       }
-    
+
 
       // .el-menu {
       //     background-color: #aaa;
@@ -154,21 +160,26 @@ export default {
     margin: 0;
     width: 100% !important;
   }
+
   .el-menu--popup {
     width: 100px;
     min-width: 100px !important;
   }
+
   .el-menu--popup-bottom-start {
     width: 100px !important;
     min-width: 100px !important;
   }
+
   .el-menu-item-group {
     //   background-color: #aaa;
     width: 100px;
+
     .el-menu-item-group__title {
       width: 100px;
       padding: 0;
     }
+
     ul {
       width: 100px;
 

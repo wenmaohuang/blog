@@ -158,11 +158,11 @@ export default {
       // window.location.reload()
     },
     handldeLogin(data, opts) {
-      // if (QC.Login.check()) {
-      //   this.ifLogin = true;
-      // } else {
-      //   this.ifLogin = false;
-      // }
+      if (QC.Login.check()) {
+        this.$store.state.ifLogin = true;
+      } else {
+        this.$store.state.ifLogin = false;
+      }
 
       console.log(this.$route.path, 'cv');
 
