@@ -90,6 +90,7 @@ export default {
         if (valid) {
           postLogin(this.form)
               .then((res) => {
+                this.$store.state.user = this.form.user
                 console.log(res.dada, 'jh');
                 if (res.data.code) {
                   this.$message({

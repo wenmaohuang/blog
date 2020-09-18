@@ -7,7 +7,8 @@ export default new Vuex.Store({
         article:{},
         articleContent:'',
         articleMessage:{},
-        articleMessageList:{}
+        articleMessageList:{},
+        user:''
     },
     mutations:{
         // handleClick(){

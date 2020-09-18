@@ -12,7 +12,8 @@
           <div
               class="head"
               :style="` background: hsl(${getUserHead(i.userId,'bck')}, 88%, 62%); clip-path:polygon(${getUserHead(i.userId,'polygon')}% 0,100% 100%,0% 100%); transform: rotate(${getUserHead(i.userId,'rotate')}deg)`"
-          ></div>
+          >{{$store.state.user}}aaa</div>
+          <span>{{$store.state.user}}</span>
         </div>
         <div class="user-msg">
           <span
