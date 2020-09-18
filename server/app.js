@@ -41,6 +41,7 @@ app.use((req, res, next) => {
 
 
 
+
 app.use(require('./middleware/session'))
 app.use('/', require('./routes/index'))
 
