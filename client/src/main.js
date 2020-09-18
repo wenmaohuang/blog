@@ -50,6 +50,10 @@ axios.defaults.baseURL = process.env.BASE_URL
 
 
 
+
+
+
+
 new Vue({
     router,
     store,

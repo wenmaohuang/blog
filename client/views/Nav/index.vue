@@ -115,6 +115,19 @@ export default {
 
     }, this.handldeLogin);
 
+    // postIfLogin().then((res) => {
+    //   // if (res.data.userInfo) {
+    //   //   this.ifLogin = true;
+    //   // } else {
+    //   //   this.ifLogin = false;
+    //   // }
+    //
+    //   if (res.data.userInfo) {
+    //     this.$store.state.ifLogin = true;
+    //   } else {
+    //     this.$store.state.ifLogin = false;
+    //   }
+    // });
 
   },
   components: {
@@ -163,6 +176,7 @@ export default {
       } else {
         this.$store.state.ifLogin = false;
       }
+
 
       console.log(this.$route.path, 'cv');
 
@@ -320,11 +334,15 @@ export default {
   created() {
     postIfLogin().then((res) => {
       if (res.data.userInfo) {
-        this.ifLogin = true;
+        // this.ifLogin = true;
+            this.$store.state.ifLogin = true;
+
         this.login.user = res.data.userInfo.user;
         this.login.photo = "https://www.fyyd.vip" + res.data.userInfo.photo;
       } else {
-        this.ifLogin = false;
+        // this.ifLogin = false;
+            this.$store.state.ifLogin = false;
+
       }
     });
   },

@@ -17,6 +17,9 @@
             <el-menu-item v-show="$store.state.ifLogin">
               <a :href="adminUrl">管理</a>
             </el-menu-item>
+            <el-menu-item v-show="true">
+              <router-link to="/nav/football">足球</router-link>
+            </el-menu-item>
             <el-menu-item index="1-3">
               <router-link to="/nav/message" @click="handleCloseItem">留言</router-link>
             </el-menu-item>
@@ -57,13 +60,13 @@ export default {
   },
 
   mounted() {
-    if (QC.Login.check()) {
-      this.$store.state.ifLogin = true;
-    } else {
-      this.$store.state.ifLogin = false;
-    }
-
-    console.log(this.$store.state,'bn');
+    // if (QC.Login.check()) {
+    //   this.$store.state.ifLogin = true;
+    // } else {
+    //   this.$store.state.ifLogin = false;
+    // }
+    //
+    // console.log(this.$store.state,'bn');
   },
 
   methods: {

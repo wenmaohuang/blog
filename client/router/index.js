@@ -17,6 +17,8 @@ const routes = [{
         },
         component:()=>import('../views/Blog/articleContent/ArticleContent.vue')
     },
+
+
     {
         path: '/nav',
         name: 'Nav',
@@ -33,6 +35,14 @@ const routes = [{
                     title: '关于'
                 },
                 component: () => import('../views/Nav/About')
+            },
+            {
+                path: 'football',
+                name: 'football',
+                meta: {
+                    title: '足球'
+                },
+                component:()=>import('../views/Football/Football.vue')
             },
             {
                 path: 'links',
