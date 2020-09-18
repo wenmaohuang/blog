@@ -2,9 +2,9 @@ var express = require('express')
 var router = express.Router()
 var userDB = require('../../db/user')
 router.post("/", (req, res) => {
-    // console.log(req.session,'fd',req.body.user);
+    console.log(req.session,'fd',req.body.user);
 
-    if (req.session.login.user === req.body.user) {
+    if (req.session.login.user && req.session.login.user === req.body.user) {
         res.send({
             code: 2,
             msg: '已登录'
