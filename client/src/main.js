@@ -5,7 +5,7 @@ import router from '../router'
 // import 'element-ui/lib/theme-chalk/index.css'
 import VueWechatTitle from 'vue-wechat-title';
 import store from '../store/index'
-import axios from 'axios'
+// import axios from 'axios'
 
 import vueAplayer from 'vue-aplayer'
 // window.router=router
@@ -46,7 +46,7 @@ console.log(process.env.NODE_ENV, '@!');
 
 
 
-axios.defaults.baseURL = process.env.BASE_URL
+// axios.defaults.baseURL = process.env.BASE_URL
 
 
 
