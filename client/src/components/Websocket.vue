@@ -35,7 +35,9 @@ export default {
       userId: null, //当前用户ID
       list: [], //聊天记录的数组
       contentText: "" ,//input输入的值,
-      userInfo:{}
+      userInfo:{
+        user:''
+      }
     };
   },
   created() {
