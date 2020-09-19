@@ -5,12 +5,14 @@
       <div v-for="(i,index) in list" :key="index" class="msg" :style="i.userId == userId?'flex-direction:row-reverse':''">
         <div class="user-head">
           <div class="head" :style="` background: hsl(${getUserHead(i.userId,'bck')}, 88%, 62%); clip-path:polygon(${getUserHead(i.userId,'polygon')}% 0,100% 100%,0% 100%); transform: rotate(${getUserHead(i.userId,'rotate')}deg)`">
-<!--            {{ $store.state.user }}aaa-->
+            <!--            {{ $store.state.user }}aaa-->
           </div>
-          <div v-if="userInfo">
-            {{userInfo.user}}
-<!--            <span></span>-->
-          </div>
+          <span>{{i.user}}</span>
+
+<!--          <div v-if="userInfo">-->
+<!--            {{usreId}}-->
+<!--            &lt;!&ndash;            <span></span>&ndash;&gt;-->
+<!--          </div>-->
         </div>
         <div class="user-msg">
           <span :style="i.userId == userId?' float: right;':''" :class="i.userId == userId?'right':'left'">{{
@@ -37,22 +39,22 @@ export default {
       count: 0,
       userId: null, //当前用户ID
       list: [], //聊天记录的数组
-      contentText: "" ,//input输入的值,
-      userInfo:{
-        user:'a'
-      }
+      contentText: "",//input输入的值,
+      // userInfo: {
+      //   user: 'a'
+      // }
     };
   },
   created() {
     this.getUserID();
-    postIfLogin().then(res => {
-      console.log(res,'oi');
-      this.userInfo = res.data.userInfo
-
-    }).catch(err => {
-      console.log(err);
-
-    })
+    // postIfLogin().then(res => {
+    //   console.log(res, 'oi');
+    //   this.userInfo = res.data.userInfo
+    //
+    // }).catch(err => {
+    //   console.log(err);
+    //
+    // })
   },
   mounted() {
 
@@ -84,12 +86,13 @@ export default {
     sendText() {
       let _this = this;
       _this.$refs["sendMsg"].focus();
-      if (!_this.contentText) {
+      if (!_this.contentText || !this.userInfo) {
         return;
       }
       let params = {
         userId: _this.userId,
-        msg: _this.contentText
+        msg: _this.contentText,
+        user:_this.userInfo.user
       };
       _this.ws.send(JSON.stringify(params)); //调用WebSocket send()发送信息的方法
       _this.contentText = "";
@@ -114,6 +117,7 @@ export default {
           console.log("服务器连接出错");
         };
         ws.onmessage = function (e) {
+          console.log(e,'iu');
           //接收服务器返回的数据
           let resData = JSON.parse(e.data);
           if (resData.funName == "userCount") {
@@ -123,7 +127,8 @@ export default {
           } else {
             _this.list = [..._this.list, {
               userId: resData.userId,
-              content: resData.msg
+              content: resData.msg,
+              user:resData.user
             }];
           }
         };
