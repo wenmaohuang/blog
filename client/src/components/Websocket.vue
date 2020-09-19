@@ -40,21 +40,20 @@ export default {
       userId: null, //当前用户ID
       list: [], //聊天记录的数组
       contentText: "",//input输入的值,
-      // userInfo: {
-      //   user: 'a'
-      // }
+      userInfo: {
+      }
     };
   },
   created() {
     this.getUserID();
-    // postIfLogin().then(res => {
-    //   console.log(res, 'oi');
-    //   this.userInfo = res.data.userInfo
-    //
-    // }).catch(err => {
-    //   console.log(err);
-    //
-    // })
+    postIfLogin().then(res => {
+      console.log(res, 'oi');
+      this.userInfo = res.data.userInfo
+
+    }).catch(err => {
+      console.log(err);
+
+    })
   },
   mounted() {
 
@@ -103,7 +102,7 @@ export default {
     initWebSocket() {
       let _this = this;
       //判断页面有没有存在websocket连接
-      if (window.WebSocket) {
+      if (window.WebSocket && this.userInfo) {
         // 192.168.0.115 是我本地IP地址 此处的 :8181 端口号 要与后端配置的一致
         let ws = new WebSocket("ws://localhost:3000");
         _this.ws = ws;
