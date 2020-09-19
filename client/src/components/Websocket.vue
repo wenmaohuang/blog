@@ -1,36 +1,32 @@
 <template>
   <div class="chat-box">
-    <header>聊天室人数：{{count}}</header>
+    <header>聊天室人数：{{ count }}</header>
     <div class="msg-box" ref="msg-box">
-      <div
-          v-for="(i,index) in list"
-          :key="index"
-          class="msg"
-          :style="i.userId == userId?'flex-direction:row-reverse':''"
-      >
+      <div v-for="(i,index) in list" :key="index" class="msg" :style="i.userId == userId?'flex-direction:row-reverse':''">
         <div class="user-head">
-          <div
-              class="head"
-              :style="` background: hsl(${getUserHead(i.userId,'bck')}, 88%, 62%); clip-path:polygon(${getUserHead(i.userId,'polygon')}% 0,100% 100%,0% 100%); transform: rotate(${getUserHead(i.userId,'rotate')}deg)`"
-          >{{$store.state.user}}aaa</div>
-          <span>{{$store.state.user}}</span>
+          <div class="head" :style="` background: hsl(${getUserHead(i.userId,'bck')}, 88%, 62%); clip-path:polygon(${getUserHead(i.userId,'polygon')}% 0,100% 100%,0% 100%); transform: rotate(${getUserHead(i.userId,'rotate')}deg)`">
+<!--            {{ $store.state.user }}aaa-->
+          </div>
+          <span>{{userInfo.user}}</span>
         </div>
         <div class="user-msg">
-          <span
-              :style="i.userId == userId?' float: right;':''"
-              :class="i.userId == userId?'right':'left'"
-          >{{i.content}}</span>
+          <span :style="i.userId == userId?' float: right;':''" :class="i.userId == userId?'right':'left'">{{
+              i.content
+            }}</span>
         </div>
       </div>
     </div>
     <div class="input-box">
-      <input type="text" ref="sendMsg" v-model="contentText" @keyup.enter="sendText()" />
+      <input type="text" ref="sendMsg" v-model="contentText" @keyup.enter="sendText()"/>
       <el-button class="btn" :class="{['btn-active']:contentText}" @click="sendText()">发送</el-button>
     </div>
   </div>
 </template>
 
 <script>
+import api from '../../api'
+
+const postIfLogin = api.postIfLogin
 export default {
   data() {
     return {
@@ -38,22 +34,31 @@ export default {
       count: 0,
       userId: null, //当前用户ID
       list: [], //聊天记录的数组
-      contentText: "" //input输入的值
+      contentText: "" ,//input输入的值,
+      userInfo:{}
     };
   },
   created() {
     this.getUserID();
   },
   mounted() {
+    postIfLogin().then(res => {
+      console.log(res.data,'oi');
+      this.userInfo = res.data.userInfo
+
+    }).catch(err => {
+      console.log(err);
+
+    })
     this.initWebSocket();
+
   },
   methods: {
     //根据时间戳作为当前用户ID
     getUserID() {
       let time = new Date().getTime();
       this.userId = time;
-    },
-    //根据userID生成一个随机头像
+    }, //根据userID生成一个随机头像
     getUserHead(id, type) {
       let ID = String(id);
       if (type == "bck") {
@@ -65,13 +70,11 @@ export default {
       if (type == "rotate") {
         return Number(ID.substring(ID.length - 3));
       }
-    },
-    //滚动条到底部
+    }, //滚动条到底部
     scrollBottm() {
       let el = this.$refs["msg-box"];
       el.scrollTop = el.scrollHeight;
-    },
-    //发送聊天信息
+    }, //发送聊天信息
     sendText() {
       let _this = this;
       _this.$refs["sendMsg"].focus();
@@ -87,8 +90,7 @@ export default {
       setTimeout(() => {
         _this.scrollBottm();
       }, 500);
-    },
-    //进入页面创建websocket连接
+    }, //进入页面创建websocket连接
     initWebSocket() {
       let _this = this;
       //判断页面有没有存在websocket连接
@@ -96,16 +98,16 @@ export default {
         // 192.168.0.115 是我本地IP地址 此处的 :8181 端口号 要与后端配置的一致
         let ws = new WebSocket("ws://localhost:3000");
         _this.ws = ws;
-        ws.onopen = function() {
+        ws.onopen = function () {
           console.log("服务器连接成功");
         };
-        ws.onclose = function() {
+        ws.onclose = function () {
           console.log("服务器连接关闭");
         };
-        ws.onerror = function() {
+        ws.onerror = function () {
           console.log("服务器连接出错");
         };
-        ws.onmessage = function(e) {
+        ws.onmessage = function (e) {
           //接收服务器返回的数据
           let resData = JSON.parse(e.data);
           if (resData.funName == "userCount") {
@@ -113,10 +115,10 @@ export default {
             _this.list = resData.chat;
             console.log(resData.chat);
           } else {
-            _this.list = [
-              ..._this.list,
-              { userId: resData.userId, content: resData.msg }
-            ];
+            _this.list = [..._this.list, {
+              userId: resData.userId,
+              content: resData.msg
+            }];
           }
         };
       }
@@ -130,10 +132,11 @@ export default {
   margin: 0 auto;
   background: #fafafa;
   position: absolute;
-  right:0;
+  right: 0;
   height: 100%;
   width: 100%;
   max-width: 700px;
+
   header {
     //position: fixed;
     width: 100%;
@@ -147,12 +150,14 @@ export default {
     color: white;
     font-size: 1rem;
   }
+
   .msg-box {
     position: absolute;
     height: calc(100% - 6.5rem);
     width: 100%;
     //margin-top: 3rem;
     overflow-y: scroll;
+
     .msg {
       width: 95%;
       min-height: 2.5rem;
@@ -160,6 +165,7 @@ export default {
       position: relative;
       display: flex;
       justify-content: flex-start !important;
+
       .user-head {
         min-width: 2.5rem;
         width: 20%;
@@ -170,18 +176,22 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
+
         .head {
           width: 1.2rem;
           height: 1.2rem;
         }
+
         // position: absolute;
       }
+
       .user-msg {
         width: 80%;
         // position: absolute;
         word-break: break-all;
         position: relative;
         z-index: 5;
+
         span {
           display: inline-block;
           padding: 0.5rem 0.7rem;
@@ -189,15 +199,18 @@ export default {
           margin-top: 0.2rem;
           font-size: 0.88rem;
         }
+
         .left {
           background: white;
           animation: toLeft 0.5s ease both 1;
         }
+
         .right {
           background: #53a8ff;
           color: white;
           animation: toright 0.5s ease both 1;
         }
+
         @keyframes toLeft {
           0% {
             opacity: 0;
@@ -221,6 +234,7 @@ export default {
       }
     }
   }
+
   .input-box {
     //padding: 0 0.5rem;
     position: absolute;
@@ -232,6 +246,7 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     input {
       height: 2.3rem;
       display: inline-block;
@@ -241,6 +256,7 @@ export default {
       border-radius: 0.2rem;
       font-size: 0.88rem;
     }
+
     .btn {
       height: 2.3rem;
       min-width: 4rem;
@@ -254,6 +270,7 @@ export default {
       margin: 0.5rem;
       transition: 0.5s;
     }
+
     .btn-active {
       background: #409eff;
     }

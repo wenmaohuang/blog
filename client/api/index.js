@@ -1,6 +1,6 @@
 import axios from 'axios'
 // axios.defaults.baseURL = 'http://localhost:3000'
-axios.defaults.baseURL = 'https://www.fyyd.vip'
+// axios.defaults.baseURL = 'https://www.fyyd.vip'
 
 // const instance = axios.create({
 //     baseURL: process.env.BASE_URL
@@ -9,7 +9,7 @@ axios.defaults.baseURL = 'https://www.fyyd.vip'
 // axios.defaults.baseURL = 'https://www.fyyd.vip'
 
 
-// axios.defaults.baseURL = process.env.BASE_URL
+axios.defaults.baseURL = process.env.BASE_URL
 
 
 axios.defaults.withCredentials = true

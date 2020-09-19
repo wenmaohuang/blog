@@ -160,7 +160,7 @@ export default {
       // }
       // window.location.reload()
       // this.$router.push('/')
-      window.location.href='https://www.fyyd.vip'
+      window.location.href = 'https://www.fyyd.vip'
 
     },
     handleQQLogin() {
@@ -208,6 +208,7 @@ export default {
                   //验证都通过
                   postRegister(this.form)
                       .then((res) => {
+                        console.log(res,'fd');
                         // this.getVCode();
                         if (res.data.code) {
                           this.$message({
@@ -267,7 +268,7 @@ export default {
                 if (valid) {
                   postLogin(this.form)
                       .then((res) => {
-                        console.log(res);
+                        console.log(res.data);
                         if (res.data.code) {
                           this.$message({
                             message: res.data.msg,
@@ -335,13 +336,13 @@ export default {
     postIfLogin().then((res) => {
       if (res.data.userInfo) {
         // this.ifLogin = true;
-            this.$store.state.ifLogin = true;
+        this.$store.state.ifLogin = true;
 
         this.login.user = res.data.userInfo.user;
         this.login.photo = "https://www.fyyd.vip" + res.data.userInfo.photo;
       } else {
         // this.ifLogin = false;
-            this.$store.state.ifLogin = false;
+        this.$store.state.ifLogin = false;
 
       }
     });

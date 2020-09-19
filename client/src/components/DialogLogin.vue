@@ -86,30 +86,32 @@ export default {
 
     handleLogin() {
       this.$refs["form"].validate((valid) => {
-        console.log(valid,'hg');
+        console.log(valid, 'hg');
         if (valid) {
+
+          console.log(this.form,'ds');
           postLogin(this.form)
-              .then((res) => {
-                this.$store.state.user = this.form.user
-                console.log(res.dada, 'jh');
-                if (res.data.code) {
-                  this.$message({
-                    message: res.data.msg,
-                    type: "error",
-                    duration: 2000,
-                  });
-                } else {
-                  this.$message({
-                    message: res.data.msg,
-                    type: "success",
-                    duration: 2000,
-                  });
-                  // done();
-                  setTimeout(() => {
-                    window.location.reload();
-                  });
-                }
-              })
+        .then((res) => {
+            // this.$store.state.user = this.form.user
+            console.log(res.data, this.form, 'jh');
+            if (res.data.code) {
+              this.$message({
+                message: res.data.msg,
+                type: "error",
+                duration: 2000,
+              });
+            } else {
+              this.$message({
+                message: res.data.msg,
+                type: "success",
+                duration: 2000,
+              });
+              // done();
+              setTimeout(() => {
+                window.location.reload();
+              });
+            }
+          })
               .catch(() => {
                 this.$message({
                   message: "登录失败,稍后再试",
