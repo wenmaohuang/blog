@@ -7,7 +7,10 @@
           <div class="head" :style="` background: hsl(${getUserHead(i.userId,'bck')}, 88%, 62%); clip-path:polygon(${getUserHead(i.userId,'polygon')}% 0,100% 100%,0% 100%); transform: rotate(${getUserHead(i.userId,'rotate')}deg)`">
 <!--            {{ $store.state.user }}aaa-->
           </div>
-          <span>{{userInfo.user}}</span>
+          <div v-if="userInfo">
+            {{userInfo.user}}
+<!--            <span></span>-->
+          </div>
         </div>
         <div class="user-msg">
           <span :style="i.userId == userId?' float: right;':''" :class="i.userId == userId?'right':'left'">{{
@@ -36,22 +39,23 @@ export default {
       list: [], //聊天记录的数组
       contentText: "" ,//input输入的值,
       userInfo:{
-        user:''
+        user:'a'
       }
     };
   },
   created() {
     this.getUserID();
-  },
-  mounted() {
     postIfLogin().then(res => {
-      console.log(res.data,'oi');
+      console.log(res,'oi');
       this.userInfo = res.data.userInfo
 
     }).catch(err => {
       console.log(err);
 
     })
+  },
+  mounted() {
+
     this.initWebSocket();
 
   },
