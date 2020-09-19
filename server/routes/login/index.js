@@ -2,9 +2,9 @@ var express = require('express')
 var router = express.Router()
 var userDB = require('../../db/user')
 router.post("/", (req, res) => {
-    console.log(req.session,'fd',req.body.user);
+    console.log(req.session, 'fd', req.body.user);
 
-    if (req.session.login.user && req.session.login.user === req.body.user) {
+    if (req.session.login) {
         res.send({
             code: 2,
             msg: '已登录'
@@ -21,17 +21,23 @@ router.post("/", (req, res) => {
         return
     }
     if (!/^[\w\u4e00-\u9fa5\uac00-\ud7ff\u0800-\u4e00\-]{2,7}$/.test(user) || !/^[\w<>,.?|;':"{}!@#$%^&*()\/\-\[\]\\]{6,18}$/.test(pwd)) {
-
+        res.send({
+            code: 2,
+            msg: "用户名或密码不符合规则"
+        });
+        return;
     }
     userDB.findOne({user})
         .then(data => {
             if (data) {
+                console.log(data, 'sa');
                 if (data.pwd === pwd) {
                     req.session.login = data
+                    console.log(req.session.login,'ap');
 
                     res.send({
                         code: 0,
-                        msg: '登录成功'
+                        msg: '登录成功!!!'
                     })
                 } else {
                     res.send({
