@@ -20,6 +20,12 @@
             <el-menu-item v-show="true">
               <router-link to="/nav/football">足球</router-link>
             </el-menu-item>
+            <el-menu-item v-show="ifLogin">
+              <a href="http://www.fyyd.vip:3001/">react</a>
+            </el-menu-item>
+            <el-menu-item v-show="ifLogin">
+              <a href="http://www.fyyd.vip:3003/">angular</a>
+            </el-menu-item>
             <el-menu-item index="1-3">
               <router-link to="/nav/message" @click="handleCloseItem">留言</router-link>
             </el-menu-item>
