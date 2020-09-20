@@ -13,8 +13,17 @@ app.use(express.urlencoded({
 
 app.use(history());
 app.use(cookieParser())
+
+// app.use(express.static(path.join(__dirname, '../../reblog/client/build')))
+// app.use(express.static(path.join(__dirname, '../reblog/server/public')))
+//
+
 app.use(express.static(path.join(__dirname, '../client/dist')))
 app.use(express.static(path.join(__dirname, './public')))
+
+
+
+
 
 
 
@@ -48,3 +57,6 @@ app.use('/', require('./routes/index'))
 // app.get('aa',)
 
 module.exports = app
+
+
+
