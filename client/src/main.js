@@ -22,19 +22,10 @@ if (process.env.NODE_ENV === 'development') {
 
 Vue.use(VueWechatTitle)
 
-// import Vue from 'vue'
-import VueVideoPlayer from 'vue-video-player'
-
-// require videojs style
-import 'video.js/dist/video-js.css'
-// import 'vue-video-player/src/custom-theme.css'
-
-Vue.use(VueVideoPlayer, /* {
-  options: global default options,
-  events: global videojs events
-} */)
-
-// Vue.use(ELEMENT)
+import VideoPlayer from 'vue-video-player';
+import 'video.js/dist/video-js.css';
+import 'videojs-flash';
+Vue.use(VideoPlayer)
 
 
 Vue.config.productionTip = false
