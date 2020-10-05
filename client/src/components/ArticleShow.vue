@@ -103,6 +103,8 @@ console.log(e);
     mounted() {
         getChat().then(res=>{
             console.log(res.data.data,'bgt');
+        }).catch(e=>{
+            console.log('some error ouur')
         })
         // console.log(this.$store.state.article,'b.');
         getArticleShow(this.$route.params.id, true).then(res => {
