@@ -19,7 +19,7 @@ router.use('/visitor',require('./visitor/index.js'))
 // router.use('/search',require('./search/index.js'))
 
 
-// router.use('/chat',require('./chat/index.js'))
+router.use('/chat',require('./chat/index.js'))
 
 // router.use('/search',require('./search/ArticleSend.jsx'))
 
