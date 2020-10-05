@@ -102,7 +102,7 @@ console.log(e);
 
     mounted() {
         getChat().then(res=>{
-            console.log(res.data.data);
+            console.log(res.data.data,'bgt');
         })
         // console.log(this.$store.state.article,'b.');
         getArticleShow(this.$route.params.id, true).then(res => {
