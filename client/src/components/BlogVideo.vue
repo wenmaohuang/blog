@@ -33,8 +33,8 @@ export default {
         techOrder: ['flash', 'html5'],      // 兼容顺序
         sources: [{ // 流配置，数组形式，会根据兼容顺序自动切换
           type: 'rtmp/hls',
-          // src: 'rtmp://zb.fyyd.vip/app/stream',
-          src: 'rtmp://58.200.131.2:1935/livetv/hunantv'
+          src: 'rtmp://zb.fyyd.vip/app/a',
+          // src: 'rtmp://58.200.131.2:1935/livetv/hunantv'
 
         }],
         poster: "", //你的封面地址

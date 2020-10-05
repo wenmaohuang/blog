@@ -105,6 +105,9 @@ export default {
 
     postPepole(){
         return axios.post('/chat/pepole')
+    },
+    getChat(){
+        return axios.get('/chat')
     }
 
 

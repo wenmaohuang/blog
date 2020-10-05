@@ -45,6 +45,7 @@
 import request from "../../api";
 const getArticleShow = request.getArticleShow;
 const postArticleReadCount = request.postArticleReadCount
+const getChat = request.getChat
 
 // import request from "../../../api/index";
 
@@ -100,6 +101,9 @@ console.log(e);
     },
 
     mounted() {
+        getChat().then(res=>{
+            console.log(res.data.data);
+        })
         // console.log(this.$store.state.article,'b.');
         getArticleShow(this.$route.params.id, true).then(res => {
             this.articleList = res.data.data;
