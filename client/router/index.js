@@ -4,6 +4,7 @@ Vue.use(VueRouter)
 const routes = [{
         path: '/',
         name: 'Home',
+        base:'vu',
         meta: {
             title: '风移影动'
         },
