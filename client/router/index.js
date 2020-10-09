@@ -4,7 +4,6 @@ Vue.use(VueRouter)
 const routes = [{
         path: '/',
         name: 'Home',
-        base:'vu',
         meta: {
             title: '风移影动'
         },
@@ -103,6 +102,8 @@ const routes = [{
 
 const router = new VueRouter({
     mode: "history",
-    routes
+    routes,
+    base:'vu',
+
 })
 export default router
