@@ -9,7 +9,7 @@ import axios from 'axios'
 // axios.defaults.baseURL = 'https://www.fyyd.vip'
 
 
-axios.defaults.baseURL = process.env.BASE_URL
+axios.defaults.baseURL = process.env.BASE_URL/re
 
 
 axios.defaults.withCredentials = true
