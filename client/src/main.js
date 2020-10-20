@@ -18,44 +18,14 @@ if (process.env.NODE_ENV === 'development') {
 
     Vue.use(vconsole)
 }
-
-
 Vue.use(VueWechatTitle)
 
 import VideoPlayer from 'vue-video-player';
 import 'video.js/dist/video-js.css';
 import 'videojs-flash';
 Vue.use(VideoPlayer)
-
-
 Vue.config.productionTip = false
-
-// import global_ from '../config/global.js'
-
-// Vue.prototype.GLOBAL = global_;
-// axios.defaults.baseURL=global_.BASE_URL;
 console.log(process.env.NODE_ENV, '@!');
-
-
-
-
-
-
-// Vue.prototype.baseURL = process.env.BASE_URL
-
-// Vue.prototype.$axios = axios
-// axios.defaults.baseURL = '/proxy'  //关键代码
-
-
-
-
-// axios.defaults.baseURL = process.env.BASE_URL
-
-
-
-
-
-
 
 new Vue({
     router,
