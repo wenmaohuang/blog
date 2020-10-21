@@ -12,7 +12,7 @@ module.exports = {
 
     // Paths
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: './blog/',
     proxyTable: {
 
      
@@ -59,8 +59,10 @@ module.exports = {
 
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
+    // assetsRoot: path.resolve(__dirname),
+
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/blog/',
+    assetsPublicPath: './blog/',
     url:'https://www.fyyd.vip',
     /**
      * Source Maps
