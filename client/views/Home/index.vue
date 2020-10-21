@@ -416,7 +416,7 @@ export default {
     }
   }
   .bgc {
-    background-image: url("https://www.fyyd.vip/blog/img/3.jpg");
+    background-image: src("/blog/static/img/3.jpg");
     background-size: 100% 100%;
     display: flex;
     justify-content: center;
