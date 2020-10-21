@@ -4,30 +4,15 @@ const app = express()
 const cookieParser = require('cookie-parser')
 var logger = require('morgan');
 var history = require('connect-history-api-fallback');
-
 app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({
     extended: false
 }))
-
 app.use(history());
 app.use(cookieParser())
-
-// app.use(express.static(path.join(__dirname, '../../reblog/client/build')))
-// app.use(express.static(path.join(__dirname, '../reblog/server/public')))
-//
-
-app.use(express.static(path.join(__dirname, '../client/dist')))
+app.use(express.static(path.join(__dirname, '../client/dist/blog')))
 app.use(express.static(path.join(__dirname, './public')))
-
-
-
-
-
-
-
-
 app.use((req, res, next) => {
     res.header({
         'Access-Control-Allow-Credentials': true,
@@ -45,17 +30,8 @@ app.use((req, res, next) => {
         next()
     }
 })
-
-// console.log(request,'eee');
-
-
-
-
 app.use(require('./middleware/session'))
 app.use('/', require('./routes/index'))
-
-// app.get('aa',)
-
 module.exports = app
 
 
