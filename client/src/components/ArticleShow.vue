@@ -17,7 +17,7 @@
             <div class="content">
                 <!-- <img src="http://www.fyyd.vip/img/1.png" @click="handleArticleList(item)" alt /> -->
                 <router-link class='img' to="/content">
-                    <img :src="item.surface" @click="handleArticleList(item)" alt />
+                    <img src="https://www.fyyd.vip/blog/img/4.jpg" @click="handleArticleList(item)" alt />
                 </router-link>
                 <router-link class='p' to="/content">
                     <p v-html="item.content" @click="handleArticleList(item)"></p>
