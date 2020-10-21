@@ -62,7 +62,7 @@ module.exports = {
     // assetsRoot: path.resolve(__dirname),
 
     assetsSubDirectory: 'static',
-    assetsPublicPath: './blog/',
+    assetsPublicPath: './',
     url:'https://www.fyyd.vip',
     /**
      * Source Maps
