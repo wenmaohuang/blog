@@ -12,7 +12,7 @@ module.exports = {
 
     // Paths
     assetsSubDirectory: 'static',
-    assetsPublicPath: './blog/',
+    assetsPublicPath: '/',
     proxyTable: {
 
      

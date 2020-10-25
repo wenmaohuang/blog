@@ -357,11 +357,9 @@ export default {
 <style lang="less" scoped>
 .home {
   width: 100%;
-
   .drawer {
     position: absolute;
     right: 30px;
-
     .el-button {
       background-color: transparent;
       border-color: transparent;
