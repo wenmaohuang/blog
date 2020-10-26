@@ -4,8 +4,8 @@
     <button type="button" @click="handleClick" class="layui-btn">提交</button>
   </div>
 </template>
-    <script src="/blog/static/layui/layui.js"></script>
-
+<!--    <script src="/blog/static/layui/layui.js"></script>-->
+<script src="https://cdn.bootcdn.net/ajax/libs/layui/2.4.3/layui.min.js"></script>
 <script>
 export default {
   name: "RichText",

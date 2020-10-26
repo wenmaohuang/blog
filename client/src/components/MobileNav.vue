@@ -2,7 +2,7 @@
   <el-row class="tac">
     <el-col :span="12">
       <!-- <h5>默认颜色</h5> -->
-      <el-menu mode="horizontal" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" menu-trigger="click">
+      <el-menu mode="horizontal" class="el-menu-vertical-demo" menu-trigger="hover">
         <el-submenu index="1">
           <template slot="title">
             <i class="iconfont icon-caidan"></i>
@@ -27,7 +27,7 @@
               <a href="http://www.fyyd.vip:3003/">angular</a>
             </el-menu-item>
             <el-menu-item index="1-3">
-              <router-link to="/nav/message" @click="handleCloseItem">留言</router-link>
+              <router-link to="/nav/message">留言</router-link>
             </el-menu-item>
             <el-menu-item index="1-4">
               <router-link to="/nav/daily">日记</router-link>
@@ -50,55 +50,25 @@ export default {
   data() {
     return {
       ifLogin: false,
-
       adminUrl: "http://www.fyyd.vip:3002",
-
     };
   },
   watch: {
-    // $route: function () {
-    //   console.log(this.$route.path, "1a");
-    //   if (this.$route.path === "/nav/message") {
-    //     console.log(this, "1z");
-    //     this.closemenu(localStorage.getItem("index"));
-    //   }
-    // },
   },
 
   mounted() {
-    // if (QC.Login.check()) {
-    //   this.$store.state.ifLogin = true;
-    // } else {
-    //   this.$store.state.ifLogin = false;
-    // }
-    //
-    // console.log(this.$store.state,'bn');
   },
 
   methods: {
-    handleOpen(key, keyPath) {
-      console.log(key, keyPath);
-      localStorage.setItem("index", key);
-
-      //   open(key)
-    },
-    handleClose(key, keyPath) {
-      console.log(key, keyPath);
-      console.log("1q");
-      // close(1)
-    }, // handleCloseItem() {
-    //   this.open_list = "1";
-    //   this.openeds= ['']
-    // }
+    // handleOpen(key,) {
+    //   // console.log(key, keyPath);
+    //   localStorage.setItem("index", key);
+    // },
   },
 };
 </script>
 <style lang="less">
 .tac {
-  //   display: none;
-  //   position: absolute;
-  //   left: 0;
-  //   z-index: 11;
 
   background-color: transparent;
 
@@ -106,7 +76,6 @@ export default {
     background-color: transparent;
 
     .el-menu--horizontal {
-      //   display: none;
       position: absolute;
       left: 0;
       background-color: transparent;
@@ -115,35 +84,16 @@ export default {
 
 
       .el-submenu {
-        // background-color: #aaa !important;
         background-color: transparent;
 
         width: 100px;
 
         .el-submenu__title {
           background-color: transparent;
-          // height: 58px;
           border-bottom: 0 transparent;
-          // transition: 0 0 !important;
-
-          // border-width: 0 !important;
-
-          //   background-color: #aaa;
           width: 100px !important;
-
-          //   i {
-          //     &:nth-child(1) {
-          //       margin-left: 5px;
-          //     }
-          //   }
         }
       }
-
-
-      // .el-menu {
-      //     background-color: #aaa;
-
-      // }
     }
   }
 }
@@ -157,14 +107,12 @@ export default {
 
 <style lang="less">
 .el-menu--horizontal {
-  //   display: none;
   position: absolute;
   left: 0 !important;
   background-color: transparent;
   width: 100px !important;
 
   .el-menu {
-    // background-color: #aaa;
     padding: 0;
     margin: 0;
     width: 100% !important;
@@ -181,7 +129,6 @@ export default {
   }
 
   .el-menu-item-group {
-    //   background-color: #aaa;
     width: 100px;
 
     .el-menu-item-group__title {
@@ -194,8 +141,6 @@ export default {
 
       .el-menu-item {
         text-align: center;
-        //   background-color: #aaa;
-        // padding: 5px;
         line-height: 45px;
         height: 45px;
         width: 100px;
@@ -207,10 +152,5 @@ export default {
       }
     }
   }
-
-  // .el-menu {
-  //     background-color: #aaa;
-
-  // }
 }
 </style>

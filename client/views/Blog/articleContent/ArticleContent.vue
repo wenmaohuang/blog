@@ -72,7 +72,8 @@
     <ArticleMessage @handleComment="comment"></ArticleMessage>
   </div>
 </template>
-<script src="/blog/static/layui/layui.js"></script>
+<!--<script src="/blog/static/layui/layui.js"></script>-->
+<script src="https://cdn.bootcdn.net/ajax/libs/layui/2.4.3/layui.min.js"></script>
 <script>
 import Nav from "../../../src/components/Nav";
 import aplayer from "vue-aplayer";

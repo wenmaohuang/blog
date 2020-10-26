@@ -39,8 +39,8 @@
     </div>
 </template>
 
-<script src="/static/layui/layui.js"></script>
-
+<!--<script src="/static/layui/layui.js"></script>-->
+<script src="https://cdn.bootcdn.net/ajax/libs/layui/2.4.3/layui.min.js"></script>
 <script>
 import request from "../../api";
 const getArticleShow = request.getArticleShow;
