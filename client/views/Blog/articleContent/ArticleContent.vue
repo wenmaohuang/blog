@@ -36,6 +36,8 @@
                     :shuffle="true"
                     repeat="repeat-all"
                     :preload="auto"
+                    :mutex="true"
+
 
                 ></aplayer>
 
@@ -64,6 +66,7 @@
                     :shuffle="true"
                     repeat="repeat-all"
                       :preload="auto"
+                      :mutex="true"
                 ></aplayer>
             <div class="content" v-html="article.content"></div>
         </div>
