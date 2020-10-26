@@ -18,7 +18,7 @@
           <span>发表时间</span>
           <span>...</span>
         </div>
-        <aplayer allow="autoplay"
+        <aplayer :allow="autoplay"
             :music="{
                     title:'琵琶语',artist:'林海',src:'/blog/mp3/琵琶语.mp3',pic:'/blog/img/4.jpg'
                     }"
@@ -48,7 +48,7 @@
           </div>
         </div>
       </div>
-      <aplayer allow="autoplay" class="maxaplayer"
+      <aplayer :allow="autoplay" class="maxaplayer"
                :music="{
                     title:'琵琶语',artist:'林海',src:'/blog/mp3/琵琶语.mp3',pic:'/blog/img/4.jpg'
                     }"
