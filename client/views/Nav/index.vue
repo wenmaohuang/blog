@@ -96,7 +96,7 @@ export default {
       this.isShowModal = false
     }
     QC.Login({
-      redirectURI: "https://www.fyyd.vip/nav/blog", //登录成功后会自动跳往该地址
+      redirectURI: "https://www.fyyd.vip/blog/nav/blog", //登录成功后会自动跳往该地址
       btnId: "qqLoginBtn", //插入按钮的节点id,
       // showModal: true
       showModal: this.isShowModal,
@@ -109,7 +109,7 @@ export default {
   }, // mounted() {},
   methods: {
     handleRefresh() {
-      window.location.href = 'https://www.fyyd.vip'
+      window.location.href = 'https://www.fyyd.vip/blog'
     },
     handleQQLogin() {
       window.location.href = document.querySelector("#qq_login_iframe").src;

@@ -313,7 +313,7 @@ export default {
       {
         // btnId: "qqLoginBtn", //插入按钮的节点id
         // appid: 101896922,
-        redirectURI: "https://www.fyyd.vip/nav/blog", //登录成功后会自动跳往该地址
+        redirectURI: "https://www.fyyd.vip/blog/nav/blog", //登录成功后会自动跳往该地址
         btnId:'qqLoginBtn',
         showModal: this.isShowModal,
         // size:'A_L'
