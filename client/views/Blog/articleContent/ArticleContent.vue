@@ -35,7 +35,7 @@
                     :autoplay="true"
                     :shuffle="true"
                     repeat="repeat-all"
-                    :preload="none"
+                    :preload="auto"
 
                 ></aplayer>
 
@@ -63,7 +63,7 @@
                     :autoplay="true"
                     :shuffle="true"
                     repeat="repeat-all"
-                      :preload="none"
+                      :preload="auto"
                 ></aplayer>
             <div class="content" v-html="article.content"></div>
         </div>
