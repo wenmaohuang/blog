@@ -8,14 +8,14 @@
       <div class="n-nav">
         <ul :class="'list' + whichActive">
           <li>
-                        <router-link @click="handleRefresh" to="/" >首页</router-link>
+            <router-link @click="handleRefresh" to="/">首页</router-link>
           </li>
           <li>
             <router-link to="/nav/blog">博客</router-link>
           </li>
-          <li v-show="ifLogin">
-            <a :href="adminUrl">管理</a>
-          </li>
+<!--          <li v-show="ifLogin">-->
+<!--            <a :href="adminUrl">管理</a>-->
+<!--          </li>-->
           <li>
             <router-link to="/nav/message">留言</router-link>
           </li>
@@ -63,6 +63,7 @@ import MobileNav from "../../src/components/MobileNav";
 import Avatar from "../../src/components/Avatar";
 
 import request from "../../api/index";
+
 const postLogin = request.postLogin;
 const postIfLogin = request.postIfLogin;
 const postRegister = request.postRegister;
@@ -149,7 +150,7 @@ export default {
                   //验证都通过
                   postRegister(this.form)
                       .then((res) => {
-                        console.log(res,'fd');
+                        console.log(res, 'fd');
                         // this.getVCode();
                         if (res.data.code) {
                           this.$message({
@@ -189,8 +190,10 @@ export default {
           }
         },
       })
-          .then(() => {})
-          .catch(() => {});
+          .then(() => {
+          })
+          .catch(() => {
+          });
     },
     handlerLogin() {
       const h = this.$createElement;
@@ -245,8 +248,10 @@ export default {
           }
         },
       })
-          .then(() => {})
-          .catch(() => {});
+          .then(() => {
+          })
+          .catch(() => {
+          });
     },
     handlerLogout() {
       postLogout()
@@ -271,7 +276,8 @@ export default {
     closeAvatar() {
       this.ifShowAvatar = false;
     },
-    handlerIcon() {},
+    handlerIcon() {
+    },
   },
   created() {
     postIfLogin().then((res) => {
@@ -291,6 +297,7 @@ export default {
 #nav {
   width: 100%;
   overflow: hidden;
+
   > .nav-main {
     display: flex;
     justify-content: space-around;
@@ -298,6 +305,7 @@ export default {
     height: 60px;
     margin: 0 auto;
     background-color: pink;
+
     .logo {
       width: 80px;
       line-height: 60px;
@@ -305,33 +313,41 @@ export default {
       font-family: BarbaraHand;
       font-size: 40px;
     }
+
     .login {
       display: flex;
       align-items: center;
+
       .else {
         display: flex;
         align-items: center;
+
         .el-button {
           height: 10% !important;
           line-height: 10px;
         }
+
         #qqLoginBtn {
           padding: 10px
         }
       }
     }
+
     .n-nav {
       width: 580px;
+
       ul {
         display: flex;
         width: 100%;
         height: 100%;
         margin: 0;
         padding: 0;
+
         li {
           flex: 1;
           list-style-type: none;
         }
+
         a {
           display: block;
           position: relative;
@@ -340,6 +356,7 @@ export default {
           text-align: center;
           text-decoration: none;
           transition: 0.3s;
+
           &::after {
             position: absolute;
             bottom: 0;
@@ -351,14 +368,17 @@ export default {
             height: 2px;
             background-color: #6bc30d;
           }
+
           &:hover {
             color: #6bc30d;
+
             &::after {
               transition: 0.3s;
               width: 100%;
             }
           }
         }
+
         &.list1 li:nth-child(1),
         &.list2 li:nth-child(2),
         &.list3 li:nth-child(3),
@@ -367,6 +387,7 @@ export default {
         &.list6 li:nth-child(6) {
           a {
             color: green;
+
             &::after {
               width: 100%;
             }
@@ -374,10 +395,12 @@ export default {
         }
       }
     }
+
     @media only screen and (max-width: 500px) {
       .n-nav {
         display: none;
       }
+
       .login {
         display: none;
       }
@@ -389,17 +412,21 @@ export default {
 .el-message-box {
   width: 420px;
 }
+
 @media only screen and (max-width: 500px) {
   .el-message-box {
     width: 300px;
   }
 }
+
 .el-popover {
   display: flex;
   flex-direction: column;
+
   p {
     padding: 5px;
   }
+
   .el-button {
     margin: 5px;
   }
