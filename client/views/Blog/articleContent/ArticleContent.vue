@@ -19,7 +19,7 @@
                     <span>发表时间</span>
                     <span>...</span>
                 </div>
-                <aplayer autoplay
+                <aplayer
                     :music="{
                     title:'琵琶语',artist:'林海',src:'/blog/mp3/琵琶语.mp3',pic:'/blog/img/4.jpg'
                     }"
@@ -35,6 +35,8 @@
                     :autoplay="true"
                     :shuffle="true"
                     repeat="repeat-all"
+                    :preload="none"
+
                 ></aplayer>
 
                 <div class="time">
@@ -45,7 +47,7 @@
                     </div>
                 </div>
             </div>
-             <aplayer autoplay class="maxaplayer"
+             <aplayer class="maxaplayer"
                       :music="{
                     title:'琵琶语',artist:'林海',src:'/blog/mp3/琵琶语.mp3',pic:'/blog/img/4.jpg'
                     }"
@@ -61,6 +63,7 @@
                     :autoplay="true"
                     :shuffle="true"
                     repeat="repeat-all"
+                      :preload="none"
                 ></aplayer>
             <div class="content" v-html="article.content"></div>
         </div>
