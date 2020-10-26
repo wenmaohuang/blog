@@ -39,7 +39,7 @@
     </div>
 </template>
     
-<script src="/static/layui/layui.js"></script>
+<script src="/blog/static/layui/layui.js"></script>
 
 <script>
 import MessageRichText from "./MessageRichText";
