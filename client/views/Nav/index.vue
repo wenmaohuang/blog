@@ -2,15 +2,13 @@
   <div id="nav">
     <MobileNav></MobileNav>
     <Register v-show="false"></Register>
-    <!-- <Avatar v-show="false"></Avatar> -->
     <Avatar :dialogVisible="ifShowAvatar" @handleClose="closeAvatar"></Avatar>
-
     <div class="nav-main">
       <div class="logo">FYYD</div>
       <div class="n-nav">
         <ul :class="'list' + whichActive">
-          <li @click="handleRefresh"><a>首页</a>
-            <!--            <router-link @click="handleRefresh" to="/" >首页</router-link>-->
+          <li>
+                        <router-link @click="handleRefresh" to="/" >首页</router-link>
           </li>
           <li>
             <router-link to="/nav/blog">博客</router-link>
@@ -41,7 +39,6 @@
             <a href="http://www.fyyd.vip:3002">用户管理</a>
           </el-button>
           <el-button type="danger" @click="handlerLogout()">退出登录</el-button>
-
           <el-button slot="reference" :style="{
             backgroundImage:'url('+login.photo+')',
             backgroundSize:'cover',
@@ -52,7 +49,6 @@
         <div v-else class="else">
           <el-button @click="handlerLogin" type="primary">登录</el-button>
           <el-button @click="handlerRegister" type="success">注册</el-button>
-          <!-- <img src="/static/img/qqlogin.png" onclick="handleQQLogin"> -->
           <p id="qqLoginBtn" @click="handleQQLogin"></p>
         </div>
       </div>
@@ -60,7 +56,6 @@
     <router-view></router-view>
   </div>
 </template>
-
 <script>
 import Register from "../../src/components/Register";
 import Login from "../../src/components/Login";
@@ -68,16 +63,12 @@ import MobileNav from "../../src/components/MobileNav";
 import Avatar from "../../src/components/Avatar";
 
 import request from "../../api/index";
-
 const postLogin = request.postLogin;
 const postIfLogin = request.postIfLogin;
 const postRegister = request.postRegister;
 const postLogout = request.postLogout;
-// console.log(postIfLogin());
-
 export default {
   name: "Nav",
-
   data() {
     return {
       routerList: ["Home", "Blog", "Message", "Daily", "Links", "About"],
@@ -88,7 +79,6 @@ export default {
       isShowModal: true,
       adminUrl: "http://www.fyyd.vip:3002",
       accessToken: '',
-
       login: {
         user: "",
         photo: "",
@@ -107,28 +97,10 @@ export default {
     }
     QC.Login({
       redirectURI: "https://www.fyyd.vip/nav/blog", //登录成功后会自动跳往该地址
-
       btnId: "qqLoginBtn", //插入按钮的节点id,
       // showModal: true
       showModal: this.isShowModal,
-
-
     }, this.handldeLogin);
-
-    // postIfLogin().then((res) => {
-    //   // if (res.data.userInfo) {
-    //   //   this.ifLogin = true;
-    //   // } else {
-    //   //   this.ifLogin = false;
-    //   // }
-    //
-    //   if (res.data.userInfo) {
-    //     this.$store.state.ifLogin = true;
-    //   } else {
-    //     this.$store.state.ifLogin = false;
-    //   }
-    // });
-
   },
   components: {
     Register, // Login,
@@ -137,38 +109,12 @@ export default {
   }, // mounted() {},
   methods: {
     handleRefresh() {
-      // if (QC.Login.check()) {
-      //   QC.Login.getMe(function (openId, accessToken) {
-      //     console.log(openId, accessToken, 'vb');
-      //     this.accessToken = accessToken
-      //
-      //
-      //   })
-      //   // this.$router.replace(encodeURI('/?#access_token='+this.accessToken+'&expires_in=7776000'))
-      //   this.$router.push({
-      //     path: '/',
-      //     query: {
-      //       'access_token': this.accessToken,
-      //       expires_in: 7776000
-      //     }
-      //   })
-      //
-      // } else {
-      //   this.$router.replace('/')
-      //   // this.$router.push({path:'/',query:{'access_token':this.accessToken,expires_in:7776000}})
-      //
-      // }
-      // window.location.reload()
-      // this.$router.push('/')
       window.location.href = 'https://www.fyyd.vip'
-
     },
     handleQQLogin() {
       window.location.href = document.querySelector("#qq_login_iframe").src;
-      // console.log(QC.Login.check(), "#!");
     },
     handleReload() {
-      // window.location.reload()
     },
     handldeLogin(data, opts) {
       if (QC.Login.check()) {
@@ -176,11 +122,6 @@ export default {
       } else {
         this.$store.state.ifLogin = false;
       }
-
-
-      console.log(this.$route.path, 'cv');
-
-
       var dom = document.getElementById(opts["btnId"]), _logoutTemplate = [//头像
         '<span><img src="{figureurl}"  class="{size_key}"/></span>', //昵称
         "<span>{nickname}</span>", //退出
@@ -335,36 +276,28 @@ export default {
   created() {
     postIfLogin().then((res) => {
       if (res.data.userInfo) {
-        // this.ifLogin = true;
         this.$store.state.ifLogin = true;
-
         this.login.user = res.data.userInfo.user;
         this.login.photo = "https://www.fyyd.vip" + res.data.userInfo.photo;
       } else {
         // this.ifLogin = false;
         this.$store.state.ifLogin = false;
-
       }
     });
   },
 };
 </script>
-
 <style lang="less" scoped>
 #nav {
-  widows: 100%;
+  width: 100%;
   overflow: hidden;
-
   > .nav-main {
     display: flex;
     justify-content: space-around;
     align-items: center;
-
-    // max-width: 1260px;
     height: 60px;
     margin: 0 auto;
     background-color: pink;
-
     .logo {
       width: 80px;
       line-height: 60px;
@@ -372,47 +305,33 @@ export default {
       font-family: BarbaraHand;
       font-size: 40px;
     }
-
     .login {
       display: flex;
       align-items: center;
-      // height: 20px;
-      // line-height: 20px;
       .else {
         display: flex;
         align-items: center;
-
-        // height: 20px;
-
-        // height: 20px;
-
         .el-button {
           height: 10% !important;
           line-height: 10px;
-
         }
-
         #qqLoginBtn {
           padding: 10px
         }
       }
     }
-
     .n-nav {
       width: 580px;
-
       ul {
         display: flex;
         width: 100%;
         height: 100%;
         margin: 0;
         padding: 0;
-
         li {
           flex: 1;
           list-style-type: none;
         }
-
         a {
           display: block;
           position: relative;
@@ -421,7 +340,6 @@ export default {
           text-align: center;
           text-decoration: none;
           transition: 0.3s;
-
           &::after {
             position: absolute;
             bottom: 0;
@@ -433,17 +351,14 @@ export default {
             height: 2px;
             background-color: #6bc30d;
           }
-
           &:hover {
             color: #6bc30d;
-
             &::after {
               transition: 0.3s;
               width: 100%;
             }
           }
         }
-
         &.list1 li:nth-child(1),
         &.list2 li:nth-child(2),
         &.list3 li:nth-child(3),
@@ -452,7 +367,6 @@ export default {
         &.list6 li:nth-child(6) {
           a {
             color: green;
-
             &::after {
               width: 100%;
             }
@@ -460,12 +374,10 @@ export default {
         }
       }
     }
-
     @media only screen and (max-width: 500px) {
       .n-nav {
         display: none;
       }
-
       .login {
         display: none;
       }
@@ -477,31 +389,19 @@ export default {
 .el-message-box {
   width: 420px;
 }
-
 @media only screen and (max-width: 500px) {
   .el-message-box {
     width: 300px;
   }
 }
-
 .el-popover {
   display: flex;
   flex-direction: column;
-
   p {
     padding: 5px;
   }
-
   .el-button {
     margin: 5px;
   }
 }
-
-// .el-popover {
-
-//   p {
-//     padding: 5px;
-//   }
-
-// }
 </style>
