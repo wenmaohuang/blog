@@ -284,7 +284,7 @@ export default {
       if (res.data.userInfo) {
         this.$store.state.ifLogin = true;
         this.login.user = res.data.userInfo.user;
-        this.login.photo = "https://www.fyyd.vip" + res.data.userInfo.photo;
+        this.login.photo = "https://www.fyyd.vip/blog" + res.data.userInfo.photo;
       } else {
         // this.ifLogin = false;
         this.$store.state.ifLogin = false;
