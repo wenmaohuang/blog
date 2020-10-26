@@ -21,7 +21,7 @@
               <router-link to="/nav/football">足球</router-link>
             </el-menu-item>
             <el-menu-item v-show="$store.state.ifLogin">
-              <a href="http://www.fyyd.vip:3001/">react</a>
+              <a href="https://www.fyyd.vip/reblog">react</a>
             </el-menu-item>
             <el-menu-item v-show="$store.state.ifLogin">
               <a href="http://www.fyyd.vip:3003/">angular</a>
