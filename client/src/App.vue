@@ -28,8 +28,6 @@ export default {
     }
 };
 </script>
-
-
 <style lang="less" scoped>
 @import "../src/assets/css/font.css";
 #app {

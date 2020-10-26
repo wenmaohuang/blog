@@ -21,15 +21,15 @@
                 </div>
                 <aplayer
                     :music="{
-                    title:'琵琶语',artist:'林海',src:'mp3/琵琶语.mp3',pic:'img/4.jpg'
+                    title:'琵琶语',artist:'林海',src:'/blog/mp3/琵琶语.mp3',pic:'/blog/img/4.jpg'
                     }"
                     :list="[
-                     {title:'琵琶语',artist:'林海',src:'mp3/琵琶语.mp3',pic:'img/4.jpg'},
-                     {title:'金风玉露',artist:'杨春林',src:'mp3/金风玉露.mp3',pic:'img/4.jpg'},
-                     {title:'future',artist:'神思者',src:'mp3/future.m4a',pic:'img/4.jpg'},
-                     {title:'征服天堂',artist:'Vangelis',src:'mp3/征服天堂.mp3',pic:'img/4.jpg'},
-                     {title:'faded',artist:'walker',src:'mp3/faded.m4a',pic:'img/4.jpg'},
-                     {title:'少年',artist:'梦然',src:'mp3/少年.m4a',pic:'img/4.jpg'}
+                     {title:'琵琶语',artist:'林海',src:'/blog/mp3/琵琶语.mp3',pic:'/blog/img/4.jpg'},
+                     {title:'金风玉露',artist:'杨春林',src:'/blog/mp3/金风玉露.mp3',pic:'/blog/img/4.jpg'},
+                     {title:'future',artist:'神思者',src:'/blog/mp3/future.m4a',pic:'/blog/img/4.jpg'},
+                     {title:'征服天堂',artist:'Vangelis',src:'/blog/mp3/征服天堂.mp3',pic:'/blog/img/4.jpg'},
+                     {title:'faded',artist:'walker',src:'/blog/mp3/faded.m4a',pic:'/blog/img/4.jpg'},
+                     {title:'少年',artist:'梦然',src:'/blog/mp3/少年.m4a',pic:'/blog/img/4.jpg'}
                      ]"
                     :listFolded="true"
                     :autoplay="true"
@@ -46,16 +46,16 @@
                 </div>
             </div>
              <aplayer class="maxaplayer"
-                    :music="{
-                    title:'琵琶语',artist:'林海',src:'mp3/琵琶语.mp3',pic:'img/4.jpg'
+                      :music="{
+                    title:'琵琶语',artist:'林海',src:'/blog/mp3/琵琶语.mp3',pic:'/blog/img/4.jpg'
                     }"
-                    :list="[
-                     {title:'琵琶语',artist:'林海',src:'mp3/琵琶语.mp3',pic:'img/4.jpg'},
-                     {title:'金风玉露',artist:'杨春林',src:'mp3/金风玉露.mp3',pic:'img/4.jpg'},
-                     {title:'future',artist:'神思者',src:'mp3/future.m4a',pic:'img/4.jpg'},
-                     {title:'征服天堂',artist:'Vangelis',src:'mp3/征服天堂.mp3',pic:'img/4.jpg'},
-                     {title:'faded',artist:'walker',src:'mp3/faded.m4a',pic:'img/4.jpg'},
-                     {title:'少年',artist:'梦然',src:'mp3/少年.m4a',pic:'img/4.jpg'}
+                      :list="[
+                     {title:'琵琶语',artist:'林海',src:'/blog/mp3/琵琶语.mp3',pic:'/blog/img/4.jpg'},
+                     {title:'金风玉露',artist:'杨春林',src:'/blog/mp3/金风玉露.mp3',pic:'/blog/img/4.jpg'},
+                     {title:'future',artist:'神思者',src:'/blog/mp3/future.m4a',pic:'/blog/img/4.jpg'},
+                     {title:'征服天堂',artist:'Vangelis',src:'/blog/mp3/征服天堂.mp3',pic:'/blog/img/4.jpg'},
+                     {title:'faded',artist:'walker',src:'/blog/mp3/faded.m4a',pic:'/blog/img/4.jpg'},
+                     {title:'少年',artist:'梦然',src:'/blog/mp3/少年.m4a',pic:'/blog/img/4.jpg'}
                      ]"
                     :listFolded="true"
                     :autoplay="true"
