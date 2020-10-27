@@ -110,6 +110,7 @@ export default {
       console.log("QQ登录 注销成功 !");
       if(QC.Login.signOut){
         window.location.href = 'https://www.fyyd.vip/blog/nav/blog'
+        this.$store.state.showLogin = true;
 
       }
 
