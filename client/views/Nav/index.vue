@@ -124,29 +124,7 @@ export default {
       window.location.reload();
     });
 
-    postIfLogin().then((res) => {
-      console.log(res.data.userInfo, 'cv')
-      if (res.data.userInfo) {
-        this.$store.state.ifLogin = true;
-        this.$store.state.mongoLogin = true;
-        this.$store.state.showQQLogin = false;
 
-
-        this.$store.state.userInfo = res.data.userInfo;
-
-        console.log(this.$store.state.ifLogin, 'zx')
-
-        this.login.user = res.data.userInfo.user;
-        this.login.photo = "https://www.fyyd.vip/blog" + res.data.userInfo.photo;
-      } else {
-        // this.ifLogin = false;
-        this.$store.state.ifLogin = false;
-        this.$store.state.showQQLogin = true;
-
-        console.log(this.$store.state.ifLogin, 'xc')
-
-      }
-    });
 
   },
   components: {
@@ -349,7 +327,29 @@ export default {
   },
   created() {
 
+    postIfLogin().then((res) => {
+      console.log(res.data.userInfo, 'cv')
+      if (res.data.userInfo) {
+        this.$store.state.ifLogin = true;
+        this.$store.state.mongoLogin = true;
+        this.$store.state.showQQLogin = false;
 
+
+        this.$store.state.userInfo = res.data.userInfo;
+
+        console.log(this.$store.state.ifLogin, 'zx')
+
+        this.login.user = res.data.userInfo.user;
+        this.login.photo = "https://www.fyyd.vip/blog" + res.data.userInfo.photo;
+      } else {
+        // this.ifLogin = false;
+        this.$store.state.ifLogin = false;
+        this.$store.state.showQQLogin = true;
+
+        console.log(this.$store.state.ifLogin, 'xc')
+
+      }
+    });
 
   },
 };
