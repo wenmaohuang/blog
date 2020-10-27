@@ -52,7 +52,7 @@
           <el-button @click="handlerLogin" type="primary">登录</el-button>
           <el-button @click="handlerRegister" type="success">注册</el-button>
           <div>
-            <p v-show="$store.state.showQQLogin" id="qqLoginBtn" @click="handleQQLogin"></p>
+            <p id="qqLoginBtn" @click="handleQQLogin"></p>
           </div>
         </div>
 
