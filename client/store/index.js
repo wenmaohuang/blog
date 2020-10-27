@@ -11,8 +11,8 @@ export default new Vuex.Store({
         // user:''
         ifLogin: false,
         userInfo:'',
-        mongoLogin:false,
-        showQQLogin:true
+        // mongoLogin:false,
+        ifQQLogin:true
     },
     mutations:{
         // handleClick(){

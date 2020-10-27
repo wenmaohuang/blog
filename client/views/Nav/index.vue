@@ -33,27 +33,26 @@
 
       <div class="login">
         <el-popover v-if="$store.state.ifLogin" trigger="hover" placement="top-start" width="100" content="欢迎登录">
-          <div class v-show="$store.state.mongoLogin">
-            <p>欢迎登录!!!!</p>
-            <el-button type="danger" @click="ifShowAvatar = true">修改头像</el-button>
-            <el-button type="danger">
-              <a href="http://www.fyyd.vip:3002">用户管理</a>
-            </el-button>
-            <el-button type="danger" @click="handlerLogout()">退出登录</el-button>
-            <el-button slot="reference" :style="{
+          <p>欢迎登录!!!!</p>
+          <el-button type="danger" @click="ifShowAvatar = true">修改头像</el-button>
+          <el-button type="danger">
+            <a href="http://www.fyyd.vip:3002">用户管理</a>
+          </el-button>
+          <el-button type="danger" @click="handlerLogout()">退出登录</el-button>
+          <el-button slot="reference" :style="{
             backgroundImage:'url('+login.photo+')',
             backgroundSize:'cover',
             width:'40px',
             height:'40px',
           }"></el-button>
-          </div>
         </el-popover>
+        <div v-else-if="ifQQLogin">
+          <p id="ifQQLoginBtn" @click="handleQQLogin"></p>
+        </div>
         <div v-else class="else">
           <el-button @click="handlerLogin" type="primary">登录</el-button>
           <el-button @click="handlerRegister" type="success">注册</el-button>
-          <div>
-            <p id="qqLoginBtn" @click="handleQQLogin"></p>
-          </div>
+          <p id="qqLoginBtn" @click="handleQQLogin"></p>
         </div>
 
       </div>
@@ -123,6 +122,15 @@ export default {
       console.log("QQ登录 注销成功 !");
       window.location.reload();
     });
+    QC.Login({
+      redirectURI: "https://www.fyyd.vip/blog/nav/blog", //登录成功后会自动跳往该地址
+      btnId: "ifQQLoginBtn", //插入按钮的节点id,
+      // showModal: true
+      showModal: this.isShowModal,
+    }, this.handldeLogin, function (opts) {
+      console.log("QQ登录 注销成功 !");
+      window.location.reload();
+    });
 
 
 
@@ -152,10 +160,14 @@ export default {
     },
     handldeLogin(data, opts) {
       if (QC.Login.check()) {
-        this.$store.state.ifLogin = false;
-        this.$store.state.mongoLogin = false;
-        this.$store.state.showQQLogin = true;
+        // this.$store.state.ifLogin = false;
+
+        // this.$store.state.mongoLogin = false;
+        this.$store.state.ifQQLogin = true;
         console.log(this.$store.state.ifLogin, 'vb')
+
+      }else{
+        this.$store.state.ifQQLogin = false;
 
       }
 
@@ -331,8 +343,8 @@ export default {
       console.log(res.data.userInfo, 'cv')
       if (res.data.userInfo) {
         this.$store.state.ifLogin = true;
-        this.$store.state.mongoLogin = true;
-        this.$store.state.showQQLogin = false;
+        // this.$store.state.mongoLogin = true;
+        // this.$store.state.showQQLogin = false;
 
 
         this.$store.state.userInfo = res.data.userInfo;
@@ -344,7 +356,7 @@ export default {
       } else {
         // this.ifLogin = false;
         this.$store.state.ifLogin = false;
-        this.$store.state.showQQLogin = true;
+        // this.$store.state.showQQLogin = true;
 
         console.log(this.$store.state.ifLogin, 'xc')
 
