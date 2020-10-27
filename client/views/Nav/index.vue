@@ -115,7 +115,7 @@ export default {
     }, this.handldeLogin,function (opts) {
       console.log("QQ登录 注销成功 !");
       window.location.reload();
-    },this.outCallBackFun);
+    });
 
   },
   components: {
