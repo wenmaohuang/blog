@@ -43,7 +43,7 @@
             height:'40px',
           }"></el-button>
         </el-popover>
-        <div v-else class="else">
+        <div v-show="$store.state.ifLogin" class="else">
           <div v-show="$store.state.showLogin">
             <el-button @click="handlerLogin" type="primary">登录</el-button>
             <el-button @click="handlerRegister" type="success">注册</el-button>
@@ -132,14 +132,15 @@ export default {
     handldeLogin(data, opts) {
       if (QC.Login.check()) {
         // this.$store.state.ifLogin = false;
-
-        if(QC.Login.signOut()){
-          this.$store.state.showLogin = true;
-
-        }else {
           this.$store.state.showLogin = false;
 
-        }
+        // if(QC.Login.signOut()){
+        //   this.$store.state.showLogin = true;
+        //
+        // }else {
+        //   this.$store.state.showLogin = false;
+        //
+        // }
 
         // console.log(this.$store.state.ifLogin, 'vb')
       } else {
