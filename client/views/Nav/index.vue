@@ -44,7 +44,7 @@
           }"></el-button>
         </el-popover>
         <div v-else class="else">
-          <div v-show="!showLogin">
+          <div v-show="showLogin">
             <el-button @click="handlerLogin" type="primary">登录</el-button>
             <el-button @click="handlerRegister" type="success">注册</el-button>
           </div>
