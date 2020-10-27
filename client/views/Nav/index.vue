@@ -44,7 +44,7 @@
           }"></el-button>
         </el-popover>
         <div v-else class="else">
-          <div v-show="!ifQQLogin">
+          <div v-show="!showLogin">
             <el-button @click="handlerLogin" type="primary">登录</el-button>
             <el-button @click="handlerRegister" type="success">注册</el-button>
           </div>
@@ -133,11 +133,11 @@ export default {
         // this.$store.state.ifLogin = false;
 
         // this.$store.state.mongoLogin = false;
-        this.$store.state.ifQQLogin = true;
+        this.$store.state.showLogin = false;
         console.log(this.$store.state.ifLogin, 'vb')
 
       } else {
-        this.$store.state.ifQQLogin = false;
+        this.$store.state.showLogin = true;
 
       }
       var dom = document.getElementById(opts["btnId"]), _logoutTemplate = [//头像

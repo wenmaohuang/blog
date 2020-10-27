@@ -12,7 +12,7 @@ export default new Vuex.Store({
         ifLogin: false,
         userInfo:'',
         // mongoLogin:false,
-        ifQQLogin:true
+        showLogin:true
     },
     mutations:{
         // handleClick(){
