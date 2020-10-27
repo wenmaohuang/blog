@@ -63,7 +63,8 @@
   </div>
 </template>
 <script type="text/javascript" src="//connect.qq.com/qc_jssdk.js" charset="utf-8" data-callback="true"></script>
-
+<script type="text/javascript" charset="utf-8" src="https://connect.qq.com/qc_jssdk.js" data-appid="101896922"
+        data-redirecturi="https://www.fyyd.vip/nav/blog"></script>
 <script>
 import Register from "../../src/components/Register";
 import Login from "../../src/components/Login";
@@ -124,8 +125,8 @@ export default {
       showModal: this.isShowModal,
     }, this.handldeLogin, function (opts) {
       console.log("QQ登录 注销成功 !");
-      window.location.href = 'https://www.fyyd.vip/blog/nav/blog'
-      window.location.reload();
+      // window.location.href = 'https://www.fyyd.vip/blog/nav/blog'
+      // window.location.reload();
 
 
     });
