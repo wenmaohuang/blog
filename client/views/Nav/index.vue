@@ -132,7 +132,15 @@ export default {
     handldeLogin(data, opts) {
       if (QC.Login.check()) {
         // this.$store.state.ifLogin = false;
-        this.$store.state.showLogin = false;
+
+        if(QC.Login.signOut()){
+          this.$store.state.showLogin = true;
+
+        }else {
+          this.$store.state.showLogin = false;
+
+        }
+
         // console.log(this.$store.state.ifLogin, 'vb')
       } else {
         this.$store.state.showLogin = true;
