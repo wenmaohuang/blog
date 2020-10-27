@@ -49,8 +49,9 @@
         <div v-else class="else">
           <el-button @click="handlerLogin" type="primary">登录</el-button>
           <el-button @click="handlerRegister" type="success">注册</el-button>
-          <p id="qqLoginBtn" @click="handleQQLogin"></p>
         </div>
+        <p id="qqLoginBtn" @click="handleQQLogin"></p>
+
       </div>
     </div>
     <router-view></router-view>
