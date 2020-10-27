@@ -46,12 +46,14 @@
             height:'40px',
           }"></el-button>
         </el-popover>
-        <div v-else-if="ifQQLogin">
-          <p id="ifQQLoginBtn" @click="handleQQLogin"></p>
-        </div>
+<!--        <div v-else-if="ifQQLogin">-->
+<!--          <p id="ifQQLoginBtn" @click="handleQQLogin"></p>-->
+<!--        </div>-->
         <div v-else class="else">
-          <el-button @click="handlerLogin" type="primary">登录</el-button>
-          <el-button @click="handlerRegister" type="success">注册</el-button>
+          <div v-show="!ifQQLogin">
+            <el-button @click="handlerLogin" type="primary">登录</el-button>
+            <el-button @click="handlerRegister" type="success">注册</el-button>
+          </div>
           <p id="qqLoginBtn" @click="handleQQLogin"></p>
         </div>
 
