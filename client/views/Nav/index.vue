@@ -46,9 +46,9 @@
             height:'40px',
           }"></el-button>
         </el-popover>
-<!--        <div v-else-if="ifQQLogin">-->
-<!--          <p id="ifQQLoginBtn" @click="handleQQLogin"></p>-->
-<!--        </div>-->
+        <!--        <div v-else-if="ifQQLogin">-->
+        <!--          <p id="ifQQLoginBtn" @click="handleQQLogin"></p>-->
+        <!--        </div>-->
         <div v-else class="else">
           <div v-show="!ifQQLogin">
             <el-button @click="handlerLogin" type="primary">登录</el-button>
@@ -122,19 +122,11 @@ export default {
       showModal: this.isShowModal,
     }, this.handldeLogin, function (opts) {
       console.log("QQ登录 注销成功 !");
+      window.location.href = 'https://www.fyyd.vip/blog/nav/blog'
       window.location.reload();
-    });
-    QC.Login({
-      redirectURI: "https://www.fyyd.vip/blog/nav/blog", //登录成功后会自动跳往该地址
-      btnId: "ifQQLoginBtn", //插入按钮的节点id,
-      // showModal: true
-      showModal: this.isShowModal,
-    }, this.handldeLogin, function (opts) {
-      console.log("QQ登录 注销成功 !");
-      window.location.reload();
-    });
 
 
+    });
 
   },
   components: {
@@ -168,21 +160,10 @@ export default {
         this.$store.state.ifQQLogin = true;
         console.log(this.$store.state.ifLogin, 'vb')
 
-      }else{
+      } else {
         this.$store.state.ifQQLogin = false;
 
       }
-
-      // if (QC.Login.check()) {
-      //   this.$store.state.ifLogin = true;
-      //   console.log(this.$store.state.ifLogin, 'vb')
-      //
-      // } else {
-      //
-      //   this.$store.state.ifLogin = false;
-      //   console.log(this.$store.state.ifLogin, 'bn')
-      //
-      // }
       var dom = document.getElementById(opts["btnId"]), _logoutTemplate = [//头像
         '<span><img src="{figureurl}"  class="{size_key}"/></span>', //昵称
         "<span>{nickname}</span>", //退出
