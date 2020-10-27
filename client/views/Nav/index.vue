@@ -33,7 +33,7 @@
 
       <div class="login">
         <el-popover v-if="$store.state.ifLogin" trigger="hover" placement="top-start" width="100" content="欢迎登录">
-          <div class v-if="$store.state.mongoLogin">
+          <div class v-show="$store.state.mongoLogin">
             <p>欢迎登录!!!!</p>
             <el-button type="danger" @click="ifShowAvatar = true">修改头像</el-button>
             <el-button type="danger">
