@@ -13,9 +13,6 @@
           <li>
             <router-link to="/nav/blog">博客</router-link>
           </li>
-          <!--          <li v-show="ifLogin">-->
-          <!--            <a :href="adminUrl">管理</a>-->
-          <!--          </li>-->
           <li>
             <router-link to="/nav/message">留言</router-link>
           </li>
@@ -46,9 +43,6 @@
             height:'40px',
           }"></el-button>
         </el-popover>
-        <!--        <div v-else-if="ifQQLogin">-->
-        <!--          <p id="ifQQLoginBtn" @click="handleQQLogin"></p>-->
-        <!--        </div>-->
         <div v-else class="else">
           <div v-show="!ifQQLogin">
             <el-button @click="handlerLogin" type="primary">登录</el-button>
@@ -63,9 +57,10 @@
   </div>
 </template>
 <script type="text/javascript" src="//connect.qq.com/qc_jssdk.js" charset="utf-8" data-callback="true"></script>
-<script type="text/javascript" charset="utf-8" src="https://connect.qq.com/qc_jssdk.js" data-appid="101896922"
-        data-redirecturi="https://www.fyyd.vip/nav/blog"></script>
+
 <script>
+
+
 import Register from "../../src/components/Register";
 import Login from "../../src/components/Login";
 import MobileNav from "../../src/components/MobileNav";
@@ -101,23 +96,11 @@ export default {
       return index + 1;
     },
   },
-  destroyed() {
-
-    console.log(this.$store.state.ifLogin, 'm,')
-
-  },
-  beforeDestroy() {
-    console.log(this.$store.state.ifLogin, ',.')
-    console.log(this.$store.state.ifLogin, ',.')
-
-
-  },
   mounted() {
     if (window.innerWidth < 500) {
       this.isShowModal = false
     }
     console.log(this.$store.state.ifLogin, 'nm')
-
     QC.Login({
       redirectURI: "https://www.fyyd.vip/blog/nav/blog", //登录成功后会自动跳往该地址
       btnId: "qqLoginBtn", //插入按钮的节点id,
@@ -125,9 +108,10 @@ export default {
       showModal: this.isShowModal,
     }, this.handldeLogin, function (opts) {
       console.log("QQ登录 注销成功 !");
-      // window.location.href = 'https://www.fyyd.vip/blog/nav/blog'
-      // window.location.reload();
+      if(QQ.Login.signOut){
+        window.location.href = 'https://www.fyyd.vip/blog/nav/blog'
 
+      }
 
     });
 
@@ -143,17 +127,6 @@ export default {
     },
     handleQQLogin() {
       window.location.href = document.querySelector("#qq_login_iframe").src;
-    },
-
-    outCallBackFun() {
-      console.log(this.$store.state.ifLogin, '.,')
-
-    },
-    logoutFun() {
-      console.log(this.$store.state.ifLogin, '/.')
-
-    },
-    handleReload() {
     },
     handldeLogin(data, opts) {
       if (QC.Login.check()) {
