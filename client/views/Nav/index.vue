@@ -62,6 +62,8 @@
     <router-view></router-view>
   </div>
 </template>
+<script type="text/javascript" src="//connect.qq.com/qc_jssdk.js" charset="utf-8" data-callback="true"></script>
+
 <script>
 import Register from "../../src/components/Register";
 import Login from "../../src/components/Login";
