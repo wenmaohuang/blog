@@ -10,6 +10,7 @@ export default new Vuex.Store({
         articleMessageList:{},
         // user:''
         ifLogin: false,
+        userInfo:''
     },
     mutations:{
         // handleClick(){

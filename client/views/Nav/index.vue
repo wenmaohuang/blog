@@ -13,9 +13,9 @@
           <li>
             <router-link to="/nav/blog">博客</router-link>
           </li>
-<!--          <li v-show="ifLogin">-->
-<!--            <a :href="adminUrl">管理</a>-->
-<!--          </li>-->
+          <!--          <li v-show="ifLogin">-->
+          <!--            <a :href="adminUrl">管理</a>-->
+          <!--          </li>-->
           <li>
             <router-link to="/nav/message">留言</router-link>
           </li>
@@ -32,7 +32,7 @@
       </div>
 
       <div class="login">
-        <el-popover v-if="ifLogin" trigger="hover" placement="top-start" width="100" content="欢迎登录">
+        <el-popover v-if="$store.state.ifLogin" trigger="hover" placement="top-start" width="100" content="欢迎登录">
           <p>欢迎登录!!!!</p>
           <el-button type="danger" @click="ifShowAvatar = true">修改头像</el-button>
           <el-button type="danger">
@@ -92,16 +92,31 @@ export default {
       return index + 1;
     },
   },
+  destroyed() {
+
+    console.log(this.$store.state.ifLogin,'m,')
+
+  },
+  beforeDestroy() {
+    console.log(this.$store.state.ifLogin,',.')
+
+  },
   mounted() {
     if (window.innerWidth < 500) {
       this.isShowModal = false
     }
+    console.log(this.$store.state.ifLogin,'nm')
+
     QC.Login({
       redirectURI: "https://www.fyyd.vip/blog/nav/blog", //登录成功后会自动跳往该地址
       btnId: "qqLoginBtn", //插入按钮的节点id,
       // showModal: true
       showModal: this.isShowModal,
-    }, this.handldeLogin);
+    }, this.handldeLogin,function (opts) {
+      console.log("QQ登录 注销成功 !");
+      window.location.reload();
+    },this.outCallBackFun);
+
   },
   components: {
     Register, // Login,
@@ -115,13 +130,27 @@ export default {
     handleQQLogin() {
       window.location.href = document.querySelector("#qq_login_iframe").src;
     },
+
+    outCallBackFun(){
+      console.log(this.$store.state.ifLogin,'.,')
+
+    },
+    logoutFun(){
+      console.log(this.$store.state.ifLogin,'/.')
+
+    },
     handleReload() {
     },
     handldeLogin(data, opts) {
-      if (QC.Login.check()) {
+      if (QC.Login.check() || this.$store.state.userInfo) {
         this.$store.state.ifLogin = true;
+        console.log(this.$store.state.ifLogin,'vb')
+
       } else {
+
         this.$store.state.ifLogin = false;
+        console.log(this.$store.state.ifLogin,'bn')
+
       }
       var dom = document.getElementById(opts["btnId"]), _logoutTemplate = [//头像
         '<span><img src="{figureurl}"  class="{size_key}"/></span>', //昵称
@@ -280,14 +309,23 @@ export default {
     },
   },
   created() {
+
+
     postIfLogin().then((res) => {
+      console.log(res.data.userInfo, 'cv')
       if (res.data.userInfo) {
         this.$store.state.ifLogin = true;
+        this.$store.state.userInfo = res.data.userInfo;
+
+        console.log(this.$store.state.ifLogin, 'zx')
+
         this.login.user = res.data.userInfo.user;
         this.login.photo = "https://www.fyyd.vip/blog" + res.data.userInfo.photo;
       } else {
         // this.ifLogin = false;
         this.$store.state.ifLogin = false;
+        console.log(this.$store.state.ifLogin, 'xc')
+
       }
     });
   },

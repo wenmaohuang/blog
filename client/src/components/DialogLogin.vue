@@ -2,8 +2,6 @@
   <div class="dialogLogin">
     <el-button type="text" @click="dialogFormVisible = true;handleFocus()" @open="hanldeOpen()">登录</el-button>
     <el-dialog title="收货地址" :visible.sync="dialogFormVisible" append-to-body="true" @keyup.native.enter="handleLogin()">
-
-
       <el-form ref="form" :model="form" label-width="80px" :rules="rules">
         <el-form-item label="用户名" prop="user">
           <el-input ref="autoFocus" v-model="form.user"></el-input>
