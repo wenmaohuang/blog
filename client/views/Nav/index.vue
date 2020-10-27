@@ -51,8 +51,8 @@
         <div v-else class="else">
           <el-button @click="handlerLogin" type="primary">登录</el-button>
           <el-button @click="handlerRegister" type="success">注册</el-button>
-          <div v-show="$store.state.showQQLogin">
-            <p id="qqLoginBtn" @click="handleQQLogin"></p>
+          <div>
+            <p v-show="$store.state.showQQLogin" id="qqLoginBtn" @click="handleQQLogin"></p>
           </div>
         </div>
 
