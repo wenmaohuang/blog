@@ -100,6 +100,8 @@ export default {
   },
   beforeDestroy() {
     console.log(this.$store.state.ifLogin,',.')
+    console.log(this.$store.state.ifLogin,',.')
+
 
   },
   mounted() {
