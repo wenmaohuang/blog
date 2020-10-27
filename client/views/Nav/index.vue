@@ -132,9 +132,12 @@ export default {
     handldeLogin(data, opts) {
       if (QC.Login.check()) {
         // this.$store.state.ifLogin = false;
+        window.location.href = 'https://www.fyyd.vip/blog/nav/blog'
+
 
         // this.$store.state.mongoLogin = false;
         this.$store.state.showLogin = false;
+
         console.log(this.$store.state.ifLogin, 'vb')
 
       } else {
