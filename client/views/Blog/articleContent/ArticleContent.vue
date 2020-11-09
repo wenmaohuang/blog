@@ -1,6 +1,6 @@
 <template>
   <div class="articleDetail">
-    <Nav></Nav>
+<!--    <Nav></Nav>-->
     <div class="detail">
       <div class="head">
         <div class="title">
@@ -75,7 +75,7 @@
 <!--<script src="/blog/static/layui/layui.js"></script>-->
 <script src="https://cdn.bootcdn.net/ajax/libs/layui/2.4.3/layui.min.js"></script>
 <script>
-import Nav from "../../../src/components/Nav";
+// import Nav from "../../../src/components/Nav";
 import aplayer from "vue-aplayer";
 import request from "../../../api/index";
 import ArticleMessage from "../../../src/components/ArticleMessage";
@@ -91,7 +91,7 @@ export default {
     };
   },
   components: {
-    Nav,
+    // Nav,
     aplayer,
     ArticleMessage
   },
