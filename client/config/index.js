@@ -14,7 +14,13 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-
+      // '/blog': {
+      //   target: 'http://localhost:3000',//后端接口地址
+      //   changeOrigin: true,//是否允许跨越
+      //   pathRewrite: {
+      //     '^/blog': '',//重写,
+      //   }
+      // }
      
 
 
@@ -55,14 +61,14 @@ module.exports = {
 
   build: {
     // Template for index.html
-    index: path.resolve(__dirname, '../dist/blog/index.html'),
+    index: path.resolve(__dirname, '../dist/index.html'),
 
     // Paths
-    assetsRoot: path.resolve(__dirname, '../dist/blog'),
+    assetsRoot: path.resolve(__dirname, '../dist'),
     // assetsRoot: path.resolve(__dirname),
 
     assetsSubDirectory: 'static',
-    assetsPublicPath: './blog/',
+    assetsPublicPath: './',
     url:'https://www.fyyd.vip',
     /**
      * Source Maps
