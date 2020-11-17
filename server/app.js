@@ -14,7 +14,7 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, '../client/dist/')))
 app.use(express.static(path.join(__dirname, './public')))
 app.get('*', function (request, response){
-    response.sendFile(path.resolve(__dirname, '../client/dist/blog', 'index.html'))
+    response.sendFile(path.resolve(__dirname, '../client/dist', 'index.html'))
 })
 
 
