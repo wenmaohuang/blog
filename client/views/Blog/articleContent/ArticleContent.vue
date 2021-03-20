@@ -31,7 +31,7 @@
                      {title:'少年',artist:'梦然',src:'/blog/mp3/少年.m4a',pic:'/blog/img/4.jpg'}
                      ]"
             :listFolded="true"
-            :autoplay="true"
+            :autoplay="false"
             :shuffle="true"
             repeat="repeat-all"
             :preload="auto"
@@ -48,7 +48,7 @@
           </div>
         </div>
       </div>
-      <aplayer :allow="autoplay" class="maxaplayer"
+      <aplayer class="maxaplayer"
                :music="{
                     title:'琵琶语',artist:'林海',src:'/blog/mp3/琵琶语.mp3',pic:'/blog/img/4.jpg'
                     }"
@@ -61,11 +61,11 @@
                      {title:'少年',artist:'梦然',src:'/blog/mp3/少年.m4a',pic:'/blog/img/4.jpg'}
                      ]"
                :listFolded="true"
-               :autoplay="true"
+               :autoplay="false"
                :shuffle="true"
                repeat="repeat-all"
                :preload="auto"
-               :mutex="false"
+               :mutex="true"
       ></aplayer>
       <div class="content" v-html="article.content"></div>
     </div>
