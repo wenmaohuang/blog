@@ -64,7 +64,7 @@
                :autoplay="false"
                :shuffle="true"
                repeat="repeat-all"
-               :preload="auto"
+               :preload="true"
                :mutex="true"
       ></aplayer>
       <div class="content" v-html="article.content"></div>
